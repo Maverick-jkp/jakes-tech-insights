@@ -13,7 +13,7 @@
             --surface: #242424;
             --border: #333333;
             --text: #f5f5f5;
-            --text-dim: #999;
+            --text-dim: #b0b0b0;
             --accent: #00ff88;
         }
 
@@ -658,11 +658,19 @@
                 <div class="featured-content">
                     <span class="featured-badge">Featured</span>
                     <h1 class="featured-title">{{ .Title }}</h1>
-                    <p class="featured-excerpt">{{ .Plain | truncate 150 | htmlUnescape }}</p>
+                    <p class="featured-excerpt">{{ .Summary | plainify | truncate 150 }}</p>
                     <div class="featured-meta">
-                        <span class="featured-date">{{ .Date.Format "2006.01.02" }}</span>
-                        {{ if .Params.category }}
-                        <span class="featured-category">{{ .Params.category }}</span>
+                        <span class="featured-date">
+                            {{ if eq .Site.Language.Lang "ko" }}
+                                {{ .Date.Format "2006년 01월 02일" }}
+                            {{ else if eq .Site.Language.Lang "ja" }}
+                                {{ .Date.Format "2006年01月02日" }}
+                            {{ else }}
+                                {{ .Date.Format "January 02, 2006" }}
+                            {{ end }}
+                        </span>
+                        {{ if .Params.categories }}
+                        <span class="featured-category">{{ index .Params.categories 0 }}</span>
                         {{ end }}
                     </div>
                 </div>
@@ -683,7 +691,15 @@
                     </div>
                     <div class="latest-item-content">
                         <div class="latest-item-title">{{ .Title }}</div>
-                        <div class="latest-item-date">{{ .Date.Format "2006.01.02" }}</div>
+                        <div class="latest-item-date">
+                            {{ if eq $.Site.Language.Lang "ko" }}
+                                {{ .Date.Format "2006.01.02" }}
+                            {{ else if eq $.Site.Language.Lang "ja" }}
+                                {{ .Date.Format "2006.01.02" }}
+                            {{ else }}
+                                {{ .Date.Format "Jan 02, 2006" }}
+                            {{ end }}
+                        </div>
                     </div>
                 </a>
                 {{ end }}
@@ -700,9 +716,17 @@
             <!-- Small Cards (3 cards, each 3 columns) -->
             {{ range after 1 (first 4 $currentLangPages) }}
             <a href="{{ .Permalink }}" class="small-card">
-                <div class="small-card-date">{{ .Date.Format "2006.01.02" }}</div>
+                <div class="small-card-date">
+                    {{ if eq $.Site.Language.Lang "ko" }}
+                        {{ .Date.Format "2006.01.02" }}
+                    {{ else if eq $.Site.Language.Lang "ja" }}
+                        {{ .Date.Format "2006.01.02" }}
+                    {{ else }}
+                        {{ .Date.Format "Jan 02, 2006" }}
+                    {{ end }}
+                </div>
                 <h3 class="small-card-title">{{ .Title }}</h3>
-                <p class="small-card-excerpt">{{ .Plain | truncate 100 | htmlUnescape }}</p>
+                <p class="small-card-excerpt">{{ .Summary | plainify | truncate 100 }}</p>
             </a>
             {{ end }}
 
@@ -723,7 +747,15 @@
                         <div class="trending-number">{{ printf "%02d" (add $index 1) }}</div>
                         <div class="trending-content">
                             <div class="trending-title">{{ $page.Title }}</div>
-                            <div class="trending-date">{{ $page.Date.Format "2006.01.02" }}</div>
+                            <div class="trending-date">
+                                {{ if eq $.Site.Language.Lang "ko" }}
+                                    {{ $page.Date.Format "2006.01.02" }}
+                                {{ else if eq $.Site.Language.Lang "ja" }}
+                                    {{ $page.Date.Format "2006.01.02" }}
+                                {{ else }}
+                                    {{ $page.Date.Format "Jan 02, 2006" }}
+                                {{ end }}
+                            </div>
                         </div>
                     </a>
                     {{ end }}
@@ -748,10 +780,17 @@
     <div class="floating-menu">
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
         <div class="menu-panel" id="menuPanel">
-            <a href="#top">Top</a>
-            <a href="/about/">About</a>
-            <a href="/tags/">Tags</a>
-            <a href="/archive/">Archive</a>
+            <a href="#top">↑ Top</a>
+            <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
+                <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
+                <a href="/{{ .Site.Language.Lang }}/tech/">💻 Tech</a>
+                <a href="/{{ .Site.Language.Lang }}/business/">💼 Business</a>
+                <a href="/{{ .Site.Language.Lang }}/lifestyle/">🌟 Lifestyle</a>
+            </div>
+            <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
+                <a href="/tags/">🏷️ Tags</a>
+                <a href="/about/">👤 About</a>
+            </div>
         </div>
     </div>
 
