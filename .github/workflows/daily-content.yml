@@ -68,6 +68,9 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          
           if [ -f generated_files.json ]; then
             FILES_COUNT=$(jq length generated_files.json)
             echo "files_count=$FILES_COUNT" >> $GITHUB_OUTPUT
@@ -75,6 +78,16 @@ jobs:
             if [ "$FILES_COUNT" -gt 0 ]; then
               echo "has_changes=true" >> $GITHUB_OUTPUT
               echo "✅ Generated $FILES_COUNT file(s)"
+              
+              # Add generated files
+              git add content/
+              git add data/topics_queue.json
+              
+              # Check if there are actual changes
+              if git diff --staged --quiet; then
+                echo "has_changes=false" >> $GITHUB_OUTPUT
+                echo "⚠️ No actual changes to commit"
+              fi
             else
               echo "has_changes=false" >> $GITHUB_OUTPUT
               echo "⚠️ No files were generated"
@@ -133,9 +146,6 @@ jobs:
             automated
             content
             needs-review
-          add-paths: |
-            content/**/*.md
-            data/topics_queue.json
 
       - name: PR Creation Summary
         if: steps.check_changes.outputs.has_changes == 'true'
