@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "total_files": 1,
+    "total_failures": 0,
+    "total_warnings": 2
+  },
+  "results": [
+    {
+      "file": "content/en/tech/2026-01-16-cloud-computing-trends-2025.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: game-changer",
+        "Low link count: 0 (recommended: 2+)"
+      ],
+      "info": {
+        "word_count": 1293,
+        "ai_phrases_found": [
+          "game-changer"
+        ],
+        "description_length": 159,
+        "link_count": 0,
+        "avg_sentence_length": 20.3,
+        "heading_count": 6,
+        "title": "Cloud Computing Trends 2025: What's Next for Business"
+      }
+    }
+  ]
+}
