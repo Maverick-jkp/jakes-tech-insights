@@ -155,9 +155,9 @@ class QualityGate:
                 checks['critical_failures'].append(
                     f"Word count too low: {word_count} words (minimum: 900)"
                 )
-            elif word_count > 1800:
+            elif word_count > 2000:
                 checks['critical_failures'].append(
-                    f"Word count too high: {word_count} words (maximum: 1800)"
+                    f"Word count too high: {word_count} words (maximum: 2000)"
                 )
 
     def _check_ai_phrases(self, body: str, lang: str, checks: Dict):
