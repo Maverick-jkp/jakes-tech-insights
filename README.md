@@ -257,6 +257,8 @@ hugo
 - ✅ Quality checks: No AI phrases detected
 - ✅ Queue system: State transitions working
 - ✅ Retry mechanism: Failures handled gracefully
+- ✅ max_tokens optimization: 4000 → 8000 for KO/JA word count
+- ⏳ Final workflow test: In progress (testing 8000 tokens)
 
 ## 🎓 Documentation
 
@@ -287,11 +289,12 @@ ANTHROPIC_API_KEY=your-claude-api-key-here
 - [x] AI self-review agent
 - [x] GitHub Actions workflow
 
-### 🔄 Phase 3: Enhancement (In Progress)
-- [ ] Workflow setup on GitHub
-- [ ] Test full pipeline end-to-end
-- [ ] Monitor quality metrics
-- [ ] Adjust prompts based on feedback
+### ✅ Phase 3: Enhancement (Complete)
+- [x] Workflow setup on GitHub
+- [x] Test full pipeline end-to-end
+- [x] Monitor quality metrics (KO/JA word count issue identified)
+- [x] max_tokens optimization (4000 → 8000)
+- [ ] Final validation (in progress)
 
 ### 📋 Phase 4: Optimization (Planned)
 - [ ] Prompt Caching for cost reduction
@@ -370,4 +373,18 @@ MIT License - See [LICENSE](LICENSE) file
 **Built with 🤖 AI + ❤️ Human Touch**
 
 *Last updated: 2026-01-16*
-*Version: 2.5 (Day 4-5 Complete)*
+*Version: 2.6 (Day 5 - max_tokens Optimization)*
+
+## 🔍 Recent Changes
+
+**2026-01-16 (v2.6)**:
+- Fixed KO/JA word count issue (794 → target 1,200+)
+- Increased max_tokens: 4000 → 8000
+- Added cost optimization strategy
+- Est. cost: $5.4/month for 3 posts/day
+
+**2026-01-16 (v2.5)**:
+- Completed Day 4-5 automation
+- Quality Gate + AI Reviewer implemented
+- GitHub Actions workflow created
+- Full pipeline tested

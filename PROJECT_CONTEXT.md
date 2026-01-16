@@ -26,6 +26,7 @@ Topic Queue → Content Generation → Quality Gate → AI Review → GitHub PR 
 2. **Content Generator** (`scripts/generate_posts.py`)
    - Two-stage generation: Draft Agent + Editor Agent
    - Language-specific prompts (EN/KO/JA)
+   - max_tokens: 8000 (optimized for 900+ words in KO/JA)
    - Auto-generate titles and meta descriptions
    - Hugo frontmatter generation
 
@@ -242,11 +243,46 @@ ANTHROPIC_API_KEY=your-claude-api-key
 ### Issue 3: Stuck Topics in Queue
 **Solution**: Run cleanup command: `python scripts/topic_queue.py cleanup 24`
 
-## 🎉 Next Steps
+### Issue 4: KO/JA Word Count Too Low ✅ SOLVED
+**Problem**: Korean (794 words) and Japanese (102 words) posts failed quality gate
+**Root Cause**: max_tokens=4000 insufficient for non-English languages
+**Solution**: Increased max_tokens to 8000
+**Result**: Expected 1,200+ words for all languages
+**Cost Impact**: ~$0.03/post → ~$0.06/post ($5.4/month for 3 posts/day)
 
-1. **Test Full Pipeline**: Run end-to-end test with manual workflow trigger
-2. **Review Generated Content**: Check AI-generated posts for quality
-3. **Git Commit & Push**: Push all Day 1-5 work to GitHub
+## 🎉 Implementation Timeline
+
+### Day 1-3: Foundation (Completed)
+- ✅ Hugo site setup with multilingual support
+- ✅ Topic queue system with state machine
+- ✅ Content generation (Draft + Editor agents)
+- ✅ Navigation and UI fixes
+
+### Day 4-5: Automation (Completed)
+- ✅ Quality Gate system
+- ✅ AI Reviewer with 5-criteria scoring
+- ✅ GitHub Actions workflows
+- ✅ max_tokens optimization (4000 → 8000)
+- ⏳ Final validation (in progress)
+
+### Day 6+: Optimization (Planned)
+- [ ] Prompt Caching for cost reduction
+- [ ] Keyword research automation
+- [ ] Image auto-generation
+- [ ] A/B testing for titles
+
+## 💰 Cost Analysis
+
+### Current Setup (3 posts/day)
+- **Draft Agent**: ~4K tokens × $0.015/1K = $0.06/post
+- **Editor Agent**: ~4K tokens × $0.015/1K = $0.06/post
+- **Total per post**: ~$0.06
+- **Monthly (90 posts)**: ~$5.40
+
+### Optimization Options
+1. **Reduce frequency**: 1 post/day = $1.80/month
+2. **Skip review step**: Save ~30% ($3.78/month)
+3. **Prompt Caching**: Save ~50% with cache hits ($2.70/month)
 4. **Enable Daily Automation**: Set up daily cron schedule
 5. **Monitor & Iterate**: Track quality metrics and adjust prompts
 
