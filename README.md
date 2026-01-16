@@ -190,7 +190,7 @@ hugo
 ## 📊 Quality Standards
 
 ### Content Requirements
-- **Word count**: 900-1800 words
+- **Word count**: 800-1600 words (EN/KO), 3000-5000 chars (JA)
 - **Tone**: Professional but friendly
 - **Structure**: 3-5 H2 headings
 - **Links**: 2+ external references
@@ -260,7 +260,7 @@ hugo
 - ✅ Retry mechanism: Failures handled gracefully
 - ✅ max_tokens optimization: 4000 → 8000 → 12000
 - ✅ Tone optimization: Toss style (KO), Medium style (EN), Natural (JA)
-- ✅ Quality Gate updated: 800-1,200 words, 3,000-5,000 chars (JA)
+- ✅ Quality Gate updated: 800-1,600 words, 3,000-5,000 chars (JA)
 
 ## 🎓 Documentation
 
@@ -297,7 +297,7 @@ ANTHROPIC_API_KEY=your-claude-api-key-here
 - [x] Monitor quality metrics (KO/JA word count issue identified)
 - [x] max_tokens optimization (4000 → 8000 → 12000)
 - [x] Tone optimization (Toss/Medium/Natural styles)
-- [x] Quality Gate criteria updated (800-1,200 words)
+- [x] Quality Gate criteria updated (800-1,600 words for flexibility)
 
 ### 📋 Phase 4: Optimization (Planned)
 - [ ] Prompt Caching for cost reduction
@@ -385,7 +385,7 @@ MIT License - See [LICENSE](LICENSE) file
 - **max_tokens**: 8000 → 12000 (prevents truncation)
 - **Target length**: 800-1,100 words (EN/KO), 3,000-4,500 chars (JA)
 - **Tone optimization**: Toss style (KO), Medium/Substack (EN), Natural (JA)
-- **Quality Gate**: 800-1,200 words, 3,000-5,000 chars (JA)
+- **Quality Gate**: 800-1,600 words (relaxed for flexibility), 3,000-5,000 chars (JA)
 - **Cost**: ~$0.09/post ($8.1/month for 3 posts/day)
 
 **2026-01-16 (v2.6)**:

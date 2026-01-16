@@ -33,7 +33,7 @@ Topic Queue → Content Generation → Quality Gate → AI Review → GitHub PR 
    - Hugo frontmatter generation
 
 3. **Quality Gate** (`scripts/quality_gate.py`)
-   - Word count validation (800-1200 words, 3000-5000 chars JA)
+   - Word count validation (800-1600 words, 3000-5000 chars JA)
    - AI phrase detection (warnings only, not critical)
    - Frontmatter completeness check
    - SEO and readability metrics
@@ -258,7 +258,7 @@ ANTHROPIC_API_KEY=your-claude-api-key
 **Solution**:
 - max_tokens: 4000 → 8000 → 12000
 - Target length: 800-1,100 words (EN/KO), 3,000-4,500 chars (JA)
-- Quality Gate: 800-1,200 words, 3,000-5,000 chars (JA)
+- Quality Gate: 800-1,600 words, 3,000-5,000 chars (JA)
 - Tone optimization: Toss (KO), Medium/Substack (EN), Natural (JA)
 - Completion validation: "마지막 문장까지 완결"
 
@@ -283,7 +283,7 @@ ANTHROPIC_API_KEY=your-claude-api-key
 - ✅ GitHub Actions workflows
 - ✅ max_tokens optimization (4000 → 8000 → 12000)
 - ✅ Monetization optimization (length, tone, completion)
-- ✅ Quality Gate criteria updated
+- ✅ Quality Gate criteria updated (800-1,600 words for flexibility)
 
 ### Day 6+: Optimization (Planned)
 - [ ] Prompt Caching for cost reduction
