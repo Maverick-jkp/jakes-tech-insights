@@ -18,3 +18,11 @@ Thumbs.db
 
 # Node modules (if using npm)
 node_modules/
+
+# Content backup (old first-post backups)
+content_backup/
+
+# Resume project files (different project)
+*Resume*.html
+generate_resume_pdf*.py
+resume_project/
