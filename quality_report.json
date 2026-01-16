@@ -1,0 +1,73 @@
+{
+  "summary": {
+    "total_files": 3,
+    "total_failures": 0,
+    "total_warnings": 9
+  },
+  "results": [
+    {
+      "file": "content/en/tech/2026-01-16-cloud-computing-trends-2025.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [
+        "Description length not optimal: 163 chars (ideal: 120-160)",
+        "Low link count: 0 (recommended: 2+)"
+      ],
+      "info": {
+        "word_count": 1062,
+        "ai_phrases_found": [],
+        "description_length": 163,
+        "link_count": 0,
+        "avg_sentence_length": 20.5,
+        "heading_count": 6,
+        "title": "Top Cloud Computing Trends 2025: What's Next in Tech"
+      }
+    },
+    {
+      "file": "content/ko/tech/2026-01-16-\ud074\ub77c\uc6b0\ub4dc-\ucef4\ud4e8\ud305-\ud2b8\ub80c\ub4dc-2025.md",
+      "language": "ko",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: \uac8c\uc784\uccb4\uc778\uc800",
+        "Description length not optimal: 89 chars (ideal: 120-160)",
+        "Low link count: 0 (recommended: 2+)"
+      ],
+      "info": {
+        "word_count": 1783,
+        "ai_phrases_found": [
+          "\uac8c\uc784\uccb4\uc778\uc800"
+        ],
+        "description_length": 89,
+        "link_count": 0,
+        "avg_sentence_length": 9.9,
+        "heading_count": 5,
+        "title": "2025 \ud074\ub77c\uc6b0\ub4dc \ucef4\ud4e8\ud305 \ud2b8\ub80c\ub4dc \uc644\ubcbd \uac00\uc774\ub4dc: \uae30\uc5c5\uc774 \uc54c\uc544\uc57c \ud560 \ud575\uc2ec \ubcc0\ud654"
+      }
+    },
+    {
+      "file": "content/ja/tech/2026-01-16-\u30af\u30e9\u30a6\u30c9\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0\u30c8\u30ec\u30f3\u30c92025.md",
+      "language": "ja",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: \u91cd\u8981\u3067\u3059, \u9769\u65b0\u7684, \u6ce8\u76ee\u3059\u3079\u304d",
+        "Description length not optimal: 105 chars (ideal: 120-160)",
+        "Low link count: 0 (recommended: 2+)",
+        "Sentences may be too long (avg: 70.5 words)"
+      ],
+      "info": {
+        "char_count": 9431,
+        "word_count": "9431 chars",
+        "ai_phrases_found": [
+          "\u91cd\u8981\u3067\u3059",
+          "\u9769\u65b0\u7684",
+          "\u6ce8\u76ee\u3059\u3079\u304d"
+        ],
+        "description_length": 105,
+        "link_count": 0,
+        "avg_sentence_length": 70.5,
+        "heading_count": 5,
+        "title": "\u30102025\u5e74\u6700\u65b0\u3011\u30af\u30e9\u30a6\u30c9\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0\u30c8\u30ec\u30f3\u30c9\u5b8c\u5168\u89e3\u8aac\uff01\u6ce8\u76ee\u6280\u8853\u3068\u4f01\u696d\u6226\u7565"
+      }
+    }
+  ]
+}
