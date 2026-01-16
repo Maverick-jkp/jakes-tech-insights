@@ -1,0 +1,774 @@
+{{ define "main" }}
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+        :root {
+            --bg: #1a1a1a;
+            --surface: #242424;
+            --border: #333333;
+            --text: #f5f5f5;
+            --text-dim: #999;
+            --accent: #00ff88;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Force color reset for all elements */
+        h1, h2, h3, h4, h5, h6, p, span, div, a {
+            color: inherit;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Instrument Sans', sans-serif;
+            padding-top: 80px;
+        }
+
+        /* Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: gridMove 60s linear infinite;
+        }
+
+        @keyframes gridMove {
+            to { transform: translate(50px, 50px); }
+        }
+
+        /* Fixed Header */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .header-box {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .logo .apostrophe { color: var(--accent); }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .lang-switch a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Featured Post - 6 columns */
+        .featured-post {
+            grid-column: span 6;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 0;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            min-height: 350px;
+        }
+
+        .featured-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .featured-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .featured-post:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .featured-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-dim) !important;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .featured-excerpt * {
+            color: var(--text-dim) !important;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .featured-date {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .featured-category {
+            color: var(--text-dim);
+        }
+
+        /* Latest Posts Widget - 3 columns */
+        .latest-widget {
+            grid-column: span 3;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            min-height: 350px;
+        }
+
+        .widget-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .latest-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .latest-item:last-child {
+            border-bottom: none;
+        }
+
+        .latest-item:hover {
+            padding-left: 0.5rem;
+        }
+
+        .latest-thumbnail {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .latest-item-content {
+            flex: 1;
+        }
+
+        .latest-item-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .latest-item-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+        }
+
+        /* AdSense Widget - 3 columns */
+        .adsense-widget {
+            grid-column: span 3;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .adsense-placeholder {
+            text-align: center;
+            color: var(--text-dim);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        /* Small Cards - each 3 columns */
+        .small-card {
+            grid-column: span 3;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            min-height: 240px;
+        }
+
+        .small-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
+        }
+
+        .small-card-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .small-card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .small-card-excerpt {
+            font-size: 0.875rem;
+            color: var(--text-dim) !important;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .small-card-excerpt * {
+            color: var(--text-dim) !important;
+        }
+
+        /* Trending Section - 8 columns */
+        .trending-section {
+            grid-column: span 8;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .trending-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .trending-item:hover {
+            border-color: var(--accent);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .trending-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .trending-content {
+            flex: 1;
+        }
+
+        .trending-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .trending-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* Popular Tags Section - 4 columns */
+        .tags-section {
+            grid-column: span 4;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .tag-item:hover {
+            border-color: var(--accent);
+            background: rgba(0, 255, 136, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .tag-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 1.5rem;
+            height: 1.5rem;
+            padding: 0 0.4rem;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Floating Menu Button */
+        .floating-menu {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 90;
+        }
+
+        .menu-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--bg);
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
+            transition: all 0.3s;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 255, 136, 0.6);
+        }
+
+        .menu-panel {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            border-radius: 1rem;
+            padding: 1rem;
+            min-width: 200px;
+            display: none;
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .menu-panel.active {
+            display: block;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-panel a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .menu-panel a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            .featured-post {
+                grid-column: span 6;
+            }
+
+            .latest-widget,
+            .adsense-widget {
+                grid-column: span 3;
+            }
+
+            .small-card {
+                grid-column: span 3;
+            }
+
+            .trending-section {
+                grid-column: span 6;
+            }
+
+            .tags-section {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .header-box {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .featured-post,
+            .latest-widget,
+            .adsense-widget,
+            .small-card,
+            .trending-section,
+            .tags-section {
+                grid-column: span 1;
+            }
+
+            .trending-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-post {
+                padding: 1.5rem;
+                min-height: auto;
+            }
+
+            .featured-title {
+                font-size: 1.5rem;
+            }
+
+            .small-card {
+                min-height: auto;
+            }
+
+            .floating-menu {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .menu-btn {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="top-bar">
+        <div class="header-box">
+            <div class="logo">
+                JAKE<span class="apostrophe">'</span>S INSIGHTS
+            </div>
+            <div class="lang-switch">
+                <a href="/en/" class="{{ if eq .Site.Language.Lang "en" }}active{{ end }}">EN</a>
+                <a href="/ko/" class="{{ if eq .Site.Language.Lang "ko" }}active{{ end }}">KO</a>
+                <a href="/ja/" class="{{ if eq .Site.Language.Lang "ja" }}active{{ end }}">JA</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="bento-grid">
+            <!-- Featured Post (6 columns) -->
+            {{ $currentLangPages := where .Site.RegularPages "Language.Lang" .Site.Language.Lang }}
+            {{ $featured := index $currentLangPages 0 }}
+            {{ with $featured }}
+            <a href="{{ .Permalink }}" class="featured-post">
+                <div class="featured-thumbnail">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                    {{ else }}
+                    📰 Featured
+                    {{ end }}
+                </div>
+                <div class="featured-content">
+                    <span class="featured-badge">Featured</span>
+                    <h1 class="featured-title">{{ .Title }}</h1>
+                    <p class="featured-excerpt">{{ .Plain | truncate 150 | htmlUnescape }}</p>
+                    <div class="featured-meta">
+                        <span class="featured-date">{{ .Date.Format "2006.01.02" }}</span>
+                        {{ if .Params.category }}
+                        <span class="featured-category">{{ .Params.category }}</span>
+                        {{ end }}
+                    </div>
+                </div>
+            </a>
+            {{ end }}
+
+            <!-- Latest Posts (3 columns) -->
+            <div class="latest-widget">
+                <h3 class="widget-title">Latest</h3>
+                {{ range first 5 $currentLangPages }}
+                <a href="{{ .Permalink }}" class="latest-item">
+                    <div class="latest-thumbnail">
+                        {{ if .Params.image }}
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem;">
+                        {{ else }}
+                        📄
+                        {{ end }}
+                    </div>
+                    <div class="latest-item-content">
+                        <div class="latest-item-title">{{ .Title }}</div>
+                        <div class="latest-item-date">{{ .Date.Format "2006.01.02" }}</div>
+                    </div>
+                </a>
+                {{ end }}
+            </div>
+
+            <!-- AdSense Widget (3 columns) -->
+            <div class="adsense-widget">
+                <div class="adsense-placeholder">
+                    <!-- AdSense Code Here -->
+                    <p>Advertisement</p>
+                </div>
+            </div>
+
+            <!-- Small Cards (3 cards, each 3 columns) -->
+            {{ range after 1 (first 4 $currentLangPages) }}
+            <a href="{{ .Permalink }}" class="small-card">
+                <div class="small-card-date">{{ .Date.Format "2006.01.02" }}</div>
+                <h3 class="small-card-title">{{ .Title }}</h3>
+                <p class="small-card-excerpt">{{ .Plain | truncate 100 | htmlUnescape }}</p>
+            </a>
+            {{ end }}
+
+            <!-- AdSense Widget 2 (3 columns) -->
+            <div class="adsense-widget">
+                <div class="adsense-placeholder">
+                    <!-- AdSense Code Here -->
+                    <p>Advertisement</p>
+                </div>
+            </div>
+
+            <!-- Trending Section (8 columns) -->
+            <div class="trending-section">
+                <h3 class="widget-title">Trending</h3>
+                <div class="trending-grid">
+                    {{ range $index, $page := first 4 $currentLangPages }}
+                    <a href="{{ $page.Permalink }}" class="trending-item">
+                        <div class="trending-number">{{ printf "%02d" (add $index 1) }}</div>
+                        <div class="trending-content">
+                            <div class="trending-title">{{ $page.Title }}</div>
+                            <div class="trending-date">{{ $page.Date.Format "2006.01.02" }}</div>
+                        </div>
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+
+            <!-- Popular Tags Section (4 columns) -->
+            <div class="tags-section">
+                <h3 class="widget-title">Popular Tags</h3>
+                <div class="tags-cloud">
+                    {{ range first 12 .Site.Taxonomies.tags.ByCount }}
+                    <a href="{{ .Page.Permalink }}" class="tag-item">
+                        {{ .Page.Title }} <span class="tag-count">{{ .Count }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Menu -->
+    <div class="floating-menu">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="menu-panel" id="menuPanel">
+            <a href="#top">Top</a>
+            <a href="/about/">About</a>
+            <a href="/tags/">Tags</a>
+            <a href="/archive/">Archive</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const panel = document.getElementById('menuPanel');
+            panel.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.floating-menu');
+            if (!menu.contains(event.target)) {
+                document.getElementById('menuPanel').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
+{{ end }}
