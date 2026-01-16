@@ -95,6 +95,8 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          committer: GitHub Actions <noreply@github.com>
+          author: Content Bot <noreply@github.com>
           commit-message: |
             🤖 Auto-generated content
 
