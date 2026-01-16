@@ -221,6 +221,17 @@ hugo
 - AI review provides recommendations
 - Creates PR for human approval
 
+### Cost Optimization
+**Token Settings**:
+- Draft generation: 8000 max_tokens (ensures 900+ words for KO/JA)
+- Editor refinement: 8000 max_tokens
+- Est. cost: ~$0.06/post × 3 posts/day = $5.4/month
+
+**Scaling Strategy**:
+- Week 1-2: 1 post/day ($1.8/month) - Manual review
+- Week 3-4: 3 posts/day ($5.4/month) - Semi-auto
+- Month 2+: Adjust based on quality/budget
+
 ### Manual Trigger
 1. Go to **Actions** tab on GitHub
 2. Select **Daily Content Generation**

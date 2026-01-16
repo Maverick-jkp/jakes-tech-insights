@@ -138,7 +138,7 @@ class ContentGenerator:
 
         response = self.client.messages.create(
             model=self.model,
-            max_tokens=4000,
+            max_tokens=8000,
             system=system_prompt,
             messages=[{
                 "role": "user",
@@ -160,7 +160,7 @@ class ContentGenerator:
 
         response = self.client.messages.create(
             model=self.model,
-            max_tokens=4000,
+            max_tokens=8000,
             messages=[
                 {
                     "role": "user",
