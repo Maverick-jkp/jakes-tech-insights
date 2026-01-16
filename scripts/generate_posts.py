@@ -231,13 +231,19 @@ class ContentGenerator:
 
 Category: {category}
 
+🚨 Length Limits (STRICT COMPLIANCE!):
+- **800-1,100 words (REQUIRED!)**: Below 800 or above 1,100 will be REJECTED
+- Each section: 120-180 words (key points only, concise)
+- Total: 3-4 ## sections only
+
 Requirements:
 - Target audience: Tech-savvy professionals and enthusiasts
-- Include practical examples and actionable advice
-- Add 2-3 real-world use cases
+- Include practical examples and actionable advice (1-2 examples only, selectively)
 - Mention current trends (2025)
-- Be specific with numbers and data when relevant
+- Use specific numbers and data (selectively)
 - End with thought-provoking question
+
+⚠️ Important: Be concise and impactful! Remove unnecessary explanations.
 
 Write the complete blog post now (body only, no title or metadata):""",
 
@@ -245,31 +251,39 @@ Write the complete blog post now (body only, no title or metadata):""",
 
 카테고리: {category}
 
+🚨 길이 제한 (절대 준수!):
+- **800-1,100 단어 (필수!)**: 800 단어 미만 or 1,100 단어 초과는 거부됨
+- 각 섹션: 120-180 단어 (핵심만 간결하게)
+- 총 3-4개 ## 섹션만 작성
+
 요구사항:
 - 대상 독자: 기술에 관심있는 전문가와 얼리어답터
-- **최소 1,200 단어 이상 작성 (필수!) - 900 단어 미만은 거부됨**
-- 각 섹션을 충분히 상세하게 작성 (한 섹션당 최소 200-300 단어)
-- 실용적인 예시와 실행 가능한 조언 포함
-- 2-3개의 실제 사용 사례 추가
+- 실용적인 예시와 실행 가능한 조언 포함 (1-2개만 선택적으로)
 - 현재 트렌드 언급 (2025년)
-- 관련 있을 때 구체적인 숫자와 데이터 사용
+- 구체적인 숫자와 데이터 사용 (선택적으로)
 - 생각을 자극하는 질문으로 마무리
 
-지금 바로 완전한 블로그 글을 작성하세요 (본문만, 제목이나 메타데이터 제외):""",
+⚠️ 중요: 간결하고 임팩트 있게! 불필요한 설명은 제거하세요.
+
+지금 바로 완전한 블로그 글을 작성하세요 (본문만, 제목이나 메타데이터 제외):,
 
             "ja": f"""次のトピックについて包括的なブログ記事を書いてください: {keyword}
 
 カテゴリ: {category}
 
+🚨 文字数制限 (絶対厳守!):
+- **3,000-4,500文字 (必須!)**: 3,000文字未満 or 4,500文字超過は却下
+- 各セクション: 600-900文字 (要点のみ簡潔に)
+- 合計3-4個の##セクションのみ作成
+
 要件:
 - 対象読者: 技術に精通した専門家と愛好家
-- **最低1,200語以上必須 (重要!) - 900語未満は却下**
-- 各セクションを十分詳しく書く（1セクションあたり最低200-300語）
-- 実践的な例と実行可能なアドバイスを含める
-- 2-3つの実際のユースケースを追加
+- 実践的な例と実行可能なアドバイスを含める (1-2個のみ選択的に)
 - 現在のトレンドに言及 (2025年)
-- 関連する場合は具体的な数字とデータを使用
+- 具体的な数字とデータを使用 (選択的に)
 - 考えさせる質問で締めくくる
+
+⚠️ 重要: 簡潔でインパクトのある内容に! 不要な説明は削除してください。
 
 今すぐ完全なブログ記事を書いてください（本文のみ、タイトルやメタデータなし）:"""
         }
