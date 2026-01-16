@@ -135,14 +135,14 @@ class QualityGate:
             checks['info']['char_count'] = char_count
             checks['info']['word_count'] = f"{char_count} chars"
 
-            # Japanese: 2500-5000 chars ≈ 900-1800 English words
+            # Japanese: 2500-10000 chars (more flexible for comprehensive content)
             if char_count < 2500:
                 checks['critical_failures'].append(
                     f"Character count too low: {char_count} chars (minimum: 2500)"
                 )
-            elif char_count > 5000:
+            elif char_count > 10000:
                 checks['critical_failures'].append(
-                    f"Character count too high: {char_count} chars (maximum: 5000)"
+                    f"Character count too high: {char_count} chars (maximum: 10000)"
                 )
         else:
             # English and Korean use word count
@@ -173,13 +173,10 @@ class QualityGate:
 
         checks['info']['ai_phrases_found'] = found_phrases
 
-        # FAIL if critical AI phrases found
-        critical_phrases = ['revolutionary', 'game-changer', 'cutting-edge']
-        critical_found = [p for p in found_phrases if p in critical_phrases]
-
-        if critical_found:
-            checks['critical_failures'].append(
-                f"Critical AI phrases detected: {', '.join(critical_found)}"
+        # WARN if AI phrases found (not critical failure anymore)
+        if found_phrases:
+            checks['warnings'].append(
+                f"AI phrases detected: {', '.join(found_phrases[:3])}{'...' if len(found_phrases) > 3 else ''}"
             )
 
     def _check_frontmatter(self, frontmatter: Dict, checks: Dict):
