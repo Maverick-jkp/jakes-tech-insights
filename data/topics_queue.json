@@ -104,9 +104,11 @@
       "category": "tech",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:09:00",
-      "retry_count": 0
+      "retry_count": 0,
+      "reserved_at": "2026-01-16T16:38:01.695972",
+      "completed_at": "2026-01-16T16:39:05.323971"
     },
     {
       "id": "011-ko-tech-cloud-computing",
@@ -114,9 +116,11 @@
       "category": "tech",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:10:00",
-      "retry_count": 0
+      "retry_count": 0,
+      "reserved_at": "2026-01-16T16:38:01.695972",
+      "completed_at": "2026-01-16T16:43:09.920997"
     },
     {
       "id": "012-ja-tech-cloud-computing",
@@ -124,9 +128,11 @@
       "category": "tech",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:11:00",
-      "retry_count": 0
+      "retry_count": 0,
+      "reserved_at": "2026-01-16T16:38:01.695972",
+      "completed_at": "2026-01-16T16:46:58.232946"
     },
     {
       "id": "013-en-business-startup-funding",
