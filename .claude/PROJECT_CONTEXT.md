@@ -999,11 +999,54 @@ in_progress → pending (mark_failed, retry++)
 
 **커밋**: `dd3cd6d - feat: Implement topic queue system with state machine`
 
-**다음 단계 (Day 3-4)**:
-- [ ] `generate_posts.py` 구현 (Draft + Editor agents)
-- [ ] Claude API 연동
-- [ ] Hugo frontmatter 생성
-- [ ] 테스트 포스트 생성
+### Day 3: Content Generation Script ✅
+**생성된 파일**: `scripts/generate_posts.py`
+
+**2단계 생성 프로세스**:
+1. **Draft Agent**: 초안 생성 (Claude Sonnet 4.5)
+2. **Editor Agent**: 초안 개선 및 정제
+
+**주요 기능**:
+- 3개 언어별 System Prompt (EN/KO/JA)
+- 자동 Title & Meta Description 생성
+- Hugo frontmatter 생성
+- Queue 시스템 완전 연동
+- 에러 처리 (실패 시 pending으로 롤백)
+- `generated_files.json` 출력 (Quality Gate용)
+
+**테스트 결과** (Digital Minimalism 포스트):
+```
+✓ Draft generated (8,977 chars)
+✓ Draft edited (8,291 chars)
+✓ Title: "Digital Minimalism Lifestyle 2025: Simplify Your Tech Life"
+✓ Description: 150-160 chars, SEO optimized
+✓ Content quality:
+  - Natural tone (no AI phrases)
+  - Specific examples (Sarah Chen, Marcus Rodriguez)
+  - Data-driven (67 notifications, 40% efficiency loss)
+  - Proper structure (3 pillars, actionable strategies)
+```
+
+**생성된 파일**: [content/en/lifestyle/2026-01-16-digital-minimalism-lifestyle-2025.md](content/en/lifestyle/2026-01-16-digital-minimalism-lifestyle-2025.md)
+
+**커밋**:
+- `3d75e2e` - generate_posts.py 구현
+- `374c391` - 첫 AI 생성 포스트
+
+**사용법**:
+```bash
+# 3개 포스트 생성
+export ANTHROPIC_API_KEY='your-key'
+python scripts/generate_posts.py --count 3
+
+# 특정 토픽 테스트
+python scripts/generate_posts.py --topic-id 001-en-tech-ai-coding
+```
+
+**다음 단계 (Day 4-5)**:
+- [ ] `quality_gate.py` 구현 (품질 체크)
+- [ ] `ai_reviewer.py` 구현 (AI 자체 검토)
+- [ ] GitHub Actions 워크플로우 통합
 
 ---
 
@@ -1011,12 +1054,12 @@ in_progress → pending (mark_failed, retry++)
 
 **날짜**: 2026-01-16
 **작업자**: Jake + Claude Sonnet 4.5
-**버전**: v2.3 (Queue System 완료)
+**버전**: v2.4 (Content Generation 완료)
 
-### 주요 변경사항 (v2.2 → v2.3)
-1. ✅ Day 1: 테스트 PR 워크플로우 생성
-2. ✅ Day 2: Topic Queue System 완료 (State Machine)
-3. ✅ 18개 초기 토픽 데이터 준비
-4. ✅ 테스트 스위트 작성 및 검증 완료
+### 주요 변경사항 (v2.3 → v2.4)
+1. ✅ Day 1: 테스트 PR 워크플로우
+2. ✅ Day 2: Topic Queue System (State Machine)
+3. ✅ Day 3: Content Generation Script (Claude API 연동)
+4. ✅ 첫 AI 생성 포스트 성공 (1,200+ words)
 
-**Next Step**: generate_posts.py 구현 (Claude API 연동) 🎯
+**Next Step**: quality_gate.py & ai_reviewer.py 구현 🎯
