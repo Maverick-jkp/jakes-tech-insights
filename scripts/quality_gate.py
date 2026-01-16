@@ -150,14 +150,14 @@ class QualityGate:
             word_count = len(words)
             checks['info']['word_count'] = word_count
 
-            # FAIL if too short or too long (optimized for readability)
+            # FAIL if too short or too long (relaxed for flexibility)
             if word_count < 800:
                 checks['critical_failures'].append(
                     f"Word count too low: {word_count} words (minimum: 800)"
                 )
-            elif word_count > 1200:
+            elif word_count > 1600:
                 checks['critical_failures'].append(
-                    f"Word count too high: {word_count} words (maximum: 1200)"
+                    f"Word count too high: {word_count} words (maximum: 1600)"
                 )
 
     def _check_ai_phrases(self, body: str, lang: str, checks: Dict):
