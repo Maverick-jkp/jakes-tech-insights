@@ -123,22 +123,42 @@ class QualityGate:
 
     def _check_word_count(self, body: str, checks: Dict):
         """Check if word count is within range"""
+        lang = checks['language']
+
         # Remove markdown syntax for accurate count
         clean_text = re.sub(r'[#*`\[\]()_]', '', body)
-        words = clean_text.split()
-        word_count = len(words)
 
-        checks['info']['word_count'] = word_count
+        # Japanese uses character count instead of word count
+        if lang == 'ja':
+            # Count all non-whitespace characters
+            char_count = len(re.sub(r'\s+', '', clean_text))
+            checks['info']['char_count'] = char_count
+            checks['info']['word_count'] = f"{char_count} chars"
 
-        # FAIL if too short or too long
-        if word_count < 900:
-            checks['critical_failures'].append(
-                f"Word count too low: {word_count} words (minimum: 900)"
-            )
-        elif word_count > 1800:
-            checks['critical_failures'].append(
-                f"Word count too high: {word_count} words (maximum: 1800)"
-            )
+            # Japanese: 2500-5000 chars ≈ 900-1800 English words
+            if char_count < 2500:
+                checks['critical_failures'].append(
+                    f"Character count too low: {char_count} chars (minimum: 2500)"
+                )
+            elif char_count > 5000:
+                checks['critical_failures'].append(
+                    f"Character count too high: {char_count} chars (maximum: 5000)"
+                )
+        else:
+            # English and Korean use word count
+            words = clean_text.split()
+            word_count = len(words)
+            checks['info']['word_count'] = word_count
+
+            # FAIL if too short or too long
+            if word_count < 900:
+                checks['critical_failures'].append(
+                    f"Word count too low: {word_count} words (minimum: 900)"
+                )
+            elif word_count > 1800:
+                checks['critical_failures'].append(
+                    f"Word count too high: {word_count} words (maximum: 1800)"
+                )
 
     def _check_ai_phrases(self, body: str, lang: str, checks: Dict):
         """Check for AI-sounding phrases"""
