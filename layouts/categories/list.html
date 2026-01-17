@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    {{ with site.Config.Services.GoogleAnalytics.ID }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ . }}');
+    </script>
+    {{ end }}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+        :root {
+            --bg: #1a1a1a;
+            --surface: #242424;
+            --border: #333333;
+            --text: #f5f5f5;
+            --text-dim: #888;
+            --accent: #00ff88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Instrument Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+
+        .header-box {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover { opacity: 0.8; }
+        .logo .apostrophe { color: var(--accent); }
+
+        .container {
+            max-width: 1400px;
+            margin: 6rem auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .post-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
+        }
+
+        .post-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .post-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .post-excerpt {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 5rem;
+                padding: 0 1rem;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="header-box">
+            <a href="/{{ .Site.Language.Lang }}/" class="logo">
+                JAKE<span class="apostrophe">'</span>S INSIGHTS
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="category-title">{{ .Title }}</h1>
+            <p class="category-count">{{ len .Pages }} {{ i18n "posts" }}</p>
+        </div>
+
+        <div class="posts-grid">
+            {{ range .Pages }}
+            <a href="{{ .Permalink }}" class="post-card">
+                <div class="post-thumbnail">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                    {{ else }}
+                    📰
+                    {{ end }}
+                </div>
+                <div class="post-content">
+                    <div class="post-date">
+                        {{ if eq $.Site.Language.Lang "ko" }}
+                            {{ .Date.Format "2006.01.02" }}
+                        {{ else if eq $.Site.Language.Lang "ja" }}
+                            {{ .Date.Format "2006.01.02" }}
+                        {{ else }}
+                            {{ .Date.Format "Jan 02, 2006" }}
+                        {{ end }}
+                    </div>
+                    <h2 class="post-title">{{ .Title }}</h2>
+                    <p class="post-excerpt">{{ .Summary | plainify | truncate 120 }}</p>
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>
