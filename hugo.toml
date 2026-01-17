@@ -34,9 +34,19 @@ googleAnalytics = 'G-3ML8CHS112'
       weight = 4
 
     [[languages.en.menu.main]]
+      name = "🌍 Society"
+      url = "/categories/society/"
+      weight = 5
+
+    [[languages.en.menu.main]]
+      name = "🎬 Entertainment"
+      url = "/categories/entertainment/"
+      weight = 6
+
+    [[languages.en.menu.main]]
       name = "🌱 Lifestyle"
       url = "/categories/lifestyle/"
-      weight = 5
+      weight = 7
 
   [languages.ko]
     languageName = "한국어"
@@ -66,9 +76,19 @@ googleAnalytics = 'G-3ML8CHS112'
       weight = 4
 
     [[languages.ko.menu.main]]
+      name = "🌍 사회"
+      url = "/ko/categories/society/"
+      weight = 5
+
+    [[languages.ko.menu.main]]
+      name = "🎬 엔터"
+      url = "/ko/categories/entertainment/"
+      weight = 6
+
+    [[languages.ko.menu.main]]
       name = "🌱 라이프"
       url = "/ko/categories/lifestyle/"
-      weight = 5
+      weight = 7
 
   [languages.ja]
     languageName = "日本語"
@@ -98,9 +118,19 @@ googleAnalytics = 'G-3ML8CHS112'
       weight = 4
 
     [[languages.ja.menu.main]]
+      name = "🌍 社会"
+      url = "/ja/categories/society/"
+      weight = 5
+
+    [[languages.ja.menu.main]]
+      name = "🎬 エンタメ"
+      url = "/ja/categories/entertainment/"
+      weight = 6
+
+    [[languages.ja.menu.main]]
       name = "🌱 ライフ"
       url = "/ja/categories/lifestyle/"
-      weight = 5
+      weight = 7
 
 [params]
   env = "production"
@@ -129,6 +159,14 @@ googleAnalytics = 'G-3ML8CHS112'
 [[params.profileMode.buttons]]
   name = "💼 Business"
   url = "/categories/business"
+
+[[params.profileMode.buttons]]
+  name = "🌍 Society"
+  url = "/categories/society"
+
+[[params.profileMode.buttons]]
+  name = "🎬 Entertainment"
+  url = "/categories/entertainment"
 
 [[params.profileMode.buttons]]
   name = "🌱 Lifestyle"
