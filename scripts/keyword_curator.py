@@ -16,6 +16,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
+import requests
 
 try:
     from anthropic import Anthropic
@@ -25,9 +26,12 @@ except ImportError:
     sys.exit(1)
 
 
-CURATION_PROMPT = """역할:
+CURATION_PROMPT_WITH_TRENDS = """역할:
 너는 SEO 자동화 블로그를 위한 키워드 전략가다.
-단, 일반적인 트렌드 키워드는 제외한다.
+아래 실시간 트렌드 검색 결과를 바탕으로 키워드를 제안하라.
+
+실시간 트렌드 데이터:
+{trends_data}
 
 목표:
 한국어 / 영어 / 일본어 각각에서
@@ -51,7 +55,7 @@ CURATION_PROMPT = """역할:
 언어별로 5개씩 제안하라. 반드시 JSON 형식으로만 응답하라.
 
 [
-  {
+  {{
     "keyword": "키워드 문구",
     "language": "ko",
     "category": "tech",
@@ -61,27 +65,36 @@ CURATION_PROMPT = """역할:
     "why_it_works": "이 키워드가 자동화 블로그에 적합한 이유",
     "keyword_type": "trend",
     "priority": 7
-  }
+  }}
 ]
 
 중요:
 - keyword_type은 "trend" 또는 "evergreen" 중 하나
-- category는 "tech", "business", "lifestyle" 중 하나
+- category는 "tech", "business", "lifestyle", "society", "entertainment" 중 하나
 - language는 "en", "ko", "ja" 중 하나
 - competition_level은 "low", "medium", "high" 중 하나
 - priority는 1-10 사이의 숫자 (높을수록 우선순위 높음)
 - 지금 시점(2026년 1월)에서 현실적인 키워드만 제안
 - 예시는 절대 사용하지 말고, 실제 검색 가능성이 높은 키워드만 제안
+- 위 실시간 트렌드 데이터를 반드시 참고하여 키워드 제안
 
 각 언어별 5개씩 총 15개를 JSON 배열로 출력하라."""
 
 
 class KeywordCurator:
-    def __init__(self, api_key: str = None):
-        """Initialize keyword curator with Claude API"""
+    def __init__(self, api_key: str = None, google_api_key: str = None, google_cx: str = None):
+        """Initialize keyword curator with Claude API and Google Custom Search"""
         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
         if not self.api_key:
             raise ValueError("ANTHROPIC_API_KEY not found")
+
+        self.google_api_key = google_api_key or os.environ.get("GOOGLE_API_KEY")
+        self.google_cx = google_cx or os.environ.get("GOOGLE_CX")
+
+        if not self.google_api_key or not self.google_cx:
+            print("⚠️  Google Custom Search credentials not found")
+            print("   Set GOOGLE_API_KEY and GOOGLE_CX environment variables")
+            print("   Falling back to Claude-only mode")
 
         self.client = Anthropic(api_key=self.api_key)
         self.model = "claude-sonnet-4-20250514"
@@ -103,18 +116,91 @@ class KeywordCurator:
         with open(self.queue_path, 'w', encoding='utf-8') as f:
             json.dump(self.queue_data, f, indent=2, ensure_ascii=False)
 
+    def fetch_trending_topics(self) -> str:
+        """Fetch trending topics using Google Custom Search API"""
+        if not self.google_api_key or not self.google_cx:
+            return "No trending data available (Google API not configured)"
+
+        print(f"\n{'='*60}")
+        print(f"  🔍 Fetching trending topics from Google...")
+        print(f"{'='*60}\n")
+
+        # Search queries for different categories and languages
+        search_queries = [
+            # Tech trends
+            "AI trends 2026",
+            "tech news today",
+            "새로운 기술 트렌드 2026",
+
+            # Society trends
+            "society news 2026",
+            "사회 이슈 2026",
+
+            # Entertainment trends
+            "entertainment news today",
+            "K-pop news 2026",
+            "엔터테인먼트 뉴스"
+        ]
+
+        all_results = []
+        for query in search_queries:
+            try:
+                url = "https://www.googleapis.com/customsearch/v1"
+                params = {
+                    "key": self.google_api_key,
+                    "cx": self.google_cx,
+                    "q": query,
+                    "num": 5  # Get top 5 results per query
+                }
+
+                response = requests.get(url, params=params)
+                response.raise_for_status()
+
+                data = response.json()
+
+                if "items" in data:
+                    for item in data["items"]:
+                        all_results.append({
+                            "query": query,
+                            "title": item.get("title", ""),
+                            "snippet": item.get("snippet", ""),
+                            "link": item.get("link", "")
+                        })
+
+                print(f"  ✓ Fetched {len(data.get('items', []))} results for: {query}")
+
+            except requests.exceptions.RequestException as e:
+                print(f"  ⚠️  Error fetching results for '{query}': {e}")
+                continue
+
+        print(f"\n✅ Total {len(all_results)} trending topics fetched\n")
+
+        # Format results for Claude
+        trends_summary = "\n\n".join([
+            f"Query: {r['query']}\nTitle: {r['title']}\nSnippet: {r['snippet']}\n"
+            for r in all_results
+        ])
+
+        return trends_summary
+
     def generate_candidates(self, count: int = 15) -> List[Dict]:
-        """Generate keyword candidates using Claude API"""
+        """Generate keyword candidates using Claude API with trending data"""
         print(f"\n{'='*60}")
         print(f"  🔍 Generating {count} keyword candidates...")
         print(f"{'='*60}\n")
+
+        # Fetch trending topics from Google
+        trends_data = self.fetch_trending_topics()
+
+        # Generate prompt with trending data
+        prompt = CURATION_PROMPT_WITH_TRENDS.format(trends_data=trends_data)
 
         response = self.client.messages.create(
             model=self.model,
             max_tokens=4000,
             messages=[{
                 "role": "user",
-                "content": CURATION_PROMPT
+                "content": prompt
             }]
         )
 
