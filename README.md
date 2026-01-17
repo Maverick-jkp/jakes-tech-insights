@@ -403,9 +403,17 @@ MIT License - See [LICENSE](LICENSE) file
 **Built with 🤖 AI + ❤️ Human Touch**
 
 *Last updated: 2026-01-17*
-*Version: 3.2 (Day 6 - Human-Touch Writing Upgrade)*
+*Version: 3.3 (Day 6 - Monetization Optimization)*
 
 ## 🔍 Recent Changes
+
+**2026-01-17 (v3.3)**:
+- **Monetization Features**: Related Posts (2-3x pageviews), Table of Contents, References section
+- **Category Expansion**: Added Society (🌍) and Entertainment (🎬) for broader content coverage
+- **Archives Page**: Unified "All Posts" view across all 3 languages
+- **Hero Images**: Featured image now displays at top of post body (Medium/Substack style)
+- **6 New Posts**: Total posts 29 → 38 (EN/KO/JA Business & Lifestyle topics)
+- **Result**: Ready for AdSense application with optimized engagement features
 
 **2026-01-17 (v3.2)**:
 - **Writing Quality Upgrade**: Enhanced prompts with ChatGPT's "human-touch" strategies
