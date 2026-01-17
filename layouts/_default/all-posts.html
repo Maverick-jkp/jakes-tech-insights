@@ -240,16 +240,6 @@
             overflow: hidden;
         }
 
-        .post-card-footer {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            gap: 1rem;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-        }
 
         /* Pagination */
         .pagination {
@@ -434,10 +424,6 @@
                     </div>
                     <h2 class="post-card-title">{{ .Title }}</h2>
                     <div class="post-card-excerpt">{{ .Summary | plainify | truncate 150 }}</div>
-                    <div class="post-card-footer">
-                        {{ $readingTime := div (add .WordCount 212) 212 }}
-                        <span>{{ $readingTime }} {{ i18n "read_time" $readingTime }}</span>
-                    </div>
                 </div>
             </a>
             {{ end }}
