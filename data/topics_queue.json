@@ -30,10 +30,12 @@
       "category": "tech",
       "lang": "ja",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:02:00",
       "retry_count": 1,
-      "last_error": "Stuck in progress for 0+ hours"
+      "last_error": "Stuck in progress for 0+ hours",
+      "reserved_at": "2026-01-17T05:09:54.042430",
+      "completed_at": "2026-01-17T05:11:21.962007"
     },
     {
       "id": "004-en-business-remote-work",
@@ -140,11 +142,13 @@
       "category": "business",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:12:00",
       "retry_count": 2,
       "last_error": "Stuck in progress for 0+ hours",
-      "last_failed_at": "2026-01-16T13:39:04.286567"
+      "last_failed_at": "2026-01-16T13:39:04.286567",
+      "reserved_at": "2026-01-17T05:09:54.042430",
+      "completed_at": "2026-01-17T05:12:21.246538"
     },
     {
       "id": "014-ko-business-startup-funding",
@@ -152,10 +156,12 @@
       "category": "business",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:13:00",
       "retry_count": 1,
-      "last_error": "Stuck in progress for 0+ hours"
+      "last_error": "Stuck in progress for 0+ hours",
+      "reserved_at": "2026-01-17T05:09:54.042430",
+      "completed_at": "2026-01-17T05:14:13.486353"
     },
     {
       "id": "015-ja-business-startup-funding",

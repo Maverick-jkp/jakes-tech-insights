@@ -2,15 +2,15 @@
   "total_files": 3,
   "reviews": [
     {
-      "file": "content/en/tech/2026-01-16-cloud-computing-trends-2025.md",
+      "file": "content/ja/tech/2026-01-17-aiコーディングアシスタント2025.md",
       "error": "'\\n  \"scores\"'"
     },
     {
-      "file": "content/ko/tech/2026-01-16-클라우드-컴퓨팅-트렌드-2025.md",
+      "file": "content/en/business/2026-01-17-startup-funding-strategies-2025.md",
       "error": "'\\n  \"scores\"'"
     },
     {
-      "file": "content/ja/tech/2026-01-16-クラウドコンピューティングトレンド2025.md",
+      "file": "content/ko/business/2026-01-17-스타트업-투자-전략-2025.md",
       "error": "'\\n  \"scores\"'"
     }
   ]
