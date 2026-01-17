@@ -190,9 +190,10 @@ hugo
 ## 📊 Quality Standards
 
 ### Content Requirements
-- **Word count**: 800-1600 words (EN/KO), 3000-5000 chars (JA)
+- **Word count**: 800-2000 words (EN/KO), 3000-7500 chars (JA)
+- **Structure**: 3-4 main sections (## headings)
 - **Tone**: Professional but friendly
-- **Structure**: 3-5 H2 headings
+- **Paragraphs**: Short and concise (2-4 sentences each)
 - **Links**: 2+ external references
 - **SEO**: Natural keyword integration (5-7 times)
 
@@ -225,7 +226,8 @@ hugo
 **Token Settings**:
 - Draft generation: 12000 max_tokens (ensures completion for all languages)
 - Editor refinement: 12000 max_tokens
-- Target length: 800-1,100 words (EN/KO), 3,000-4,500 chars (JA)
+- Structure-based: 3-4 sections (no strict word count limits)
+- Expected output: 800-2,000 words (EN/KO), 3,000-7,500 chars (JA)
 - Est. cost: ~$0.09/post × 3 posts/day = $8.1/month
 
 **Scaling Strategy**:
@@ -260,7 +262,8 @@ hugo
 - ✅ Retry mechanism: Failures handled gracefully
 - ✅ max_tokens optimization: 4000 → 8000 → 12000
 - ✅ Tone optimization: Toss style (KO), Medium style (EN), Natural (JA)
-- ✅ Quality Gate updated: 800-1,600 words, 3,000-5,000 chars (JA)
+- ✅ Quality Gate updated: 800-2,000 words, 3,000-7,500 chars (JA)
+- ✅ Structure-based constraints: 3-4 sections (removed strict word counts)
 
 ## 🎓 Documentation
 
@@ -297,7 +300,8 @@ ANTHROPIC_API_KEY=your-claude-api-key-here
 - [x] Monitor quality metrics (KO/JA word count issue identified)
 - [x] max_tokens optimization (4000 → 8000 → 12000)
 - [x] Tone optimization (Toss/Medium/Natural styles)
-- [x] Quality Gate criteria updated (800-1,600 words for flexibility)
+- [x] Quality Gate criteria updated (800-2,000 words for flexibility)
+- [x] Structure-based prompts (removed strict word count limits)
 
 ### 📋 Phase 4: Optimization (Planned)
 - [ ] Prompt Caching for cost reduction
@@ -376,16 +380,20 @@ MIT License - See [LICENSE](LICENSE) file
 **Built with 🤖 AI + ❤️ Human Touch**
 
 *Last updated: 2026-01-17*
-*Version: 2.7 (Day 5 - Monetization Optimization)*
+*Version: 2.8 (Day 5 - Structure-Based Constraints)*
 
 ## 🔍 Recent Changes
+
+**2026-01-17 (v2.8)**:
+- **Structure-based prompts**: Removed strict word count limits → 3-4 sections structure
+- **Editor behavior**: Changed from "increase length" to "maintain length"
+- **Quality Gate**: 800-2,000 words (EN/KO), 3,000-7,500 chars (JA)
+- **Rationale**: Word count limits caused AI to cut off or exceed - structure is more natural
 
 **2026-01-17 (v2.7)**:
 - **Monetization focus**: Optimized for completion rate & engagement
 - **max_tokens**: 8000 → 12000 (prevents truncation)
-- **Target length**: 800-1,100 words (EN/KO), 3,000-4,500 chars (JA)
 - **Tone optimization**: Toss style (KO), Medium/Substack (EN), Natural (JA)
-- **Quality Gate**: 800-1,600 words (relaxed for flexibility), 3,000-5,000 chars (JA)
 - **Cost**: ~$0.09/post ($8.1/month for 3 posts/day)
 
 **2026-01-16 (v2.6)**:
