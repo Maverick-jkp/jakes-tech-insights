@@ -186,7 +186,7 @@
     <div class="container">
         <div class="page-header">
             <h1 class="category-title">{{ .Title }}</h1>
-            <p class="category-count">{{ len .Pages }} {{ i18n "posts" }}</p>
+            <p class="category-count">{{ len .Pages }} posts</p>
         </div>
 
         <div class="posts-grid">
@@ -194,7 +194,7 @@
             <a href="{{ .Permalink }}" class="post-card">
                 <div class="post-thumbnail">
                     {{ if .Params.image }}
-                    <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy" onerror="this.onerror=null; this.parentElement.innerHTML='📰';">
                     {{ else }}
                     📰
                     {{ end }}
