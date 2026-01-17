@@ -29,3 +29,4 @@ resume_project/
 
 # Downloaded images (tracked in git)
 # static/images/
+.env

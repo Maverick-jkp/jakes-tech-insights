@@ -1,19 +1,10 @@
+{{ define "main" }}
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Site.Title }}</title>
-    {{ if .Site.GoogleAnalytics }}
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ .Site.GoogleAnalytics }}');
-    </script>
-    {{ end }}
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap');
 
@@ -289,14 +280,6 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            overflow: hidden;
-        }
-
-        .latest-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 0.5rem;
         }
 
         .latest-item-content {
@@ -713,7 +696,7 @@
             <a href="{{ .Permalink }}" class="featured-post">
                 <div class="featured-thumbnail">
                     {{ if .Params.image }}
-                    <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover;">
                     {{ else }}
                     📰 Featured
                     {{ end }}
@@ -747,7 +730,7 @@
                 <a href="{{ .Permalink }}" class="latest-item">
                     <div class="latest-thumbnail">
                         {{ if .Params.image }}
-                        <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem;">
                         {{ else }}
                         📄
                         {{ end }}
@@ -881,3 +864,4 @@
     </script>
 </body>
 </html>
+{{ end }}
