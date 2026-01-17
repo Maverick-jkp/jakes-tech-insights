@@ -13,6 +13,31 @@ googleAnalytics = 'G-3ML8CHS112'
     contentDir = "content/en"
     title = "Jake's Tech Insights"
 
+    [[languages.en.menu.main]]
+      name = "🏠 Home"
+      url = "/"
+      weight = 1
+
+    [[languages.en.menu.main]]
+      name = "📚 All Posts"
+      url = "/archives/"
+      weight = 2
+
+    [[languages.en.menu.main]]
+      name = "💻 Tech"
+      url = "/categories/tech/"
+      weight = 3
+
+    [[languages.en.menu.main]]
+      name = "💼 Business"
+      url = "/categories/business/"
+      weight = 4
+
+    [[languages.en.menu.main]]
+      name = "🌱 Lifestyle"
+      url = "/categories/lifestyle/"
+      weight = 5
+
   [languages.ko]
     languageName = "한국어"
     languageCode = "ko-kr"
@@ -20,12 +45,62 @@ googleAnalytics = 'G-3ML8CHS112'
     contentDir = "content/ko"
     title = "Jake's Tech Insights"
 
+    [[languages.ko.menu.main]]
+      name = "🏠 홈"
+      url = "/ko/"
+      weight = 1
+
+    [[languages.ko.menu.main]]
+      name = "📚 전체 글"
+      url = "/ko/archives/"
+      weight = 2
+
+    [[languages.ko.menu.main]]
+      name = "💻 테크"
+      url = "/ko/categories/tech/"
+      weight = 3
+
+    [[languages.ko.menu.main]]
+      name = "💼 비즈니스"
+      url = "/ko/categories/business/"
+      weight = 4
+
+    [[languages.ko.menu.main]]
+      name = "🌱 라이프"
+      url = "/ko/categories/lifestyle/"
+      weight = 5
+
   [languages.ja]
     languageName = "日本語"
     languageCode = "ja-jp"
     weight = 3
     contentDir = "content/ja"
     title = "Jake's Tech Insights"
+
+    [[languages.ja.menu.main]]
+      name = "🏠 ホーム"
+      url = "/ja/"
+      weight = 1
+
+    [[languages.ja.menu.main]]
+      name = "📚 全ての記事"
+      url = "/ja/archives/"
+      weight = 2
+
+    [[languages.ja.menu.main]]
+      name = "💻 テック"
+      url = "/ja/categories/tech/"
+      weight = 3
+
+    [[languages.ja.menu.main]]
+      name = "💼 ビジネス"
+      url = "/ja/categories/business/"
+      weight = 4
+
+    [[languages.ja.menu.main]]
+      name = "🌱 ライフ"
+      url = "/ja/categories/lifestyle/"
+      weight = 5
 
 [params]
   env = "production"
@@ -39,6 +114,25 @@ googleAnalytics = 'G-3ML8CHS112'
   ShowCodeCopyButtons = true
   homeInfoParams.Title = "Welcome"
   homeInfoParams.Content = "Tech insights and trends"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[[params.profileMode.buttons]]
+  name = "📚 All Posts"
+  url = "/archives"
+
+[[params.profileMode.buttons]]
+  name = "💻 Tech"
+  url = "/categories/tech"
+
+[[params.profileMode.buttons]]
+  name = "💼 Business"
+  url = "/categories/business"
+
+[[params.profileMode.buttons]]
+  name = "🌱 Lifestyle"
+  url = "/categories/lifestyle"
 
 [taxonomies]
   category = "categories"
