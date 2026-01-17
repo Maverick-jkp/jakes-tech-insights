@@ -231,10 +231,10 @@ class ContentGenerator:
 
 Category: {category}
 
-📝 Structure Requirements:
-- Write exactly 3-4 main sections (## headings)
-- Each section: Focus on one key point, keep it concise
-- Use short paragraphs (2-4 sentences each)
+⏱️ Reading Time Target: 4-5 minutes
+- Write 3-4 main sections (## headings)
+- Each section: 1-2 minutes to read, one key point
+- Short paragraphs (2-4 sentences each)
 - End with a thought-provoking question
 
 Content Guidelines:
@@ -250,9 +250,9 @@ Write the complete blog post now (body only, no title or metadata):""",
 
 카테고리: {category}
 
-📝 구조 요구사항:
-- 정확히 3-4개의 주요 섹션 (## 헤딩)만 작성
-- 각 섹션: 하나의 핵심 포인트에 집중, 간결하게
+⏱️ 읽기 시간 목표: 4-5분
+- 3-4개의 주요 섹션 (## 헤딩) 작성
+- 각 섹션: 1-2분 읽기 분량, 하나의 핵심 포인트
 - 짧은 문단 사용 (2-4 문장씩)
 - 생각을 자극하는 질문으로 마무리
 
@@ -269,9 +269,9 @@ Write the complete blog post now (body only, no title or metadata):""",
 
 カテゴリ: {category}
 
-📝 構造要件:
-- 正確に3-4個の主要セクション (##見出し) のみ作成
-- 各セクション: 1つの重要ポイントに集中、簡潔に
+⏱️ 読む時間の目標: 4-5分
+- 3-4個の主要セクション (##見出し) を作成
+- 各セクション: 1-2分で読める分量、1つの重要ポイント
 - 短い段落を使用 (2-4文ずつ)
 - 考えさせる質問で締めくくる
 
