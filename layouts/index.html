@@ -287,6 +287,28 @@
             color: var(--accent);
         }
 
+        .see-all-btn {
+            display: block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .see-all-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+        }
+
         /* AdSense Widget - 3 columns */
         .adsense-widget {
             grid-column: span 3;
@@ -703,6 +725,7 @@
                     </div>
                 </a>
                 {{ end }}
+                <a href="{{ "all-posts" | relLangURL }}" class="see-all-btn">{{ i18n "see_all" }} →</a>
             </div>
 
             <!-- AdSense Widget (3 columns) -->
@@ -781,6 +804,7 @@
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
         <div class="menu-panel" id="menuPanel">
             <a href="#top">↑ Top</a>
+            <a href="{{ "all-posts" | relLangURL }}" style="color: var(--accent); font-weight: 600;">📋 {{ i18n "see_all" }}</a>
             <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
                 <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
                 {{ if eq .Site.Language.Lang "en" }}

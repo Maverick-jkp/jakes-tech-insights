@@ -1,0 +1,494 @@
+{{ define "main" }}
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+        :root {
+            --bg: #1a1a1a;
+            --surface: #242424;
+            --border: #333333;
+            --text: #f5f5f5;
+            --text-dim: #b0b0b0;
+            --accent: #00ff88;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        h1, h2, h3, h4, h5, h6, p, span, div, a {
+            color: inherit;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Instrument Sans', sans-serif;
+            padding-top: 80px;
+        }
+
+        /* Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: gridMove 60s linear infinite;
+        }
+
+        @keyframes gridMove {
+            to { transform: translate(50px, 50px); }
+        }
+
+        /* Fixed Header */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .header-box {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo .apostrophe { color: var(--accent); }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .lang-switch a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-dim);
+        }
+
+        /* Filter Buttons */
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        /* Posts Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .post-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            min-height: 280px;
+        }
+
+        .post-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
+        }
+
+        .post-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .post-card-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .post-card-category {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .post-card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .post-card-excerpt {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .pagination a,
+        .pagination span {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .pagination a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .pagination span.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        /* Floating Menu */
+        .floating-menu {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+        }
+
+        .menu-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
+            transition: all 0.3s;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 255, 136, 0.6);
+        }
+
+        .menu-panel {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            border-radius: 1rem;
+            padding: 1rem;
+            min-width: 200px;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .menu-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .menu-panel a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .menu-panel a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+        }
+
+        .menu-panel div {
+            padding: 0.5rem 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            border-top: 1px solid var(--border);
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filter-bar {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="top-bar">
+        <div class="header-box">
+            <a href="{{ "/" | relLangURL }}" class="logo">
+                Jake<span class="apostrophe">'</span>s Tech Insights
+            </a>
+            <div class="lang-switch">
+                <a href="/all-posts/" {{ if eq .Site.Language.Lang "en" }}class="active"{{ end }}>EN</a>
+                <a href="/ko/all-posts/" {{ if eq .Site.Language.Lang "ko" }}class="active"{{ end }}>KO</a>
+                <a href="/ja/all-posts/" {{ if eq .Site.Language.Lang "ja" }}class="active"{{ end }}>JA</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">{{ i18n "all_posts" }}</h1>
+            <p class="page-subtitle">{{ .Summary }}</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">{{ i18n "all_posts" }}</button>
+            <button class="filter-btn" data-filter="tech">Tech</button>
+            <button class="filter-btn" data-filter="business">Business</button>
+            <button class="filter-btn" data-filter="society">Society</button>
+            <button class="filter-btn" data-filter="entertainment">Entertainment</button>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="posts-grid" id="postsGrid">
+            {{ $currentLangPages := where .Site.RegularPages "Language.Lang" .Site.Language.Lang }}
+            {{ $posts := where $currentLangPages "Type" "in" (slice "tech" "business" "society" "entertainment" "lifestyle") }}
+            {{ range $posts }}
+            <a href="{{ .Permalink }}" class="post-card" data-category="{{ index .Params.categories 0 }}">
+                <div class="post-card-header">
+                    <span class="post-card-date">
+                        {{ if eq $.Site.Language.Lang "ko" }}
+                            {{ .Date.Format "2006.01.02" }}
+                        {{ else if eq $.Site.Language.Lang "ja" }}
+                            {{ .Date.Format "2006.01.02" }}
+                        {{ else }}
+                            {{ .Date.Format "Jan 02, 2006" }}
+                        {{ end }}
+                    </span>
+                    <span class="post-card-category">{{ index .Params.categories 0 }}</span>
+                </div>
+                <h2 class="post-card-title">{{ .Title }}</h2>
+                <div class="post-card-excerpt">{{ .Summary }}</div>
+                <div class="post-card-footer">
+                    <span>{{ .ReadingTime }} {{ i18n "read_time" .ReadingTime }}</span>
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Floating Menu -->
+    <div class="floating-menu">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="menu-panel" id="menuPanel">
+            <a href="#top">↑ Top</a>
+            <a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a>
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">Categories</div>
+            {{ if eq .Site.Language.Lang "en" }}
+            <a href="/categories/tech/">Tech</a>
+            <a href="/categories/business/">Business</a>
+            <a href="/categories/society/">Society</a>
+            <a href="/categories/entertainment/">Entertainment</a>
+            {{ else if eq .Site.Language.Lang "ko" }}
+            <a href="/ko/categories/tech/">Tech</a>
+            <a href="/ko/categories/business/">Business</a>
+            <a href="/ko/categories/society/">Society</a>
+            <a href="/ko/categories/entertainment/">Entertainment</a>
+            {{ else if eq .Site.Language.Lang "ja" }}
+            <a href="/ja/categories/tech/">Tech</a>
+            <a href="/ja/categories/business/">Business</a>
+            <a href="/ja/categories/society/">Society</a>
+            <a href="/ja/categories/entertainment/">Entertainment</a>
+            {{ end }}
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const panel = document.getElementById('menuPanel');
+            panel.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.floating-menu');
+            const panel = document.getElementById('menuPanel');
+            if (!menu.contains(event.target) && panel.classList.contains('active')) {
+                panel.classList.remove('active');
+            }
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const postCards = document.querySelectorAll('.post-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // Filter posts
+                postCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+{{ end }}
