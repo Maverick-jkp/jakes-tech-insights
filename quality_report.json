@@ -1,7 +1,7 @@
 {
   "summary": {
     "total_files": 3,
-    "total_failures": 0,
+    "total_failures": 2,
     "total_warnings": 9
   },
   "results": [
@@ -26,7 +26,9 @@
     {
       "file": "content/ko/tech/2026-01-16-\ud074\ub77c\uc6b0\ub4dc-\ucef4\ud4e8\ud305-\ud2b8\ub80c\ub4dc-2025.md",
       "language": "ko",
-      "critical_failures": [],
+      "critical_failures": [
+        "Word count too high: 1783 words (maximum: 1600)"
+      ],
       "warnings": [
         "AI phrases detected: \uac8c\uc784\uccb4\uc778\uc800",
         "Description length not optimal: 89 chars (ideal: 120-160)",
@@ -47,7 +49,9 @@
     {
       "file": "content/ja/tech/2026-01-16-\u30af\u30e9\u30a6\u30c9\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0\u30c8\u30ec\u30f3\u30c92025.md",
       "language": "ja",
-      "critical_failures": [],
+      "critical_failures": [
+        "Character count too high: 9431 chars (maximum: 5000)"
+      ],
       "warnings": [
         "AI phrases detected: \u91cd\u8981\u3067\u3059, \u9769\u65b0\u7684, \u6ce8\u76ee\u3059\u3079\u304d",
         "Description length not optimal: 105 chars (ideal: 120-160)",
