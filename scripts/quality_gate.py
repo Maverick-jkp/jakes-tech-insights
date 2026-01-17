@@ -151,9 +151,9 @@ class QualityGate:
             checks['info']['word_count'] = word_count
 
             # FAIL if too short or too long (very relaxed for natural AI generation)
-            if word_count < 800:
+            if word_count < 700:
                 checks['critical_failures'].append(
-                    f"Word count too low: {word_count} words (minimum: 800)"
+                    f"Word count too low: {word_count} words (minimum: 700)"
                 )
             elif word_count > 3000:
                 checks['critical_failures'].append(

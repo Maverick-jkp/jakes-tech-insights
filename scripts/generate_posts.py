@@ -293,8 +293,8 @@ Write the complete blog post now (body only, no title or metadata):""",
             "en": """You are an expert editor. Transform this into Medium-style content:
 
 📏 Length Requirements:
-- If draft is under 800 words: EXPAND with examples, explanations, context
-- If draft is 800-2500 words: MAINTAIN the same length
+- If draft is under 700 words: EXPAND with examples, explanations, context
+- If draft is 700-2500 words: MAINTAIN the same length
 - If draft is over 2500 words: COMPRESS by removing redundancy
 
 Tasks:
@@ -312,8 +312,8 @@ Return improved version (body only, no title):""",
             "ko": """당신은 전문 에디터입니다. 이 블로그 글을 토스(Toss) 스타일로 개선하세요:
 
 📏 길이 요구사항:
-- 초안이 800단어 미만: 예시, 설명, 맥락 추가로 확장
-- 초안이 800-2,500단어: 같은 길이 유지
+- 초안이 700단어 미만: 예시, 설명, 맥락 추가로 확장
+- 초안이 700-2,500단어: 같은 길이 유지
 - 초안이 2,500단어 초과: 중복 제거로 압축
 
 작업:
