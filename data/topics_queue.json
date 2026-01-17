@@ -82,9 +82,11 @@
       "category": "lifestyle",
       "lang": "en",
       "priority": 6,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:06:00",
-      "retry_count": 0
+      "retry_count": 0,
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T08:03:33.265185"
     },
     {
       "id": "008-ko-lifestyle-minimalism",
@@ -188,9 +190,11 @@
       "category": "lifestyle",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:15:00",
-      "retry_count": 0
+      "retry_count": 0,
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T07:50:28.290733"
     },
     {
       "id": "017-ko-lifestyle-work-life-balance",
@@ -198,9 +202,11 @@
       "category": "lifestyle",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:16:00",
-      "retry_count": 0
+      "retry_count": 0,
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T07:52:08.861564"
     },
     {
       "id": "018-ja-lifestyle-work-life-balance",
@@ -208,9 +214,11 @@
       "category": "lifestyle",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-16T10:17:00",
-      "retry_count": 0
+      "retry_count": 0,
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T07:53:55.283084"
     },
     {
       "id": "019-ko-tech-AI-챗봇-도입-실패-이유",
@@ -235,14 +243,16 @@
       "category": "tech",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-17T15:12:58.384922",
       "retry_count": 0,
       "keyword_type": "trend",
       "search_intent": "노코드 툴 사용을 검토하면서 어떤 상황에서 적합하지 않은지 알고 싶어함",
       "angle": "노코드가 부적합한 케이스, 개발자가 여전히 필요한 영역",
       "competition_level": "medium",
-      "expiry_days": 21
+      "expiry_days": 21,
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T07:55:27.712041"
     },
     {
       "id": "021-ko-business-재택근무-vs-하이브리드-근무-효율성",
@@ -264,13 +274,15 @@
       "category": "business",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-17T15:12:58.384968",
       "retry_count": 0,
       "keyword_type": "evergreen",
       "search_intent": "MZ세대 직원 관리에 어려움을 겪고 있는 관리자가 실패 요인을 파악하려고 함",
       "angle": "기존 관리 방식이 통하지 않는 이유와 실용적인 대안",
-      "competition_level": "low"
+      "competition_level": "low",
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T07:57:03.816116"
     },
     {
       "id": "023-ko-lifestyle-미니멀-라이프-중단한-이유",
@@ -309,13 +321,15 @@
       "category": "business",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-17T15:12:58.385017",
       "retry_count": 0,
       "keyword_type": "evergreen",
       "search_intent": "재택근무 도입을 고려하면서 일반적인 믿음들이 실제로 맞는지 확인하려고 함",
       "angle": "데이터로 검증된 재택근무 효과와 잘못 알려진 정보들의 진실",
-      "competition_level": "low"
+      "competition_level": "low",
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T07:58:04.689223"
     },
     {
       "id": "026-en-business-subscription-busines",
@@ -338,14 +352,16 @@
       "category": "tech",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-17T15:12:58.385151",
       "retry_count": 0,
       "keyword_type": "trend",
       "search_intent": "블록체인 도입을 고려하는 기업이 실제 비용과 복잡성을 파악하려고 함",
       "angle": "마케팅과 다른 실제 구현 비용, 숨겨진 복잡성과 유지보수 현실",
       "competition_level": "medium",
-      "expiry_days": 21
+      "expiry_days": 21,
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T07:59:08.984932"
     },
     {
       "id": "028-en-lifestyle-sustainable-living-p",
@@ -384,13 +400,15 @@
       "category": "business",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-17T15:12:58.385191",
       "retry_count": 0,
       "keyword_type": "evergreen",
       "search_intent": "働き方の選択や会社の制度決定のために客観的データが欲しい",
       "angle": "日本の労働文化における働き方別の実際の効果測定",
-      "competition_level": "medium"
+      "competition_level": "medium",
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T08:00:39.150557"
     },
     {
       "id": "031-ja-tech-ノーコード開発-限界点",
@@ -398,14 +416,16 @@
       "category": "tech",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-17T15:12:58.385199",
       "retry_count": 0,
       "keyword_type": "trend",
       "search_intent": "ノーコードツール導入検討時に適用範囲の限界を理解したい",
       "angle": "エンジニアリング視点でのノーコードの技術的制約と使い分け",
       "competition_level": "low",
-      "expiry_days": 21
+      "expiry_days": 21,
+      "reserved_at": "2026-01-17T07:49:22.922239",
+      "completed_at": "2026-01-17T08:02:30.562112"
     },
     {
       "id": "032-ja-lifestyle-サブスク疲れ-解約理由",
