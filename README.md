@@ -132,6 +132,23 @@ jakes-tech-insights/
 
 ## 🛠️ Scripts Usage
 
+### Keyword Curation (Weekly)
+
+```bash
+# Generate keyword candidates (recommended: weekly)
+python scripts/keyword_curator.py
+
+# Custom count
+python scripts/keyword_curator.py --count 10
+
+# Interactive selection (5 minutes)
+# - Review candidates
+# - Select by number (e.g., 1,3,5,7)
+# - Add to queue (Trend:Evergreen = 3:7)
+```
+
+**See [KEYWORD_CURATION_GUIDE.md](docs/KEYWORD_CURATION_GUIDE.md) for details**
+
 ### Topic Queue Management
 
 ```bash
@@ -144,7 +161,7 @@ python scripts/topic_queue.py reserve 3
 # Cleanup stuck topics (24+ hours in progress)
 python scripts/topic_queue.py cleanup 24
 
-# Add new topic
+# Add new topic (manual)
 from topic_queue import add_topic
 add_topic("Keyword", "tech", "en", priority=8)
 ```
@@ -266,11 +283,14 @@ hugo
 - ✅ Structure-based constraints: 3-4 sections (removed strict word counts)
 - ✅ Prompt Caching: 20-25% cost reduction ($8.1 → $6.3/month)
 - ✅ Unsplash API: Featured images auto-generated with credits
+- ✅ Keyword Curation: Semi-automated with human filtering (5 min/week)
 
 ## 🎓 Documentation
 
 - **[PROJECT_CONTEXT.md](PROJECT_CONTEXT.md)**: 전체 시스템 아키텍처, 구현 세부사항
 - **[SETUP_WORKFLOWS.md](SETUP_WORKFLOWS.md)**: GitHub Actions 설정 가이드
+- **[KEYWORD_STRATEGY.md](docs/KEYWORD_STRATEGY.md)**: 키워드 선택 전략 (Decision-stage focus)
+- **[KEYWORD_CURATION_GUIDE.md](docs/KEYWORD_CURATION_GUIDE.md)**: 주간 키워드 큐레이션 가이드
 - **[.claude/PROJECT_CONTEXT.md](.claude/PROJECT_CONTEXT.md)**: 버그 수정 이력, 자동화 전략
 
 ## 🔐 Required Secrets
@@ -306,12 +326,12 @@ UNSPLASH_ACCESS_KEY=your-unsplash-access-key-here
 - [x] Quality Gate criteria updated (800-2,000 words for flexibility)
 - [x] Structure-based prompts (removed strict word count limits)
 
-### 📋 Phase 4: Optimization (In Progress)
+### 📋 Phase 4: Optimization (Complete)
 - [x] Prompt Caching for cost reduction (20-25% cost savings)
 - [x] Image auto-generation (Unsplash API integration)
-- [ ] Keyword research automation (Reddit/Trends API)
-- [ ] A/B testing for titles
-- [ ] n8n integration for monitoring
+- [x] Keyword curation system (semi-automated with human filtering)
+- [ ] A/B testing for titles (optional)
+- [ ] n8n integration for monitoring (optional)
 
 ### 💰 Phase 5: Monetization (Future)
 - [ ] Custom domain setup
@@ -383,9 +403,16 @@ MIT License - See [LICENSE](LICENSE) file
 **Built with 🤖 AI + ❤️ Human Touch**
 
 *Last updated: 2026-01-17*
-*Version: 2.9 (Day 6 - Phase 4: Optimization)*
+*Version: 3.0 (Day 6 - Phase 4: Complete)*
 
 ## 🔍 Recent Changes
+
+**2026-01-17 (v3.0)**:
+- **Phase 4.3**: Keyword curation system (semi-automated, human-filtered)
+- **keyword_curator.py**: Weekly 5-minute workflow for quality keywords
+- **Strategy docs**: KEYWORD_STRATEGY.md + KEYWORD_CURATION_GUIDE.md
+- **Topic queue**: Enhanced with trend/evergreen support
+- **Phase 4**: Complete (Optimization phase finished)
 
 **2026-01-17 (v2.9)**:
 - **Phase 4.1**: Prompt Caching (20-25% cost reduction)

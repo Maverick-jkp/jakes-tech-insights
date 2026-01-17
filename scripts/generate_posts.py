@@ -465,8 +465,31 @@ Return improved version (body only, no title):""",
             return None
 
         try:
-            # Search query: combine keyword and category for better results
-            query = f"{keyword} {category}"
+            # Clean keyword for better Unsplash search
+            # Remove years (2020-2030) to avoid year-specific images
+            import re
+            clean_keyword = re.sub(r'20[2-3][0-9]년?', '', keyword)  # Match years + optional 년 (Korean year)
+            # Remove common prefixes/suffixes that reduce search quality
+            clean_keyword = re.sub(r'【.*?】', '', clean_keyword)  # Remove 【brackets】
+            clean_keyword = re.sub(r'\[.*?\]', '', clean_keyword)  # Remove [brackets]
+            clean_keyword = clean_keyword.strip()
+
+            # For better generic images, use category + core keywords
+            # Extract meaningful words (remove "guide", "strategy", "complete" etc)
+            noise_words = ['guide', 'ガイド', '가이드', 'strategy', '戦略', '전략',
+                          'complete', '完全', '완전', 'comprehensive', 'ultimate',
+                          'startup', 'スタートアップ', '스타트업']
+            words = clean_keyword.split()  # Don't use lower() for non-English
+            filtered_words = [w for w in words if not any(noise.lower() in w.lower() for noise in noise_words)]
+
+            # Build search query: category + core keywords (max 2-3 meaningful words)
+            if filtered_words:
+                query = f"{category} {' '.join(filtered_words[:2])}"
+            else:
+                # Fallback: just use category for generic business/tech images
+                query = category
+
+            query = query.strip()
 
             # Unsplash API endpoint
             url = "https://api.unsplash.com/search/photos"

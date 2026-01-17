@@ -2,7 +2,7 @@
   "summary": {
     "total_files": 1,
     "total_failures": 0,
-    "total_warnings": 2
+    "total_warnings": 3
   },
   "results": [
     {
@@ -10,21 +10,22 @@
       "language": "ja",
       "critical_failures": [],
       "warnings": [
+        "Character count on the lower end: 2720 chars (target: 2800-4200)",
         "AI phrases detected: \u91cd\u8981\u3067\u3059",
-        "Description length not optimal: 102 chars (ideal: 120-160)"
+        "Description length not optimal: 98 chars (ideal: 120-160)"
       ],
       "info": {
-        "char_count": 3401,
-        "word_count": "3401 chars",
+        "char_count": 2720,
+        "word_count": "2720 chars",
         "ai_phrases_found": [
           "\u91cd\u8981\u3067\u3059"
         ],
-        "description_length": 102,
+        "description_length": 98,
         "link_count": 2,
-        "avg_sentence_length": 6.8,
+        "avg_sentence_length": 13.3,
         "has_image": "/images/20260117-\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u8cc7\u91d1\u8abf\u9054\u6226\u75652025.jpg",
         "heading_count": 4,
-        "title": "\u30102025\u5e74\u7248\u3011\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u8cc7\u91d1\u8abf\u9054\u6226\u7565\u5b8c\u5168\u30ac\u30a4\u30c9|\u6210\u529f\u4e8b\u4f8b\u3068\u6700\u65b0\u30c8\u30ec\u30f3\u30c9"
+        "title": "\u30102025\u5e74\u6700\u65b0\u3011\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u304c\u6210\u529f\u3059\u308b\u8cc7\u91d1\u8abf\u9054\u6226\u7565\uff5c\u6295\u8cc7\u5bb6\u304c\u6ce8\u76ee\u3059\u308b\u30dd\u30a4\u30f3\u30c8\u3068\u5b9f\u8df5\u65b9\u6cd5"
       }
     }
   ]
