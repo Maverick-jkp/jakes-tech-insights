@@ -30,10 +30,10 @@
       "category": "tech",
       "lang": "ja",
       "priority": 8,
-      "status": "in_progress",
+      "status": "pending",
       "created_at": "2026-01-16T10:02:00",
-      "retry_count": 0,
-      "reserved_at": "2026-01-16T13:39:04.284449"
+      "retry_count": 1,
+      "last_error": "Stuck in progress for 0+ hours"
     },
     {
       "id": "004-en-business-remote-work",
@@ -41,10 +41,10 @@
       "category": "business",
       "lang": "en",
       "priority": 7,
-      "status": "in_progress",
+      "status": "pending",
       "created_at": "2026-01-16T10:03:00",
-      "retry_count": 0,
-      "reserved_at": "2026-01-16T13:39:04.287300"
+      "retry_count": 1,
+      "last_error": "Stuck in progress for 0+ hours"
     },
     {
       "id": "005-ko-business-remote-work",
@@ -52,10 +52,10 @@
       "category": "business",
       "lang": "ko",
       "priority": 7,
-      "status": "in_progress",
+      "status": "pending",
       "created_at": "2026-01-16T10:04:00",
-      "retry_count": 0,
-      "reserved_at": "2026-01-16T13:39:04.287300"
+      "retry_count": 1,
+      "last_error": "Stuck in progress for 0+ hours"
     },
     {
       "id": "006-ja-business-remote-work",
@@ -63,10 +63,10 @@
       "category": "business",
       "lang": "ja",
       "priority": 7,
-      "status": "in_progress",
+      "status": "pending",
       "created_at": "2026-01-16T10:05:00",
-      "retry_count": 0,
-      "reserved_at": "2026-01-16T13:39:04.287300"
+      "retry_count": 1,
+      "last_error": "Stuck in progress for 0+ hours"
     },
     {
       "id": "007-en-lifestyle-minimalism",
@@ -140,12 +140,11 @@
       "category": "business",
       "lang": "en",
       "priority": 8,
-      "status": "in_progress",
+      "status": "pending",
       "created_at": "2026-01-16T10:12:00",
-      "retry_count": 1,
-      "last_error": "Simulated API error",
-      "last_failed_at": "2026-01-16T13:39:04.286567",
-      "reserved_at": "2026-01-16T13:39:04.286969"
+      "retry_count": 2,
+      "last_error": "Stuck in progress for 0+ hours",
+      "last_failed_at": "2026-01-16T13:39:04.286567"
     },
     {
       "id": "014-ko-business-startup-funding",
@@ -153,10 +152,10 @@
       "category": "business",
       "lang": "ko",
       "priority": 8,
-      "status": "in_progress",
+      "status": "pending",
       "created_at": "2026-01-16T10:13:00",
-      "retry_count": 0,
-      "reserved_at": "2026-01-16T13:39:04.287300"
+      "retry_count": 1,
+      "last_error": "Stuck in progress for 0+ hours"
     },
     {
       "id": "015-ja-business-startup-funding",
@@ -164,10 +163,10 @@
       "category": "business",
       "lang": "ja",
       "priority": 8,
-      "status": "in_progress",
+      "status": "pending",
       "created_at": "2026-01-16T10:14:00",
-      "retry_count": 0,
-      "reserved_at": "2026-01-16T13:39:04.287300"
+      "retry_count": 1,
+      "last_error": "Stuck in progress for 0+ hours"
     },
     {
       "id": "016-en-lifestyle-work-life-balance",
