@@ -29,9 +29,14 @@ googleAnalytics = 'G-3ML8CHS112'
 
 [params]
   env = "production"
+  description = "AI-powered tech, business, and lifestyle insights in English, Korean, and Japanese"
+  keywords = ["tech blog", "AI insights", "business trends", "lifestyle tips", "multilingual blog"]
+  author = "Jake Park"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
   homeInfoParams.Title = "Welcome"
   homeInfoParams.Content = "Tech insights and trends"
 

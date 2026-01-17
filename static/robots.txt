@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jakes-tech-insights.pages.dev/sitemap.xml
+Sitemap: https://jakes-tech-insights.pages.dev/en/sitemap.xml
+Sitemap: https://jakes-tech-insights.pages.dev/ko/sitemap.xml
+Sitemap: https://jakes-tech-insights.pages.dev/ja/sitemap.xml
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block AI scrapers (optional)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
