@@ -1,6 +1,6 @@
 ---
 title: "2025 스타트업 펀딩 가이드"
-date: 2025-01-15T10:00:00+09:00
+date: 2026-01-15T10:00:00+09:00
 draft: false
 categories: ["business"]
 tags: ["스타트업", "펀딩", "투자"]

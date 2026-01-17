@@ -330,6 +330,29 @@ ANTHROPIC_API_KEY=your-claude-api-key
 
 ---
 
-**Last Updated**: 2026-01-16
-**Status**: Day 4-5 Complete ✅
-**Next Milestone**: Production deployment and monitoring
+**Last Updated**: 2026-01-17
+**Status**: Day 6 Complete ✅ (Production bugs fixed)
+
+## 🐛 Recent Bug Fixes (2026-01-17)
+
+### Issue 5: Posts Hidden on Production (Future Post Issue) ✅ SOLVED
+**Problem**:
+- 2026-01-17 posts (5 posts) not showing on production, but visible locally
+- Thumbnails broken for all posts except one Japanese startup article
+
+**Root Cause**:
+- Missing timezone in post dates → Cloudflare interpreted as UTC, making them "future posts"
+- SVG files misnamed as .jpg → Browser couldn't render
+
+**Solution**:
+- Added `+09:00` timezone to all post dates in frontmatter
+- Added `timeZone = 'Asia/Seoul'` to hugo.toml
+- Replaced SVG placeholders with real Unsplash JPEG images (14 posts)
+- Created fetch_images_for_posts.py script for batch image downloads
+
+**Result**:
+- All 15 posts (5 per language) now visible on production
+- All thumbnails display correctly with high-quality photos
+- Fixed both timezone and image issues
+
+**Next Milestone**: Phase 5 - Monetization preparation

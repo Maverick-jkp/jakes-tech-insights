@@ -1,6 +1,6 @@
 ---
 title: "2025년 AI 트렌드"
-date: 2025-01-16T10:00:00+09:00
+date: 2026-01-16T10:00:00+09:00
 draft: false
 categories: ["tech"]
 tags: ["AI", "트렌드", "2025"]

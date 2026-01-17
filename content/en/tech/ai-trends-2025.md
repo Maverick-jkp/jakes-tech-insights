@@ -1,6 +1,6 @@
 ---
 title: "AI Trends 2025"
-date: 2025-01-16T10:00:00+09:00
+date: 2026-01-16T10:00:00+09:00
 draft: false
 categories: ["tech"]
 tags: ["AI", "trends", "2025"]

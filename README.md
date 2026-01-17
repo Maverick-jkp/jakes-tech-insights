@@ -403,9 +403,15 @@ MIT License - See [LICENSE](LICENSE) file
 **Built with 🤖 AI + ❤️ Human Touch**
 
 *Last updated: 2026-01-17*
-*Version: 3.0 (Day 6 - Phase 4: Complete)*
+*Version: 3.1 (Day 6 - Bug Fixes: Timezone & Images)*
 
 ## 🔍 Recent Changes
+
+**2026-01-17 (v3.1)**:
+- **Bug Fix**: Added timezone (+09:00) to all post dates - fixed "future post" issue on production
+- **Image Upgrade**: Replaced SVG placeholders with real Unsplash photos (14 posts)
+- **New Script**: fetch_images_for_posts.py for batch image downloads
+- **Result**: All thumbnails now display correctly on production site
 
 **2026-01-17 (v3.0)**:
 - **Phase 4.3**: Keyword curation system (semi-automated, human-filtered)
