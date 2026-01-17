@@ -4,7 +4,9 @@ title = "Jake's Tech Insights"
 theme = 'PaperMod'
 timeZone = 'Asia/Seoul'
 googleAnalytics = 'G-3ML8CHS112'
-paginate = 50
+
+[pagination]
+pagerSize = 50
 
 [languages]
   [languages.en]
