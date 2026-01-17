@@ -190,21 +190,46 @@ description: "Meta description (120-160 chars)"
 
 ## 🔄 Automated Workflow
 
-### Daily Schedule
-- **9 AM UTC** (6 PM KST): Auto-generate 3 posts
-- Quality gate runs automatically
-- AI review provides recommendations
-- Creates PR for human approval
+### Weekly Keyword Curation (Sundays 6 PM KST)
+```bash
+# Automated via cron job
+cd /Users/jakepark/projects/jakes-tech-insights && source ~/.zshrc && python3 scripts/keyword_curator.py --count 15
+```
+
+**What it does:**
+- Fetches 15 trending keywords from Google Trends API
+- Distributes evenly: 5 categories × 3 languages = 15 topics
+- Adds to `scripts/queue.txt` for content generation
+- Categories: Tech, Business, Society, Entertainment, Lifestyle
+
+### Daily Content Generation (12 PM KST)
+```bash
+# Automated via cron job
+cd /Users/jakepark/projects/jakes-tech-insights && source ~/.zshrc && python3 scripts/content_processor.py
+```
+
+**What it does:**
+- Picks 3 topics from queue (1 per language: EN/KO/JA)
+- Generates content using Claude API
+- Runs quality checks
+- Creates Hugo markdown files
+- Commits and pushes to GitHub
+- Auto-deploys via Cloudflare Pages (2-3 min)
 
 ### Manual Trigger
 ```bash
 # Via GitHub UI
 Actions → Daily Content Generation → Run workflow
+
+# Or run locally
+python3 scripts/keyword_curator.py --count 15
+python3 scripts/content_processor.py
 ```
 
-### Workflow Inputs
-- `count`: Number of posts (default: 3)
-- `skip_review`: Skip AI review step (default: false)
+### Workflow Schedule
+- **Sunday 6 PM KST**: Keyword curation (15 topics)
+- **Daily 12 PM KST**: Content generation (3 posts)
+- **Result**: ~90 posts/month (30 days × 3 posts)
 
 ## 🔐 Required Secrets
 
