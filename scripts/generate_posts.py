@@ -292,7 +292,10 @@ Write the complete blog post now (body only, no title or metadata):""",
         prompts = {
             "en": """You are an expert editor. Transform this into Medium-style content:
 
-🚨 Important: Keep the same length. Do NOT make it longer or shorter!
+📏 Length Requirements:
+- If draft is under 800 words: EXPAND with examples, explanations, context
+- If draft is 800-2500 words: MAINTAIN the same length
+- If draft is over 2500 words: COMPRESS by removing redundancy
 
 Tasks:
 1. **Medium style conversion**: Add "you/I", conversational tone
@@ -302,14 +305,16 @@ Tasks:
 5. **Punchy sentences**: "Here's the thing.", "Let me explain.", "Stop it."
 6. **Smooth transitions**: "Now", "Here's where it gets interesting"
 7. Keep all factual information intact
-8. **Maintain length**: Aim for similar word count as original
-9. **Complete ending**: Finish conclusion fully
+8. **Complete ending**: Finish conclusion fully
 
 Return improved version (body only, no title):""",
 
             "ko": """당신은 전문 에디터입니다. 이 블로그 글을 토스(Toss) 스타일로 개선하세요:
 
-🚨 중요: 같은 길이를 유지하세요. 늘리거나 줄이지 마세요!
+📏 길이 요구사항:
+- 초안이 800단어 미만: 예시, 설명, 맥락 추가로 확장
+- 초안이 800-2,500단어: 같은 길이 유지
+- 초안이 2,500단어 초과: 중복 제거로 압축
 
 작업:
 1. **토스 말투로 변환**: "~습니다" → "~해요", 친근한 질문형 추가
@@ -319,14 +324,16 @@ Return improved version (body only, no title):""",
 5. 짧고 강렬한 문장 추가: "놀랍죠?", "맞아요.", "이게 핵심이에요."
 6. 섹션 간 매끄러운 전환: "자, 이제 ~", "그럼 ~"
 7. 모든 사실 정보는 그대로 유지
-8. **길이 유지**: 원본과 비슷한 단어 수 목표
-9. **마지막 문장까지 완결**: 결론을 반드시 완성
+8. **마지막 문장까지 완결**: 결론을 반드시 완성
 
 개선된 버전을 반환하세요 (본문만, 제목 제외):""",
 
             "ja": """あなたは専門エディターです。このブログ記事を自然な会話調に改善してください:
 
-🚨 重要: 同じ長さを保ってください。長くしたり短くしたりしないでください！
+📏 文字数要件:
+- 下書きが3,000文字未満: 例、説明、文脈を追加して拡張
+- 下書きが3,000-8,000文字: 同じ長さを維持
+- 下書きが8,000文字超: 冗長性を削除して圧縮
 
 タスク:
 1. **会話調に変換**: "〜ですね", "〜ますよね", "〜でしょう" など柔らかい語尾に
@@ -337,8 +344,7 @@ Return improved version (body only, no title):""",
 6. 短い感嘆: "驚きですね。", "面白いですよね。"
 7. セクション間の移行: "では、詳しく見ていきましょう。"
 8. すべての事実情報はそのまま保持
-9. **長さを維持**: 元の記事と同じ程度の文字数を目標に
-10. **最後の文まで完結**: 結論を必ず完成
+9. **最後の文まで完結**: 結論を必ず完成
 
 改善されたバージョンを返してください（本文のみ、タイトルなし）:"""
         }
