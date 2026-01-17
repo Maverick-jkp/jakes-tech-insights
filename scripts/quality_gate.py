@@ -128,32 +128,52 @@ class QualityGate:
         # Remove markdown syntax for accurate count
         clean_text = re.sub(r'[#*`\[\]()_]', '', body)
 
-        # Japanese uses character count instead of word count
-        if lang == 'ja':
+        # Japanese and Korean use character count instead of word count
+        if lang in ['ja', 'ko']:
             # Count all non-whitespace characters
             char_count = len(re.sub(r'\s+', '', clean_text))
             checks['info']['char_count'] = char_count
             checks['info']['word_count'] = f"{char_count} chars"
 
-            # Japanese: Target 2800-4200, WARN 4200-7000, FAIL extremes
-            if char_count < 2500:
-                checks['critical_failures'].append(
-                    f"Character count too low: {char_count} chars (minimum: 2500)"
-                )
-            elif 2500 <= char_count < 2800:
-                checks['warnings'].append(
-                    f"Character count on the lower end: {char_count} chars (target: 2800-4200)"
-                )
-            elif 4200 <= char_count <= 7000:
-                checks['warnings'].append(
-                    f"Character count high: {char_count} chars (target: 2800-4200, Editor should compress)"
-                )
-            elif char_count > 11000:
-                checks['critical_failures'].append(
-                    f"Character count too high: {char_count} chars (maximum: 11000)"
-                )
+            if lang == 'ja':
+                # Japanese: Target 2800-4200, WARN 4200-7000, FAIL extremes
+                if char_count < 2500:
+                    checks['critical_failures'].append(
+                        f"Character count too low: {char_count} chars (minimum: 2500)"
+                    )
+                elif 2500 <= char_count < 2800:
+                    checks['warnings'].append(
+                        f"Character count on the lower end: {char_count} chars (target: 2800-4200)"
+                    )
+                elif 4200 <= char_count <= 7000:
+                    checks['warnings'].append(
+                        f"Character count high: {char_count} chars (target: 2800-4200, Editor should compress)"
+                    )
+                elif char_count > 11000:
+                    checks['critical_failures'].append(
+                        f"Character count too high: {char_count} chars (maximum: 11000)"
+                    )
+            else:  # ko
+                # Korean: Target 2000-3200, WARN 3200-5000, FAIL extremes
+                # (Korean has ~20% fewer chars than Japanese for same reading time)
+                if char_count < 1800:
+                    checks['critical_failures'].append(
+                        f"Character count too low: {char_count} chars (minimum: 1800)"
+                    )
+                elif 1800 <= char_count < 2000:
+                    checks['warnings'].append(
+                        f"Character count on the lower end: {char_count} chars (target: 2000-3200)"
+                    )
+                elif 3200 <= char_count <= 5000:
+                    checks['warnings'].append(
+                        f"Character count high: {char_count} chars (target: 2000-3200, Editor should compress)"
+                    )
+                elif char_count > 8000:
+                    checks['critical_failures'].append(
+                        f"Character count too high: {char_count} chars (maximum: 8000)"
+                    )
         else:
-            # English and Korean use word count
+            # English uses word count
             words = clean_text.split()
             word_count = len(words)
             checks['info']['word_count'] = word_count
