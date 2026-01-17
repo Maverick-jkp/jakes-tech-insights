@@ -135,10 +135,18 @@ class QualityGate:
             checks['info']['char_count'] = char_count
             checks['info']['word_count'] = f"{char_count} chars"
 
-            # Japanese: 3000-11000 chars (very relaxed for natural AI generation)
-            if char_count < 3000:
+            # Japanese: Target 2800-4200, WARN 4200-7000, FAIL extremes
+            if char_count < 2500:
                 checks['critical_failures'].append(
-                    f"Character count too low: {char_count} chars (minimum: 3000)"
+                    f"Character count too low: {char_count} chars (minimum: 2500)"
+                )
+            elif 2500 <= char_count < 2800:
+                checks['warnings'].append(
+                    f"Character count on the lower end: {char_count} chars (target: 2800-4200)"
+                )
+            elif 4200 <= char_count <= 7000:
+                checks['warnings'].append(
+                    f"Character count high: {char_count} chars (target: 2800-4200, Editor should compress)"
                 )
             elif char_count > 11000:
                 checks['critical_failures'].append(
@@ -150,14 +158,22 @@ class QualityGate:
             word_count = len(words)
             checks['info']['word_count'] = word_count
 
-            # FAIL if too short or too long (very relaxed for natural AI generation)
-            if word_count < 700:
+            # Target 700-1200, WARN 1200-1800, FAIL extremes
+            if word_count < 600:
                 checks['critical_failures'].append(
-                    f"Word count too low: {word_count} words (minimum: 700)"
+                    f"Word count too low: {word_count} words (minimum: 600)"
                 )
-            elif word_count > 3000:
+            elif 600 <= word_count < 700:
+                checks['warnings'].append(
+                    f"Word count on the lower end: {word_count} words (target: 700-1200)"
+                )
+            elif 1200 <= word_count <= 1800:
+                checks['warnings'].append(
+                    f"Word count high: {word_count} words (target: 700-1200, Editor should compress)"
+                )
+            elif word_count > 2500:
                 checks['critical_failures'].append(
-                    f"Word count too high: {word_count} words (maximum: 3000)"
+                    f"Word count too high: {word_count} words (maximum: 2500)"
                 )
 
     def _check_ai_phrases(self, body: str, lang: str, checks: Dict):

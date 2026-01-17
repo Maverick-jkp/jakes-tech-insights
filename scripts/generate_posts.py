@@ -292,10 +292,11 @@ Write the complete blog post now (body only, no title or metadata):""",
         prompts = {
             "en": """You are an expert editor. Transform this into Medium-style content:
 
-📏 Length Requirements:
-- If draft is under 700 words: EXPAND with examples, explanations, context
-- If draft is 700-2500 words: MAINTAIN the same length
-- If draft is over 2500 words: COMPRESS by removing redundancy
+📏 Length Requirements (Target: 700-1200 words for 5-7 min read):
+- If draft is under 700 words: EXPAND with examples, explanations, context to reach 700-1200 words
+- If draft is 700-1200 words: MAINTAIN the same length (ideal range)
+- If draft is 1200-1800 words: COMPRESS to 1100-1300 words by removing redundancy
+- If draft is over 1800 words: COMPRESS aggressively to 1100-1300 words
 
 Tasks:
 1. **Medium style conversion**: Add "you/I", conversational tone
@@ -311,10 +312,11 @@ Return improved version (body only, no title):""",
 
             "ko": """당신은 전문 에디터입니다. 이 블로그 글을 토스(Toss) 스타일로 개선하세요:
 
-📏 길이 요구사항:
-- 초안이 700단어 미만: 예시, 설명, 맥락 추가로 확장
-- 초안이 700-2,500단어: 같은 길이 유지
-- 초안이 2,500단어 초과: 중복 제거로 압축
+📏 길이 요구사항 (목표: 5-7분 읽기 = 700-1,200단어):
+- 초안이 700단어 미만: 예시, 설명, 맥락 추가로 700-1,200단어까지 확장
+- 초안이 700-1,200단어: 같은 길이 유지 (이상적 범위)
+- 초안이 1,200-1,800단어: 1,100-1,300단어로 압축 (중복 제거)
+- 초안이 1,800단어 초과: 1,100-1,300단어로 대폭 압축
 
 작업:
 1. **토스 말투로 변환**: "~습니다" → "~해요", 친근한 질문형 추가
@@ -330,10 +332,11 @@ Return improved version (body only, no title):""",
 
             "ja": """あなたは専門エディターです。このブログ記事を自然な会話調に改善してください:
 
-📏 文字数要件:
-- 下書きが3,000文字未満: 例、説明、文脈を追加して拡張
-- 下書きが3,000-8,000文字: 同じ長さを維持
-- 下書きが8,000文字超: 冗長性を削除して圧縮
+📏 文字数要件 (目標: 5-7分 = 2,800-4,200文字):
+- 下書きが2,800文字未満: 例、説明、文脈を追加して2,800-4,200文字に拡張
+- 下書きが2,800-4,200文字: 同じ長さを維持 (理想的な範囲)
+- 下書きが4,200-7,000文字: 3,500-4,000文字に圧縮 (冗長性削除)
+- 下書きが7,000文字超: 3,500-4,000文字に大幅圧縮
 
 タスク:
 1. **会話調に変換**: "〜ですね", "〜ますよね", "〜でしょう" など柔らかい語尾に
