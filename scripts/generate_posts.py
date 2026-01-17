@@ -231,19 +231,18 @@ class ContentGenerator:
 
 Category: {category}
 
-🚨 Length Limits (STRICT COMPLIANCE!):
-- **800-1,100 words (REQUIRED!)**: Below 800 or above 1,100 will be REJECTED
-- Each section: 120-180 words (key points only, concise)
-- Total: 3-4 ## sections only
+📝 Structure Requirements:
+- Write exactly 3-4 main sections (## headings)
+- Each section: Focus on one key point, keep it concise
+- Use short paragraphs (2-4 sentences each)
+- End with a thought-provoking question
 
-Requirements:
+Content Guidelines:
 - Target audience: Tech-savvy professionals and enthusiasts
-- Include practical examples and actionable advice (1-2 examples only, selectively)
+- Include 1-2 practical examples (be selective)
 - Mention current trends (2025)
-- Use specific numbers and data (selectively)
-- End with thought-provoking question
-
-⚠️ Important: Be concise and impactful! Remove unnecessary explanations.
+- Use specific numbers when relevant
+- Be concise and impactful - avoid unnecessary explanations
 
 Write the complete blog post now (body only, no title or metadata):""",
 
@@ -251,19 +250,18 @@ Write the complete blog post now (body only, no title or metadata):""",
 
 카테고리: {category}
 
-🚨 길이 제한 (절대 준수!):
-- **800-1,100 단어 (필수!)**: 800 단어 미만 or 1,100 단어 초과는 거부됨
-- 각 섹션: 120-180 단어 (핵심만 간결하게)
-- 총 3-4개 ## 섹션만 작성
-
-요구사항:
-- 대상 독자: 기술에 관심있는 전문가와 얼리어답터
-- 실용적인 예시와 실행 가능한 조언 포함 (1-2개만 선택적으로)
-- 현재 트렌드 언급 (2025년)
-- 구체적인 숫자와 데이터 사용 (선택적으로)
+📝 구조 요구사항:
+- 정확히 3-4개의 주요 섹션 (## 헤딩)만 작성
+- 각 섹션: 하나의 핵심 포인트에 집중, 간결하게
+- 짧은 문단 사용 (2-4 문장씩)
 - 생각을 자극하는 질문으로 마무리
 
-⚠️ 중요: 간결하고 임팩트 있게! 불필요한 설명은 제거하세요.
+콘텐츠 가이드라인:
+- 대상 독자: 기술에 관심있는 전문가와 얼리어답터
+- 실용적인 예시 1-2개 포함 (선택적으로)
+- 현재 트렌드 언급 (2025년)
+- 관련성 있는 구체적 숫자 사용
+- 간결하고 임팩트 있게 - 불필요한 설명 제거
 
 지금 바로 완전한 블로그 글을 작성하세요 (본문만, 제목이나 메타데이터 제외):""",
 
@@ -271,19 +269,18 @@ Write the complete blog post now (body only, no title or metadata):""",
 
 カテゴリ: {category}
 
-🚨 文字数制限 (絶対厳守!):
-- **3,000-4,500文字 (必須!)**: 3,000文字未満 or 4,500文字超過は却下
-- 各セクション: 600-900文字 (要点のみ簡潔に)
-- 合計3-4個の##セクションのみ作成
-
-要件:
-- 対象読者: 技術に精通した専門家と愛好家
-- 実践的な例と実行可能なアドバイスを含める (1-2個のみ選択的に)
-- 現在のトレンドに言及 (2025年)
-- 具体的な数字とデータを使用 (選択的に)
+📝 構造要件:
+- 正確に3-4個の主要セクション (##見出し) のみ作成
+- 各セクション: 1つの重要ポイントに集中、簡潔に
+- 短い段落を使用 (2-4文ずつ)
 - 考えさせる質問で締めくくる
 
-⚠️ 重要: 簡潔でインパクトのある内容に! 不要な説明は削除してください。
+コンテンツガイドライン:
+- 対象読者: 技術に精通した専門家と愛好家
+- 実践的な例を1-2個含める (選択的に)
+- 現在のトレンドに言及 (2025年)
+- 関連性のある具体的な数字を使用
+- 簡潔でインパクトのある内容 - 不要な説明を削除
 
 今すぐ完全なブログ記事を書いてください（本文のみ、タイトルやメタデータなし）:"""
         }
@@ -295,7 +292,7 @@ Write the complete blog post now (body only, no title or metadata):""",
         prompts = {
             "en": """You are an expert editor. Transform this into Medium-style content:
 
-🚨 Important: Maintain or increase length. Never shorten!
+🚨 Important: Keep the same length. Do NOT make it longer or shorter!
 
 Tasks:
 1. **Medium style conversion**: Add "you/I", conversational tone
@@ -305,14 +302,14 @@ Tasks:
 5. **Punchy sentences**: "Here's the thing.", "Let me explain.", "Stop it."
 6. **Smooth transitions**: "Now", "Here's where it gets interesting"
 7. Keep all factual information intact
-8. **Maintain length**: Same or longer than original
+8. **Maintain length**: Aim for similar word count as original
 9. **Complete ending**: Finish conclusion fully
 
 Return improved version (body only, no title):""",
 
             "ko": """당신은 전문 에디터입니다. 이 블로그 글을 토스(Toss) 스타일로 개선하세요:
 
-🚨 중요: 글의 길이를 유지하거나 늘리세요. 절대 줄이지 마세요!
+🚨 중요: 같은 길이를 유지하세요. 늘리거나 줄이지 마세요!
 
 작업:
 1. **토스 말투로 변환**: "~습니다" → "~해요", 친근한 질문형 추가
@@ -322,14 +319,14 @@ Return improved version (body only, no title):""",
 5. 짧고 강렬한 문장 추가: "놀랍죠?", "맞아요.", "이게 핵심이에요."
 6. 섹션 간 매끄러운 전환: "자, 이제 ~", "그럼 ~"
 7. 모든 사실 정보는 그대로 유지
-8. **길이 유지 필수**: 원본보다 길거나 같게
+8. **길이 유지**: 원본과 비슷한 단어 수 목표
 9. **마지막 문장까지 완결**: 결론을 반드시 완성
 
 개선된 버전을 반환하세요 (본문만, 제목 제외):""",
 
             "ja": """あなたは専門エディターです。このブログ記事を自然な会話調に改善してください:
 
-🚨 重要: 記事の長さを維持または増やしてください。絶対に短くしないでください！
+🚨 重要: 同じ長さを保ってください。長くしたり短くしたりしないでください！
 
 タスク:
 1. **会話調に変換**: "〜ですね", "〜ますよね", "〜でしょう" など柔らかい語尾に
@@ -340,7 +337,7 @@ Return improved version (body only, no title):""",
 6. 短い感嘆: "驚きですね。", "面白いですよね。"
 7. セクション間の移行: "では、詳しく見ていきましょう。"
 8. すべての事実情報はそのまま保持
-9. **長さの維持必須**: 元の記事より長いか同じに
+9. **長さを維持**: 元の記事と同じ程度の文字数を目標に
 10. **最後の文まで完結**: 結論を必ず完成
 
 改善されたバージョンを返してください（本文のみ、タイトルなし）:"""
