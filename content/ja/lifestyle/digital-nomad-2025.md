@@ -1,10 +1,11 @@
 ---
 title: "2025年デジタルノマドライフ"
-date: 2025-01-14
+date: 2025-01-14T10:00:00
 draft: false
 categories: ["lifestyle"]
 tags: ["デジタルノマド", "リモートワーク", "旅行"]
 description: "2025年のデジタルノマドライフスタイル：ヒントと目的地"
+image: "/images/placeholder-lifestyle.jpg"
 ---
 
 デジタルノマドのライフスタイルは大きく成熟しました。2025年の様子を見てみましょう。

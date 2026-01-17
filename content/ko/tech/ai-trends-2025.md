@@ -1,10 +1,11 @@
 ---
 title: "2025년 AI 트렌드"
-date: 2025-01-16
+date: 2025-01-16T10:00:00
 draft: false
 categories: ["tech"]
 tags: ["AI", "트렌드", "2025"]
 description: "2025년을 주도할 인공지능 트렌드 살펴보기"
+image: "/images/placeholder-tech.jpg"
 ---
 
 인공지능 분야는 빠르게 발전하고 있습니다. 2025년에는 여러 영역에서 전례 없는 발전을 목격하고 있습니다.

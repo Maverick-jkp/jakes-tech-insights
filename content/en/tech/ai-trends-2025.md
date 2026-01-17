@@ -1,10 +1,11 @@
 ---
 title: "AI Trends 2025"
-date: 2025-01-16
+date: 2025-01-16T10:00:00
 draft: false
 categories: ["tech"]
 tags: ["AI", "trends", "2025"]
 description: "Exploring the latest artificial intelligence trends shaping 2025"
+image: "/images/placeholder-tech.jpg"
 ---
 
 The artificial intelligence landscape is rapidly evolving. In 2025, we're seeing unprecedented developments across multiple domains.

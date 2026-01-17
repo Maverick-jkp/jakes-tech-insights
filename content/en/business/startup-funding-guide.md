@@ -1,10 +1,11 @@
 ---
 title: "Startup Funding Guide 2025"
-date: 2025-01-15
+date: 2025-01-15T10:00:00
 draft: false
 categories: ["business"]
 tags: ["startup", "funding", "investment"]
 description: "Complete guide to raising startup capital in 2025"
+image: "/images/placeholder-business.jpg"
 ---
 
 Raising capital for your startup has never been more complex. Here's what you need to know in 2025.

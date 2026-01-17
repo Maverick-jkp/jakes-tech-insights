@@ -1,10 +1,11 @@
 ---
 title: "2025年のAIトレンド"
-date: 2025-01-16
+date: 2025-01-16T10:00:00
 draft: false
 categories: ["tech"]
 tags: ["AI", "トレンド", "2025"]
 description: "2025年を形作る最新の人工知能トレンドを探る"
+image: "/images/placeholder-tech.jpg"
 ---
 
 人工知能の分野は急速に進化しています。2025年には、複数の領域で前例のない発展を目撃しています。

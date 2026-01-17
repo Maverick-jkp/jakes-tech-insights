@@ -1,10 +1,11 @@
 ---
 title: "2025 스타트업 펀딩 가이드"
-date: 2025-01-15
+date: 2025-01-15T10:00:00
 draft: false
 categories: ["business"]
 tags: ["스타트업", "펀딩", "투자"]
 description: "2025년 스타트업 자본 유치 완벽 가이드"
+image: "/images/placeholder-business.jpg"
 ---
 
 스타트업 자본 조달이 그 어느 때보다 복잡해졌습니다. 2025년에 알아야 할 핵심 내용입니다.
