@@ -212,14 +212,16 @@
       "category": "tech",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-17T15:12:58.384835",
       "retry_count": 0,
       "keyword_type": "trend",
       "search_intent": "AI 챗봇 도입을 고려하다가 실패 사례를 보고 위험 요소를 파악하려고 함",
       "angle": "실제 기업 도입 실패 사례와 예방법, 성공을 위한 필수 조건",
       "competition_level": "low",
-      "expiry_days": 21
+      "expiry_days": 21,
+      "reserved_at": "2026-01-17T06:35:31.744137",
+      "completed_at": "2026-01-17T06:36:51.924538"
     },
     {
       "id": "020-ko-tech-노코드-툴-한계점",

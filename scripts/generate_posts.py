@@ -459,6 +459,55 @@ Return improved version (body only, no title):""",
 
         return response.content[0].text.strip().strip('"').strip("'")
 
+    def translate_to_english(self, text: str) -> str:
+        """Translate non-English keywords to English for Unsplash search"""
+        # Simple keyword translations for common tech/business/lifestyle terms
+        translations = {
+            # Korean
+            '챗봇': 'chatbot', 'AI': 'artificial intelligence', '도입': 'implementation',
+            '실패': 'failure', '이유': 'reasons', '노코드': 'no-code', '툴': 'tool',
+            '한계점': 'limitations', '재택근무': 'remote work', '하이브리드': 'hybrid',
+            '근무': 'work', '효율성': 'efficiency', 'MZ세대': 'gen z', '관리': 'management',
+            '방법': 'method', '사례': 'case', '미니멀': 'minimal', '라이프': 'lifestyle',
+            '중단': 'quit', '생산성': 'productivity', '팁': 'tips',
+            # Japanese
+            'コード': 'code', '開発': 'development', '限界点': 'limitations',
+            'テレワーク': 'telework', 'オフィス': 'office', '勤務': 'work',
+            '生産性': 'productivity', '比較': 'comparison', 'ノー': 'no',
+            'サブスク': 'subscription', '疲れ': 'fatigue', '解約': 'cancel',
+            '理由': 'reason', 'Z世代': 'gen z', 'マネジメント': 'management',
+            '誤解': 'misconception', 'DX': 'digital transformation', '推進': 'promotion',
+            '失敗': 'failure', '要因': 'factors', 'ヒント': 'tips',
+            'ワークライフバランス': 'work life balance', 'スタートアップ': 'startup',
+            '資金調達': 'fundraising', '戦略': 'strategy', 'AIコーディング': 'AI coding',
+            'アシスタント': 'assistant', 'リモートワーク': 'remote work'
+        }
+
+        # Split and translate each word
+        words = text.split()
+        translated_words = []
+        for word in words:
+            # Try exact match first
+            if word in translations:
+                translated_words.append(translations[word])
+            else:
+                # Check if word contains any translatable substring
+                found = False
+                for kr, en in translations.items():
+                    if kr in word:
+                        translated_words.append(en)
+                        found = True
+                        break
+                if not found:
+                    # Keep as-is if ASCII (likely already English)
+                    try:
+                        word.encode('ascii')
+                        translated_words.append(word)
+                    except UnicodeEncodeError:
+                        pass  # Skip non-ASCII untranslatable words
+
+        return ' '.join(translated_words) if translated_words else 'technology'
+
     def fetch_featured_image(self, keyword: str, category: str) -> Optional[Dict]:
         """Fetch featured image from Unsplash API"""
         if not self.unsplash_key:
@@ -478,18 +527,18 @@ Return improved version (body only, no title):""",
             # Extract meaningful words (remove "guide", "strategy", "complete" etc)
             noise_words = ['guide', 'ガイド', '가이드', 'strategy', '戦略', '전략',
                           'complete', '完全', '완전', 'comprehensive', 'ultimate',
-                          'startup', 'スタートアップ', '스타트업']
+                          'startup', 'スタートアップ', '스타트업', 'tips', 'ヒント', '팁',
+                          'reasons', '이유', '理由', 'methods', '방법']
             words = clean_keyword.split()  # Don't use lower() for non-English
             filtered_words = [w for w in words if not any(noise.lower() in w.lower() for noise in noise_words)]
 
-            # Build search query: category + core keywords (max 2-3 meaningful words)
+            # Translate to English for better Unsplash results
             if filtered_words:
-                query = f"{category} {' '.join(filtered_words[:2])}"
+                english_query = self.translate_to_english(' '.join(filtered_words[:2]))
+                query = f"{category} {english_query}".strip()
             else:
                 # Fallback: just use category for generic business/tech images
                 query = category
-
-            query = query.strip()
 
             # Unsplash API endpoint
             url = "https://api.unsplash.com/search/photos"
@@ -599,7 +648,12 @@ Return improved version (body only, no title):""",
         filename = f"{date_str}-{slug}.md"
         filepath = content_dir / filename
 
-        # Hugo frontmatter with optional image
+        # Hugo frontmatter with required image field
+        # Use placeholder if no Unsplash image available
+        if not image_path:
+            # Use category-based placeholder
+            image_path = f"/images/placeholder-{category}.jpg"
+
         frontmatter = f"""---
 title: "{title}"
 date: {datetime.now().strftime("%Y-%m-%d")}
@@ -607,13 +661,10 @@ draft: false
 categories: ["{category}"]
 tags: {json.dumps(keyword.split()[:3])}
 description: "{description}"
+image: "{image_path}"
+---
+
 """
-
-        # Add image if available
-        if image_path:
-            frontmatter += f'image: "{image_path}"\n'
-
-        frontmatter += "---\n\n"
 
         # Add image credit at the end of content if available
         if image_credit:
