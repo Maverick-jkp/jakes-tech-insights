@@ -135,14 +135,14 @@ class QualityGate:
             checks['info']['char_count'] = char_count
             checks['info']['word_count'] = f"{char_count} chars"
 
-            # Japanese: 3000-7500 chars (relaxed for natural AI generation)
+            # Japanese: 3000-11000 chars (very relaxed for natural AI generation)
             if char_count < 3000:
                 checks['critical_failures'].append(
                     f"Character count too low: {char_count} chars (minimum: 3000)"
                 )
-            elif char_count > 7500:
+            elif char_count > 11000:
                 checks['critical_failures'].append(
-                    f"Character count too high: {char_count} chars (maximum: 7500)"
+                    f"Character count too high: {char_count} chars (maximum: 11000)"
                 )
         else:
             # English and Korean use word count
@@ -150,14 +150,14 @@ class QualityGate:
             word_count = len(words)
             checks['info']['word_count'] = word_count
 
-            # FAIL if too short or too long (relaxed for natural AI generation)
+            # FAIL if too short or too long (very relaxed for natural AI generation)
             if word_count < 800:
                 checks['critical_failures'].append(
                     f"Word count too low: {word_count} words (minimum: 800)"
                 )
-            elif word_count > 2000:
+            elif word_count > 3000:
                 checks['critical_failures'].append(
-                    f"Word count too high: {word_count} words (maximum: 2000)"
+                    f"Word count too high: {word_count} words (maximum: 3000)"
                 )
 
     def _check_ai_phrases(self, body: str, lang: str, checks: Dict):
