@@ -1,16 +1,64 @@
 {
-  "total_files": 3,
+  "total_files": 15,
   "reviews": [
     {
-      "file": "content/ja/tech/2026-01-17-aiコーディングアシスタント2025.md",
+      "file": "content/en/tech/2026-01-17-ai-native-development-platform-comparison.md",
       "error": "'\\n  \"scores\"'"
     },
     {
-      "file": "content/en/business/2026-01-17-startup-funding-strategies-2025.md",
+      "file": "content/ko/tech/2026-01-17-ai-도입-실패-사례-분석.md",
       "error": "'\\n  \"scores\"'"
     },
     {
-      "file": "content/ko/business/2026-01-17-스타트업-투자-전략-2025.md",
+      "file": "content/ko/tech/2026-01-17-사이버보안-전략-비용-계산.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/en/tech/2026-01-17-multiagent-systems-implementation-challenges.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/en/tech/2026-01-17-confidential-computing-roi-calculation.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ja/tech/2026-01-17-aiスーパーコンピューティング導入失敗例.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ja/tech/2026-01-17-コンフィデンシャルコンピューティング-vs-従来セキュリティ.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ko/tech/2026-01-17-하이브리드-컴퓨팅-단점.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ko/business/2026-01-17-원격근무-도구-선택-기준.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/en/business/2026-01-17-chinese-llm-vs-openai-enterprise-decision.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/en/business/2026-01-17-domain-specific-language-models-cost-benefit.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ja/tech/2026-01-17-フィジカルai投資判断基準.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ja/business/2026-01-17-マルチエージェントシステム運用コスト.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ko/business/2026-01-17-데이터센터-투자-리스크.md",
+      "error": "'\\n  \"scores\"'"
+    },
+    {
+      "file": "content/ja/business/2026-01-17-ドメイン特化言語モデル開発-外注-vs-内製.md",
       "error": "'\\n  \"scores\"'"
     }
   ]

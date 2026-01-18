@@ -1,31 +1,305 @@
 {
   "summary": {
-    "total_files": 1,
+    "total_files": 15,
     "total_failures": 0,
-    "total_warnings": 3
+    "total_warnings": 20
   },
   "results": [
     {
-      "file": "content/ja/business/2026-01-17-\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u8cc7\u91d1\u8abf\u9054\u6226\u75652025.md",
+      "file": "content/en/tech/2026-01-17-ai-native-development-platform-comparison.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: cutting-edge, leverage"
+      ],
+      "info": {
+        "word_count": 957,
+        "ai_phrases_found": [
+          "cutting-edge",
+          "leverage"
+        ],
+        "description_length": 152,
+        "link_count": 3,
+        "avg_sentence_length": 10.5,
+        "has_image": "/images/20260117-ai-native-development-platform.jpg",
+        "heading_count": 6,
+        "title": "AI Native Platforms: Top 5 Development Tools Compared"
+      }
+    },
+    {
+      "file": "content/ko/tech/2026-01-17-ai-\ub3c4\uc785-\uc2e4\ud328-\uc0ac\ub840-\ubd84\uc11d.md",
+      "language": "ko",
+      "critical_failures": [],
+      "warnings": [
+        "Description length not optimal: 99 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 2404,
+        "word_count": "2404 chars",
+        "ai_phrases_found": [],
+        "description_length": 99,
+        "link_count": 3,
+        "avg_sentence_length": 7.8,
+        "has_image": "/images/20260117-ai-\ub3c4\uc785-\uc2e4\ud328-\uc0ac\ub840-\ubd84\uc11d.jpg",
+        "heading_count": 5,
+        "title": "AI \ub3c4\uc785 \uc2e4\ud328 \uc0ac\ub840 7\uac00\uc9c0 \ubd84\uc11d: \uae30\uc5c5\uc774 \ubc18\ub4dc\uc2dc \ud53c\ud574\uc57c \ud560 \uce58\uba85\uc801 \uc2e4\uc218\ub4e4"
+      }
+    },
+    {
+      "file": "content/ko/tech/2026-01-17-\uc0ac\uc774\ubc84\ubcf4\uc548-\uc804\ub7b5-\ube44\uc6a9-\uacc4\uc0b0.md",
+      "language": "ko",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: \ud601\uc2e0\uc801",
+        "Description length not optimal: 101 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 2125,
+        "word_count": "2125 chars",
+        "ai_phrases_found": [
+          "\ud601\uc2e0\uc801"
+        ],
+        "description_length": 101,
+        "link_count": 3,
+        "avg_sentence_length": 7.3,
+        "has_image": "/images/20260117-\uc0ac\uc774\ubc84\ubcf4\uc548-\uc804\ub7b5-\ube44\uc6a9-\uacc4\uc0b0.jpg",
+        "heading_count": 4,
+        "title": "\uc0ac\uc774\ubc84\ubcf4\uc548 \uc804\ub7b5 \ube44\uc6a9 \uc644\ubcbd \uac00\uc774\ub4dc: ROI \uadf9\ub300\ud654\ud558\ub294 \uc608\uc0b0 \uacc4\ud68d\ubc95"
+      }
+    },
+    {
+      "file": "content/en/tech/2026-01-17-multiagent-systems-implementation-challenges.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [
+        "Word count high: 1259 words (target: 700-1200, Editor should compress)",
+        "Description length not optimal: 167 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "word_count": 1259,
+        "ai_phrases_found": [],
+        "description_length": 167,
+        "link_count": 6,
+        "avg_sentence_length": 10.0,
+        "has_image": "/images/20260117-multiagent-systems-implementat.jpg",
+        "heading_count": 6,
+        "title": "Multiagent Systems: 5 Key Implementation Challenges"
+      }
+    },
+    {
+      "file": "content/en/tech/2026-01-17-confidential-computing-roi-calculation.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [],
+      "info": {
+        "word_count": 1109,
+        "ai_phrases_found": [],
+        "description_length": 158,
+        "link_count": 3,
+        "avg_sentence_length": 12.8,
+        "has_image": "/images/20260117-confidential-computing-roi-cal.jpg",
+        "heading_count": 5,
+        "title": "Confidential Computing ROI: Calculate Your Security Investment"
+      }
+    },
+    {
+      "file": "content/ja/tech/2026-01-17-ai\u30b9\u30fc\u30d1\u30fc\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0\u5c0e\u5165\u5931\u6557\u4f8b.md",
       "language": "ja",
       "critical_failures": [],
       "warnings": [
-        "Character count on the lower end: 2720 chars (target: 2800-4200)",
+        "Description length not optimal: 104 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 3403,
+        "word_count": "3403 chars",
+        "ai_phrases_found": [],
+        "description_length": 104,
+        "link_count": 3,
+        "avg_sentence_length": 7.2,
+        "has_image": "/images/20260117-ai\u30b9\u30fc\u30d1\u30fc\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0\u5c0e\u5165\u5931\u6557\u4f8b.jpg",
+        "heading_count": 4,
+        "title": "AI\u30b9\u30fc\u30d1\u30fc\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u30fc\u5c0e\u5165\u3067\u5927\u5931\u6557\uff01\u4f01\u696d\u304c\u9665\u3063\u305f5\u3064\u306e\u843d\u3068\u3057\u7a74\u3068\u5bfe\u7b56\u6cd5"
+      }
+    },
+    {
+      "file": "content/ja/tech/2026-01-17-\u30b3\u30f3\u30d5\u30a3\u30c7\u30f3\u30b7\u30e3\u30eb\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0-vs-\u5f93\u6765\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3.md",
+      "language": "ja",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: \u3082\u3061\u308d\u3093",
+        "Description length not optimal: 104 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 3212,
+        "word_count": "3212 chars",
+        "ai_phrases_found": [
+          "\u3082\u3061\u308d\u3093"
+        ],
+        "description_length": 104,
+        "link_count": 3,
+        "avg_sentence_length": 17.5,
+        "has_image": "/images/20260117-\u30b3\u30f3\u30d5\u30a3\u30c7\u30f3\u30b7\u30e3\u30eb\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0-vs-\u5f93\u6765\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3.jpg",
+        "heading_count": 4,
+        "title": "\u30b3\u30f3\u30d5\u30a3\u30c7\u30f3\u30b7\u30e3\u30eb\u30b3\u30f3\u30d4\u30e5\u30fc\u30c6\u30a3\u30f3\u30b0\u3068\u306f\uff1f\u5f93\u6765\u306e\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u3068\u306e\u9055\u3044\u3092\u5fb9\u5e95\u6bd4\u8f03"
+      }
+    },
+    {
+      "file": "content/ko/tech/2026-01-17-\ud558\uc774\ube0c\ub9ac\ub4dc-\ucef4\ud4e8\ud305-\ub2e8\uc810.md",
+      "language": "ko",
+      "critical_failures": [],
+      "warnings": [
+        "Character count on the lower end: 1959 chars (target: 2000-3200)",
+        "Description length not optimal: 94 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 1959,
+        "word_count": "1959 chars",
+        "ai_phrases_found": [],
+        "description_length": 94,
+        "link_count": 3,
+        "avg_sentence_length": 7.9,
+        "has_image": "/images/20260117-\ud558\uc774\ube0c\ub9ac\ub4dc-\ucef4\ud4e8\ud305-\ub2e8\uc810.jpg",
+        "heading_count": 5,
+        "title": "\ud558\uc774\ube0c\ub9ac\ub4dc \ucef4\ud4e8\ud305 \ub3c4\uc785 \uc804 \ubc18\ub4dc\uc2dc \uc54c\uc544\uc57c \ud560 5\uac00\uc9c0 \uce58\uba85\uc801 \ub2e8\uc810"
+      }
+    },
+    {
+      "file": "content/ko/business/2026-01-17-\uc6d0\uaca9\uadfc\ubb34-\ub3c4\uad6c-\uc120\ud0dd-\uae30\uc900.md",
+      "language": "ko",
+      "critical_failures": [],
+      "warnings": [
+        "Description length not optimal: 96 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 2362,
+        "word_count": "2362 chars",
+        "ai_phrases_found": [],
+        "description_length": 96,
+        "link_count": 3,
+        "avg_sentence_length": 8.8,
+        "has_image": "/images/20260117-\uc6d0\uaca9\uadfc\ubb34-\ub3c4\uad6c-\uc120\ud0dd-\uae30\uc900.jpg",
+        "heading_count": 5,
+        "title": "2024\ub144 \uc6d0\uaca9\uadfc\ubb34 \ud544\uc218 \ub3c4\uad6c \uc120\ud0dd \uac00\uc774\ub4dc| \uc0dd\uc0b0\uc131 \uadf9\ub300\ud654\ud558\ub294 5\uac00\uc9c0 \uae30\uc900"
+      }
+    },
+    {
+      "file": "content/en/business/2026-01-17-chinese-llm-vs-openai-enterprise-decision.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [],
+      "info": {
+        "word_count": 1198,
+        "ai_phrases_found": [],
+        "description_length": 153,
+        "link_count": 6,
+        "avg_sentence_length": 15.4,
+        "has_image": "/images/20260117-chinese-llm-vs-openai-enterpri.jpg",
+        "heading_count": 6,
+        "title": "Chinese LLM vs OpenAI: Enterprise Decision Guide 2024"
+      }
+    },
+    {
+      "file": "content/en/business/2026-01-17-domain-specific-language-models-cost-benefit.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [
+        "Description length not optimal: 162 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "word_count": 1152,
+        "ai_phrases_found": [],
+        "description_length": 162,
+        "link_count": 3,
+        "avg_sentence_length": 13.3,
+        "has_image": "/images/20260117-domain-specific-language-model.jpg",
+        "heading_count": 5,
+        "title": "DSL Models: ROI Analysis & Cost-Benefit Breakdown"
+      }
+    },
+    {
+      "file": "content/ja/tech/2026-01-17-\u30d5\u30a3\u30b8\u30ab\u30ebai\u6295\u8cc7\u5224\u65ad\u57fa\u6e96.md",
+      "language": "ja",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: \u91cd\u8981\u3067\u3059",
+        "Description length not optimal: 99 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 4179,
+        "word_count": "4179 chars",
+        "ai_phrases_found": [
+          "\u91cd\u8981\u3067\u3059"
+        ],
+        "description_length": 99,
+        "link_count": 3,
+        "avg_sentence_length": 15.7,
+        "has_image": "/images/20260117-\u30d5\u30a3\u30b8\u30ab\u30ebai\u6295\u8cc7\u5224\u65ad\u57fa\u6e96.jpg",
+        "heading_count": 5,
+        "title": "\u30d5\u30a3\u30b8\u30ab\u30ebAI\u6295\u8cc7\u3067\u5931\u6557\u3057\u306a\u3044\uff012024\u5e74\u7248\u5224\u65ad\u57fa\u6e96\u3068\u6210\u529f\u306e\u30dd\u30a4\u30f3\u30c8\u5b8c\u5168\u30ac\u30a4\u30c9"
+      }
+    },
+    {
+      "file": "content/ja/business/2026-01-17-\u30de\u30eb\u30c1\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u30b7\u30b9\u30c6\u30e0\u904b\u7528\u30b3\u30b9\u30c8.md",
+      "language": "ja",
+      "critical_failures": [],
+      "warnings": [
         "AI phrases detected: \u91cd\u8981\u3067\u3059",
         "Description length not optimal: 98 chars (ideal: 120-160)"
       ],
       "info": {
-        "char_count": 2720,
-        "word_count": "2720 chars",
+        "char_count": 2942,
+        "word_count": "2942 chars",
         "ai_phrases_found": [
           "\u91cd\u8981\u3067\u3059"
         ],
         "description_length": 98,
-        "link_count": 2,
-        "avg_sentence_length": 13.3,
-        "has_image": "/images/20260117-\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u8cc7\u91d1\u8abf\u9054\u6226\u75652025.jpg",
+        "link_count": 3,
+        "avg_sentence_length": 6.7,
+        "has_image": "/images/20260117-\u30de\u30eb\u30c1\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u30b7\u30b9\u30c6\u30e0\u904b\u7528\u30b3\u30b9\u30c8.jpg",
         "heading_count": 4,
-        "title": "\u30102025\u5e74\u6700\u65b0\u3011\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u304c\u6210\u529f\u3059\u308b\u8cc7\u91d1\u8abf\u9054\u6226\u7565\uff5c\u6295\u8cc7\u5bb6\u304c\u6ce8\u76ee\u3059\u308b\u30dd\u30a4\u30f3\u30c8\u3068\u5b9f\u8df5\u65b9\u6cd5"
+        "title": "\u30de\u30eb\u30c1\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u30b7\u30b9\u30c6\u30e0\u306e\u904b\u7528\u30b3\u30b9\u30c8\u524a\u6e1b\u8853\uff5c\u52b9\u7387\u5316\u3067\u5229\u76ca\u6700\u5927\u5316\u3092\u5b9f\u73fe\u3059\u308b\u65b9\u6cd5"
+      }
+    },
+    {
+      "file": "content/ko/business/2026-01-17-\ub370\uc774\ud130\uc13c\ud130-\ud22c\uc790-\ub9ac\uc2a4\ud06c.md",
+      "language": "ko",
+      "critical_failures": [],
+      "warnings": [
+        "Description length not optimal: 98 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 2188,
+        "word_count": "2188 chars",
+        "ai_phrases_found": [],
+        "description_length": 98,
+        "link_count": 3,
+        "avg_sentence_length": 7.5,
+        "has_image": "/images/20260117-\ub370\uc774\ud130\uc13c\ud130-\ud22c\uc790-\ub9ac\uc2a4\ud06c.jpg",
+        "heading_count": 5,
+        "title": "\ub370\uc774\ud130\uc13c\ud130 \ud22c\uc790 \uc804\uc5d0 \uaf2d \uc54c\uc544\uc57c \ud560 5\uac00\uc9c0 \ud575\uc2ec \ub9ac\uc2a4\ud06c\uc640 \ub300\uc751\uc804\ub7b5"
+      }
+    },
+    {
+      "file": "content/ja/business/2026-01-17-\u30c9\u30e1\u30a4\u30f3\u7279\u5316\u8a00\u8a9e\u30e2\u30c7\u30eb\u958b\u767a-\u5916\u6ce8-vs-\u5185\u88fd.md",
+      "language": "ja",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: \u91cd\u8981\u3067\u3059, \u6ce8\u76ee\u3059\u3079\u304d",
+        "Description length not optimal: 101 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 3516,
+        "word_count": "3516 chars",
+        "ai_phrases_found": [
+          "\u91cd\u8981\u3067\u3059",
+          "\u6ce8\u76ee\u3059\u3079\u304d"
+        ],
+        "description_length": 101,
+        "link_count": 3,
+        "avg_sentence_length": 7.3,
+        "has_image": "/images/20260117-\u30c9\u30e1\u30a4\u30f3\u7279\u5316\u8a00\u8a9e\u30e2\u30c7\u30eb\u958b\u767a-\u5916\u6ce8-vs-\u5185\u88fd.jpg",
+        "heading_count": 4,
+        "title": "\u30c9\u30e1\u30a4\u30f3\u7279\u5316\u8a00\u8a9e\u30e2\u30c7\u30eb\u958b\u767a\uff1a\u5916\u6ce8\u3068\u5185\u88fd\u306e\u5fb9\u5e95\u6bd4\u8f03\u3068\u30b3\u30b9\u30c8\u52b9\u7387\u7684\u306a\u9078\u629e\u6307\u91dd"
       }
     }
   ]
