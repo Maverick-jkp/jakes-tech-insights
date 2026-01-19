@@ -643,14 +643,19 @@
         }
 
         .category-grid a {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
             padding: 0.5rem 0.75rem;
             color: var(--text);
             text-decoration: none;
             border-radius: 0.5rem;
             transition: all 0.3s;
             font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .category-grid a:hover {
