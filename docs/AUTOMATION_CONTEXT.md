@@ -84,8 +84,38 @@ def fetch_trending_from_rss(self) -> List[str]:
 ```
 
 ### Image Deduplication System
-**File**: [generate_posts.py](../scripts/generate_posts.py) (lines 839-876)
+**File**: [generate_posts.py](../scripts/generate_posts.py) (lines 800-866)
 
+**Keyword-Based Image Search** (lines 800-866):
+```python
+# Translation dictionary for meaningful keywords
+keyword_translations = {
+    # Korean
+    '나라사랑카드': 'patriot card credit card',
+    '카드': 'card credit',
+    '연령': 'age limit',
+    '전세': 'housing lease deposit',
+    '배달': 'delivery food',
+    # Japanese
+    '奨学金': 'scholarship student loan',
+    '投資': 'investment financial',
+    # ... more translations
+}
+
+# Extract meaningful keywords from title and translate
+for ko_word, en_translation in keyword_translations.items():
+    if ko_word in clean_keyword:
+        translated_keywords.append(en_translation)
+
+# Build flexible, contextual query
+base_keywords = ' '.join(translated_keywords[:2])
+context = category_context.get(category, category)
+query = f"{base_keywords} {context}".strip()
+
+# Search Unsplash with contextual keywords
+```
+
+**Image Tracking** (lines 868-900):
 ```python
 # Load previously used image IDs from JSON
 used_images = set(json.load(open('data/used_images.json')))
@@ -109,6 +139,12 @@ json.dump(list(used_images), open('data/used_images.json', 'w'))
 ```yaml
 git add data/used_images.json  # Commit tracking file to persist across runs
 ```
+
+**Benefits of Keyword-Based Search**:
+- Images are contextually relevant to post topic (not just generic category images)
+- Reduced duplication rate (diverse search queries = diverse image pool)
+- "나라사랑카드" → searches "credit card" instead of generic "business"
+- "전세보증금" → searches "housing lease deposit" instead of generic "finance"
 
 ### Keyword Expiry Management
 **File**: [keyword_curator.py](../scripts/keyword_curator.py) (line 575)
@@ -293,7 +329,19 @@ Daily-content workflow runs 1 hour after daily-keywords to ensure fresh keywords
 
 ## 8. Recent Changes Log
 
-### 2026-01-19: Category Expansion & RSS Integration
+### 2026-01-19 (Evening): Image Search & References Improvements
+- **Keyword-Based Image Search**: Changed from generic category queries to contextual keyword extraction
+  - Added Korean/Japanese → English translation dictionary
+  - Example: "나라사랑카드" → "credit card" instead of generic "business"
+  - Significantly reduced image duplication risk
+- **References Section**: Changed to optional (skip if not present, no fake URLs)
+  - Removed fake example.com references from 11 existing posts
+  - Now only adds References section if Claude API provides real sources
+- **Image Tracking**: Fixed used_images.json to properly track all Unsplash IDs
+  - Created fix_duplicate_images.py to extract IDs from existing posts
+  - Updated from 19 → 58 unique tracked IDs
+
+### 2026-01-19 (Morning): Category Expansion & RSS Integration
 - Added 3 new categories (Sports, Finance, Education)
 - Integrated Google Trends RSS feeds (KR/US/JP)
 - Implemented image deduplication tracking
@@ -334,6 +382,7 @@ jakes-tech-insights/
 │   ├── keyword_curator.py       # RSS → Claude → Queue
 │   ├── generate_posts.py        # Queue → Posts + Images
 │   ├── cleanup_expired.py       # Remove old trends
+│   ├── fix_duplicate_images.py  # Extract Unsplash IDs from posts
 │   └── topic_queue.py           # Queue utilities
 └── hugo.toml                    # Site configuration
 ```
