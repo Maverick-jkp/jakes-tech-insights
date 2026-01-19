@@ -23,7 +23,7 @@
       "category": "finance",
       "lang": "ko",
       "priority": 8,
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-19T18:40:01.524460",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -31,7 +31,8 @@
       "angle": "숨겨진 정부 혜택과 절약 기회",
       "competition_level": "medium",
       "expiry_days": 3,
-      "reserved_at": "2026-01-19T09:43:38.606096"
+      "reserved_at": "2026-01-19T09:43:38.606096",
+      "completed_at": "2026-01-19T09:53:14.849818"
     },
     {
       "id": "003-ko-finance-전세보증금반환보증-지원-놓치면",
@@ -84,7 +85,7 @@
       "category": "business",
       "lang": "en",
       "priority": 8,
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-19T18:40:01.524489",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -92,7 +93,8 @@
       "angle": "Economic policy impact on markets and consumers",
       "competition_level": "high",
       "expiry_days": 3,
-      "reserved_at": "2026-01-19T09:43:38.606096"
+      "reserved_at": "2026-01-19T09:43:38.606096",
+      "completed_at": "2026-01-19T09:54:29.923754"
     },
     {
       "id": "007-en-society-trump-greenland-nobe",
@@ -162,7 +164,7 @@
       "category": "business",
       "lang": "ja",
       "priority": 8,
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-19T18:40:01.524515",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -170,7 +172,8 @@
       "angle": "選挙公約の実現可能性と家計への影響",
       "competition_level": "high",
       "expiry_days": 3,
-      "reserved_at": "2026-01-19T09:43:38.606096"
+      "reserved_at": "2026-01-19T09:43:38.606096",
+      "completed_at": "2026-01-19T09:56:09.359522"
     },
     {
       "id": "012-ja-society-高市首相解散総選挙タイミング",
@@ -240,7 +243,7 @@
       "category": "tech",
       "lang": "ko",
       "priority": 8,
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-19T18:40:01.524541",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -248,7 +251,8 @@
       "angle": "공공기관 투명성과 시민 감시의 중요성",
       "competition_level": "high",
       "expiry_days": 3,
-      "reserved_at": "2026-01-19T09:43:38.606096"
+      "reserved_at": "2026-01-19T09:43:38.606096",
+      "completed_at": "2026-01-19T09:57:31.900901"
     },
     {
       "id": "017-ko-business-나라사랑카드-연령제한-허점",
@@ -300,14 +304,15 @@
       "category": "education",
       "lang": "ko",
       "priority": 8,
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-19T18:40:01.527959",
       "retry_count": 0,
       "keyword_type": "evergreen",
       "search_intent": "학자금 대출의 장기적 영향을 모르고 있다가 나중에 후회할 수 있음",
       "angle": "교육 투자의 경제적 부담과 미래 계획",
       "competition_level": "low",
-      "reserved_at": "2026-01-19T09:43:38.606096"
+      "reserved_at": "2026-01-19T09:43:38.606096",
+      "completed_at": "2026-01-19T09:59:07.345845"
     },
     {
       "id": "021-en-tech-tech-platform-algori",
@@ -400,14 +405,15 @@
       "category": "business",
       "lang": "ja",
       "priority": 9,
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-19T18:40:01.528008",
       "retry_count": 0,
       "keyword_type": "evergreen",
       "search_intent": "副業詐欺の手口を知らないと金銭的被害を受ける可能性",
       "angle": "副業選択時の詐欺回避と安全性確認",
       "competition_level": "high",
-      "reserved_at": "2026-01-19T09:43:38.606096"
+      "reserved_at": "2026-01-19T09:43:38.606096",
+      "completed_at": "2026-01-19T09:50:15.267461"
     },
     {
       "id": "028-ja-education-奨学金返済免除条件",
@@ -444,14 +450,15 @@
       "category": "finance",
       "lang": "ja",
       "priority": 9,
-      "status": "in_progress",
+      "status": "completed",
       "created_at": "2026-01-19T18:40:01.528022",
       "retry_count": 0,
       "keyword_type": "evergreen",
       "search_intent": "年金制度の変化を把握しないと老後資金計画が破綻する",
       "angle": "老後資金計画と年金制度の現実的理解",
       "competition_level": "low",
-      "reserved_at": "2026-01-19T09:43:38.606096"
+      "reserved_at": "2026-01-19T09:43:38.606096",
+      "completed_at": "2026-01-19T09:51:41.710618"
     }
   ]
 }
