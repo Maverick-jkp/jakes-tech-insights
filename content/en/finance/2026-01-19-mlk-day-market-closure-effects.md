@@ -5,8 +5,10 @@ draft: false
 categories: ["finance"]
 tags: ["mlk", "day", "market"]
 description: "Discover how MLK Day market closures impact trading, investment strategies, and global markets. Learn key effects on stocks, bonds, and your portfolio."
-image: "/images/placeholder-finance.jpg"
+image: "/images/20260119-mlk-day-market-closure-effects.jpg"
 ---
+
+![mlk day market closure effects](/images/20260119-mlk-day-market-closure-effects.jpg)
 
 You've planned your trading week perfectly, checked your portfolio Sunday night, and then Monday morning hits—the markets are closed for MLK Day. Your carefully timed trades are stuck in limbo, and you're watching international markets move while yours stay frozen. Sound familiar?
 
@@ -82,3 +84,6 @@ The real question isn't whether these closures affect your portfolio—they do. 
 
 How will you adjust your trading approach for the next MLK Day closure to capitalize on these predictable market patterns? Because ignoring them means leaving money on the table or, worse, watching preventable losses pile up while you wait for Tuesday morning.
 
+---
+
+*Photo by [Kanchanara](https://unsplash.com/@kanchanara) on [Unsplash](https://unsplash.com/photos/gold-round-coin-on-brown-leather-textile-uFF0eZ4U-Rg)*

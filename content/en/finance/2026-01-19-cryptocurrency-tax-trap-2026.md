@@ -87,12 +87,6 @@ Here's my advice: start tracking everything now, even if it seems excessive. The
 
 Are you tracking every crypto transaction with the detail the IRS will soon require?
 
-## References
-
-- [Digital Asset Tax Compliance Guidelines 2026](https://www.irs.gov/digital-assets-2026) - Internal Revenue Service
-- [Cryptocurrency Reporting Requirements Survey 2024](https://www.aicpa.org/crypto-tax-survey) - American Institute of CPAs
-- [Cross-Border Digital Asset Reporting Framework](https://www.treasury.gov/international-crypto-compliance) - U.S. Department of Treasury
-
 ---
 
 *Photo by [Kanchanara](https://unsplash.com/@kanchanara) on [Unsplash](https://unsplash.com/photos/gold-round-coin-on-brown-leather-textile-uFF0eZ4U-Rg)*
