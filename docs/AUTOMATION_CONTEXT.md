@@ -105,16 +105,22 @@ if photo is None:
 json.dump(list(used_images), open('data/used_images.json', 'w'))
 ```
 
+**File**: [daily-content.yml](../.github/workflows/daily-content.yml) (line 91)
+```yaml
+git add data/used_images.json  # Commit tracking file to persist across runs
+```
+
 ### Keyword Expiry Management
 **File**: [keyword_curator.py](../scripts/keyword_curator.py) (line 575)
 
 ```python
 if topic['keyword_type'] == 'trend':
-    topic['expiry_days'] = 3  # Auto-cleanup after 3 days
+    topic['expiry_days'] = 3  # Auto-cleanup after 3 days (code default)
 ```
 
 **File**: [cleanup_expired.py](../scripts/cleanup_expired.py) (lines 16-75)
-- Removes pending trends older than 3 days
+- **Daily workflow uses**: `cleanup_expired.py 1` (1 day expiry)
+- Removes pending trends older than 1 day (fresh daily rotation)
 - Does NOT touch in_progress/completed keywords
 - Does NOT touch evergreen keywords
 

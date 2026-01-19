@@ -88,6 +88,7 @@ jobs:
               # Add all generated content
               git add content/
               git add data/topics_queue.json
+              git add data/used_images.json
               git add static/images/ || true
 
               # Check if there are actual changes to commit

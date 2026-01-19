@@ -34,7 +34,7 @@ jobs:
       - name: Cleanup expired keywords first
         run: |
           echo "🗑️ Cleaning up expired keywords..."
-          python scripts/cleanup_expired.py 3
+          python scripts/cleanup_expired.py 1
 
       - name: Curate new keywords
         env:
