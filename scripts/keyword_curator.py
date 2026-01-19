@@ -196,57 +196,56 @@ class KeywordCurator:
 
         return signals if signals else ["GENERAL"]
 
+    def fetch_trending_from_rss(self) -> List[str]:
+        """Fetch trending topics from Google Trends RSS feeds"""
+        import xml.etree.ElementTree as ET
+
+        rss_urls = {
+            "KR": "https://trends.google.co.kr/trending/rss?geo=KR",
+            "US": "https://trends.google.co.kr/trending/rss?geo=US",
+            "JP": "https://trends.google.co.kr/trending/rss?geo=JP"
+        }
+
+        trending_queries = []
+
+        for geo, url in rss_urls.items():
+            try:
+                response = requests.get(url, timeout=10)
+                response.raise_for_status()
+
+                # Parse XML
+                root = ET.fromstring(response.content)
+
+                # Find all items (trending topics)
+                items = root.findall('.//item')
+
+                for item in items[:10]:  # Top 10 per region
+                    title_elem = item.find('title')
+                    if title_elem is not None and title_elem.text:
+                        trending_queries.append(title_elem.text.strip())
+
+                print(f"  ✓ Found {min(len(items), 10)} trends from {geo}")
+
+            except Exception as e:
+                print(f"  ⚠️  RSS fetch error for {geo}: {e}")
+                continue
+
+        return trending_queries
+
     def fetch_trending_topics(self) -> str:
-        """Fetch trending topics using pytrends (real-time trending searches)"""
+        """Fetch trending topics using Google Trends RSS feeds"""
         print(f"\n{'='*60}")
-        print(f"  🔥 Fetching REAL-TIME trending topics from Google Trends...")
+        print(f"  🔥 Fetching REAL-TIME trending topics from Google Trends RSS...")
         print(f"{'='*60}\n")
 
-        # Try pytrends first for real trending keywords
-        search_queries = []
-        try:
-            from pytrends.request import TrendReq
-            import time
+        # Try RSS feeds first (most reliable method)
+        search_queries = self.fetch_trending_from_rss()
 
-            print("  📊 Using pytrends for real-time trends...")
-
-            # South Korea trends
-            pytrends_kr = TrendReq(hl='ko-KR', tz=540)
-            trending_kr = pytrends_kr.trending_searches(pn='south_korea')
-            time.sleep(2)  # Avoid rate limiting
-
-            # Get top 10 Korean trends
-            if not trending_kr.empty:
-                kr_trends = trending_kr.head(10)[0].tolist()
-                search_queries.extend(kr_trends)
-                print(f"  ✓ Found {len(kr_trends)} Korean trends")
-
-            # US trends (for English keywords)
-            pytrends_us = TrendReq(hl='en-US', tz=360)
-            trending_us = pytrends_us.trending_searches(pn='united_states')
-            time.sleep(2)
-
-            if not trending_us.empty:
-                us_trends = trending_us.head(10)[0].tolist()
-                search_queries.extend(us_trends)
-                print(f"  ✓ Found {len(us_trends)} US trends")
-
-            # Japan trends
-            pytrends_jp = TrendReq(hl='ja-JP', tz=540)
-            trending_jp = pytrends_jp.trending_searches(pn='japan')
-            time.sleep(2)
-
-            if not trending_jp.empty:
-                jp_trends = trending_jp.head(10)[0].tolist()
-                search_queries.extend(jp_trends)
-                print(f"  ✓ Found {len(jp_trends)} Japan trends")
-
-            print(f"\n  🎉 Total {len(search_queries)} real-time trending topics!\n")
-
-        except ImportError:
-            print("  ⚠️  pytrends not installed. Install: pip install pytrends")
-            print("  📌 Falling back to pattern-based queries...\n")
-            # Fallback to original queries
+        if search_queries:
+            print(f"\n  🎉 Total {len(search_queries)} real-time trending topics from RSS!\n")
+        else:
+            print("  ⚠️  RSS feeds failed. Falling back to pattern-based queries...\n")
+            # Fallback to pattern queries
             search_queries = [
                 "account banned after update no response",
                 "service outage promised compensation denied",
@@ -268,15 +267,6 @@ class KeywordCurator:
                 "food contamination others got compensated only me",
                 "리콜 발표했는데 환불 거부",
                 "リコール発表 返金対応なし"
-            ]
-        except Exception as e:
-            print(f"  ⚠️  pytrends error: {e}")
-            print("  📌 Falling back to pattern-based queries...\n")
-            # Fallback
-            search_queries = [
-                "account banned after update no response",
-                "celebrity apology issued but backlash continues",
-                "정부지원 조건 발표와 다름"
             ]
 
         # If no Google Custom Search API, skip search results
@@ -423,7 +413,7 @@ class KeywordCurator:
 
         response = self.client.messages.create(
             model=self.model,
-            max_tokens=8000,  # Increased for larger outputs
+            max_tokens=16000,  # Increased for 30+ keywords
             messages=[{
                 "role": "user",
                 "content": prompt
@@ -572,7 +562,7 @@ class KeywordCurator:
 
             # Add expiry_days for trend keywords
             if topic['keyword_type'] == 'trend':
-                topic['expiry_days'] = 21  # 3 weeks expiry
+                topic['expiry_days'] = 3  # 3 days expiry for trending keywords
 
             self.queue_data['topics'].append(topic)
 

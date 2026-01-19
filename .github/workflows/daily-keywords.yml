@@ -1,0 +1,66 @@
+name: Daily Keyword Curation
+
+on:
+  schedule:
+    # Run every day at 8 AM UTC (5 PM KST) - 1 hour before content generation
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Number of keywords to generate'
+        required: false
+        default: '10'
+
+jobs:
+  curate-keywords:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install anthropic requests
+
+      - name: Cleanup expired keywords first
+        run: |
+          echo "🗑️ Cleaning up expired keywords..."
+          python scripts/cleanup_expired.py 3
+
+      - name: Curate new keywords
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_CX: ${{ secrets.GOOGLE_CX }}
+        run: |
+          COUNT="${{ github.event.inputs.count || '10' }}"
+          echo "📝 Generating $COUNT new keywords..."
+          python scripts/keyword_curator.py --count "$COUNT"
+
+      - name: Commit and push keywords
+        run: |
+          git config user.name "Keyword Bot"
+          git config user.email "bot@jakes-tech-insights.com"
+
+          if ! git diff --quiet data/topics_queue.json; then
+            git add data/topics_queue.json
+            git commit -m "🔑 Auto-curated keywords: Daily trending topics update"
+            git push origin main
+            echo "✅ Successfully added new keywords to queue"
+          else
+            echo "⚠️ No new keywords to commit"
+          fi
+
+      - name: Summary
+        run: |
+          echo "✅ Keyword curation complete"
+          echo "📊 Queue updated with fresh trending topics"
