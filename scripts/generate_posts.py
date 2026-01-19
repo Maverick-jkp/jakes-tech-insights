@@ -836,16 +836,43 @@ Return improved version (body only, no title):""",
                 print(f"  ⚠️  No images found for '{query}'")
                 return None
 
-            # Get random result from top 5 to avoid image duplication
-            import random
-            photo = random.choice(data['results'])
+            # Load used images tracking file
+            used_images_file = Path(__file__).parent.parent / "data" / "used_images.json"
+            used_images = set()
+            if used_images_file.exists():
+                try:
+                    with open(used_images_file, 'r') as f:
+                        used_images = set(json.load(f))
+                except:
+                    pass
+
+            # Find first unused image from results
+            photo = None
+            for result in data['results']:
+                image_id = result['id']
+                if image_id not in used_images:
+                    photo = result
+                    used_images.add(image_id)
+                    break
+
+            # If all images are used, use random from top 5
+            if photo is None:
+                import random
+                photo = random.choice(data['results'][:5])
+                used_images.add(photo['id'])
+
+            # Save used images
+            used_images_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(used_images_file, 'w') as f:
+                json.dump(list(used_images), f)
 
             image_info = {
                 'url': photo['urls']['regular'],
                 'download_url': photo['links']['download_location'],
                 'photographer': photo['user']['name'],
                 'photographer_url': photo['user']['links']['html'],
-                'unsplash_url': photo['links']['html']
+                'unsplash_url': photo['links']['html'],
+                'image_id': photo['id']
             }
 
             print(f"  ✓ Found image by {image_info['photographer']}")

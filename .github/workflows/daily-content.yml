@@ -2,8 +2,10 @@ name: Daily Content Generation
 
 on:
   schedule:
-    # Run every day at 9:10 AM UTC (6:10 PM KST) - 1hr after keyword curation
-    - cron: '10 9 * * *'
+    # Run 3 times a day: 6PM, 6AM next day, 12PM next day (KST)
+    - cron: '10 9 * * *'   # 6:10 PM KST (1hr after keyword curation)
+    - cron: '0 21 * * *'   # 6:00 AM KST (next morning)
+    - cron: '0 3 * * *'    # 12:00 PM KST (noon)
   workflow_dispatch:
     inputs:
       count:
