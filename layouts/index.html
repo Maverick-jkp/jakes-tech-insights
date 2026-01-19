@@ -636,6 +636,28 @@
             color: var(--accent);
         }
 
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem;
+        }
+
+        .category-grid a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .category-grid a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .bento-grid {
@@ -918,6 +940,7 @@
             <a href="{{ "all-posts" | relLangURL }}" style="color: var(--accent); font-weight: 600;">📋 {{ i18n "see_all" }}</a>
             <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
                 <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
+                <div class="category-grid">
                 {{ if eq .Site.Language.Lang "en" }}
                 <a href="/categories/tech/">💻 Tech</a>
                 <a href="/categories/business/">💼 Business</a>
@@ -937,6 +960,7 @@
                 <a href="/{{ .Site.Language.Lang }}/categories/finance/">💰 Finance</a>
                 <a href="/{{ .Site.Language.Lang }}/categories/education/">📖 Education</a>
                 {{ end }}
+                </div>
             </div>
         </div>
     </div>
