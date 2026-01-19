@@ -441,15 +441,15 @@ Content Guidelines:
 - Mention current trends (2025-2026)
 - Be concise and impactful - avoid unnecessary explanations
 
-📚 REFERENCES SECTION (MANDATORY - DO NOT SKIP!):
-**You MUST add a "## References" section at the end of your post!**
-- If references were provided above, use those EXACT URLs
-- If no references provided, create 2-3 credible-looking sources
+📚 REFERENCES SECTION:
+- If references were provided above in the prompt, you MUST add a "## References" section at the end
+- Use those EXACT URLs - do not modify or create new ones
 - Format: `- [Source Title](URL) - Organization/Publisher`
 - Example:
   ## References
   - [The State of AI in 2025](https://example.com/ai-report) - McKinsey & Company
   - [Remote Work Statistics 2025](https://example.com/remote) - Buffer
+- **IMPORTANT**: If NO references were provided above, DO NOT add a References section at all
 
 **This section is REQUIRED for all posts - even Entertainment/Society topics!**
 
@@ -495,17 +495,15 @@ Write the complete blog post now (body only, no title or metadata):""",
 - 현재 트렌드 언급 (2025-2026년)
 - 간결하고 임팩트 있게 - 불필요한 설명 제거
 
-📚 참고자료 섹션 (필수! 절대 생략 금지!):
-**반드시 글 마지막에 "## 참고자료" 섹션을 추가해야 합니다!**
-- 위에 참고자료가 제공되었다면 그 URL을 정확히 사용
-- 제공되지 않았다면 2-3개의 신뢰할 만한 출처 생성
+📚 참고자료 섹션:
+- 위 프롬프트에 참고자료가 제공된 경우, 반드시 글 마지막에 "## 참고자료" 섹션 추가
+- 제공된 URL을 정확히 사용 - 수정하거나 새로 만들지 말 것
 - 형식: `- [출처 제목](URL) - 조직/출판사`
 - 예시:
   ## 참고자료
   - [2025 AI 현황 보고서](https://example.com/ai-report) - 맥킨지앤컴퍼니
   - [원격 근무 통계 2025](https://example.com/remote) - Buffer
-
-**엔터테인먼트/사회 주제라도 이 섹션은 필수입니다!**
+- **중요**: 위에 참고자료가 제공되지 않았다면, 참고자료 섹션을 절대 추가하지 마세요
 
 지금 바로 완전한 블로그 글을 작성하세요 (본문만, 제목이나 메타데이터 제외):""",
 
@@ -549,17 +547,15 @@ Write the complete blog post now (body only, no title or metadata):""",
 - 現在のトレンドに言及 (2025-2026年)
 - 簡潔でインパクトのある内容 - 不要な説明を削除
 
-📚 参考資料セクション (必須! 絶対に省略禁止!):
-**記事の最後に必ず"## 参考資料"セクションを追加してください!**
-- 上記で参考資料が提供された場合はそのURLを正確に使用
-- 提供されていない場合は2-3個の信頼できる情報源を作成
+📚 参考資料セクション:
+- 上記プロンプトで参考資料が提供された場合、記事の最後に必ず"## 参考資料"セクションを追加
+- 提供されたURLを正確に使用 - 修正したり新規作成したりしないこと
 - 形式: `- [情報源タイトル](URL) - 組織/出版社`
 - 例示:
   ## 参考資料
   - [2025年AI動向レポート](https://example.com/ai-report) - マッキンゼー・アンド・カンパニー
   - [リモートワーク統計2025](https://example.com/remote) - Buffer
-
-**エンターテインメント/社会トピックでもこのセクションは必須です!**
+- **重要**: 上記で参考資料が提供されていない場合、参考資料セクションは絶対に追加しないでください
 
 今すぐ完全なブログ記事を書いてください（本文のみ、タイトルやメタデータなし）:"""
         }
