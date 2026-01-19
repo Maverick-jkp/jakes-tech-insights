@@ -616,6 +616,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Keyword Curator for blog content")
     parser.add_argument('--count', type=int, default=15, help="Number of candidates to generate (default: 15)")
+    parser.add_argument('--auto', action='store_true', help="Automatically add all candidates without interactive selection")
     args = parser.parse_args()
 
     # Check API key
@@ -632,8 +633,14 @@ def main():
     # Display candidates
     curator.display_candidates(candidates)
 
-    # Interactive selection
-    selected = curator.interactive_selection(candidates)
+    # Selection
+    if args.auto:
+        # Auto mode: add all candidates
+        print("\n🤖 Auto mode: Adding all candidates to queue...\n")
+        selected = candidates
+    else:
+        # Interactive mode: ask user
+        selected = curator.interactive_selection(candidates)
 
     # Add to queue
     if selected:

@@ -44,7 +44,7 @@ jobs:
         run: |
           COUNT="${{ github.event.inputs.count || '20' }}"
           echo "📝 Generating $COUNT new keywords..."
-          python scripts/keyword_curator.py --count "$COUNT"
+          python scripts/keyword_curator.py --count "$COUNT" --auto
 
       - name: Commit and push keywords
         run: |
