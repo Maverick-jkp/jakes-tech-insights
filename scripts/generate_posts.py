@@ -797,20 +797,73 @@ Return improved version (body only, no title):""",
             clean_keyword = re.sub(r'\[.*?\]', '', clean_keyword)  # Remove [brackets]
             clean_keyword = clean_keyword.strip()
 
-            # Use category-specific generic queries for better image relevance
-            category_queries = {
-                'tech': 'technology computer coding',
-                'business': 'business meeting office',
-                'finance': 'finance money investment',
-                'society': 'society people community',
-                'entertainment': 'entertainment music movie',
-                'lifestyle': 'lifestyle health wellness',
-                'sports': 'sports athlete competition',
-                'education': 'education learning student'
+            # Translation dictionary for meaningful keywords
+            keyword_translations = {
+                # Korean
+                '나라사랑카드': 'patriot card credit card',
+                '카드': 'card credit',
+                '연령': 'age limit',
+                '제한': 'restriction limit',
+                '전세': 'housing lease deposit',
+                '보증금': 'deposit guarantee',
+                '배달': 'delivery food',
+                '수수료': 'fee commission',
+                '자영업': 'small business owner',
+                '폐업': 'business closure bankruptcy',
+                '지원금': 'subsidy support fund',
+                '정부': 'government policy',
+                '신청': 'application registration',
+                '혜택': 'benefit advantage',
+                '사과문': 'apology statement',
+                '팬': 'fan supporter',
+                '등돌림': 'backlash criticism',
+                '스마트폰': 'smartphone mobile',
+                '건강': 'health wellness',
+                # Japanese
+                '奨学金': 'scholarship student loan',
+                '返済': 'repayment debt',
+                '免除': 'exemption forgiveness',
+                '投資': 'investment financial',
+                '詐欺': 'fraud scam',
+                'アカデミー賞': 'academy award',
+                '受賞': 'award winner',
+                '住宅ローン': 'home mortgage loan',
+                '審査': 'screening examination',
+                '承認': 'approval authorization',
             }
 
-            # Use generic category query for consistent, relevant images
-            query = category_queries.get(category, f"{category} professional")
+            # Extract meaningful keywords from title
+            title_words = clean_keyword.split()
+            translated_keywords = []
+
+            # Try to find and translate key phrases
+            for ko_word, en_translation in keyword_translations.items():
+                if ko_word in clean_keyword:
+                    translated_keywords.append(en_translation)
+
+            # If no translation found, extract meaningful words (skip common noise)
+            if not translated_keywords:
+                noise_words = ['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for']
+                for word in title_words[:3]:  # Take first 3 words
+                    if len(word) > 2 and word.lower() not in noise_words:
+                        translated_keywords.append(word)
+
+            # Add category context
+            category_context = {
+                'tech': 'technology digital',
+                'business': 'business professional',
+                'finance': 'finance money',
+                'society': 'society community',
+                'entertainment': 'entertainment culture',
+                'lifestyle': 'lifestyle daily',
+                'sports': 'sports athletic',
+                'education': 'education learning'
+            }
+
+            # Build flexible, contextual query
+            base_keywords = ' '.join(translated_keywords[:2]) if translated_keywords else clean_keyword
+            context = category_context.get(category, category)
+            query = f"{base_keywords} {context}".strip()
 
             # Unsplash API endpoint
             url = "https://api.unsplash.com/search/photos"
