@@ -836,8 +836,9 @@ Return improved version (body only, no title):""",
                 print(f"  ⚠️  No images found for '{query}'")
                 return None
 
-            # Get first result
-            photo = data['results'][0]
+            # Get random result from top 5 to avoid image duplication
+            import random
+            photo = random.choice(data['results'])
 
             image_info = {
                 'url': photo['urls']['regular'],
