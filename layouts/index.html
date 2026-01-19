@@ -645,20 +645,26 @@
         .category-grid a {
             display: flex;
             align-items: center;
-            gap: 0.35rem;
-            padding: 0.4rem 0.6rem;
+            gap: 0.4rem;
+            padding: 0.45rem 0.65rem;
             color: var(--text);
             text-decoration: none;
             border-radius: 0.5rem;
             transition: all 0.3s;
             font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            line-height: 1.2;
+            font-size: 0.72rem;
         }
 
-        .category-grid a::before {
+        .category-grid .cat-icon {
             flex-shrink: 0;
-            width: 1.2em;
+            display: inline-block;
+            width: 1.1em;
+            text-align: center;
+        }
+
+        .category-grid .cat-text {
+            flex: 1;
+            white-space: nowrap;
         }
 
         .category-grid a:hover {
@@ -950,23 +956,23 @@
                 <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
                 <div class="category-grid">
                 {{ if eq .Site.Language.Lang "en" }}
-                <a href="/categories/tech/">💻 Tech</a>
-                <a href="/categories/business/">💼 Business</a>
-                <a href="/categories/society/">🌍 Society</a>
-                <a href="/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/categories/lifestyle/">🌱 Lifestyle</a>
-                <a href="/categories/sports/">⚽ Sports</a>
-                <a href="/categories/finance/">💰 Finance</a>
-                <a href="/categories/education/">📖 Education</a>
+                <a href="/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
                 {{ else }}
-                <a href="/{{ .Site.Language.Lang }}/categories/tech/">💻 Tech</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/business/">💼 Business</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/society/">🌍 Society</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/">🌱 Lifestyle</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/sports/">⚽ Sports</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/finance/">💰 Finance</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/education/">📖 Education</a>
+                <a href="/{{ .Site.Language.Lang }}/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
                 {{ end }}
                 </div>
             </div>
