@@ -352,6 +352,7 @@ ANTHROPIC_API_KEY=your-claude-api-key
 - **PaperMod Theme**: https://github.com/adityatelange/hugo-PaperMod
 - **Claude API**: https://docs.anthropic.com/
 - **GitHub Actions**: https://docs.github.com/en/actions
+- **[Windows Setup Guide](docs/WINDOWS_SETUP.md)**: 윈도우 환경 설정 (Git, GitHub CLI, PATH)
 
 ---
 
