@@ -131,14 +131,14 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 2rem;
         }
 
         /* Bento Grid Layout */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
@@ -180,6 +180,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            display: block;
         }
 
         .featured-content {
@@ -287,7 +288,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            min-height: 320px;
+            min-height: 360px;
         }
 
         .post-card:hover {
@@ -298,19 +299,25 @@
 
         .post-card-thumbnail {
             width: 100%;
-            height: 180px;
+            height: 200px;
             background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            overflow: hidden;
+            position: relative;
+            font-size: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            font-size: 2rem;
         }
 
         .post-card-thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .post-card-content {
@@ -797,8 +804,8 @@
             </a>
             {{ end }}
 
-            <!-- Post Cards Grid (8 cards, 4x2 grid) -->
-            {{ range after 1 (first 9 $currentLangPages) }}
+            <!-- Post Cards Grid (6 cards, 3x2 grid) -->
+            {{ range after 1 (first 7 $currentLangPages) }}
             <a href="{{ .Permalink }}" class="post-card">
                 <div class="post-card-thumbnail">
                     {{ with .Resources.GetMatch "cover.*" }}
