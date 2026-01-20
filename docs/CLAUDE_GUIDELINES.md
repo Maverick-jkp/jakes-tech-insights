@@ -301,10 +301,13 @@ if not image_path:
 ```
 
 **해결 방법:**
-1. **자동 수정 워크플로우**: `.github/workflows/fix-placeholder-images.yml`
+1. **자동 수정 워크플로우** (추천):
    ```bash
-   GitHub Actions → Fix Placeholder Images → Run workflow
+   /opt/homebrew/bin/gh workflow run fix-placeholder-images.yml
    ```
+   - 모든 placeholder 게시물 자동 검색
+   - 각 게시물의 title/category에 맞는 이미지 가져오기
+   - 자동 커밋 & 푸시
 
 2. **수동 삭제 & 재생성**:
    ```bash
@@ -314,16 +317,36 @@ if not image_path:
    ```
 
 **왜 Placeholder가 발생하나?**
-1. Unsplash API가 제한된 결과 반환 (예: 일본어 "大相撲" → 10개 결과)
-2. 10개 모두 `used_images.json`에 이미 존재
-3. 랜덤 선택 → 다운로드 실패
-4. Fallback → placeholder 경로 사용
-5. 파일 없음 → 썸네일 깨짐
+
+1. **번역 실패** (가장 흔한 원인)
+   - 일본어/한국어가 제대로 영어로 번역되지 않음
+   - 예: `"sports sumo wrestlingtournament results をhighlightsた方必見！"` (잘못됨)
+   - Unsplash API 410 Gone 에러 발생
+   - **해결**: [scripts/replace_placeholder_images.py:59-70](scripts/replace_placeholder_images.py:59-70)에서 non-ASCII 문자 제거
+
+2. **중복 이미지**
+   - Unsplash API가 제한된 결과 반환 (예: 10개)
+   - 10개 모두 `used_images.json`에 이미 존재
+   - 랜덤 선택 → 다운로드 실패
+   - Fallback → placeholder 경로
+
+3. **API 실패**
+   - 네트워크 오류
+   - Unsplash API 장애
+
+**실제 발생 사례 (2026-01-20):**
+- 게시물: `ja/sports/2026-01-20-大相撲結果速報見逃し.md`
+- 문제: 번역 로직이 일부 일본어를 남김
+- 검색어: `"sports sumo wrestlingtournament results をhighlightsた方必見！"`
+- 결과: 410 Gone 에러 → placeholder 사용
+- 수정: non-ASCII 문자 제거 로직 추가
+- 재실행 후 성공: `"sports sumo wrestling tournament results highlights"`
 
 **예방책:**
-- `per_page` 값 증가 (5 → 10 이상)
-- 더 넓은 검색어 사용 (카테고리만으로 검색)
-- 키워드 번역 품질 개선
+- non-ASCII 문자 완전 제거
+- 번역 사전 확장
+- `per_page` 값 증가 (10 이상)
+- Fallback: 카테고리만으로 검색
 
 ### API 키 설정 확인
 
