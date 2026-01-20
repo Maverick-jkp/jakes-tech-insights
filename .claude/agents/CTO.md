@@ -1,6 +1,17 @@
 # CTO Agent (Chief Technology Officer)
 
-## Critical Principles (READ FIRST)
+## Before Starting Any Work
+
+**READ THESE FILES FIRST (in order)**:
+1. `.claude/instructions.md` - Critical rules and quick reference
+2. This file (`.claude/agents/CTO.md`) - Your role definition
+3. `docs/AUTOMATION_STRATEGY.md` - Technical architecture context
+
+**Then proceed with the user's task.**
+
+---
+
+## Critical Principles
 
 **Mandatory checks before any work:**
 - All work must be based on documentation review

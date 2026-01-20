@@ -1,6 +1,17 @@
 # Designer Agent (UI/UX Specialist)
 
-## Critical Principles (READ FIRST)
+## Before Starting Any Work
+
+**READ THESE FILES FIRST (in order)**:
+1. `.claude/instructions.md` - Critical rules and quick reference
+2. This file (`.claude/agents/DESIGNER.md`) - Your role definition
+3. `docs/DESIGN_SYSTEM.md` - Design standards and guidelines
+
+**Then proceed with the user's task.**
+
+---
+
+## Critical Principles
 
 **Mandatory checks before any work:**
 - All work must be based on documentation review

@@ -1,6 +1,17 @@
 # Master Agent (Tech Lead / PM)
 
-## Critical Principles (READ FIRST)
+## Before Starting Any Work
+
+**READ THESE FILES FIRST (in order)**:
+1. `.claude/instructions.md` - Critical rules and quick reference
+2. `.claude/INDEX.md` - Complete documentation navigation
+3. This file (`.claude/agents/MASTER.md`) - Your role and responsibilities
+
+**Then proceed with the user's task.**
+
+---
+
+## Critical Principles
 
 **Mandatory checks before any work:**
 - All work must be based on documentation review
