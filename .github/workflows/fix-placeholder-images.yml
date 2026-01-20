@@ -32,6 +32,9 @@ jobs:
         env:
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
         run: |
+          # Explicitly mask secrets in GitHub Actions logs
+          echo "::add-mask::${{ secrets.UNSPLASH_ACCESS_KEY }}"
+
           python scripts/replace_placeholder_images.py
 
       - name: Commit and push changes

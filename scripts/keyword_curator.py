@@ -13,16 +13,21 @@ Usage:
 import json
 import os
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
 import requests
 
+# Add utils to path
+sys.path.insert(0, str(Path(__file__).parent))
+from utils.security import safe_print, mask_secrets
+
 try:
     from anthropic import Anthropic
 except ImportError:
-    print("Error: anthropic package not installed")
-    print("Install with: pip install anthropic")
+    safe_print("Error: anthropic package not installed")
+    safe_print("Install with: pip install anthropic")
     sys.exit(1)
 
 
@@ -33,6 +38,8 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 실시간 트렌드 데이터:
 {trends_data}
 
+**중요: 위 트렌드 데이터의 Query를 그대로 keyword로 사용하라. 절대 재해석하거나 재작성하지 말 것.**
+
 목표:
 한국어 / 영어 / 일본어 각각에서
 **불안, 분노, 궁금증**을 유발하는 키워드만 제안하라.
@@ -41,21 +48,15 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 - 추상적인 트렌드 요약 ("AI 트렌드", "새로운 기술")
 - 교육/정보성 키워드 ("~하는 방법", "~란 무엇인가")
 - 긍정적이고 평화로운 키워드
-
-우선순위 키워드 유형:
-1. 사건/사고/논란 중심 (계정 정지, 먹통, 과징금, 환불 거부)
-2. 정부정책 혜택/조건 (신혼부부 지원, 청년 대출, 세금 감면)
-3. 연예인/유명인 스캔들 (논란, 사과, 퇴출, 복귀)
-4. 서비스 피해 사례 (환불 안됨, 계정 차단, 버그로 손해)
-5. 규제/제재/금지 (사용 금지, 제재 대상, 불법 판정)
+- **Query를 재해석하거나 다시 쓰는 것**
 
 출력 형식:
 반드시 JSON 형식으로만 응답하라.
 
 [
   {{
-    "keyword": "키워드 문구",
-    "raw_search_title": "사용자가 구글에 검색할 때 정확히 입력하는 검색어 (소문자, 자연스러운 구어체)",
+    "keyword": "위 트렌드 데이터의 Query를 그대로 복사 (재해석 금지)",
+    "raw_search_title": "사용자가 구글에 검색할 때 정확히 입력하는 검색어 (keyword와 동일하게)",
     "editorial_title": "기사 제목 형식의 독자 친화적 제목",
     "core_fear_question": "사용자의 핵심 두려움을 담은 질문 한 문장",
     "language": "ko",
@@ -74,7 +75,7 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 ]
 
 중요:
-- keyword_type은 "trend" 또는 "evergreen" 중 하나
+- keyword_type은 무조건 "trend"만 사용 (evergreen 금지)
 - category는 "tech", "business", "lifestyle", "society", "entertainment", "sports", "finance", "education" 중 하나 (8개 카테고리를 균등하게 분배할 것)
 - language는 "en", "ko", "ja" 중 하나 (3개 언어를 균등하게 분배할 것)
 - competition_level은 "low", "medium", "high" 중 하나
@@ -84,7 +85,8 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 - intent_signal은 "STATE_CHANGE", "PROMISE_BROKEN", "SILENCE", "DEADLINE_LOST", "COMPARISON" 중 하나
 - 지금 시점(2026년 1월)에서 현실적인 키워드만 제안
 - 예시는 절대 사용하지 말고, 실제 검색 가능성이 높은 키워드만 제안
-- 위 실시간 트렌드 데이터를 반드시 참고하여 키워드 제안
+- **중요**: 위 실시간 트렌드 데이터의 Query를 keyword 필드에 그대로 복사할 것
+- **keyword 필드는 절대 재작성하지 말고 Query를 정확히 그대로 사용**
 - **중요**: 8개 카테고리(tech, business, lifestyle, society, entertainment, sports, finance, education)를 반드시 고르게 분배할 것
 
 언어별 톤 차이:
@@ -92,33 +94,19 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 - 🇰🇷 Korean: 불공정, 좌절, 소비자 보호, 책임 추궁 중심
 - 🇯🇵 Japanese: 불투명성, 공식 절차, 적절한 대응 방법 중심
 
-**🔴 안전 가이드라인 (CRITICAL - AdSense/법적 리스크 방지):**
+**🔴 안전 가이드라인:**
 
-절대 금지:
-- 실명 사용 (연예인, 기업인, 정치인, 특정 기업명)
-- 확정되지 않은 의혹·논란 프레이밍
-- 명예훼손 리스크 키워드
-
-안전한 대체 표현:
-- "K-pop idol" (실명 ❌)
-- "major agency" (구체적 회사명 ❌)
-- "top celebrity" (실명 ❌)
-- "government policy" (X부처 ❌)
-- "tech platform" (구체적 서비스명 ❌)
-
-조건부 허용 (3조건 모두 충족 시만):
-1. 사법/행정적으로 결론 난 사건
-2. 모든 서술이 팩트 나열만
-3. 감정 프레이밍 제거
+주의사항:
+- 명예훼손/비난/비방 표현 금지
+- 사실 기반의 trending 키워드는 실명 사용 가능
 
 각 키워드에 리스크 레벨 표시:
-- "risk_level": "safe" (AdSense/플랫폼 안전)
-- "risk_level": "caution" (사실 확인 필수)
-- "risk_level": "high_risk" (법적 검토 필요)
+- "risk_level": "safe" (기본값)
+- "risk_level": "caution" (논란 가능성 있음)
 
 각 키워드에 실명 정책 표시:
-- "name_policy": "no_real_names" (기본값, 실명 사용 불가)
-- "name_policy": "generic_only" (범주·역할만 허용)
+- "name_policy": "no_real_names" (실명 불필요)
+- "name_policy": "real_names_ok" (trending 뉴스 등 실명 포함 가능)
 
 **중복 방지 규칙:**
 - Intent signals: STATE_CHANGE, PROMISE_BROKEN, SILENCE, DEADLINE_LOST, COMPARISON
@@ -146,9 +134,9 @@ class KeywordCurator:
         self.google_cx = google_cx or os.environ.get("GOOGLE_CX")
 
         if not self.google_api_key or not self.google_cx:
-            print("⚠️  Google Custom Search credentials not found")
-            print("   Set GOOGLE_API_KEY and GOOGLE_CX environment variables")
-            print("   Falling back to Claude-only mode")
+            safe_print("⚠️  Google Custom Search credentials not found")
+            safe_print("   Set GOOGLE_API_KEY and GOOGLE_CX environment variables")
+            safe_print("   Falling back to Claude-only mode")
 
         self.client = Anthropic(api_key=self.api_key)
         self.model = "claude-sonnet-4-20250514"
@@ -219,32 +207,32 @@ class KeywordCurator:
                 # Find all items (trending topics)
                 items = root.findall('.//item')
 
-                for item in items[:7]:  # Top 7 per region (21 total, filters to ~20)
+                for item in items[:5]:  # Top 5 per region (15 total)
                     title_elem = item.find('title')
                     if title_elem is not None and title_elem.text:
                         trending_queries.append(title_elem.text.strip())
 
-                print(f"  ✓ Found {min(len(items), 7)} trends from {geo}")
+                safe_print(f"  ✓ Found {min(len(items), 5)} trends from {geo}")
 
             except Exception as e:
-                print(f"  ⚠️  RSS fetch error for {geo}: {e}")
+                safe_print(f"  ⚠️  RSS fetch error for {geo}: {str(e)}")
                 continue
 
         return trending_queries
 
     def fetch_trending_topics(self) -> str:
         """Fetch trending topics using Google Trends RSS feeds"""
-        print(f"\n{'='*60}")
-        print(f"  🔥 Fetching REAL-TIME trending topics from Google Trends RSS...")
-        print(f"{'='*60}\n")
+        safe_print(f"\n{'='*60}")
+        safe_print(f"  🔥 Fetching REAL-TIME trending topics from Google Trends RSS...")
+        safe_print(f"{'='*60}\n")
 
         # Try RSS feeds first (most reliable method)
         search_queries = self.fetch_trending_from_rss()
 
         if search_queries:
-            print(f"\n  🎉 Total {len(search_queries)} real-time trending topics from RSS!\n")
+            safe_print(f"\n  🎉 Total {len(search_queries)} real-time trending topics from RSS!\n")
         else:
-            print("  ⚠️  RSS feeds failed. Falling back to pattern-based queries...\n")
+            safe_print("  ⚠️  RSS feeds failed. Falling back to pattern-based queries...\n")
             # Fallback to pattern queries
             search_queries = [
                 "account banned after update no response",
@@ -271,8 +259,8 @@ class KeywordCurator:
 
         # If no Google Custom Search API, skip search results
         if not self.google_api_key or not self.google_cx:
-            print("  ⚠️  Google Custom Search not configured")
-            print("  📌 Will use trending keywords directly\n")
+            safe_print("  ⚠️  Google Custom Search not configured")
+            safe_print("  📌 Will use trending keywords directly\n")
             self.search_results = []
             return "\n\n".join([f"Trending: {q}" for q in search_queries[:30]])
 
@@ -284,10 +272,13 @@ class KeywordCurator:
                     "key": self.google_api_key,
                     "cx": self.google_cx,
                     "q": query,
-                    "num": 5,  # Get top 5 results per query (maximize 100 query limit)
+                    "num": 2,  # Get top 2 results per query (21 × 2 = 42 queries)
                     "dateRestrict": "d7",  # Last 7 days only (최신 뉴스)
                     "sort": "date"  # Sort by date (최신순)
                 }
+
+                # Add delay to avoid rate limiting (max 1 QPS)
+                time.sleep(1.0)
 
                 response = requests.get(url, params=params)
                 response.raise_for_status()
@@ -308,13 +299,13 @@ class KeywordCurator:
                             "source": item.get("displayLink", "")  # Add source domain
                         })
 
-                print(f"  ✓ Fetched {len(data.get('items', []))} results for: {query}")
+                safe_print(f"  ✓ Fetched {len(data.get('items', []))} results for: {query}")
 
             except requests.exceptions.RequestException as e:
-                print(f"  ⚠️  Error fetching results for '{query}': {e}")
+                safe_print(f"  ⚠️  Error fetching results for '{query}': {str(e)}")
                 continue
 
-        print(f"\n✅ Total {len(all_results)} trending topics fetched\n")
+        safe_print(f"\n✅ Total {len(all_results)} trending topics fetched\n")
 
         # Store results for reference extraction
         self.search_results = all_results
@@ -336,18 +327,18 @@ class KeywordCurator:
             # Auto-reject high-risk
             if kw.get("risk_level") == "high_risk":
                 filtered_count += 1
-                print(f"  🔴 Filtered high-risk: {kw.get('keyword', 'unknown')}")
+                safe_print(f"  🔴 Filtered high-risk: {kw.get('keyword', 'unknown')}")
                 continue
 
             # Flag caution items for manual review
             if kw.get("risk_level") == "caution":
                 kw["needs_review"] = True
-                print(f"  🟡 Caution flagged: {kw.get('keyword', 'unknown')}")
+                safe_print(f"  🟡 Caution flagged: {kw.get('keyword', 'unknown')}")
 
             safe_candidates.append(kw)
 
         if filtered_count > 0:
-            print(f"\n⚠️  {filtered_count} high-risk keywords filtered out\n")
+            safe_print(f"\n⚠️  {filtered_count} high-risk keywords filtered out\n")
 
         return safe_candidates
 
@@ -386,16 +377,16 @@ class KeywordCurator:
                 })
                 seen_domains.add(source)
 
-            if len(references) >= 3:
+            if len(references) >= 2:  # Get only 2 references per keyword
                 break
 
         return references
 
     def generate_candidates(self, count: int = 15) -> List[Dict]:
         """Generate keyword candidates using Claude API with trending data"""
-        print(f"\n{'='*60}")
-        print(f"  🔍 Generating {count} keyword candidates...")
-        print(f"{'='*60}\n")
+        safe_print(f"\n{'='*60}")
+        safe_print(f"  🔍 Generating {count} keyword candidates...")
+        safe_print(f"{'='*60}\n")
 
         # Fetch trending topics from Google (store for reference extraction)
         self.search_results = []  # Store search results
@@ -432,33 +423,33 @@ class KeywordCurator:
         try:
             candidates = json.loads(content)
         except json.JSONDecodeError as e:
-            print(f"❌ Failed to parse JSON response: {e}")
-            print(f"Raw response:\n{content[:500]}")
+            safe_print(f"❌ Failed to parse JSON response: {str(e)}")
+            safe_print(f"Raw response:\n{content[:500]}")
             sys.exit(1)
 
-        print(f"✅ Generated {len(candidates)} candidates\n")
+        safe_print(f"✅ Generated {len(candidates)} candidates\n")
 
         # Apply risk filtering
         filtered_candidates = self.filter_by_risk(candidates)
 
         # Extract references for each candidate
-        print(f"📚 Extracting references for {len(filtered_candidates)} candidates...\n")
+        safe_print(f"📚 Extracting references for {len(filtered_candidates)} candidates...\n")
         for candidate in filtered_candidates:
             keyword = candidate.get("keyword", "")
             lang = candidate.get("language", "en")
             references = self.extract_references(self.search_results, keyword, lang)
             candidate["references"] = references
             if references:
-                print(f"  ✓ {len(references)} refs for: {keyword[:50]}...")
+                safe_print(f"  ✓ {len(references)} refs for: {keyword[:50]}...")
 
-        print()
+        safe_print("")
         return filtered_candidates
 
     def display_candidates(self, candidates: List[Dict]):
         """Display candidates with numbered list"""
-        print(f"{'='*60}")
-        print(f"  📋 Keyword Candidates")
-        print(f"{'='*60}\n")
+        safe_print(f"{'='*60}")
+        safe_print(f"  📋 Keyword Candidates")
+        safe_print(f"{'='*60}\n")
 
         # Group by language
         by_lang = {"en": [], "ko": [], "ja": []}
@@ -471,8 +462,8 @@ class KeywordCurator:
 
         for lang in ["en", "ko", "ja"]:
             if by_lang[lang]:
-                print(f"\n[{lang_names[lang]}]")
-                print("-" * 60)
+                safe_print(f"\n[{lang_names[lang]}]")
+                safe_print("-" * 60)
 
                 for candidate in by_lang[lang]:
                     type_emoji = "🔥" if candidate.get("keyword_type") == "trend" else "🌲"
@@ -482,28 +473,28 @@ class KeywordCurator:
                         "high": "🔴"
                     }.get(candidate.get("competition_level", "medium"), "⚪")
 
-                    print(f"\n{idx}. {type_emoji} {candidate['keyword']}")
-                    print(f"   Category: {candidate['category']} | Competition: {comp_emoji} {candidate.get('competition_level', 'N/A')}")
-                    print(f"   Intent: {candidate['search_intent']}")
-                    print(f"   Angle: {candidate['angle']}")
-                    print(f"   Why: {candidate.get('why_it_works', 'N/A')[:80]}...")
+                    safe_print(f"\n{idx}. {type_emoji} {candidate['keyword']}")
+                    safe_print(f"   Category: {candidate['category']} | Competition: {comp_emoji} {candidate.get('competition_level', 'N/A')}")
+                    safe_print(f"   Intent: {candidate['search_intent']}")
+                    safe_print(f"   Angle: {candidate['angle']}")
+                    safe_print(f"   Why: {candidate.get('why_it_works', 'N/A')[:80]}...")
 
                     idx += 1
 
-        print(f"\n{'='*60}\n")
+        safe_print(f"\n{'='*60}\n")
 
     def interactive_selection(self, candidates: List[Dict]) -> List[Dict]:
         """Interactive selection of keywords"""
-        print("어떤 키워드를 큐에 추가할까요?")
-        print("숫자를 쉼표로 구분해서 입력하세요 (예: 1,3,5,7,10)")
-        print("또는 'all'을 입력하면 전부 추가됩니다.")
-        print("'q'를 입력하면 취소합니다.\n")
+        safe_print("어떤 키워드를 큐에 추가할까요?")
+        safe_print("숫자를 쉼표로 구분해서 입력하세요 (예: 1,3,5,7,10)")
+        safe_print("또는 'all'을 입력하면 전부 추가됩니다.")
+        safe_print("'q'를 입력하면 취소합니다.\n")
 
         while True:
             user_input = input("선택: ").strip()
 
             if user_input.lower() == 'q':
-                print("❌ 취소되었습니다.")
+                safe_print("❌ 취소되었습니다.")
                 return []
 
             if user_input.lower() == 'all':
@@ -515,7 +506,7 @@ class KeywordCurator:
 
                 # Validate indices
                 if any(idx < 1 or idx > len(candidates) for idx in selected_indices):
-                    print(f"⚠️  잘못된 번호입니다. 1-{len(candidates)} 범위로 입력하세요.\n")
+                    safe_print(f"⚠️  잘못된 번호입니다. 1-{len(candidates)} 범위로 입력하세요.\n")
                     continue
 
                 # Convert to 0-based index and return selected candidates
@@ -523,17 +514,17 @@ class KeywordCurator:
                 return selected
 
             except ValueError:
-                print("⚠️  잘못된 형식입니다. 예: 1,3,5\n")
+                safe_print("⚠️  잘못된 형식입니다. 예: 1,3,5\n")
 
     def add_to_queue(self, selected: List[Dict]):
         """Add selected keywords to topic queue"""
         if not selected:
-            print("선택된 키워드가 없습니다.")
+            safe_print("선택된 키워드가 없습니다.")
             return
 
-        print(f"\n{'='*60}")
-        print(f"  💾 큐에 {len(selected)}개 키워드 추가 중...")
-        print(f"{'='*60}\n")
+        safe_print(f"\n{'='*60}")
+        safe_print(f"  💾 큐에 {len(selected)}개 키워드 추가 중...")
+        safe_print(f"{'='*60}\n")
 
         # Get next ID
         existing_ids = [int(t['id'].split('-')[0]) for t in self.queue_data['topics'] if t['id'].split('-')[0].isdigit()]
@@ -567,7 +558,7 @@ class KeywordCurator:
             self.queue_data['topics'].append(topic)
 
             type_label = "🔥 Trend" if topic['keyword_type'] == 'trend' else "🌲 Evergreen"
-            print(f"  ✓ Added: {type_label} | {candidate['keyword']}")
+            safe_print(f"  ✓ Added: {type_label} | {candidate['keyword']}")
 
             added_count += 1
             next_id += 1
@@ -575,8 +566,8 @@ class KeywordCurator:
         # Save queue
         self._save_queue()
 
-        print(f"\n✅ {added_count}개 키워드가 큐에 추가되었습니다!")
-        print(f"📊 Total topics in queue: {len(self.queue_data['topics'])}")
+        safe_print(f"\n✅ {added_count}개 키워드가 큐에 추가되었습니다!")
+        safe_print(f"📊 Total topics in queue: {len(self.queue_data['topics'])}")
 
         # Show statistics
         self._show_queue_stats()
@@ -602,13 +593,13 @@ class KeywordCurator:
             lang = t.get('lang', 'en')
             by_lang[lang] = by_lang.get(lang, 0) + 1
 
-        print(f"\n{'='*60}")
-        print(f"  📊 Queue Statistics")
-        print(f"{'='*60}")
-        print(f"  Status: Pending={by_status['pending']}, In Progress={by_status['in_progress']}, Completed={by_status['completed']}")
-        print(f"  Type: 🔥 Trend={by_type['trend']}, 🌲 Evergreen={by_type['evergreen']}, Unknown={by_type['unknown']}")
-        print(f"  Language: EN={by_lang['en']}, KO={by_lang['ko']}, JA={by_lang['ja']}")
-        print(f"{'='*60}\n")
+        safe_print(f"\n{'='*60}")
+        safe_print(f"  📊 Queue Statistics")
+        safe_print(f"{'='*60}")
+        safe_print(f"  Status: Pending={by_status['pending']}, In Progress={by_status['in_progress']}, Completed={by_status['completed']}")
+        safe_print(f"  Type: 🔥 Trend={by_type['trend']}, 🌲 Evergreen={by_type['evergreen']}, Unknown={by_type['unknown']}")
+        safe_print(f"  Language: EN={by_lang['en']}, KO={by_lang['ko']}, JA={by_lang['ja']}")
+        safe_print(f"{'='*60}\n")
 
 
 def main():
@@ -621,7 +612,7 @@ def main():
 
     # Check API key
     if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("Error: ANTHROPIC_API_KEY environment variable not set")
+        safe_print("Error: ANTHROPIC_API_KEY environment variable not set")
         sys.exit(1)
 
     # Initialize curator
@@ -636,7 +627,7 @@ def main():
     # Selection
     if args.auto:
         # Auto mode: add all candidates
-        print("\n🤖 Auto mode: Adding all candidates to queue...\n")
+        safe_print("\n🤖 Auto mode: Adding all candidates to queue...\n")
         selected = candidates
     else:
         # Interactive mode: ask user
@@ -646,7 +637,7 @@ def main():
     if selected:
         curator.add_to_queue(selected)
 
-    print("\n✨ Done!\n")
+    safe_print("\n✨ Done!\n")
 
 
 if __name__ == "__main__":

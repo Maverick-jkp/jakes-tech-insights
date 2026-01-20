@@ -42,7 +42,12 @@ jobs:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GOOGLE_CX: ${{ secrets.GOOGLE_CX }}
         run: |
-          COUNT="${{ github.event.inputs.count || '20' }}"
+          # Explicitly mask secrets in GitHub Actions logs
+          echo "::add-mask::${{ secrets.ANTHROPIC_API_KEY }}"
+          echo "::add-mask::${{ secrets.GOOGLE_API_KEY }}"
+          echo "::add-mask::${{ secrets.GOOGLE_CX }}"
+
+          COUNT="${{ github.event.inputs.count || '15' }}"
           echo "📝 Generating $COUNT new keywords..."
           python scripts/keyword_curator.py --count "$COUNT" --auto
 

@@ -22,9 +22,21 @@ Usage:
 
 import json
 import os
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict, Optional
+
+# Add utils to path
+sys.path.insert(0, str(Path(__file__).parent))
+from utils.validation import (
+    validate_keyword,
+    validate_category,
+    validate_language,
+    validate_priority,
+    validate_status,
+    validate_topic_data
+)
 
 
 class TopicQueue:
@@ -73,6 +85,13 @@ class TopicQueue:
         now = datetime.utcnow().isoformat()
 
         for topic in pending[:count]:
+            # Validate topic data before reserving
+            errors = validate_topic_data(topic)
+            if errors:
+                # Skip invalid topics
+                print(f"⚠️  Skipping invalid topic {topic.get('id', 'unknown')}: {errors}")
+                continue
+
             topic['status'] = 'in_progress'
             topic['reserved_at'] = now
             topic['retry_count'] = topic.get('retry_count', 0)
@@ -151,7 +170,27 @@ class TopicQueue:
             lang: Language code (en/ko/ja)
             priority: Priority 1-10 (higher = more important)
             metadata: Additional metadata dict
+
+        Raises:
+            ValueError: If validation fails
         """
+        # Validate inputs
+        error = validate_keyword(keyword)
+        if error:
+            raise ValueError(f"Invalid keyword: {error}")
+
+        error = validate_category(category)
+        if error:
+            raise ValueError(error)
+
+        error = validate_language(lang)
+        if error:
+            raise ValueError(error)
+
+        error = validate_priority(priority)
+        if error:
+            raise ValueError(error)
+
         data = self._load_queue()
 
         # Generate ID
@@ -170,6 +209,11 @@ class TopicQueue:
 
         if metadata:
             topic.update(metadata)
+
+        # Final validation of complete topic
+        errors = validate_topic_data(topic)
+        if errors:
+            raise ValueError(f"Topic validation failed: {', '.join(errors)}")
 
         data['topics'].append(topic)
         self._save_queue(data)

@@ -16,6 +16,11 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+# Add scripts to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.security import safe_print, mask_secrets
+
 
 class QualityGate:
     def __init__(self, strict_mode: bool = False):
@@ -300,23 +305,23 @@ def main():
     generated_files_path = Path("generated_files.json")
 
     if not generated_files_path.exists():
-        print("Error: generated_files.json not found")
-        print("Run generate_posts.py first to create content")
+        safe_print("Error: generated_files.json not found")
+        safe_print("Run generate_posts.py first to create content")
         sys.exit(1)
 
     with open(generated_files_path, 'r') as f:
         generated_files = json.load(f)
 
     if not generated_files:
-        print("No files to check")
+        safe_print("No files to check")
         sys.exit(0)
 
     # Initialize quality gate
     qg = QualityGate(strict_mode=args.strict)
 
-    print(f"\n{'='*60}")
-    print(f"  Quality Gate - Checking {len(generated_files)} files")
-    print(f"{'='*60}\n")
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  Quality Gate - Checking {len(generated_files)} files")
+    safe_print(f"{'='*60}\n")
 
     all_results = []
     total_failures = 0
@@ -326,10 +331,10 @@ def main():
         path = Path(filepath)
 
         if not path.exists():
-            print(f"⚠️  File not found: {filepath}")
+            safe_print(f"⚠️  File not found: {filepath}")
             continue
 
-        print(f"Checking: {path.name}")
+        safe_print(f"Checking: {path.name}")
 
         result = qg.check_file(path)
         all_results.append(result)
@@ -337,31 +342,31 @@ def main():
         # Print results
         if result['critical_failures']:
             total_failures += len(result['critical_failures'])
-            print(f"  ❌ FAILURES:")
+            safe_print(f"  ❌ FAILURES:")
             for failure in result['critical_failures']:
-                print(f"     - {failure}")
+                safe_print(f"     - {failure}")
 
         if result['warnings']:
             total_warnings += len(result['warnings'])
-            print(f"  ⚠️  WARNINGS:")
+            safe_print(f"  ⚠️  WARNINGS:")
             for warning in result['warnings']:
-                print(f"     - {warning}")
+                safe_print(f"     - {warning}")
 
         if not result['critical_failures'] and not result['warnings']:
-            print(f"  ✅ PASS")
+            safe_print(f"  ✅ PASS")
 
         # Print info
         info = result['info']
-        print(f"  📊 Info: {info['word_count']} words, {info['heading_count']} headings, {info.get('link_count', 0)} links")
-        print()
+        safe_print(f"  📊 Info: {info['word_count']} words, {info['heading_count']} headings, {info.get('link_count', 0)} links")
+        safe_print()
 
     # Summary
-    print(f"{'='*60}")
-    print(f"  Summary")
-    print(f"{'='*60}")
-    print(f"Files checked: {len(all_results)}")
-    print(f"Critical failures: {total_failures}")
-    print(f"Warnings: {total_warnings}")
+    safe_print(f"{'='*60}")
+    safe_print(f"  Summary")
+    safe_print(f"{'='*60}")
+    safe_print(f"Files checked: {len(all_results)}")
+    safe_print(f"Critical failures: {total_failures}")
+    safe_print(f"Warnings: {total_warnings}")
 
     # Save detailed report
     report_path = Path("quality_report.json")
@@ -375,14 +380,14 @@ def main():
             "results": all_results
         }, f, indent=2)
 
-    print(f"\nDetailed report saved to: {report_path}")
+    safe_print(f"\nDetailed report saved to: {report_path}")
 
     # Exit code
     if total_failures > 0:
-        print("\n❌ Quality Gate: FAILED")
+        safe_print("\n❌ Quality Gate: FAILED")
         sys.exit(1)
     else:
-        print("\n✅ Quality Gate: PASSED")
+        safe_print("\n✅ Quality Gate: PASSED")
         sys.exit(0)
 
 

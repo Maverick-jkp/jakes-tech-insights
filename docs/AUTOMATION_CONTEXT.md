@@ -1,7 +1,7 @@
 # Jake's Tech Insights - Automation Setup Context
 
-> Last Updated: 2026-01-19
-> Status: ✅ All automation systems operational
+> Last Updated: 2026-01-20
+> Status: ✅ All automation systems operational + Security hardening complete
 
 ## Executive Summary
 
@@ -52,6 +52,11 @@ Google Trends RSS → Keyword Curator → Topic Queue → Post Generator → Hug
 - **[generate_posts.py](../scripts/generate_posts.py)**: Generates multilingual posts with Unsplash images
 - **[cleanup_expired.py](../scripts/cleanup_expired.py)**: Removes trends older than 3 days
 - **[topic_queue.py](../scripts/topic_queue.py)**: Queue management utilities
+
+### Security & Validation (NEW - 2026-01-20)
+- **[utils/security.py](../scripts/utils/security.py)**: API key masking for logs (`safe_print`, `mask_secrets`)
+- **[utils/validation.py](../scripts/utils/validation.py)**: Input validation (path traversal prevention, length checks)
+- **[utils/validate_queue.py](../scripts/utils/validate_queue.py)**: Queue validation script
 
 ### Data Files
 - **[topics_queue.json](../data/topics_queue.json)**: Pending/in-progress/completed keywords
@@ -224,6 +229,33 @@ params = {
 </div>
 ```
 
+### Security Hardening (2026-01-20)
+
+**Secrets Masking** - All scripts now use `safe_print()`:
+```python
+from utils.security import safe_print, mask_secrets
+
+# Automatically masks API keys in output
+safe_print(f"API Error: {response}")
+# Output: API key ***MASKED_API_KEY*** is invalid
+```
+
+**Input Validation** - All external inputs validated:
+```python
+from utils.validation import validate_keyword, validate_category
+
+# Prevents path traversal, injection attacks
+error = validate_keyword("../../etc/passwd")
+# Returns: "Keyword contains invalid characters"
+```
+
+**GitHub Actions Masking** - Explicit secret masking in workflows:
+```yaml
+run: |
+  echo "::add-mask::${{ secrets.ANTHROPIC_API_KEY }}"
+  echo "::add-mask::${{ secrets.UNSPLASH_ACCESS_KEY }}"
+```
+
 ---
 
 ## 4. Automation Schedule Details
@@ -328,6 +360,61 @@ Daily-content workflow runs 1 hour after daily-keywords to ensure fresh keywords
 ---
 
 ## 8. Recent Changes Log
+
+### 2026-01-20 (Morning): Floating Widget Bug Fix
+- **Bug Report**: Article landing pages showed incorrect 4x4 grid instead of 2x4 grid with all 8 categories
+  - Homepage floating widget worked correctly (2x4 grid with 8 categories)
+  - Article pages (single.html) only showed 5 categories without grid CSS
+  - Missing categories: Sports ⚽, Finance 💰, Education 📖
+
+- **Root Cause**: Template inconsistency between index.html and single.html
+  - [index.html](../layouts/index.html) had complete grid CSS and all 8 categories
+  - [single.html](../layouts/_default/single.html) only had 5 categories hardcoded, no grid CSS
+
+- **Solution**: Updated [single.html:233-285](../layouts/_default/single.html)
+  - Lines 233-266: Added 2-column grid CSS matching index.html
+    * `.category-grid { display: grid; grid-template-columns: 1fr 1fr; }`
+    * Flexbox alignment for icon + text (`.cat-icon`, `.cat-text`)
+  - Lines 267-285: Added all 8 categories with language-specific URLs
+    * English: `/categories/tech/`, `/categories/business/`, etc.
+    * Korean/Japanese: `/ko/categories/tech/`, `/ja/categories/tech/`, etc.
+
+- **Deployment**: Cloudflare Pages automatic deployment
+  - Committed changes (d229e54)
+  - Cloudflare automatically builds with Hugo on git push
+  - **IMPORTANT**: Local Hugo server NOT needed (Cloudflare handles build)
+
+- **Lesson Learned**: Never try to run local Hugo server
+  - Project is deployed on Cloudflare Pages (serverless build)
+  - Workflow: Edit files → Git commit → Push → Cloudflare auto-builds
+  - Claude previously made same mistake (trying to run local Hugo)
+  - User reminder: "전에도 한 번 로컬서버 시도했었는데 니가 필요없다고 했었어"
+
+### 2026-01-20 (Early Morning): References Null Issue Root Cause Fix
+- **Problem Diagnosis**: All 45 keywords had `references: null` despite Google API working
+  - Root cause: Claude was reinterpreting RSS queries into different keywords
+  - Example: RSS Query "서수남" (singer) → Claude keyword "독립기념관 관장 해임 후폭풍" (different news)
+  - Matching failed: {"독립기념관", "관장", "해임", "후폭풍"} ∩ {"서수남"} = {} (empty set)
+  - Result: `references = []` → `null` in JSON
+
+- **Solution**: Modified [keyword_curator.py](../scripts/keyword_curator.py) prompt
+  - Lines 30-47: Added "Use Query as-is for keyword. Never reinterpret or rewrite"
+  - Lines 54-55: Enforce keyword = raw_search_title = Query (identical)
+  - Lines 84-85: Emphasized exact Query usage without reinterpretation
+  - Now: RSS Query "서수남" → Claude keyword "서수남" (no reinterpretation)
+  - Matching succeeds: {"서수남"} ∩ {"서수남"} = {"서수남"} ✓
+
+- **Google API Quota Optimization**: Reduced from 105 to 30 queries/day
+  - [keyword_curator.py:201](../scripts/keyword_curator.py): RSS 7 → 5 per region (21 → 15 keywords)
+  - [keyword_curator.py:267](../scripts/keyword_curator.py): Search results 5 → 2
+  - [keyword_curator.py:372](../scripts/keyword_curator.py): References stored 3 → 2
+  - [keyword_curator.py:16, 272-273](../scripts/keyword_curator.py): Added rate limiting (time.sleep(1.0))
+  - [daily-keywords.yml:45](../.github/workflows/daily-keywords.yml): COUNT default 20 → 15
+  - Final: 15 keywords × 2 results = 30 queries/day (70% quota remaining)
+
+- **Keyword Type Enforcement**: 100% trend keywords only
+  - [keyword_curator.py:70-71](../scripts/keyword_curator.py): Forced trend-only generation in prompt
+  - Removed evergreen keyword generation completely
 
 ### 2026-01-19 (Evening Continued): URL Validation for Fake References
 - **URL Validation System**: Added automatic detection and removal of fake reference URLs
@@ -455,5 +542,21 @@ hugo server -D
 
 ---
 
-**Last Verified**: 2026-01-19
+**Last Verified**: 2026-01-20
 **Next Review**: When adding new categories or changing automation schedule
+
+## Pending Verification (2026-01-20)
+
+### At 17:05 KST (Daily Keywords Workflow)
+- [ ] Workflow runs without errors
+- [ ] Generates exactly 15 keywords
+- [ ] All keywords have `references` (not null)
+- [ ] Keywords match RSS queries exactly (no reinterpretation)
+- [ ] Google API uses exactly 30 queries (check Cloud Console)
+- [ ] No 429 (Too Many Requests) errors
+
+### At 18:00 KST (Daily Content Workflow)
+- [ ] Posts generated successfully
+- [ ] References section properly included (when available)
+- [ ] Fake URL validation working (removes bad URLs)
+- [ ] Images contextually relevant to keywords

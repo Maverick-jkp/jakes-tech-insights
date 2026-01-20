@@ -17,11 +17,16 @@ import argparse
 from pathlib import Path
 from typing import Dict, List, Optional
 
+# Add scripts to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.security import safe_print, mask_secrets
+
 try:
     from anthropic import Anthropic
 except ImportError:
-    print("Error: anthropic package not installed")
-    print("Install with: pip install anthropic")
+    safe_print("Error: anthropic package not installed")
+    safe_print("Install with: pip install anthropic")
     sys.exit(1)
 
 
@@ -170,8 +175,8 @@ class AIReviewer:
         # Detect language from filepath
         lang = self._detect_language(filepath)
 
-        print(f"  🔍 Reviewing with AI: {filepath.name}")
-        print(f"  Language: {lang}")
+        safe_print(f"  🔍 Reviewing with AI: {filepath.name}")
+        safe_print(f"  Language: {lang}")
 
         # Get review prompt
         prompt = REVIEW_PROMPTS[lang].format(content=content)
@@ -204,7 +209,7 @@ class AIReviewer:
                 }
         except json.JSONDecodeError as e:
             review = {
-                "error": f"JSON parse error: {e}",
+                "error": f"JSON parse error: {mask_secrets(str(e))}",
                 "raw_response": review_text
             }
 
@@ -226,13 +231,13 @@ class AIReviewer:
 
     def print_review(self, review: Dict):
         """Print review in human-readable format"""
-        print(f"\n{'='*60}")
-        print(f"  AI Review Results")
-        print(f"{'='*60}\n")
+        safe_print(f"\n{'='*60}")
+        safe_print(f"  AI Review Results")
+        safe_print(f"{'='*60}\n")
 
         if 'error' in review:
-            print(f"❌ Error: {review['error']}")
-            print(f"\nRaw response:\n{review.get('raw_response', 'N/A')}")
+            safe_print(f"❌ Error: {review['error']}")
+            safe_print(f"\nRaw response:\n{review.get('raw_response', 'N/A')}")
             return
 
         # Recommendation
@@ -243,36 +248,36 @@ class AIReviewer:
             'REJECT': '❌'
         }.get(rec, '❓')
 
-        print(f"{rec_emoji} Recommendation: {rec}")
-        print(f"📊 Average Score: {review.get('average_score', 'N/A')}/10\n")
+        safe_print(f"{rec_emoji} Recommendation: {rec}")
+        safe_print(f"📊 Average Score: {review.get('average_score', 'N/A')}/10\n")
 
         # Summary
         if 'summary' in review:
-            print(f"Summary:\n{review['summary']}\n")
+            safe_print(f"Summary:\n{review['summary']}\n")
 
         # Scores
         if 'scores' in review:
-            print("Detailed Scores:")
+            safe_print("Detailed Scores:")
             for criterion, details in review['scores'].items():
                 score = details.get('score', 'N/A')
                 explanation = details.get('explanation', 'N/A')
-                print(f"\n  {criterion.capitalize()}: {score}/10")
-                print(f"  {explanation}")
+                safe_print(f"\n  {criterion.capitalize()}: {score}/10")
+                safe_print(f"  {explanation}")
 
                 if 'suggestions' in details and details['suggestions']:
-                    print(f"  💡 Suggestions: {details['suggestions']}")
+                    safe_print(f"  💡 Suggestions: {details['suggestions']}")
 
         # Strengths
         if 'top_strengths' in review and review['top_strengths']:
-            print(f"\n💪 Top Strengths:")
+            safe_print(f"\n💪 Top Strengths:")
             for strength in review['top_strengths']:
-                print(f"  • {strength}")
+                safe_print(f"  • {strength}")
 
         # Improvements
         if 'top_improvements' in review and review['top_improvements']:
-            print(f"\n🔧 Top Improvements:")
+            safe_print(f"\n🔧 Top Improvements:")
             for improvement in review['top_improvements']:
-                print(f"  • {improvement}")
+                safe_print(f"  • {improvement}")
 
 
 def main():
@@ -284,9 +289,9 @@ def main():
     try:
         reviewer = AIReviewer()
     except ValueError as e:
-        print(f"Error: {e}")
-        print("\nSet ANTHROPIC_API_KEY environment variable:")
-        print("  export ANTHROPIC_API_KEY='your-api-key'")
+        safe_print(f"Error: {mask_secrets(str(e))}")
+        safe_print("\nSet ANTHROPIC_API_KEY environment variable:")
+        safe_print("  export ANTHROPIC_API_KEY='your-api-key'")
         sys.exit(1)
 
     # Get files to review
@@ -294,15 +299,15 @@ def main():
         # Review specific file
         filepath = Path(args.file)
         if not filepath.exists():
-            print(f"Error: File not found: {filepath}")
+            safe_print(f"Error: File not found: {filepath}")
             sys.exit(1)
         files_to_review = [filepath]
     else:
         # Review from generated_files.json
         generated_files_path = Path("generated_files.json")
         if not generated_files_path.exists():
-            print("Error: generated_files.json not found")
-            print("Run generate_posts.py first or use --file to specify a file")
+            safe_print("Error: generated_files.json not found")
+            safe_print("Run generate_posts.py first or use --file to specify a file")
             sys.exit(1)
 
         with open(generated_files_path, 'r') as f:
@@ -311,29 +316,29 @@ def main():
         files_to_review = [Path(f) for f in generated_files if Path(f).exists()]
 
     if not files_to_review:
-        print("No files to review")
+        safe_print("No files to review")
         sys.exit(0)
 
-    print(f"\n{'='*60}")
-    print(f"  AI Reviewer - Reviewing {len(files_to_review)} files")
-    print(f"{'='*60}\n")
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  AI Reviewer - Reviewing {len(files_to_review)} files")
+    safe_print(f"{'='*60}\n")
 
     all_reviews = []
 
     for filepath in files_to_review:
-        print(f"File: {filepath.name}")
+        safe_print(f"File: {filepath.name}")
 
         try:
             review = reviewer.review_post(filepath)
             reviewer.print_review(review)
             all_reviews.append(review)
-            print()
+            safe_print()
 
         except Exception as e:
-            print(f"  ❌ Review failed: {e}\n")
+            safe_print(f"  ❌ Review failed: {mask_secrets(str(e))}\n")
             all_reviews.append({
                 "file": str(filepath),
-                "error": str(e)
+                "error": mask_secrets(str(e))
             })
 
     # Save review report
@@ -344,9 +349,9 @@ def main():
             "reviews": all_reviews
         }, f, indent=2, ensure_ascii=False)
 
-    print(f"{'='*60}")
-    print(f"  Review report saved to: {report_path}")
-    print(f"{'='*60}\n")
+    safe_print(f"{'='*60}")
+    safe_print(f"  Review report saved to: {report_path}")
+    safe_print(f"{'='*60}\n")
 
     # Summary
     approved = sum(1 for r in all_reviews if r.get('recommendation') == 'APPROVE')
@@ -354,12 +359,12 @@ def main():
     reject = sum(1 for r in all_reviews if r.get('recommendation') == 'REJECT')
     errors = sum(1 for r in all_reviews if 'error' in r)
 
-    print("Summary:")
-    print(f"  ✅ Approved: {approved}")
-    print(f"  ⚠️  Revise: {revise}")
-    print(f"  ❌ Reject: {reject}")
+    safe_print("Summary:")
+    safe_print(f"  ✅ Approved: {approved}")
+    safe_print(f"  ⚠️  Revise: {revise}")
+    safe_print(f"  ❌ Reject: {reject}")
     if errors:
-        print(f"  🚫 Errors: {errors}")
+        safe_print(f"  🚫 Errors: {errors}")
 
 
 if __name__ == "__main__":

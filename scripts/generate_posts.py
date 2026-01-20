@@ -24,19 +24,20 @@ from typing import Dict, List, Optional
 sys.path.insert(0, str(Path(__file__).parent))
 
 from topic_queue import reserve_topics, mark_completed, mark_failed
+from utils.security import safe_print, mask_secrets
 
 try:
     from anthropic import Anthropic
 except ImportError:
-    print("Error: anthropic package not installed")
-    print("Install with: pip install anthropic")
+    safe_print("Error: anthropic package not installed")
+    safe_print("Install with: pip install anthropic")
     sys.exit(1)
 
 try:
     import requests
 except ImportError:
-    print("Error: requests package not installed")
-    print("Install with: pip install requests")
+    safe_print("Error: requests package not installed")
+    safe_print("Install with: pip install requests")
     sys.exit(1)
 
 
@@ -287,10 +288,10 @@ class ContentGenerator:
         # Unsplash API (optional)
         self.unsplash_key = unsplash_key or os.environ.get("UNSPLASH_ACCESS_KEY")
         if self.unsplash_key:
-            print("  🖼️  Unsplash API enabled")
+            safe_print("  🖼️  Unsplash API enabled")
         else:
-            print("  ⚠️  Unsplash API key not found (images will be skipped)")
-            print("     Set UNSPLASH_ACCESS_KEY environment variable to enable")
+            safe_print("  ⚠️  Unsplash API key not found (images will be skipped)")
+            safe_print("     Set UNSPLASH_ACCESS_KEY environment variable to enable")
 
     def generate_draft(self, topic: Dict) -> str:
         """Generate initial draft using Draft Agent with Prompt Caching"""
@@ -304,7 +305,7 @@ class ContentGenerator:
         # User prompt with references
         user_prompt = self._get_draft_prompt(keyword, category, lang, references)
 
-        print(f"  📝 Generating draft for: {keyword}")
+        safe_print(f"  📝 Generating draft for: {keyword}")
 
         # Use Prompt Caching: cache the system prompt
         response = self.client.messages.create(
@@ -332,20 +333,20 @@ class ContentGenerator:
 
         # Always show cache status
         if cache_read > 0:
-            print(f"  💾 Cache HIT: {cache_read} tokens saved!")
+            safe_print(f"  💾 Cache HIT: {cache_read} tokens saved!")
         elif cache_create > 0:
-            print(f"  💾 Cache created: {cache_create} tokens")
+            safe_print(f"  💾 Cache created: {cache_create} tokens")
         else:
-            print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
+            safe_print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
 
-        print(f"  ✓ Draft generated ({len(draft)} chars)")
+        safe_print(f"  ✓ Draft generated ({len(draft)} chars)")
         return draft
 
     def edit_draft(self, draft: str, topic: Dict) -> str:
         """Refine draft using Editor Agent with Prompt Caching"""
         lang = topic['lang']
 
-        print(f"  ✏️  Editing draft...")
+        safe_print(f"  ✏️  Editing draft...")
 
         editor_prompt = self._get_editor_prompt(lang)
 
@@ -380,13 +381,13 @@ class ContentGenerator:
 
         # Always show cache status
         if cache_read > 0:
-            print(f"  💾 Cache HIT: {cache_read} tokens saved!")
+            safe_print(f"  💾 Cache HIT: {cache_read} tokens saved!")
         elif cache_create > 0:
-            print(f"  💾 Cache created: {cache_create} tokens")
+            safe_print(f"  💾 Cache created: {cache_create} tokens")
         else:
-            print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
+            safe_print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
 
-        print(f"  ✓ Draft edited ({len(edited)} chars)")
+        safe_print(f"  ✓ Draft edited ({len(edited)} chars)")
         return edited
 
     def _get_draft_prompt(self, keyword: str, category: str, lang: str, references: List[Dict] = None) -> str:
@@ -873,7 +874,7 @@ Return improved version (body only, no title):""",
                 "orientation": "landscape"
             }
 
-            print(f"  🔍 Searching Unsplash for: {query}")
+            safe_print(f"  🔍 Searching Unsplash for: {query}")
 
             response = requests.get(url, headers=headers, params=params, timeout=10)
             response.raise_for_status()
@@ -881,7 +882,7 @@ Return improved version (body only, no title):""",
             data = response.json()
 
             if not data.get('results'):
-                print(f"  ⚠️  No images found for '{query}'")
+                safe_print(f"  ⚠️  No images found for '{query}'")
                 return None
 
             # Load used images tracking file
@@ -923,18 +924,18 @@ Return improved version (body only, no title):""",
                 'image_id': photo['id']
             }
 
-            print(f"  ✓ Found image by {image_info['photographer']}")
+            safe_print(f"  ✓ Found image by {image_info['photographer']}")
             return image_info
 
         except requests.exceptions.RequestException as e:
-            print(f"  ⚠️  Unsplash API error: {e}")
+            safe_print(f"  ⚠️  Unsplash API error: {str(e)}")
             return None
         except Exception as e:
-            print(f"  ⚠️  Image fetch failed: {e}")
+            safe_print(f"  ⚠️  Image fetch failed: {str(e)}")
             return None
 
     def download_image(self, image_info: Dict, keyword: str) -> Optional[str]:
-        """Download image to static/images/ directory"""
+        """Download optimized image to static/images/ directory"""
         if not image_info:
             return None
 
@@ -951,17 +952,6 @@ Return improved version (body only, no title):""",
             filename = f"{date_str}-{slug}.jpg"
             filepath = images_dir / filename
 
-            # Download image
-            print(f"  📥 Downloading image...")
-            response = requests.get(image_info['url'], timeout=15)
-            response.raise_for_status()
-
-            # Save image
-            with open(filepath, 'wb') as f:
-                f.write(response.content)
-
-            print(f"  ✓ Image saved: {filepath}")
-
             # Trigger Unsplash download tracking (required by API terms)
             if image_info.get('download_url'):
                 requests.get(
@@ -970,11 +960,27 @@ Return improved version (body only, no title):""",
                     timeout=5
                 )
 
+            # Download optimized image (1200px width, quality 85)
+            # Use Unsplash's image optimization parameters
+            photo_id = image_info.get('image_id', '')
+            optimized_url = f"https://images.unsplash.com/{photo_id}?w=1200&q=85&fm=jpg"
+
+            safe_print(f"  📥 Downloading optimized image (1200px, q85)...")
+            response = requests.get(optimized_url, timeout=15)
+            response.raise_for_status()
+
+            # Save image
+            with open(filepath, 'wb') as f:
+                f.write(response.content)
+
+            size_kb = len(response.content) / 1024
+            safe_print(f"  ✓ Image saved: {filepath} ({size_kb:.1f} KB)")
+
             # Return relative path for Hugo
             return f"/images/{filename}"
 
         except Exception as e:
-            print(f"  ⚠️  Image download failed: {e}")
+            safe_print(f"  ⚠️  Image download failed: {str(e)}")
             return None
 
     def save_post(self, topic: Dict, title: str, description: str, content: str, image_path: Optional[str] = None, image_credit: Optional[Dict] = None) -> Path:
@@ -1063,18 +1069,18 @@ image: "{image_path}"
             fake_urls = [url for url in urls_in_content if has_fake_reference_url(url)]
 
             if fake_urls:
-                print(f"  ⚠️  Fake reference URLs detected: {len(fake_urls)} found")
-                print(f"      Examples: {fake_urls[:3]}")
+                safe_print(f"  ⚠️  Fake reference URLs detected: {len(fake_urls)} found")
+                safe_print(f"      Examples: {fake_urls[:3]}")
 
                 # Remove References section entirely
                 # Match from any References header to the next ## header or end of content
                 ref_pattern = r'\n## (?:References?|参考(?:文献|資料)|참고자료)\n.*?(?=\n## |\Z)'
                 content = re.sub(ref_pattern, '', content, flags=re.DOTALL)
-                print(f"  🗑️  Removed References section with fake URLs")
+                safe_print(f"  🗑️  Removed References section with fake URLs")
             else:
-                print(f"  ✅ References section validated ({len(urls_in_content)} URLs)")
+                safe_print(f"  ✅ References section validated ({len(urls_in_content)} URLs)")
         else:
-            print(f"  ℹ️  No References section found (skipping)")
+            safe_print(f"  ℹ️  No References section found (skipping)")
 
         # Write file with hero image at top
         with open(filepath, 'w', encoding='utf-8') as f:
@@ -1083,7 +1089,7 @@ image: "{image_path}"
             f.write(content)
             f.write(credit_line)
 
-        print(f"  💾 Saved to: {filepath}")
+        safe_print(f"  💾 Saved to: {filepath}")
         return filepath
 
 
@@ -1097,9 +1103,9 @@ def main():
     try:
         generator = ContentGenerator()
     except ValueError as e:
-        print(f"Error: {e}")
-        print("\nSet ANTHROPIC_API_KEY environment variable:")
-        print("  export ANTHROPIC_API_KEY='your-api-key'")
+        safe_print(f"Error: {str(e)}")
+        safe_print("\nSet ANTHROPIC_API_KEY environment variable:")
+        safe_print("  export ANTHROPIC_API_KEY='your-api-key'")
         sys.exit(1)
 
     # Get topics
@@ -1110,27 +1116,27 @@ def main():
         data = queue._load_queue()
         topics = [t for t in data['topics'] if t['id'] == args.topic_id]
         if not topics:
-            print(f"Error: Topic {args.topic_id} not found")
+            safe_print(f"Error: Topic {args.topic_id} not found")
             sys.exit(1)
     else:
         # Reserve topics from queue
         topics = reserve_topics(count=args.count)
 
     if not topics:
-        print("No topics available in queue")
+        safe_print("No topics available in queue")
         sys.exit(0)
 
-    print(f"\n{'='*60}")
-    print(f"  Generating {len(topics)} posts")
-    print(f"{'='*60}\n")
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  Generating {len(topics)} posts")
+    safe_print(f"{'='*60}\n")
 
     generated_files = []
 
     for i, topic in enumerate(topics, 1):
-        print(f"[{i}/{len(topics)}] {topic['id']}")
-        print(f"  Keyword: {topic['keyword']}")
-        print(f"  Category: {topic['category']}")
-        print(f"  Language: {topic['lang']}")
+        safe_print(f"[{i}/{len(topics)}] {topic['id']}")
+        safe_print(f"  Keyword: {topic['keyword']}")
+        safe_print(f"  Category: {topic['category']}")
+        safe_print(f"  Language: {topic['lang']}")
 
         try:
             # Generate content
@@ -1138,7 +1144,7 @@ def main():
             final_content = generator.edit_draft(draft, topic)
 
             # Generate metadata
-            print(f"  📋 Generating metadata...")
+            safe_print(f"  📋 Generating metadata...")
             title = generator.generate_title(final_content, topic['keyword'], topic['lang'])
             description = generator.generate_description(final_content, topic['keyword'], topic['lang'])
 
@@ -1159,22 +1165,22 @@ def main():
                 mark_completed(topic['id'])
 
             generated_files.append(str(filepath))
-            print(f"  ✅ Completed!\n")
+            safe_print(f"  ✅ Completed!\n")
 
         except Exception as e:
-            print(f"  ❌ Failed: {e}\n")
+            safe_print(f"  ❌ Failed: {str(e)}\n")
             if not args.topic_id:
-                mark_failed(topic['id'], str(e))
+                mark_failed(topic['id'], mask_secrets(str(e)))
 
     # Save generated files list for quality gate
     output_file = Path("generated_files.json")
     with open(output_file, 'w') as f:
         json.dump(generated_files, f, indent=2)
 
-    print(f"{'='*60}")
-    print(f"  ✓ Generated {len(generated_files)} posts")
-    print(f"  File list saved to: {output_file}")
-    print(f"{'='*60}\n")
+    safe_print(f"{'='*60}")
+    safe_print(f"  ✓ Generated {len(generated_files)} posts")
+    safe_print(f"  File list saved to: {output_file}")
+    safe_print(f"{'='*60}\n")
 
 
 if __name__ == "__main__":
