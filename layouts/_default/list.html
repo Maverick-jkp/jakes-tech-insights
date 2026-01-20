@@ -65,7 +65,29 @@
 
 <article class="{{ $class }}">
   {{- $isHidden := false }}
-  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+  {{- /* Custom cover image rendering for page bundles */ -}}
+  {{- with .Resources.GetMatch "cover.*" }}
+  <figure class="entry-cover">
+    {{ $thumb := .Fill "400x200 webp q85" }}
+    {{ $thumb2x := .Fill "800x400 webp q85" }}
+    {{ $fallback := .Fill "400x200 jpg q85" }}
+    <picture>
+      <source
+        srcset="{{ $thumb.RelPermalink }} 1x,
+                {{ $thumb2x.RelPermalink }} 2x"
+        type="image/webp"
+      >
+      <img
+        src="{{ $fallback.RelPermalink }}"
+        alt="{{ $.Title }}"
+        loading="lazy"
+        width="400"
+        height="200"
+        style="width: 100%; height: auto; object-fit: cover;"
+      >
+    </picture>
+  </figure>
+  {{- end }}
   <header class="entry-header">
     <h2 class="entry-hint-parent">
       {{- .Title }}
@@ -117,5 +139,165 @@
 {{- end }}
 
 {{- end }}{{/* end profileMode */}}
+
+<!-- Floating Menu -->
+<div class="floating-menu">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="menu-panel" id="menuPanel">
+        <a href="#top">↑ Top</a>
+        <a href="{{ "/" | relLangURL }}" style="font-weight: 600;">🏠 Home</a>
+        <a href="{{ "all-posts" | relLangURL }}" style="color: var(--accent); font-weight: 600;">📋 All Posts</a>
+        <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
+            <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
+            <div class="category-grid">
+                {{ if eq .Site.Language.Lang "en" }}
+                <a href="/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
+                {{ else }}
+                <a href="/{{ .Site.Language.Lang }}/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        const panel = document.getElementById('menuPanel');
+        panel.classList.toggle('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const menu = document.querySelector('.floating-menu');
+        if (!menu.contains(event.target)) {
+            document.getElementById('menuPanel').classList.remove('active');
+        }
+    });
+</script>
+
+<style>
+    /* Floating Menu */
+    .floating-menu {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 90;
+    }
+
+    .menu-btn {
+        width: 60px;
+        height: 60px;
+        background: var(--accent);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--bg);
+        box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
+        transition: all 0.3s;
+    }
+
+    .menu-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 30px rgba(0, 255, 136, 0.6);
+    }
+
+    .menu-panel {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        background: var(--surface);
+        border: 1px solid var(--accent);
+        border-radius: 1rem;
+        padding: 1rem;
+        min-width: 200px;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+    }
+
+    .menu-panel.active {
+        display: block;
+        animation: slideUp 0.3s;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .menu-panel a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--text);
+        text-decoration: none;
+        border-radius: 0.5rem;
+        transition: all 0.3s;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.875rem;
+    }
+
+    .menu-panel a:hover {
+        background: rgba(0, 255, 136, 0.1);
+        color: var(--accent);
+    }
+
+    .category-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.25rem;
+    }
+
+    .category-grid a {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.75rem 1rem;
+        color: var(--text);
+        text-decoration: none;
+        border-radius: 0.5rem;
+        transition: all 0.3s;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.72rem;
+    }
+
+    .category-grid a:hover {
+        background: rgba(0, 255, 136, 0.1);
+        color: var(--accent);
+    }
+
+    .category-grid .cat-icon {
+        flex-shrink: 0;
+        width: 1.1em;
+        text-align: center;
+    }
+
+    .category-grid .cat-text {
+        flex: 1;
+        white-space: nowrap;
+    }
+</style>
 
 {{- end }}{{- /* end main */ -}}
