@@ -358,7 +358,7 @@ def main():
         # Print info
         info = result['info']
         safe_print(f"  📊 Info: {info['word_count']} words, {info['heading_count']} headings, {info.get('link_count', 0)} links")
-        safe_print()
+        safe_print("")
 
     # Summary
     safe_print(f"{'='*60}")
