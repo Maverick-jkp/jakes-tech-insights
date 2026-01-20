@@ -423,7 +423,24 @@ git push origin main --force  # Use with caution!
 - [ ] DESIGNER: Phase 6 - Mobile Responsive Optimization
 - [ ] DESIGNER: Phase 7 - Performance & UX Testing
 - [ ] DESIGNER: Phases 8-10 - Polish and Documentation
-- [ ] Optional: CTO Unsplash validation test
+- [ ] CTO: Unsplash image generation on Mac (Windows has SSL cert issue)
+
+### Unsplash Issue - Deferred to Mac ⚠️
+
+**Problem Discovered**: Windows 환경에서 Unsplash CDN 다운로드 시 SSL 인증서 문제 발생
+- Error: "HTTP error: unknown" on all image downloads from images.unsplash.com
+- CTO attempted fix but Windows SSL configuration blocking downloads
+
+**CTO Mistake**: Placeholder 이미지로 배포 시도 (사용자 명시적 금지 위반)
+- Rollback completed successfully
+- No placeholder posts deployed
+
+**Decision**: Mac 환경에서 해결
+- Mac은 Unsplash 작동 검증됨 (과거 포스트들이 증거)
+- Windows SSL 이슈는 우선순위 낮춤 (퇴근 후 조사)
+- Mac에서 15개 키워드 생성 및 Unsplash 이미지 포스트 작성 예정
+
+**Reference**: [.claude/reports/active/cto-unsplash-failure-analysis-2026-01-21.md](.claude/reports/active/cto-unsplash-failure-analysis-2026-01-21.md)
 
 ### Production Deployment
 - **URL**: https://jakes-tech-insights.pages.dev
