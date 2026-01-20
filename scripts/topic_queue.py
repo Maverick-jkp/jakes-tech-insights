@@ -23,7 +23,7 @@ Usage:
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Dict, Optional
 
@@ -82,7 +82,7 @@ class TopicQueue:
 
         # Reserve top N topics
         reserved = []
-        now = datetime.utcnow().isoformat()
+        now = datetime.now(timezone.utc).isoformat()
 
         for topic in pending[:count]:
             # Validate topic data before reserving
@@ -107,7 +107,7 @@ class TopicQueue:
         for topic in data['topics']:
             if topic['id'] == topic_id:
                 topic['status'] = 'completed'
-                topic['completed_at'] = datetime.utcnow().isoformat()
+                topic['completed_at'] = datetime.now(timezone.utc).isoformat()
                 break
 
         self._save_queue(data)
@@ -127,7 +127,7 @@ class TopicQueue:
                 topic['status'] = 'pending'  # Rollback to pending
                 topic['retry_count'] = topic.get('retry_count', 0) + 1
                 topic['last_error'] = error_message
-                topic['last_failed_at'] = datetime.utcnow().isoformat()
+                topic['last_failed_at'] = datetime.now(timezone.utc).isoformat()
 
                 # Remove reservation timestamp
                 topic.pop('reserved_at', None)
@@ -143,7 +143,7 @@ class TopicQueue:
             hours: Number of hours before considering a topic stuck
         """
         data = self._load_queue()
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         threshold = now - timedelta(hours=hours)
 
         for topic in data['topics']:
@@ -203,7 +203,7 @@ class TopicQueue:
             "lang": lang,
             "priority": priority,
             "status": "pending",
-            "created_at": datetime.utcnow().isoformat(),
+            "created_at": datetime.now(timezone.utc).isoformat(),
             "retry_count": 0
         }
 

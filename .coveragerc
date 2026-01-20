@@ -14,7 +14,11 @@ omit =
     scripts/convert_to_page_bundles.py
     scripts/copy_images_to_bundles.py
     scripts/update_image_paths.py
+    scripts/measure_image_performance.py
+    scripts/quality_gate.py
+    scripts/redownload_optimized_images.py
     scripts/utils/security.py
+    scripts/utils/validate_queue.py
 
 [report]
 precision = 2

@@ -80,7 +80,7 @@ class TestReserveTopics:
                     "id": "001-en-tech-low",
                     "keyword": "Low Priority",
                     "category": "tech",
-                    "language": "en",
+                    "lang": "en",
                     "priority": 3,
                     "status": "pending",
                     "created_at": "2026-01-20T12:00:00"
@@ -89,7 +89,7 @@ class TestReserveTopics:
                     "id": "002-en-tech-high",
                     "keyword": "High Priority",
                     "category": "tech",
-                    "language": "en",
+                    "lang": "en",
                     "priority": 9,
                     "status": "pending",
                     "created_at": "2026-01-20T12:00:00"
@@ -98,7 +98,7 @@ class TestReserveTopics:
                     "id": "003-en-tech-medium",
                     "keyword": "Medium Priority",
                     "category": "tech",
-                    "language": "en",
+                    "lang": "en",
                     "priority": 6,
                     "status": "pending",
                     "created_at": "2026-01-20T12:00:00"
