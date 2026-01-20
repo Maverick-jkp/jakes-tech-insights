@@ -1,0 +1,61 @@
+name: Fix Placeholder Images
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: 'Commit and push changes'
+        required: false
+        default: 'true'
+
+jobs:
+  fix-placeholders:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Replace placeholder images
+        env:
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        run: |
+          python scripts/replace_placeholder_images.py
+
+      - name: Commit and push changes
+        if: github.event.inputs.commit == 'true'
+        run: |
+          git config user.name "Content Bot"
+          git config user.email "bot@jakes-tech-insights.com"
+
+          # Check if there are changes
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            git add content/
+            git add static/images/
+            git add data/used_images.json
+
+            # Count fixed posts
+            FIXED_COUNT=$(git diff --cached --name-only | grep "content/" | wc -l)
+
+            if [ "$FIXED_COUNT" -gt 0 ]; then
+              git commit -m "🖼️ Fix: Replace $FIXED_COUNT placeholder images with real Unsplash images"
+              git push origin main
+              echo "✅ Pushed $FIXED_COUNT fixed posts"
+            else
+              echo "⚠️ No posts to commit"
+            fi
+          else
+            echo "⚠️ No changes to commit"
+          fi
