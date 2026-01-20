@@ -272,18 +272,26 @@ class ContentGenerator:
         """Initialize content generator with Claude API and Unsplash API"""
         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
         if not self.api_key:
+            safe_print("❌ ERROR: ANTHROPIC_API_KEY not found")
+            safe_print("   Please set it as environment variable or pass to constructor")
+            safe_print("   Example: export ANTHROPIC_API_KEY='your-key-here'")
             raise ValueError(
                 "ANTHROPIC_API_KEY not found. Set it as environment variable or pass to constructor."
             )
 
         # Initialize with Prompt Caching beta header
-        self.client = Anthropic(
-            api_key=self.api_key,
-            default_headers={
-                "anthropic-beta": "prompt-caching-2024-07-31"
-            }
-        )
-        self.model = "claude-sonnet-4-20250514"
+        try:
+            self.client = Anthropic(
+                api_key=self.api_key,
+                default_headers={
+                    "anthropic-beta": "prompt-caching-2024-07-31"
+                }
+            )
+            self.model = "claude-sonnet-4-20250514"
+            safe_print("  ✓ Anthropic API client initialized successfully")
+        except Exception as e:
+            safe_print(f"❌ ERROR: Failed to initialize Anthropic client: {mask_secrets(str(e))}")
+            raise
 
         # Unsplash API (optional)
         self.unsplash_key = unsplash_key or os.environ.get("UNSPLASH_ACCESS_KEY")
@@ -308,21 +316,34 @@ class ContentGenerator:
         safe_print(f"  📝 Generating draft for: {keyword}")
 
         # Use Prompt Caching: cache the system prompt
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=12000,
-            system=[
-                {
-                    "type": "text",
-                    "text": system_prompt,
-                    "cache_control": {"type": "ephemeral"}
-                }
-            ],
-            messages=[{
-                "role": "user",
-                "content": user_prompt
-            }]
-        )
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=12000,
+                system=[
+                    {
+                        "type": "text",
+                        "text": system_prompt,
+                        "cache_control": {"type": "ephemeral"}
+                    }
+                ],
+                messages=[{
+                    "role": "user",
+                    "content": user_prompt
+                }]
+            )
+        except Exception as e:
+            error_msg = mask_secrets(str(e))
+            safe_print(f"  ❌ ERROR: API call failed during draft generation")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {error_msg}")
+            raise
+
+        if not response or not response.content:
+            safe_print(f"  ❌ ERROR: Empty response from API")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            raise ValueError("Empty response from Claude API")
 
         draft = response.content[0].text
 
@@ -348,29 +369,47 @@ class ContentGenerator:
 
         safe_print(f"  ✏️  Editing draft...")
 
+        if not draft or len(draft.strip()) == 0:
+            safe_print(f"  ⚠️  WARNING: Empty draft provided for editing")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            raise ValueError("Cannot edit empty draft")
+
         editor_prompt = self._get_editor_prompt(lang)
 
         # Use Prompt Caching: cache the editor instructions
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=12000,
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": editor_prompt,
-                            "cache_control": {"type": "ephemeral"}
-                        },
-                        {
-                            "type": "text",
-                            "text": f"\n\n---\n\n{draft}"
-                        }
-                    ]
-                }
-            ]
-        )
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=12000,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": editor_prompt,
+                                "cache_control": {"type": "ephemeral"}
+                            },
+                            {
+                                "type": "text",
+                                "text": f"\n\n---\n\n{draft}"
+                            }
+                        ]
+                    }
+                ]
+            )
+        except Exception as e:
+            error_msg = mask_secrets(str(e))
+            safe_print(f"  ❌ ERROR: API call failed during draft editing")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            safe_print(f"     Draft length: {len(draft)} chars")
+            safe_print(f"     Error: {error_msg}")
+            raise
+
+        if not response or not response.content:
+            safe_print(f"  ❌ ERROR: Empty response from editing API")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            raise ValueError("Empty response from Claude API during editing")
 
         edited = response.content[0].text
 
@@ -927,11 +966,30 @@ Return improved version (body only, no title):""",
             safe_print(f"  ✓ Found image by {image_info['photographer']}")
             return image_info
 
+        except requests.exceptions.Timeout as e:
+            safe_print(f"  ⚠️  Unsplash API timeout: Request took too long")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
+            return None
+        except requests.exceptions.HTTPError as e:
+            safe_print(f"  ⚠️  Unsplash API HTTP error: {e.response.status_code if e.response else 'unknown'}")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
+            return None
         except requests.exceptions.RequestException as e:
-            safe_print(f"  ⚠️  Unsplash API error: {str(e)}")
+            safe_print(f"  ⚠️  Unsplash API network error")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
+            return None
+        except json.JSONDecodeError as e:
+            safe_print(f"  ⚠️  Unsplash API response parsing failed")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: Invalid JSON response")
             return None
         except Exception as e:
-            safe_print(f"  ⚠️  Image fetch failed: {str(e)}")
+            safe_print(f"  ⚠️  Image fetch failed with unexpected error")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
             return None
 
     def download_image(self, image_info: Dict, keyword: str) -> Optional[str]:
@@ -979,8 +1037,24 @@ Return improved version (body only, no title):""",
             # Return relative path for Hugo
             return f"/images/{filename}"
 
+        except requests.exceptions.Timeout as e:
+            safe_print(f"  ⚠️  Image download timeout")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     URL: {optimized_url[:80]}...")
+            return None
+        except requests.exceptions.HTTPError as e:
+            safe_print(f"  ⚠️  Image download HTTP error: {e.response.status_code if e.response else 'unknown'}")
+            safe_print(f"     Keyword: {keyword}")
+            return None
+        except IOError as e:
+            safe_print(f"  ⚠️  File system error during image save")
+            safe_print(f"     Path: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            return None
         except Exception as e:
-            safe_print(f"  ⚠️  Image download failed: {str(e)}")
+            safe_print(f"  ⚠️  Image download failed with unexpected error")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
             return None
 
     def save_post(self, topic: Dict, title: str, description: str, content: str, image_path: Optional[str] = None, image_credit: Optional[Dict] = None) -> Path:
@@ -1140,35 +1214,80 @@ def main():
 
         try:
             # Generate content
+            safe_print(f"  → Step 1/5: Generating draft...")
             draft = generator.generate_draft(topic)
+
+            safe_print(f"  → Step 2/5: Editing draft...")
             final_content = generator.edit_draft(draft, topic)
 
             # Generate metadata
-            safe_print(f"  📋 Generating metadata...")
-            title = generator.generate_title(final_content, topic['keyword'], topic['lang'])
-            description = generator.generate_description(final_content, topic['keyword'], topic['lang'])
+            safe_print(f"  → Step 3/5: Generating metadata...")
+            try:
+                title = generator.generate_title(final_content, topic['keyword'], topic['lang'])
+                description = generator.generate_description(final_content, topic['keyword'], topic['lang'])
+            except Exception as e:
+                safe_print(f"  ⚠️  WARNING: Metadata generation failed, using defaults")
+                safe_print(f"     Error: {mask_secrets(str(e))}")
+                title = topic['keyword']
+                description = f"Article about {topic['keyword']}"
 
             # Fetch featured image
+            safe_print(f"  → Step 4/5: Fetching image...")
             image_path = None
             image_credit = None
-            image_info = generator.fetch_featured_image(topic['keyword'], topic['category'])
-            if image_info:
-                image_path = generator.download_image(image_info, topic['keyword'])
-                if image_path:
-                    image_credit = image_info
+            try:
+                image_info = generator.fetch_featured_image(topic['keyword'], topic['category'])
+                if image_info:
+                    image_path = generator.download_image(image_info, topic['keyword'])
+                    if image_path:
+                        image_credit = image_info
+            except Exception as e:
+                safe_print(f"  ⚠️  WARNING: Image fetch failed, will use placeholder")
+                safe_print(f"     Error: {mask_secrets(str(e))}")
 
             # Save post with image
-            filepath = generator.save_post(topic, title, description, final_content, image_path, image_credit)
+            safe_print(f"  → Step 5/5: Saving post...")
+            try:
+                filepath = generator.save_post(topic, title, description, final_content, image_path, image_credit)
+            except IOError as e:
+                safe_print(f"  ❌ ERROR: Failed to save post to filesystem")
+                safe_print(f"     Error: {str(e)}")
+                raise
+            except Exception as e:
+                safe_print(f"  ❌ ERROR: Unexpected error during save")
+                safe_print(f"     Error: {mask_secrets(str(e))}")
+                raise
 
             # Mark as completed
             if not args.topic_id:
-                mark_completed(topic['id'])
+                try:
+                    mark_completed(topic['id'])
+                except Exception as e:
+                    safe_print(f"  ⚠️  WARNING: Failed to mark topic as completed in queue")
+                    safe_print(f"     Topic ID: {topic['id']}")
+                    safe_print(f"     Error: {str(e)}")
+                    # Don't fail the whole process if queue update fails
 
             generated_files.append(str(filepath))
             safe_print(f"  ✅ Completed!\n")
 
+        except KeyError as e:
+            safe_print(f"  ❌ FAILED: Missing required field in topic data")
+            safe_print(f"     Topic ID: {topic.get('id', 'unknown')}")
+            safe_print(f"     Missing field: {str(e)}\n")
+            if not args.topic_id:
+                mark_failed(topic['id'], f"Missing field: {str(e)}")
+        except ValueError as e:
+            safe_print(f"  ❌ FAILED: Invalid data or API response")
+            safe_print(f"     Topic ID: {topic.get('id', 'unknown')}")
+            safe_print(f"     Error: {mask_secrets(str(e))}\n")
+            if not args.topic_id:
+                mark_failed(topic['id'], mask_secrets(str(e)))
         except Exception as e:
-            safe_print(f"  ❌ Failed: {str(e)}\n")
+            safe_print(f"  ❌ FAILED: Unexpected error")
+            safe_print(f"     Topic ID: {topic.get('id', 'unknown')}")
+            safe_print(f"     Error type: {type(e).__name__}")
+            safe_print(f"     Error: {mask_secrets(str(e))}\n")
             if not args.topic_id:
                 mark_failed(topic['id'], mask_secrets(str(e)))
 
