@@ -6,6 +6,39 @@
 
 ---
 
+## 🖥️ 환경 정보
+
+**작업 디렉토리**: `/Users/jakepark/projects/jakes-tech-insights`
+
+**사용 가능한 도구**:
+- **pytest**: `pytest` (테스트 프레임워크)
+  - 실행: `pytest` 또는 `pytest tests/`
+  - Coverage: `pytest --cov=scripts --cov-report=html`
+  - Verbose: `pytest -v`
+- **Python**: `python3`
+  - 패키지 설치: `python3 -m pip install -r requirements.txt`
+- **Git CLI**: `/usr/bin/git`
+- **Hugo**: `/opt/homebrew/bin/hugo` (통합 테스트용)
+
+**주요 디렉토리**:
+- `tests/`: 테스트 파일
+  - `conftest.py`: pytest fixtures
+  - `test_*.py`: 테스트 모듈
+  - `fixtures/`: 테스트 데이터
+- `scripts/`: 테스트 대상 코드
+- `htmlcov/`: Coverage HTML 리포트
+
+**테스트 설정 파일**:
+- `pytest.ini`: pytest 설정
+- `.coveragerc`: Coverage 설정
+- `requirements.txt`: 의존성 (pytest, pytest-cov, pytest-mock)
+
+**Coverage 목표**: 최소 50%
+
+**중요**: 모든 테스트는 프로젝트 루트에서 실행합니다.
+
+---
+
 ## 📋 Responsibilities
 
 ### 1. 테스트 작성

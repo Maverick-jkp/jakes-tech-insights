@@ -6,6 +6,35 @@
 
 ---
 
+## 🖥️ 환경 정보
+
+**작업 디렉토리**: `/Users/jakepark/projects/jakes-tech-insights`
+
+**사용 가능한 도구**:
+- **Python**: `python3` (Python 3.x)
+  - 패키지 관리: `python3 -m pip`
+  - 테스트: `pytest`
+- **Git CLI**: `/usr/bin/git`
+- **Hugo**: `/opt/homebrew/bin/hugo`
+  - 빌드: `hugo`
+  - 로컬 서버: `hugo server`
+- **Homebrew**: `/opt/homebrew/bin/brew`
+
+**주요 디렉토리**:
+- `scripts/`: Python 스크립트 (백엔드 로직)
+- `tests/`: pytest 테스트
+- `.github/workflows/`: CI/CD 워크플로우
+- `data/`: topics_queue.json 등 데이터 파일
+
+**환경 변수** (.env 파일):
+- `ANTHROPIC_API_KEY`: Anthropic API 키
+- `UNSPLASH_ACCESS_KEY`: Unsplash API 키
+- `GOOGLE_API_KEY`, `GOOGLE_CX`: Google Custom Search
+
+**중요**: 모든 명령어는 프로젝트 루트에서 실행됩니다.
+
+---
+
 ## 📋 Responsibilities
 
 ### 1. 기술 아키텍처 설계

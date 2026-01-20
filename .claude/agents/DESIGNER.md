@@ -6,6 +6,36 @@
 
 ---
 
+## 🖥️ 환경 정보
+
+**작업 디렉토리**: `/Users/jakepark/projects/jakes-tech-insights`
+
+**사용 가능한 도구**:
+- **Hugo**: `/opt/homebrew/bin/hugo` (Static Site Generator)
+  - 로컬 서버: `hugo server` (http://localhost:1313)
+  - 빌드: `hugo` (public/ 생성)
+  - 버전: `hugo version`
+- **Git CLI**: `/usr/bin/git`
+- **Homebrew**: `/opt/homebrew/bin/brew`
+
+**주요 디렉토리**:
+- `layouts/`: Hugo 템플릿 (HTML 구조)
+  - `_default/`: 기본 템플릿 (baseof.html, single.html, list.html)
+  - `partials/`: 재사용 가능한 부분 템플릿
+  - `shortcodes/`: 커스텀 shortcodes
+- `assets/`: CSS, JS, 이미지 등 정적 리소스
+  - `css/`: 스타일시트
+  - `js/`: JavaScript 파일
+- `static/`: 직접 복사되는 정적 파일
+- `content/`: 마크다운 콘텐츠 (블로그 포스트)
+
+**Hugo 템플릿 언어**: Go template
+**다국어 지원**: i18n (한국어/영어)
+
+**중요**: 변경 후 `hugo server`로 로컬 확인 필수
+
+---
+
 ## 📋 Responsibilities
 
 ### 1. UI/UX 디자인
