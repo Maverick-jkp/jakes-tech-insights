@@ -5,7 +5,7 @@ draft: false
 categories: ["sports"]
 tags: ["u-23", "nh\u1eadt", "b\u1ea3n"]
 description: "Japan U-23 vs South Korea U-23: Complete match preview, team lineups, key players to watch, and live updates from this exciting Asian football rivalry clash."
-image: "/images/placeholder-sports.jpg"
+image: "/images/placeholder-sports.svg"
 ---
 
 You've probably watched Japan and South Korea's senior teams battle it out and felt that electric tension through your screen. But here's what surprised me after covering Asian football for years – the U-23 matches between these nations actually burn hotter than their senior counterparts.

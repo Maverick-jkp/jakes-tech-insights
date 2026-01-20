@@ -5,7 +5,7 @@ draft: false
 categories: ["tech"]
 tags: ["fog", "delays", "bakersfield"]
 description: "Learn about fog delays in Bakersfield - causes, safety impacts, and tips for navigating dense Central Valley fog that disrupts flights, traffic, and daily life."
-image: "/images/placeholder-tech.jpg"
+image: "/images/placeholder-tech.svg"
 ---
 
 You're stuck at Bakersfield airport again, watching flights get delayed for hours while thick fog blankets the runway. Your business meeting just got pushed back, your connecting flight is now impossible, and you're wondering why this keeps happening. 

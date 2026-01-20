@@ -5,7 +5,7 @@ draft: false
 categories: ["society"]
 tags: ["bernie", "goetz"]
 description: "Explore the controversial 1984 subway shooting case of Bernhard Goetz that divided New York City and sparked nationwide debates about vigilantism and self-defense."
-image: "/images/placeholder-society.jpg"
+image: "/images/placeholder-society.svg"
 ---
 
 You're walking alone at night when someone approaches you aggressively. Your heart races. Do you fight, flee, or freeze? In 1984, Bernie Goetz faced this exact scenario on a New York subway—and his split-second decision sparked a debate that's still raging today.

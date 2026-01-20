@@ -5,7 +5,7 @@ draft: false
 categories: ["entertainment"]
 tags: ["jennette", "mccurdy"]
 description: "Discover Jennette McCurdy's inspiring journey from Nickelodeon star to bestselling author, her battles with fame, family trauma, and finding her true voice."
-image: "/images/placeholder-entertainment.jpg"
+image: "/images/placeholder-entertainment.svg"
 ---
 
 You've probably watched Jennette McCurdy grow up on screen, from her sweet Nickelodeon days to her surprising career pivot. But if you're wondering why she's suddenly everywhere in conversations about child stardom and Hollywood's dark side, you're not alone. Recent revelations about her experiences have left many questioning what they thought they knew about the entertainment industry.

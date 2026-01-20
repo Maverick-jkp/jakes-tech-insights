@@ -5,7 +5,7 @@ draft: false
 categories: ["finance"]
 tags: ["chris", "pratt"]
 description: "Discover Chris Pratt's incredible journey from Parks & Recreation comedian to Marvel superhero and Jurassic World star. Explore his rise to A-list fame."
-image: "/images/placeholder-finance.jpg"
+image: "/images/placeholder-finance.svg"
 ---
 
 You know that moment when your favorite actor's financial moves make you question everything you thought you knew about celebrity money management? Chris Pratt's journey from a nearly broke waiter to a $60 million net worth might look like pure Hollywood magic, but his financial decisions reveal some surprising lessons that go against conventional wisdom.

@@ -5,7 +5,7 @@ draft: false
 categories: ["business"]
 tags: ["yahya", "abdul-mateen", "ii"]
 description: "Discover Yahya Abdul-Mateen II's journey from architect to Emmy-winning actor in Watchmen, Aquaman, and The Matrix Resurrections. His rise to Hollywood stardom."
-image: "/images/placeholder-business.jpg"
+image: "/images/placeholder-business.svg"
 ---
 
 You've probably watched Yahya Abdul-Mateen II dominate the screen in "Watchmen" or "Aquaman" and thought, "Where did this guy come from?" I had the same reaction. One day he's a relative unknown, the next he's collecting Emmy awards and commanding eight-figure franchise deals.

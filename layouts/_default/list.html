@@ -87,6 +87,20 @@
       >
     </picture>
   </figure>
+  {{- else }}
+    {{- /* Fallback to front matter image field */ -}}
+    {{- with $page.Params.image }}
+    <figure class="entry-cover">
+      <img
+        src="{{ . }}"
+        alt="{{ $page.Title }}"
+        loading="lazy"
+        width="400"
+        height="200"
+        style="width: 100%; height: auto; object-fit: cover;"
+      >
+    </figure>
+    {{- end }}
   {{- end }}
   <header class="entry-header">
     <h2 class="entry-hint-parent">
