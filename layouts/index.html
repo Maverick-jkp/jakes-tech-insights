@@ -711,9 +711,9 @@
             <a href="{{ .Permalink }}" class="featured-post">
                 <div class="featured-thumbnail">
                     {{ with .Resources.GetMatch "cover.*" }}
-                      {{ $hero := .Fill "1400x350 webp q85" }}
-                      {{ $hero2x := .Fill "2800x700 webp q85" }}
-                      {{ $fallback := .Fill "1400x350 jpg q85" }}
+                      {{ $hero := .Fit "1400x350 webp q85" }}
+                      {{ $hero2x := .Fit "2800x700 webp q85" }}
+                      {{ $fallback := .Fit "1400x350 jpg q85" }}
 
                       <picture>
                         <source
@@ -725,9 +725,9 @@
                           src="{{ $fallback.RelPermalink }}"
                           alt="{{ $.Title }}"
                           loading="eager"
-                          width="1400"
-                          height="350"
-                          style="width: 100%; height: 100%; object-fit: cover;"
+                          width="{{ $fallback.Width }}"
+                          height="{{ $fallback.Height }}"
+                          style="width: 100%; height: 100%; object-fit: contain; object-position: center;"
                         >
                       </picture>
                     {{ else }}
