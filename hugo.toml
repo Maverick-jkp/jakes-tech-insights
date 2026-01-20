@@ -1,4 +1,4 @@
-baseURL = 'https://jakes-tech-insights.pages.dev'
+baseURL = 'https://jakes-insights.pages.dev'
 defaultContentLanguage = 'en'
 title = "Jake's Insights"
 theme = 'PaperMod'
