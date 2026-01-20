@@ -128,6 +128,9 @@ class KeywordCurator:
         """Initialize keyword curator with Claude API and Google Custom Search"""
         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
         if not self.api_key:
+            safe_print("❌ ERROR: ANTHROPIC_API_KEY not found")
+            safe_print("   Please set it as environment variable")
+            safe_print("   Example: export ANTHROPIC_API_KEY='your-key-here'")
             raise ValueError("ANTHROPIC_API_KEY not found")
 
         self.google_api_key = google_api_key or os.environ.get("GOOGLE_API_KEY")
@@ -138,12 +141,24 @@ class KeywordCurator:
             safe_print("   Set GOOGLE_API_KEY and GOOGLE_CX environment variables")
             safe_print("   Falling back to Claude-only mode")
 
-        self.client = Anthropic(api_key=self.api_key)
-        self.model = "claude-sonnet-4-20250514"
+        try:
+            self.client = Anthropic(api_key=self.api_key)
+            self.model = "claude-sonnet-4-20250514"
+            safe_print("  ✓ Anthropic API client initialized successfully")
+        except Exception as e:
+            safe_print(f"❌ ERROR: Failed to initialize Anthropic client")
+            safe_print(f"   Error: {mask_secrets(str(e))}")
+            raise
 
         # Load existing queue
         self.queue_path = Path("data/topics_queue.json")
-        self.queue_data = self._load_queue()
+        try:
+            self.queue_data = self._load_queue()
+            safe_print(f"  ✓ Loaded topic queue: {len(self.queue_data.get('topics', []))} topics")
+        except Exception as e:
+            safe_print(f"⚠️  WARNING: Failed to load existing queue, starting fresh")
+            safe_print(f"   Error: {str(e)}")
+            self.queue_data = {"topics": []}
 
     def _load_queue(self) -> Dict:
         """Load existing topic queue"""
@@ -155,8 +170,21 @@ class KeywordCurator:
 
     def _save_queue(self):
         """Save updated topic queue"""
-        with open(self.queue_path, 'w', encoding='utf-8') as f:
-            json.dump(self.queue_data, f, indent=2, ensure_ascii=False)
+        try:
+            # Ensure parent directory exists
+            self.queue_path.parent.mkdir(parents=True, exist_ok=True)
+
+            with open(self.queue_path, 'w', encoding='utf-8') as f:
+                json.dump(self.queue_data, f, indent=2, ensure_ascii=False)
+        except IOError as e:
+            safe_print(f"❌ ERROR: Failed to save queue to filesystem")
+            safe_print(f"   Path: {self.queue_path}")
+            safe_print(f"   Error: {str(e)}")
+            raise
+        except Exception as e:
+            safe_print(f"❌ ERROR: Unexpected error saving queue")
+            safe_print(f"   Error: {str(e)}")
+            raise
 
     def detect_intent_signals(self, query: str) -> list:
         """Detect intent signals from query for deduplication"""
@@ -214,8 +242,18 @@ class KeywordCurator:
 
                 safe_print(f"  ✓ Found {min(len(items), 5)} trends from {geo}")
 
+            except requests.exceptions.Timeout:
+                safe_print(f"  ⚠️  RSS fetch timeout for {geo}: Request took too long")
+                continue
+            except requests.exceptions.HTTPError as e:
+                safe_print(f"  ⚠️  RSS HTTP error for {geo}: {e.response.status_code if e.response else 'unknown'}")
+                continue
+            except ET.ParseError as e:
+                safe_print(f"  ⚠️  RSS parse error for {geo}: Invalid XML format")
+                safe_print(f"     Error: {str(e)}")
+                continue
             except Exception as e:
-                safe_print(f"  ⚠️  RSS fetch error for {geo}: {str(e)}")
+                safe_print(f"  ⚠️  RSS fetch error for {geo}: {mask_secrets(str(e))}")
                 continue
 
         return trending_queries
@@ -301,8 +339,23 @@ class KeywordCurator:
 
                 safe_print(f"  ✓ Fetched {len(data.get('items', []))} results for: {query}")
 
+            except requests.exceptions.Timeout:
+                safe_print(f"  ⚠️  Timeout fetching results for '{query[:50]}...'")
+                continue
+            except requests.exceptions.HTTPError as e:
+                status_code = e.response.status_code if e.response else 'unknown'
+                safe_print(f"  ⚠️  HTTP error ({status_code}) for '{query[:50]}...'")
+                if status_code == 429:
+                    safe_print(f"     Rate limit exceeded - consider adding longer delays")
+                continue
+            except json.JSONDecodeError:
+                safe_print(f"  ⚠️  Invalid JSON response for '{query[:50]}...'")
+                continue
             except requests.exceptions.RequestException as e:
-                safe_print(f"  ⚠️  Error fetching results for '{query}': {str(e)}")
+                safe_print(f"  ⚠️  Network error for '{query[:50]}...': {mask_secrets(str(e))}")
+                continue
+            except Exception as e:
+                safe_print(f"  ⚠️  Unexpected error for '{query[:50]}...': {mask_secrets(str(e))}")
                 continue
 
         safe_print(f"\n✅ Total {len(all_results)} trending topics fetched\n")
@@ -402,14 +455,25 @@ class KeywordCurator:
             per_lang=per_lang
         )
 
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=16000,  # Increased for 30+ keywords
-            messages=[{
-                "role": "user",
-                "content": prompt
-            }]
-        )
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=16000,  # Increased for 30+ keywords
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }]
+            )
+        except Exception as e:
+            safe_print(f"❌ ERROR: Claude API call failed")
+            safe_print(f"   Error: {mask_secrets(str(e))}")
+            safe_print(f"   This is a critical error - cannot continue without keyword candidates")
+            sys.exit(1)
+
+        if not response or not response.content:
+            safe_print(f"❌ ERROR: Empty response from Claude API")
+            safe_print(f"   This is a critical error - cannot continue without keyword candidates")
+            sys.exit(1)
 
         # Parse JSON response
         content = response.content[0].text.strip()
@@ -423,8 +487,10 @@ class KeywordCurator:
         try:
             candidates = json.loads(content)
         except json.JSONDecodeError as e:
-            safe_print(f"❌ Failed to parse JSON response: {str(e)}")
-            safe_print(f"Raw response:\n{content[:500]}")
+            safe_print(f"❌ ERROR: Failed to parse JSON response from Claude")
+            safe_print(f"   Parse error: {str(e)}")
+            safe_print(f"   Raw response (first 500 chars):\n{content[:500]}")
+            safe_print(f"   This is a critical error - cannot continue with invalid JSON")
             sys.exit(1)
 
         safe_print(f"✅ Generated {len(candidates)} candidates\n")

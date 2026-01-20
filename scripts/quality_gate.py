@@ -66,11 +66,48 @@ class QualityGate:
         """Check a single markdown file"""
 
         # Read file
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except FileNotFoundError:
+            safe_print(f"  ❌ ERROR: File not found: {filepath}")
+            return {
+                "file": str(filepath),
+                "language": "unknown",
+                "critical_failures": [f"File not found: {filepath}"],
+                "warnings": [],
+                "info": {}
+            }
+        except IOError as e:
+            safe_print(f"  ❌ ERROR: Cannot read file: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            return {
+                "file": str(filepath),
+                "language": "unknown",
+                "critical_failures": [f"Cannot read file: {str(e)}"],
+                "warnings": [],
+                "info": {}
+            }
+        except Exception as e:
+            safe_print(f"  ❌ ERROR: Unexpected error reading file: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            return {
+                "file": str(filepath),
+                "language": "unknown",
+                "critical_failures": [f"Unexpected error: {str(e)}"],
+                "warnings": [],
+                "info": {}
+            }
 
         # Parse frontmatter and body
-        frontmatter, body = self._parse_markdown(content)
+        try:
+            frontmatter, body = self._parse_markdown(content)
+        except Exception as e:
+            safe_print(f"  ⚠️  WARNING: Failed to parse markdown structure")
+            safe_print(f"     File: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            frontmatter = {}
+            body = content
 
         # Detect language from filepath
         lang = self._detect_language(filepath)
@@ -305,15 +342,27 @@ def main():
     generated_files_path = Path("generated_files.json")
 
     if not generated_files_path.exists():
-        safe_print("Error: generated_files.json not found")
-        safe_print("Run generate_posts.py first to create content")
+        safe_print("❌ ERROR: generated_files.json not found")
+        safe_print("   Run generate_posts.py first to create content")
+        safe_print("   Expected path: generated_files.json")
         sys.exit(1)
 
-    with open(generated_files_path, 'r') as f:
-        generated_files = json.load(f)
+    try:
+        with open(generated_files_path, 'r') as f:
+            generated_files = json.load(f)
+    except json.JSONDecodeError as e:
+        safe_print(f"❌ ERROR: Invalid JSON in generated_files.json")
+        safe_print(f"   Error: {str(e)}")
+        safe_print(f"   The file may be corrupted")
+        sys.exit(1)
+    except IOError as e:
+        safe_print(f"❌ ERROR: Cannot read generated_files.json")
+        safe_print(f"   Error: {str(e)}")
+        sys.exit(1)
 
     if not generated_files:
-        safe_print("No files to check")
+        safe_print("⚠️  No files to check in generated_files.json")
+        safe_print("   This is not an error - the file list is empty")
         sys.exit(0)
 
     # Initialize quality gate
@@ -370,17 +419,22 @@ def main():
 
     # Save detailed report
     report_path = Path("quality_report.json")
-    with open(report_path, 'w') as f:
-        json.dump({
-            "summary": {
-                "total_files": len(all_results),
-                "total_failures": total_failures,
-                "total_warnings": total_warnings
-            },
-            "results": all_results
-        }, f, indent=2)
-
-    safe_print(f"\nDetailed report saved to: {report_path}")
+    try:
+        with open(report_path, 'w') as f:
+            json.dump({
+                "summary": {
+                    "total_files": len(all_results),
+                    "total_failures": total_failures,
+                    "total_warnings": total_warnings
+                },
+                "results": all_results
+            }, f, indent=2)
+        safe_print(f"\n✓ Detailed report saved to: {report_path}")
+    except IOError as e:
+        safe_print(f"\n⚠️  WARNING: Failed to save quality report")
+        safe_print(f"   Path: {report_path}")
+        safe_print(f"   Error: {str(e)}")
+        safe_print(f"   Continuing anyway...")
 
     # Exit code
     if total_failures > 0:
