@@ -332,7 +332,7 @@ def main():
             review = reviewer.review_post(filepath)
             reviewer.print_review(review)
             all_reviews.append(review)
-            safe_print()
+            safe_print("")
 
         except Exception as e:
             safe_print(f"  ❌ Review failed: {mask_secrets(str(e))}\n")
