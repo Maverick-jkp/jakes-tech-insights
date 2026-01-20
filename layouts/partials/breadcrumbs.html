@@ -1,0 +1,16 @@
+{{- if not .IsHome }}
+<nav id="breadcrumbs" class="breadcrumbs">
+  <a href="{{ site.BaseURL | relLangURL }}">Home</a>
+  {{- $currentPage := . }}
+  {{- range $index, $element := .Ancestors.Reverse }}
+    {{- if $index }}
+      <span class="breadcrumb-separator">&raquo;</span>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{- end }}
+  {{- end }}
+  {{- if $currentPage.Title }}
+    <span class="breadcrumb-separator">&raquo;</span>
+    <span class="breadcrumb-current">{{ $currentPage.Title }}</span>
+  {{- end }}
+</nav>
+{{- end }}
