@@ -614,7 +614,8 @@ class KeywordCurator:
                 "keyword_type": candidate.get('keyword_type', 'evergreen'),
                 "search_intent": candidate.get('search_intent', ''),
                 "angle": candidate.get('angle', ''),
-                "competition_level": candidate.get('competition_level', 'medium')
+                "competition_level": candidate.get('competition_level', 'medium'),
+                "references": candidate.get('references', [])
             }
 
             # Add expiry_days for trend keywords
