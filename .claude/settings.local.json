@@ -61,7 +61,8 @@
       "Bash(xargs:*)",
       "Bash(git log:*)",
       "Bash(gh api:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(__NEW_LINE_365f9baa955f20eb__ echo \"Deleted incorrect posts and images\")"
     ]
   }
 }

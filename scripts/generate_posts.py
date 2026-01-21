@@ -438,6 +438,14 @@ class ContentGenerator:
 
     def _get_draft_prompt(self, keyword: str, category: str, lang: str, references: List[Dict] = None) -> str:
         """Get draft generation prompt based on language"""
+        # Get current date in KST
+        from datetime import datetime, timezone, timedelta
+        kst = timezone(timedelta(hours=9))
+        today = datetime.now(kst)
+        current_date = today.strftime("%Y년 %m월 %d일")  # Korean format
+        current_date_en = today.strftime("%B %d, %Y")  # English format
+        current_year = today.year
+
         # Format references for prompt
         refs_section = ""
         if references and len(references) > 0:
@@ -448,7 +456,10 @@ class ContentGenerator:
             refs_section = f"\n\n📚 USE THESE REFERENCES:\n{refs_list}\n"
 
         prompts = {
-            "en": f"""Write a comprehensive blog post about: {keyword}{refs_section}
+            "en": f"""📅 TODAY'S DATE: {current_date_en}
+⚠️ IMPORTANT: You are writing this article as of TODAY ({current_date_en}). All information must be current as of {current_year}. Do NOT use outdated information from 2024 or earlier years.
+
+Write a comprehensive blog post about: {keyword}{refs_section}
 
 Category: {category}
 
@@ -502,7 +513,10 @@ Content Guidelines:
 
 Write the complete blog post now (body only, no title or metadata):""",
 
-            "ko": f"""다음 주제로 포괄적인 블로그 글을 작성하세요: {keyword}{refs_section}
+            "ko": f"""📅 오늘 날짜: {current_date}
+⚠️ 중요: 이 글은 오늘({current_date}) 기준으로 작성합니다. 모든 정보는 {current_year}년 현재를 기준으로 해야 합니다. 2024년 이하의 오래된 정보를 사용하지 마세요.
+
+다음 주제로 포괄적인 블로그 글을 작성하세요: {keyword}{refs_section}
 
 카테고리: {category}
 
@@ -554,7 +568,10 @@ Write the complete blog post now (body only, no title or metadata):""",
 
 지금 바로 완전한 블로그 글을 작성하세요 (본문만, 제목이나 메타데이터 제외):""",
 
-            "ja": f"""次のトピックについて包括的なブログ記事を書いてください: {keyword}{refs_section}
+            "ja": f"""📅 本日の日付: {current_date}
+⚠️ 重要: この記事は本日({current_date})の時点で書かれています。すべての情報は{current_year}年現在を基準にする必要があります。2024年以前の古い情報を使用しないでください。
+
+次のトピックについて包括的なブログ記事を書いてください: {keyword}{refs_section}
 
 カテゴリ: {category}
 
