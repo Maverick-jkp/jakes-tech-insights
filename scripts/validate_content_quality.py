@@ -41,6 +41,8 @@ def main():
     posts_without_references = 0
     posts_with_placeholders = 0
     validation_errors = []
+    valid_posts = []
+    invalid_posts = []
 
     # Check each generated file
     for filepath in generated_files:
@@ -58,20 +60,26 @@ def main():
                 '## 참고자료' in content
             )
 
+            # Check 2: Placeholder images
+            has_placeholder = 'placeholder-' in content
+
+            # Track validity
+            is_valid = has_references and not has_placeholder
+
             if not has_references:
                 posts_without_references += 1
                 validation_errors.append(f"❌ No references: {filename}")
                 print(f"  ❌ No references: {filename}")
-            else:
-                print(f"  ✓ Has references: {filename}")
-
-            # Check 2: Placeholder images
-            if 'placeholder-' in content:
+                invalid_posts.append(str(filepath))
+            elif has_placeholder:
                 posts_with_placeholders += 1
                 validation_errors.append(f"❌ Placeholder image: {filename}")
                 print(f"  ❌ Placeholder image: {filename}")
+                invalid_posts.append(str(filepath))
             else:
+                print(f"  ✓ Has references: {filename}")
                 print(f"  ✓ Real image: {filename}")
+                valid_posts.append(str(filepath))
 
         except Exception as e:
             validation_errors.append(f"❌ Failed to validate: {filename} - {str(e)}")
@@ -87,29 +95,43 @@ def main():
     print(f"Posts with placeholder images: {posts_with_placeholders}")
 
     # Determine pass/fail
-    has_critical_issues = posts_without_references > 0 or posts_with_placeholders > 0
+    has_issues = posts_without_references > 0 or posts_with_placeholders > 0
 
-    if has_critical_issues:
-        print("\n🚨 QUALITY GATE: FAILED\n")
+    if has_issues:
+        print(f"\n⚠️  QUALITY GATE: PARTIAL SUCCESS\n")
 
         if posts_without_references > 0:
-            print(f"❌ CRITICAL: {posts_without_references}/{len(generated_files)} posts lack references")
-            print("   ROOT CAUSE: Google Custom Search API not configured")
-            print("   FIX: Add GOOGLE_API_KEY and GOOGLE_CX to GitHub Secrets")
-            print("   See: docs/API_SETUP_GUIDE.md\n")
+            print(f"⚠️  {posts_without_references}/{len(generated_files)} posts lack references")
+            print("   These posts will be excluded from commit\n")
 
         if posts_with_placeholders > 0:
-            print(f"❌ CRITICAL: {posts_with_placeholders}/{len(generated_files)} posts use placeholder images")
-            print("   ROOT CAUSE: Unsplash API key not configured")
-            print("   FIX: Add UNSPLASH_ACCESS_KEY to GitHub Secrets")
-            print("   See: docs/API_SETUP_GUIDE.md\n")
+            print(f"⚠️  {posts_with_placeholders}/{len(generated_files)} posts use placeholder images")
+            print("   ROOT CAUSE: Unsplash API rate limit likely hit")
+            print("   These posts will be excluded from commit\n")
 
-        print("=" * 60)
-        print("WORKFLOW WILL FAIL - Fix API credentials before retrying")
-        print("=" * 60 + "\n")
+        if valid_posts:
+            print(f"✅ {len(valid_posts)}/{len(generated_files)} posts passed quality check")
+            print("   Valid posts will be committed\n")
 
-        # Exit with error code to fail CI/CD
-        sys.exit(1)
+            # Update generated_files.json to only include valid posts
+            with open(generated_files_path, 'w') as f:
+                json.dump(valid_posts, f, indent=2, ensure_ascii=False)
+
+            # Delete invalid posts
+            for invalid_post in invalid_posts:
+                invalid_path = Path(invalid_post)
+                if invalid_path.exists():
+                    invalid_path.unlink()
+                    print(f"  🗑️  Deleted: {invalid_path.name}")
+
+            print("\n" + "=" * 60)
+            print(f"Proceeding with {len(valid_posts)} valid posts")
+            print("=" * 60 + "\n")
+
+            sys.exit(0)
+        else:
+            print("❌ No valid posts to commit")
+            sys.exit(1)
 
     else:
         print("\n✅ QUALITY GATE: PASSED\n")
