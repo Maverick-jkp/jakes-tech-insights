@@ -214,31 +214,6 @@
             transform: translateX(-4px);
         }
 
-        /* Ad Container Base */
-        .ad-container {
-            width: 100%;
-            min-height: 280px;
-            margin: 3rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        /* Top Ad (Between header and content) */
-        .ad-top {
-            margin: 2rem 0 3rem;
-            background: rgba(0, 255, 136, 0.02);
-            border: 1px dashed var(--border);
-        }
-
-        /* Bottom Ad (Between content and related posts) */
-        .ad-bottom {
-            margin: 3rem 0 2rem;
-            background: rgba(0, 255, 136, 0.02);
-            border: 1px dashed var(--border);
-        }
 
         /* Related Posts Container */
         .related-posts {
@@ -464,18 +439,8 @@
             </div>
         </div>
 
-        <!-- Ad Zone 1: Above Content -->
-        <div class="ad-container ad-top">
-            <!-- AdSense Auto Ads anchor point -->
-        </div>
-
         <div class="content">
             {{ .Content }}
-        </div>
-
-        <!-- Ad Zone 2: Below Content -->
-        <div class="ad-container ad-bottom">
-            <!-- AdSense Auto Ads anchor point -->
         </div>
 
         <!-- Related Posts Section -->
