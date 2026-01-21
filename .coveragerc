@@ -16,6 +16,7 @@ omit =
     scripts/update_image_paths.py
     scripts/measure_image_performance.py
     scripts/quality_gate.py
+    scripts/validate_content_quality.py
     scripts/redownload_optimized_images.py
     scripts/utils/security.py
     scripts/utils/validate_queue.py
