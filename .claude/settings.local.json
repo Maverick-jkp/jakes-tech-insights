@@ -54,7 +54,10 @@
       "Bash(/opt/homebrew/bin/gh run view 21212895820)",
       "Bash(/opt/homebrew/bin/gh run view:*)",
       "Bash(pytest:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(chmod:*)",
+      "Bash(xargs rm:*)",
+      "Bash(tree:*)"
     ]
   }
 }
