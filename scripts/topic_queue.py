@@ -75,7 +75,7 @@ class TopicQueue:
 
         # Get completed keywords to prevent duplicates
         completed_keywords = {
-            (t['keyword'].lower(), t['lang']): t['id']
+            (t['keyword'].lower(), t.get('lang', t.get('language', 'en'))): t['id']
             for t in data['topics']
             if t['status'] == 'completed'
         }
@@ -93,9 +93,10 @@ class TopicQueue:
 
         for topic in pending[:count * 2]:  # Check more topics to account for duplicates
             # Skip if already completed for same keyword+lang
-            topic_key = (topic['keyword'].lower(), topic['lang'])
+            topic_lang = topic.get('lang', topic.get('language', 'en'))
+            topic_key = (topic['keyword'].lower(), topic_lang)
             if topic_key in completed_keywords:
-                print(f"⚠️  Skipping duplicate: {topic['keyword']} ({topic['lang']}) - already completed as {completed_keywords[topic_key]}")
+                print(f"⚠️  Skipping duplicate: {topic['keyword']} ({topic_lang}) - already completed as {completed_keywords[topic_key]}")
                 continue
 
             # Validate topic data before reserving

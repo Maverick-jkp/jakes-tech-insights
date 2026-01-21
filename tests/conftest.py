@@ -22,6 +22,7 @@ def sample_queue() -> Dict:
                 "id": "001-en-tech-test-keyword",
                 "keyword": "Test Keyword",
                 "category": "tech",
+                "lang": "en",
                 "language": "en",
                 "priority": 8,
                 "status": "pending",
