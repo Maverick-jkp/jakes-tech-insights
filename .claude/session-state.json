@@ -4,7 +4,7 @@
   "workflow_step": "complete",
   "last_task": "Brave API key rotation - security incident response",
   "pending_reports": [],
-  "last_commit": "pending",
+  "last_commit": "092e70b",
   "rules_version": "4.0",
   "next_session_notes": "User needs to: (1) Update GitHub Secret BRAVE_API_KEY, (2) Revoke old key in Brave dashboard. After that, test daily automation workflow.",
   "system_changes": [
@@ -34,7 +34,8 @@
       "key_type": "BRAVE_API_KEY",
       "exposure_location": "git_history",
       "status": "resolved",
-      "report": ".claude/reports/active/security-brave-api-key-rotation-2026-01-22.md"
+      "report": ".claude/reports/active/security-brave-api-key-rotation-2026-01-22.md",
+      "commit": "092e70b"
     }
   ],
   "testing_required": [
