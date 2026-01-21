@@ -136,11 +136,40 @@ jobs:
 
               # Check if there are actual changes to commit
               if ! git diff --staged --quiet; then
-                # Commit and push to main
+                # Commit locally first
                 git commit -m "🤖 Auto-generated content: $FILES_COUNT posts - Quality Gate PASSED"
-                git push origin main
-                echo "✅ Successfully pushed $FILES_COUNT posts to main branch"
-                echo "pushed=true" >> $GITHUB_OUTPUT
+
+                # Pull latest changes and rebase to avoid conflicts
+                echo "🔄 Pulling latest changes before push..."
+                git pull --rebase origin main
+
+                # Push to main with retry logic
+                MAX_RETRIES=3
+                RETRY_COUNT=0
+                PUSH_SUCCESS=false
+
+                while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+                  if git push origin main; then
+                    PUSH_SUCCESS=true
+                    echo "✅ Successfully pushed $FILES_COUNT posts to main branch"
+                    break
+                  else
+                    RETRY_COUNT=$((RETRY_COUNT + 1))
+                    if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                      echo "⚠️ Push failed, retrying ($RETRY_COUNT/$MAX_RETRIES)..."
+                      sleep $((RETRY_COUNT * 2))
+                      git pull --rebase origin main
+                    fi
+                  fi
+                done
+
+                if [ "$PUSH_SUCCESS" = true ]; then
+                  echo "pushed=true" >> $GITHUB_OUTPUT
+                else
+                  echo "❌ Failed to push after $MAX_RETRIES attempts"
+                  echo "pushed=false" >> $GITHUB_OUTPUT
+                  exit 1
+                fi
               else
                 echo "⚠️ No actual changes to commit"
                 echo "pushed=false" >> $GITHUB_OUTPUT
