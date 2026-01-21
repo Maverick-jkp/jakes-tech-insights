@@ -2,10 +2,11 @@
 """
 Cleanup expired trending keywords from the topic queue.
 
-This script removes pending trend keywords that have exceeded their expiry period.
-- Only affects keywords with status="pending" and keyword_type="trend"
-- Does not touch in_progress or completed keywords
+This script removes trend keywords that have exceeded their expiry period.
+- Affects both "pending" and "completed" keywords with keyword_type="trend"
+- Does not touch "in_progress" keywords (actively being processed)
 - Does not touch evergreen keywords (they have no expiry)
+- Removes completed keywords without timestamps (orphaned old data)
 """
 
 import json
@@ -45,25 +46,40 @@ def cleanup_expired_keywords(expiry_days: int = 3) -> dict:
     remaining = []
 
     for topic in topics:
-        # Only check pending trend keywords
-        if topic.get("status") != "pending":
+        status = topic.get("status")
+        keyword_type = topic.get("keyword_type")
+
+        # Always keep in_progress keywords (actively being processed)
+        if status == "in_progress":
             remaining.append(topic)
             continue
 
-        if topic.get("keyword_type") != "trend":
+        # Always keep evergreen keywords (no expiry)
+        if keyword_type != "trend":
             remaining.append(topic)
             continue
 
-        # Check expiry
-        created_at_str = topic.get("created_at")
-        if not created_at_str:
-            remaining.append(topic)
+        # For trend keywords (both pending and completed), check expiry
+        # Use added_at (when keyword was added to queue) or created_at as fallback
+        timestamp_str = topic.get("added_at") or topic.get("created_at")
+
+        # Remove old keywords without timestamps (orphaned data from before added_at field)
+        if not timestamp_str:
+            if status == "completed":
+                # Completed keywords without timestamp are old - remove them
+                removed.append(topic)
+            else:
+                # Pending keywords without timestamp - keep to be safe
+                remaining.append(topic)
             continue
 
         try:
-            created_at = datetime.fromisoformat(created_at_str)
+            timestamp = datetime.fromisoformat(timestamp_str.replace('Z', '+00:00'))
+            # Use date only for comparison (ignore time)
+            timestamp_date = timestamp.date()
+            cutoff_date = cutoff_time.date()
 
-            if created_at < cutoff_time:
+            if timestamp_date < cutoff_date:
                 # Expired - remove it
                 removed.append(topic)
             else:
