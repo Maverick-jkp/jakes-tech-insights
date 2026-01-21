@@ -19,6 +19,12 @@ from pathlib import Path
 from typing import Dict, List
 import requests
 
+try:
+    import certifi
+except ImportError:
+    safe_print("Warning: certifi not installed - SSL verification may fail")
+    certifi = None
+
 # Add utils to path
 sys.path.insert(0, str(Path(__file__).parent))
 from utils.security import safe_print, mask_secrets
@@ -226,7 +232,8 @@ class KeywordCurator:
 
         for geo, url in rss_urls.items():
             try:
-                response = requests.get(url, timeout=10)
+                verify_ssl = certifi.where() if certifi else True
+                response = requests.get(url, timeout=10, verify=verify_ssl)
                 response.raise_for_status()
 
                 # Parse XML
@@ -320,7 +327,8 @@ class KeywordCurator:
                 # Add delay to avoid rate limiting (max 1 QPS)
                 time.sleep(1.0)
 
-                response = requests.get(url, params=params)
+                verify_ssl = certifi.where() if certifi else True
+                response = requests.get(url, params=params, verify=verify_ssl)
                 response.raise_for_status()
 
                 data = response.json()
@@ -347,7 +355,9 @@ class KeywordCurator:
             except requests.exceptions.HTTPError as e:
                 status_code = e.response.status_code if e.response else 'unknown'
                 safe_print(f"  ⚠️  HTTP error ({status_code}) for '{query[:50]}...'")
-                if status_code == 429:
+                if status_code == 403:
+                    safe_print(f"     ⚠️  Google API Access Forbidden - check API key and billing status")
+                elif status_code == 429:
                     safe_print(f"     Rate limit exceeded - consider adding longer delays")
                 continue
             except json.JSONDecodeError:

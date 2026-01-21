@@ -44,7 +44,17 @@
       "Bash(pkill:*)",
       "Bash(taskkill:*)",
       "Bash(git fetch:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(gh secret list:*)",
+      "Bash(gh run view:*)",
+      "Bash(tee:*)",
+      "Bash(grep:*)",
+      "Bash(/opt/homebrew/bin/gh run list:*)",
+      "Bash(/opt/homebrew/bin/gh run view a0a49ae)",
+      "Bash(/opt/homebrew/bin/gh run view 21212895820)",
+      "Bash(/opt/homebrew/bin/gh run view:*)",
+      "Bash(pytest:*)",
+      "Bash(kill:*)"
     ]
   }
 }
