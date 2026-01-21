@@ -297,8 +297,10 @@ class KeywordCurator:
 
         # If no Google Custom Search API, skip search results
         if not self.google_api_key or not self.google_cx:
-            safe_print("  ⚠️  Google Custom Search not configured")
-            safe_print("  📌 Will use trending keywords directly\n")
+            safe_print("  🚨 CRITICAL WARNING: Google Custom Search not configured")
+            safe_print("  📌 References will NOT be generated for keywords!")
+            safe_print("  📌 Set GOOGLE_API_KEY and GOOGLE_CX environment variables")
+            safe_print("  📌 OR: Add them as GitHub Secrets for automated workflows\n")
             self.search_results = []
             return "\n\n".join([f"Trending: {q}" for q in search_queries[:30]])
 
@@ -500,6 +502,9 @@ class KeywordCurator:
 
         # Extract references for each candidate
         safe_print(f"📚 Extracting references for {len(filtered_candidates)} candidates...\n")
+        keywords_with_refs = 0
+        keywords_without_refs = 0
+
         for candidate in filtered_candidates:
             keyword = candidate.get("keyword", "")
             lang = candidate.get("language", "en")
@@ -507,8 +512,22 @@ class KeywordCurator:
             candidate["references"] = references
             if references:
                 safe_print(f"  ✓ {len(references)} refs for: {keyword[:50]}...")
+                keywords_with_refs += 1
+            else:
+                keywords_without_refs += 1
 
         safe_print("")
+
+        # Validation warning
+        if keywords_without_refs > 0:
+            safe_print(f"⚠️  WARNING: {keywords_without_refs}/{len(filtered_candidates)} keywords have NO references")
+            safe_print(f"   This means generated posts will lack credible sources!")
+            if not self.google_api_key or not self.google_cx:
+                safe_print(f"   ROOT CAUSE: Google Custom Search API credentials not configured")
+                safe_print(f"   FIX: Set GOOGLE_API_KEY and GOOGLE_CX environment variables\n")
+        else:
+            safe_print(f"✅ All {keywords_with_refs} keywords have references!\n")
+
         return filtered_candidates
 
     def display_candidates(self, candidates: List[Dict]):

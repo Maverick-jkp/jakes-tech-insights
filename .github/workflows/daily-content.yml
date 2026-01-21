@@ -95,6 +95,11 @@ jobs:
           python scripts/quality_gate.py
           echo "quality_gate_passed=$?" >> $GITHUB_OUTPUT
 
+      - name: Validate content quality (references & images)
+        id: content_quality
+        run: |
+          python scripts/validate_content_quality.py
+
       - name: AI Review
         if: github.event.inputs.skip_review != 'true'
         env:

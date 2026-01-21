@@ -1213,6 +1213,27 @@ def main():
     parser.add_argument("--topic-id", type=str, help="Specific topic ID to generate")
     args = parser.parse_args()
 
+    # Pre-flight checks
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  🔍 Pre-flight Environment Checks")
+    safe_print(f"{'='*60}\n")
+
+    anthropic_key = os.environ.get("ANTHROPIC_API_KEY")
+    unsplash_key = os.environ.get("UNSPLASH_ACCESS_KEY")
+
+    if anthropic_key:
+        safe_print("  ✓ ANTHROPIC_API_KEY: Configured")
+    else:
+        safe_print("  ❌ ANTHROPIC_API_KEY: NOT FOUND")
+
+    if unsplash_key:
+        safe_print("  ✓ UNSPLASH_ACCESS_KEY: Configured")
+    else:
+        safe_print("  ⚠️  UNSPLASH_ACCESS_KEY: NOT FOUND")
+        safe_print("     Posts will use placeholder images!")
+
+    safe_print("")
+
     # Initialize generator
     try:
         generator = ContentGenerator()
@@ -1335,6 +1356,47 @@ def main():
     output_file = Path("generated_files.json")
     with open(output_file, 'w') as f:
         json.dump(generated_files, f, indent=2)
+
+    # Post-generation quality check
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  📊 Post-Generation Quality Check")
+    safe_print(f"{'='*60}\n")
+
+    posts_without_references = 0
+    posts_with_placeholders = 0
+
+    for filepath in generated_files:
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+                # Check for references section
+                has_references = '## References' in content or '## 参考' in content or '## 참고자료' in content
+                if not has_references:
+                    posts_without_references += 1
+                    safe_print(f"  ⚠️  No references: {Path(filepath).name}")
+
+                # Check for placeholder images
+                if 'placeholder-' in content:
+                    posts_with_placeholders += 1
+                    safe_print(f"  ⚠️  Placeholder image: {Path(filepath).name}")
+        except Exception as e:
+            safe_print(f"  ⚠️  Could not check: {Path(filepath).name}")
+
+    safe_print("")
+
+    if posts_without_references > 0:
+        safe_print(f"🚨 WARNING: {posts_without_references}/{len(generated_files)} posts have NO references!")
+        safe_print(f"   This reduces content credibility and SEO value.")
+        safe_print(f"   FIX: Ensure Google Custom Search API is configured in keyword curation\n")
+
+    if posts_with_placeholders > 0:
+        safe_print(f"🚨 WARNING: {posts_with_placeholders}/{len(generated_files)} posts use PLACEHOLDER images!")
+        safe_print(f"   This hurts user experience and engagement.")
+        safe_print(f"   FIX: Ensure UNSPLASH_ACCESS_KEY is set in environment variables\n")
+
+    if posts_without_references == 0 and posts_with_placeholders == 0:
+        safe_print(f"✅ Quality Check PASSED: All posts have references and real images!\n")
 
     safe_print(f"{'='*60}")
     safe_print(f"  ✓ Generated {len(generated_files)} posts")
