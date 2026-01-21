@@ -364,7 +364,7 @@
       "category": "finance",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-21T08:38:16.928613",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -372,7 +372,9 @@
       "angle": "부동산 시장 붕괴 징후와 대응 전략",
       "competition_level": "medium",
       "references": [],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T14:52:10.798490+00:00",
+      "completed_at": "2026-01-21T14:53:34.570468+00:00"
     },
     {
       "id": "083-ko-business-회사-구조조정-징조",
@@ -396,7 +398,7 @@
       "category": "society",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-21T08:38:16.928634",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -404,7 +406,9 @@
       "angle": "건강보험 개편으로 인한 개인 의료비 부담 증가",
       "competition_level": "medium",
       "references": [],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T14:52:10.798490+00:00",
+      "completed_at": "2026-01-21T14:55:10.421458+00:00"
     },
     {
       "id": "085-ko-entertainment-연예인-세금-탈루-스캔들",
@@ -446,7 +450,7 @@
       "category": "finance",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-21T08:38:16.928665",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -454,7 +458,9 @@
       "angle": "Economic indicators pointing to recession",
       "competition_level": "high",
       "references": [],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T14:52:10.798490+00:00",
+      "completed_at": "2026-01-21T14:56:26.552745+00:00"
     },
     {
       "id": "088-en-business-corporate-layoffs-te",
