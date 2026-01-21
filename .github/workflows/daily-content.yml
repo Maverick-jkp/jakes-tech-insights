@@ -59,6 +59,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Pull latest changes (fetch updated topics_queue.json)
+        run: |
+          git pull origin main
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
