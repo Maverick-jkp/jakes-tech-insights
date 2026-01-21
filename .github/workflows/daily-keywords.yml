@@ -39,13 +39,13 @@ jobs:
       - name: Curate new keywords
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          GOOGLE_CX: ${{ secrets.GOOGLE_CX }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+          
         run: |
           # Explicitly mask secrets in GitHub Actions logs
           echo "::add-mask::${{ secrets.ANTHROPIC_API_KEY }}"
-          echo "::add-mask::${{ secrets.GOOGLE_API_KEY }}"
-          echo "::add-mask::${{ secrets.GOOGLE_CX }}"
+          echo "::add-mask::${{ secrets.BRAVE_API_KEY }}"
+          echo 
 
           COUNT="${{ github.event.inputs.count || '15' }}"
           echo "📝 Generating $COUNT new keywords..."

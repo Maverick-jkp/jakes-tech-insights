@@ -131,18 +131,18 @@ if web_results:
 ### Before
 ```bash
 # Google Custom Search API
-GOOGLE_API_KEY=AIzaSyAY5nSO_OHR6SmFgNx6mnGlVXfygre720o
+GOOGLE_API_KEY=[REDACTED_GOOGLE_KEY]
 GOOGLE_CX=832db2b9e44a74210
 ```
 
 ### After
 ```bash
 # Google Custom Search API (DEPRECATED - no longer available to new users)
-GOOGLE_API_KEY=AIzaSyAY5nSO_OHR6SmFgNx6mnGlVXfygre720o
+GOOGLE_API_KEY=[REDACTED_GOOGLE_KEY]
 GOOGLE_CX=832db2b9e44a74210
 
 # Brave Search API (replacement for Google Custom Search)
-BRAVE_API_KEY=BSAaS7k9cWiKkUZlHbQYYvWWnSRZBtW
+BRAVE_API_KEY=[REDACTED]
 ```
 
 ---
@@ -316,7 +316,7 @@ Total estimated: ~120 queries/month (6% of free tier)
    - Lines 314-370: Brave API integration
 
 2. **.env**
-   - Added `BRAVE_API_KEY=BSAaS7k9cWiKkUZlHbQYYvWWnSRZBtW`
+   - Added `BRAVE_API_KEY=[REDACTED]`
    - Marked Google keys as deprecated
 
 3. **data/topics_queue.json** (Auto-updated)
