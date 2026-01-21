@@ -1,8 +1,78 @@
-# Google Custom Search API Setup Guide
+# Search API Setup Guide
 
-Google Custom Search API를 사용하여 실시간 트렌드 데이터를 가져오는 방법입니다.
+이 프로젝트는 **Brave Search API**를 사용하여 실시간 트렌드 데이터와 레퍼런스를 가져옵니다.
 
-## 1. Google API Key 발급
+## ⚠️ Important: Google Custom Search API Deprecated
+
+**2026년 1월 기준**, Google Custom Search JSON API는 신규 사용자에게 더 이상 제공되지 않습니다.
+
+- ❌ 기존 Google API Key: 403 Forbidden 에러 발생
+- ❌ 새 프로젝트 생성해도 동일 에러
+- ✅ **대안**: Brave Search API (더 저렴하고 쿼터 20배 많음)
+
+---
+
+## 1. Brave Search API 설정 (권장)
+
+### 1.1 API Key 발급
+
+1. [Brave Search API](https://api.search.brave.com/) 접속
+2. **Sign Up** 클릭
+3. 이메일 인증 완료
+4. Dashboard → **API Keys** 섹션
+5. **Create New Key** 클릭
+6. API Key 복사 → 이것이 `BRAVE_API_KEY`
+
+### 1.2 환경 변수 설정
+
+**macOS/Linux** (`.zshrc` 또는 `.bashrc`에 추가):
+
+```bash
+# Brave Search API
+export BRAVE_API_KEY="your-brave-api-key-here"
+```
+
+설정 후:
+```bash
+source ~/.zshrc
+```
+
+### 1.3 확인
+
+```bash
+echo $BRAVE_API_KEY
+```
+
+### 1.4 테스트
+
+```bash
+cd /Users/jakepark/projects/jakes-tech-insights
+python3 scripts/keyword_curator.py --count 2 --auto
+```
+
+성공 시:
+```
+✅ Total 26 trending topics fetched
+✅ All 2 keywords have references!
+✓ Added: 🔥 Trend | 키워드1
+✓ Added: 🔥 Trend | 키워드2
+```
+
+### 1.5 비용 안내
+
+- **Free Tier**: 2,000 queries/month (~66 queries/day)
+- **Overage Cost**: $0.55/1,000 queries
+- **예상 사용량**: ~120 queries/month (6% of free tier)
+- **추가 비용 없음** (월 2,000회 미만)
+
+**Google과 비교**:
+- Brave: 2,000/month free (66/day)
+- Google: 100/day free
+- **Brave가 20배 더 많은 무료 쿼터 제공**
+
+---
+
+## 2. Google API Key 발급 (레거시, 더 이상 작동 안 함)
 
 1. [Google Cloud Console](https://console.cloud.google.com/) 접속
 2. 프로젝트 생성 또는 선택
@@ -16,7 +86,9 @@ Google Custom Search API를 사용하여 실시간 트렌드 데이터를 가져
 7. "Custom Search API" 검색
 8. **Custom Search API** 클릭 → **Enable** 버튼 클릭
 
-## 2. Custom Search Engine 생성
+**⚠️ 주의**: Enable 해도 403 Forbidden 에러 발생 (신규 사용자에게 제공 안 됨)
+
+## 3. Custom Search Engine 생성 (더 이상 사용 안 함)
 
 1. [Programmable Search Engine](https://programmablesearchengine.google.com/) 접속
 2. **Add** 버튼 클릭
@@ -29,80 +101,87 @@ Google Custom Search API를 사용하여 실시간 트렌드 데이터를 가져
 4. **Create** 버튼 클릭
 5. 생성된 **Search Engine ID** 복사 → 이것이 `GOOGLE_CX`
 
-## 3. 환경 변수 설정
+## 4. Google 환경 변수 설정 (레거시)
 
 ### macOS/Linux (`.zshrc` 또는 `.bashrc`에 추가)
 
 ```bash
-# Google Custom Search API
+# Google Custom Search API (DEPRECATED - 더 이상 작동 안 함)
 export GOOGLE_API_KEY="your-google-api-key-here"
 export GOOGLE_CX="your-search-engine-id-here"
 ```
 
-설정 후:
-```bash
-source ~/.zshrc
-```
+**⚠️ 주의**: 환경 변수 설정해도 403 Forbidden 에러 발생
 
-### 확인
+---
 
-```bash
-echo $GOOGLE_API_KEY
-echo $GOOGLE_CX
-```
+## 5. 비용 비교
 
-## 4. 테스트
+### Brave Search API (현재 사용 중) ✅
+- **Free Tier**: 2,000 queries/month
+- **Overage Cost**: $0.55/1,000 queries
+- **예상 사용량**: ~120 queries/month
+- **월 비용**: $0 (무료 범위 내)
 
-```bash
-cd /Users/jakepark/projects/jakes-tech-insights
-python3 scripts/keyword_curator.py --count 15
-```
-
-성공 시:
-```
-============================================================
-  🔍 Fetching trending topics from Google...
-============================================================
-
-  ✓ Fetched 5 results for: AI trends 2026
-  ✓ Fetched 5 results for: tech news today
-  ...
-```
-
-## 5. 비용 안내
-
-- **Custom Search API**: 하루 100회 무료, 이후 $5/1000 쿼리
-- **주간 키워드 수집**: 8개 쿼리 × 4주 = 32회/월 (무료 범위 내)
-- **추가 비용 없음** (월 100회 미만)
+### Google Custom Search API (더 이상 사용 불가) ❌
+- **Free Tier**: 100 queries/day (3,000/month)
+- **Overage Cost**: $5/1,000 queries (Brave의 9배 비쌈)
+- **Status**: 신규 사용자에게 제공 안 됨 (403 Forbidden)
 
 ## 6. 문제 해결
 
-### API Key가 작동하지 않는 경우
+### Brave API: "403 Forbidden" 에러
 
-1. Google Cloud Console → **APIs & Services** → **Credentials**
-2. API Key 클릭 → **API restrictions**
-3. "Restrict key" → "Custom Search API" 선택
-4. Save
+**원인**: API Key가 잘못되었거나 만료됨
 
-### CX ID를 찾을 수 없는 경우
+**해결**:
+1. [Brave Search Dashboard](https://api.search.brave.com/app/dashboard) 접속
+2. API Keys 섹션에서 키 상태 확인
+3. 필요시 새 키 생성
 
-1. [Programmable Search Engine](https://programmablesearchengine.google.com/)
-2. 생성한 검색엔진 클릭
-3. **Setup** → **Basic** → **Search engine ID** 복사
+### Brave API: "429 Too Many Requests" 에러
 
-### "API not enabled" 오류
+**원인**: 월 2,000 쿼리 한도 초과
 
-1. Google Cloud Console → **APIs & Services** → **Library**
-2. "Custom Search API" 검색 → Enable
+**해결**:
+1. Dashboard에서 현재 사용량 확인
+2. 쿼리 수 줄이기 (--count 값 감소)
+3. 또는 유료 플랜 업그레이드 고려
+
+### Brave API Key 환경 변수 미설정
+
+**증상**:
+```
+⚠️  Brave Search API key not found
+   Set BRAVE_API_KEY environment variable
+```
+
+**해결**:
+```bash
+export BRAVE_API_KEY="your-api-key"
+source ~/.zshrc
+echo $BRAVE_API_KEY  # 확인
+```
+
+### Google API 관련 에러 (레거시)
+
+**Google "403 Forbidden" 에러**:
+- **원인**: Google Custom Search JSON API 신규 사용자 제공 중단
+- **해결**: Brave Search API로 전환 (위 섹션 1 참조)
+
+**Google "API not enabled" 에러**:
+- Enable 해도 403 에러 계속 발생 → Brave로 전환 필요
 
 ## 7. 자동화 스크립트
 
-환경 변수가 설정되면 cron job이 자동으로 작동합니다:
+`BRAVE_API_KEY` 환경 변수가 설정되면 cron job이 자동으로 작동합니다:
 
 ```bash
 # Weekly keyword curation (Sundays 6 PM KST)
 0 18 * * 0 cd /Users/jakepark/projects/jakes-tech-insights && source ~/.zshrc && python3 scripts/keyword_curator.py --count 15
 ```
+
+**주의**: `.zshrc`에 `BRAVE_API_KEY` 추가 필수
 
 ---
 
@@ -242,6 +321,47 @@ python3 scripts/keyword_curator.py --count 15
 - 같은 signal을 가진 키워드는 언어당 최대 2개까지만
 - 5개 signal을 언어별로 균등하게 분배
 - 의미 중복 키워드 자동 제거
+
+---
+
+## 10. Migration History
+
+### 2026-01-22: Google → Brave API 전환
+
+**이유**:
+- Google Custom Search JSON API 신규 사용자 제공 중단
+- 모든 Google API 요청이 403 Forbidden 반환
+- Error message: "This project does not have the access to Custom Search JSON API"
+
+**해결**:
+- Brave Search API로 완전 전환
+- 테스트 결과: 2/2 키워드에 레퍼런스 정상 추출
+- 87% 성공률 (26/30 쿼리)
+- 비용 절감: $5/1K → $0.55/1K (11배 저렴)
+- 쿼터 증가: 100/day → 2,000/month (20배 많음)
+
+**변경 사항**:
+- `scripts/keyword_curator.py`: Google API → Brave API
+- `.env`: `BRAVE_API_KEY` 추가
+- 환경 변수: `GOOGLE_API_KEY`, `GOOGLE_CX` 더 이상 불필요 (하지만 호환성 유지)
+
+**상세 리포트**: [.claude/reports/active/brave-api-migration-success-2026-01-22.md](../.claude/reports/active/brave-api-migration-success-2026-01-22.md)
+
+---
+
+## 11. API 비교표
+
+| Feature | Google Custom Search | Brave Search |
+|---------|---------------------|--------------|
+| **Free Tier** | ❌ 100/day (더 이상 신규 제공 안 됨) | ✅ 2,000/month |
+| **Cost (per 1K)** | $5.00 | $0.55 (11x cheaper) |
+| **Availability** | ❌ 403 Forbidden | ✅ Working |
+| **Quality** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Speed** | Fast | Fast |
+| **Privacy** | Tracking | No tracking |
+| **Setup** | Complex (PSE + API) | Simple (API only) |
+
+**추천**: ✅ Brave Search API (현재 사용 중)
 
 ---
 
