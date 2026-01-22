@@ -2,11 +2,11 @@
   "session_date": "2026-01-22",
   "active_agent": "master",
   "workflow_step": "complete",
-  "last_task": "Comprehensive SEO improvements (QA+CTO+Designer sequential workflow)",
+  "last_task": "Sitemap configuration fix for Google Search Console",
   "pending_reports": [],
-  "last_commit": "6f2336c",
+  "last_commit": "062201a",
   "rules_version": "4.0",
-  "next_session_notes": "SEO improvements deployed. Monitor Google Search Console for hreflang validation (7 days). Track organic traffic improvements (30 days). Consider implementing remaining low-priority items from QA audit.",
+  "next_session_notes": "Monitor Google Search Console sitemap status in 24-48 hours. Verify all 4 sitemaps (sitemap.xml, en/sitemap.xml, ko/sitemap.xml, ja/sitemap.xml) show 'Success' status and 70+ discovered URLs. Also monitor 18:00 KST automation run for timezone fix validation.",
   "system_changes": [
     "✅ Created CLAUDE.md (450 lines) - single source of truth",
     "✅ Created .claude/session-state.json for continuity",
@@ -24,7 +24,8 @@
   "pending_system_enforcement": [
     "Automated session checklist verification (Phase 2)",
     "Claude Memory Tool integration (if available)",
-    "Pre-commit API key pattern validation (recommended)"
+    "Pre-commit API key pattern validation (recommended)",
+    "GitHub Actions monitoring/alerting for scheduled workflows"
   ],
   "security_incidents": [
     {
@@ -63,10 +64,77 @@
       "Core Web Vitals improvements"
     ]
   },
+  "timezone_fix": {
+    "date": "2026-01-22",
+    "session_time": "12:25-12:45 KST",
+    "issue_type": "datetime_timezone_awareness",
+    "severity": "high",
+    "root_cause": "GitHub Actions UTC environment + timezone-naive datetime.now()",
+    "impact": "Posts dated 1 day earlier, incorrect homepage sorting",
+    "files_modified": ["scripts/generate_posts.py"],
+    "changes_location": [
+      "Line ~1185: Frontmatter date with timezone offset",
+      "Line ~1173: Post filename with KST date",
+      "Line ~1097: Image filename with KST date"
+    ],
+    "testing_status": "✅ Passed local test",
+    "commit_status": "Pending user consolidation",
+    "report": ".claude/reports/active/master-timezone-fix-session-2026-01-22.md",
+    "verification_required": [
+      "Monitor 18:00 KST automation run",
+      "Verify post dates show correctly",
+      "Check homepage post ordering"
+    ]
+  },
+  "automation_issues": {
+    "12pm_cron_failure": {
+      "date": "2026-01-22",
+      "expected_time": "12:00 PM KST (03:00 UTC)",
+      "checked_time": "12:25 PM KST",
+      "status": "Not executed",
+      "probable_cause": "GitHub Actions scheduler delay (known issue)",
+      "workflow_config": "✅ Correct: cron '0 3 * * *'",
+      "queue_status": "✅ 20 pending keywords available",
+      "next_scheduled_run": "18:00 KST (6 PM)",
+      "recommendation": "Monitor reliability, consider external scheduling if persistent"
+    }
+  },
+  "sitemap_fix": {
+    "date": "2026-01-22",
+    "session_time": "12:33-13:30 KST",
+    "issue_type": "google_search_console_sitemap_error",
+    "severity": "high",
+    "root_cause_1": "Incorrect [outputs] configuration with 'sitemap' preventing Hugo default generation",
+    "root_cause_2": "Custom sitemap template using .Data.Pages (section-only) instead of site-wide collection",
+    "impact": "Only 7 URLs in sitemap, 63+ blog posts not discoverable by Google",
+    "files_modified": ["hugo.toml"],
+    "files_deleted": ["layouts/_default/sitemap.xml"],
+    "commits": ["5e7b9f3", "062201a"],
+    "sitemap_structure": {
+      "root": "sitemap.xml (sitemap index, 3 languages)",
+      "english": "en/sitemap.xml (44 URLs)",
+      "korean": "ko/sitemap.xml (25 URLs)",
+      "japanese": "ja/sitemap.xml (~20 URLs)",
+      "total_urls": "70+"
+    },
+    "google_search_console_status": "4 sitemaps submitted, awaiting crawl",
+    "report": ".claude/reports/active/master-sitemap-fix-session-2026-01-22.md",
+    "verification_required": [
+      "Monitor GSC sitemap status (24-48 hours)",
+      "Verify 70+ discovered URLs",
+      "Check 'Success' status for all 4 sitemaps",
+      "Monitor organic traffic increase (30 days)"
+    ]
+  },
   "testing_required": [
     "✅ Sequential multi-agent pattern tested (QA→CTO→Designer workflow)",
     "✅ Git hook prevents violations (tested during commit)",
-    "Monitor 30-day SEO success metrics",
-    "Verify daily automation after GitHub Secret update"
+    "✅ Timezone fix tested locally (generates correct KST dates)",
+    "✅ Sitemap XML validation passed",
+    "✅ Live URL test in Google Search Console passed",
+    "⏳ Monitor 30-day SEO success metrics",
+    "⏳ Verify 18:00 KST automation run (timezone fix validation)",
+    "⏳ Verify daily automation after GitHub Secret update",
+    "⏳ Google Search Console sitemap crawl (24-48 hours)"
   ]
 }
