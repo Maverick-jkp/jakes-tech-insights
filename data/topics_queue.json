@@ -1702,6 +1702,374 @@
       "expiry_days": 3,
       "reserved_at": "2026-01-22T11:06:30.701586+00:00",
       "completed_at": "2026-01-22T11:26:17.766760+00:00"
+    },
+    {
+      "id": "185-en-finance-powerball-winning-nu",
+      "keyword": "powerball winning numbers",
+      "category": "finance",
+      "lang": "en",
+      "priority": 9,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661073",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Fear of missing out on a life-changing lottery win by not checking ticket numbers immediately",
+      "angle": "Urgent ticket verification before deadline passes",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Powerball winning numbers for Wednesday, Jan. 21. Check your tickets",
+          "url": "https://www.northjersey.com/story/news/nation/2026/01/21/powerball-winning-numbers-drawing-for-wednesday-jan-21-2026/88292267007/",
+          "source": "www.northjersey.com"
+        },
+        {
+          "title": "Powerball results for January 21, 2026 — winning numbers drawn for 209 million jackpot | EN | DEPOR",
+          "url": "https://depor.com/en/us-live/powerball-results-for-january-21-2026-winning-numbers-drawn-for-209-million-jackpot-florida-california-nnda-nnrt-noticia/",
+          "source": "depor.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "186-en-business-dow-jones-futures",
+      "keyword": "dow jones futures",
+      "category": "business",
+      "lang": "en",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661138",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Fear of missing a profitable trading opportunity during market volatility",
+      "angle": "Critical market timing for investment decisions",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "S&P 500 pops 1%, Dow surges nearly 600 points as Trump calls off Europe tariffs tied to Greenland",
+          "url": "https://www.cnbc.com/2026/01/20/stock-market-today-live-updates.html",
+          "source": "www.cnbc.com"
+        },
+        {
+          "title": "Dow Jones Futures coil near record zone as traders eye breakout after key US data shock",
+          "url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/dow-jones-futures-coil-near-record-zone-as-traders-eye-breakout-after-key/68508069",
+          "source": "www.ad-hoc-news.de"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "187-en-lifestyle-disneyland-ticket-pr",
+      "keyword": "disneyland ticket prices",
+      "category": "lifestyle",
+      "lang": "en",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661159",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Anger and concern about escalating entertainment costs affecting family budgets",
+      "angle": "Consumer frustration with corporate pricing strategies",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Disneyland Ticket Prices 2026 - How Much Are Adult & Child Tickets? Updated With New Prices",
+          "url": "https://mickeyvisit.com/disneyland-ticket-prices/",
+          "source": "mickeyvisit.com"
+        },
+        {
+          "title": "Walt Disney World Ticket Prices 2026: A Complete Guide - WDW Magazine",
+          "url": "https://www.wdw-magazine.com/walt-disney-world-ticket-prices-2026/",
+          "source": "www.wdw-magazine.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "188-en-society-todays-weather",
+      "keyword": "todays weather",
+      "category": "society",
+      "lang": "en",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661174",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Immediate safety concerns about weather conditions affecting daily activities",
+      "angle": "Emergency preparedness and safety warnings",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Weather Forecast and Conditions for Florissant, Missouri 63033 - The Weather Channel | Weather.com",
+          "url": "https://weather.com/weather/today/l/63033",
+          "source": "weather.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "189-en-tech-todays-weather",
+      "keyword": "todays weather",
+      "category": "tech",
+      "lang": "en",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661187",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Concern about weather app accuracy during critical weather events",
+      "angle": "Technology reliability comparison during emergencies",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Weather Forecast and Conditions for Florissant, Missouri 63033 - The Weather Channel | Weather.com",
+          "url": "https://weather.com/weather/today/l/63033",
+          "source": "weather.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "190-ko-sports-썬더스-대-대구-한국가스공사",
+      "keyword": "썬더스 대 대구 한국가스공사",
+      "category": "sports",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661204",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "팀의 플레이오프 진출 가능성에 대한 불안감과 경기 결과에 대한 긴장감",
+      "angle": "시즌 마지막 기회에 대한 절박함",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "‘6강행 불씨 살아있다’…대역전극 노리는 가스公 - 대구신문",
+          "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=536587",
+          "source": "www.idaegu.co.kr"
+        },
+        {
+          "title": "가스공사, 삼성과 22일 후반기 첫 대결…보트라이트 활약 관건 | 영남일보 | 정지윤 기자 | 스포츠",
+          "url": "https://www.yeongnam.com/web/view.php?key=20260121021101965",
+          "source": "www.yeongnam.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "191-ko-entertainment-김연아",
+      "keyword": "김연아",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 9,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661215",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "국민적 스타의 근황과 사생활에 대한 궁금증",
+      "angle": "유명인의 숨겨진 이야기와 현재 상황",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "김연아, ‘김연경 유튜브’ 출연한다…“두 여왕의 만남” 벌써부터 화제",
+          "url": "https://www.twig24.com/news/entertainments/celebrity/2026/01/20/20260120500213",
+          "source": "www.twig24.com"
+        },
+        {
+          "title": "김연아·김연경, 레전드 만남 성사…\"두 황제가 만났다\" [소셜in]",
+          "url": "https://enews.imbc.com/News/RetrieveNewsInfo/491550",
+          "source": "enews.imbc.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "192-ko-business-울산-현대모비스-대-서울-sk",
+      "keyword": "울산 현대모비스 대 서울 sk",
+      "category": "business",
+      "lang": "ko",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661248",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "기업 스포츠팀 경쟁을 통해 드러나는 기업간 경쟁 구도에 대한 관심",
+      "angle": "기업 브랜드 가치와 연결된 스포츠 성과",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "‘6강행 불씨 살아있다’…대역전극 노리는 가스公 - 대구신문",
+          "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=536587",
+          "source": "www.idaegu.co.kr"
+        },
+        {
+          "title": "가스공사, 삼성과 22일 후반기 첫 대결…보트라이트 활약 관건 | 영남일보 | 정지윤 기자 | 스포츠",
+          "url": "https://www.yeongnam.com/web/view.php?key=20260121021101965",
+          "source": "www.yeongnam.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "193-ko-lifestyle-김연아",
+      "keyword": "김연아",
+      "category": "lifestyle",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661259",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "국민적 스타의 새로운 시도에 대한 기대와 불안감",
+      "angle": "아이콘의 변신과 그에 따른 파급효과",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "김연아, ‘김연경 유튜브’ 출연한다…“두 여왕의 만남” 벌써부터 화제",
+          "url": "https://www.twig24.com/news/entertainments/celebrity/2026/01/20/20260120500213",
+          "source": "www.twig24.com"
+        },
+        {
+          "title": "김연아·김연경, 레전드 만남 성사…\"두 황제가 만났다\" [소셜in]",
+          "url": "https://enews.imbc.com/News/RetrieveNewsInfo/491550",
+          "source": "enews.imbc.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "194-ja-entertainment-増田貴久",
+      "keyword": "増田貴久",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661268",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "アイドルのソロ活動開始に対する不安と興味",
+      "angle": "エンターテイメント業界の変化の兆候",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "『ゴチ』新メンバーに佐野勇斗 増田貴久と息のあったかけあいも（オリコン） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/18f82b00032151b9312be7970c8f0c005bf056dd",
+          "source": "news.yahoo.co.jp"
+        },
+        {
+          "title": "NEWS・増田貴久、ソロとして自身初の映像3部門同時1位【オリコンランキング】 | 山陰中央新報デジタル",
+          "url": "https://www.sanin-chuo.co.jp/articles/-/935541",
+          "source": "www.sanin-chuo.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "195-ja-society-相葉雅紀",
+      "keyword": "相葉雅紀",
+      "category": "society",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661278",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "動物愛護問題に対する関心と社会問題への不安",
+      "angle": "有名人の活動を通じて見える社会問題",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "相葉雅紀が番組で見せたトリミング技術にSNSで集まる絶賛「悲惨な状況を伝えるのが仕事」飼育放棄問題への意識（SmartFLASH） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/b1c9a31777cf1413c3c16123d17ca2a95541678b",
+          "source": "news.yahoo.co.jp"
+        },
+        {
+          "title": "相葉雅紀が番組で見せたトリミング技術にSNSで集まる絶賛「悲惨な状況を伝えるのが仕事」飼育放棄問題への意識 - Smart FLASH/スマフラ[光文社週刊誌]",
+          "url": "https://smart-flash.jp/entertainment/entertainment-news/387717/image/1/",
+          "source": "smart-flash.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "196-ja-lifestyle-村田充",
+      "keyword": "村田充",
+      "category": "lifestyle",
+      "lang": "ja",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661290",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "故人への責任と愛情の継続に対する感情的共感",
+      "angle": "人生の責任と継承される愛情",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "村田充 元妻・神田沙也加さん愛犬の近況を報告 ファン大ウケ「バチギレのご様子」「お怒り顔も可愛い」（スポニチアネックス） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/81c4d2de6b4f71f6deaca57d36fb98480ededab6",
+          "source": "news.yahoo.co.jp"
+        },
+        {
+          "title": "村田充 元妻・神田沙也加さん愛犬の近況を報告 ファン大ウケ「バチギレのご様子」「お怒り顔も可愛い」 - スポニチ Sponichi Annex 芸能",
+          "url": "https://www.sponichi.co.jp/entertainment/news/2026/01/18/kiji/20260118s00041000202000c.html",
+          "source": "www.sponichi.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "197-ja-business-増田貴久",
+      "keyword": "増田貴久",
+      "category": "business",
+      "lang": "ja",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661390",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "エンターテイメント業界の競争状況への懸念",
+      "angle": "音楽業界での生存競争",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "『ゴチ』新メンバーに佐野勇斗 増田貴久と息のあったかけあいも（オリコン） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/18f82b00032151b9312be7970c8f0c005bf056dd",
+          "source": "news.yahoo.co.jp"
+        },
+        {
+          "title": "NEWS・増田貴久、ソロとして自身初の映像3部門同時1位【オリコンランキング】 | 山陰中央新報デジタル",
+          "url": "https://www.sanin-chuo.co.jp/articles/-/935541",
+          "source": "www.sanin-chuo.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "198-ja-tech-相葉雅紀",
+      "keyword": "相葉雅紀",
+      "category": "tech",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T20:34:51.661403",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "デジタル化時代における手作業スキルの価値再評価への関心",
+      "angle": "テクノロジー時代のアナログスキルの価値",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "相葉雅紀が番組で見せたトリミング技術にSNSで集まる絶賛「悲惨な状況を伝えるのが仕事」飼育放棄問題への意識（SmartFLASH） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/b1c9a31777cf1413c3c16123d17ca2a95541678b",
+          "source": "news.yahoo.co.jp"
+        },
+        {
+          "title": "相葉雅紀が番組で見せたトリミング技術にSNSで集まる絶賛「悲惨な状況を伝えるのが仕事」飼育放棄問題への意識 - Smart FLASH/スマフラ[光文社週刊誌]",
+          "url": "https://smart-flash.jp/entertainment/entertainment-news/387717/image/1/",
+          "source": "smart-flash.jp"
+        }
+      ],
+      "expiry_days": 3
     }
   ]
 }

@@ -699,7 +699,7 @@ class KeywordCurator:
 
         # Validation rules
         if language == 'ko':
-            if has_hiragana_katakana(text) or (has_kanji_only(keyword) and not has_hangul(keyword)):
+            if has_hiragana_katakana(keyword) or (has_kanji_only(keyword) and not has_hangul(keyword)):
                 return False
         elif language == 'ja':
             if has_hangul(keyword):
