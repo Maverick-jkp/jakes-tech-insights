@@ -29,6 +29,13 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from topic_queue import reserve_topics, mark_completed, mark_failed
 from utils.security import safe_print, mask_secrets
+from affiliate_config import (
+    detect_product_mentions,
+    generate_affiliate_link,
+    create_affiliate_box,
+    get_affiliate_disclosure,
+    should_add_affiliate_links
+)
 
 try:
     from anthropic import Anthropic
@@ -1286,6 +1293,47 @@ image: "{image_path}"
             safe_print(f"  ✅ Added {len(references)} references from queue")
         elif not has_references:
             safe_print(f"  ℹ️  No references available (neither in content nor queue)")
+
+        # Add affiliate links if applicable
+        affiliate_programs_used = []
+        if should_add_affiliate_links(category):
+            safe_print(f"  🔗 Checking for product mentions to add affiliate links...")
+
+            # Detect products mentioned in content
+            detected_products = detect_product_mentions(content, lang, category)
+
+            if detected_products:
+                safe_print(f"  📦 Detected {len(detected_products)} products: {', '.join(detected_products[:3])}")
+
+                # Add affiliate link for the first detected product only (to avoid being too commercial)
+                primary_product = detected_products[0]
+                link_data = generate_affiliate_link(primary_product, lang)
+
+                if link_data:
+                    # Find insertion point: after first ## section
+                    sections = content.split('\n## ')
+                    if len(sections) > 1:
+                        # Insert after first section
+                        affiliate_box = create_affiliate_box(primary_product, lang, link_data)
+                        sections[1] = sections[1] + '\n' + affiliate_box
+                        content = '\n## '.join(sections)
+
+                        affiliate_programs_used.append(link_data['program'])
+                        safe_print(f"  ✅ Added affiliate link for '{primary_product}' ({link_data['program']})")
+                    else:
+                        safe_print(f"  ⚠️  Could not find insertion point for affiliate link")
+                else:
+                    safe_print(f"  ℹ️  No affiliate program configured for {lang}")
+            else:
+                safe_print(f"  ℹ️  No product mentions detected")
+        else:
+            safe_print(f"  ℹ️  Affiliate links disabled for category: {category}")
+
+        # Add affiliate disclosure if links were added
+        if affiliate_programs_used:
+            disclosure = get_affiliate_disclosure(lang, affiliate_programs_used)
+            content = content.rstrip() + disclosure
+            safe_print(f"  ⚠️  Added affiliate disclosure")
 
         # Write file with hero image at top
         with open(filepath, 'w', encoding='utf-8') as f:
