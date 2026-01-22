@@ -36,6 +36,43 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
+# 🔴 MANDATORY PRE-ACTION VERIFICATION 🔴
+
+**Before attempting to "fix" ANY reported issue, you MUST complete this verification checklist:**
+
+```bash
+# Step 1: Verify problem exists locally
+git status
+git diff
+
+# Step 2: Check if already fixed in remote repository
+git fetch origin
+git show origin/main:path/to/file | grep "search-term"
+
+# Step 3: Verify environment files exist
+ls -la .env
+ls -la .git/config
+
+# Step 4: If issue involves environment variables, verify they exist
+grep "VARIABLE_NAME" .env
+
+# Step 5: Check documented procedures FIRST
+# Example: CLAUDE.md line 81 shows how to load .env
+# DO NOT improvise - follow documented method
+```
+
+**CRITICAL RULES**:
+1. ❌ **NEVER assume** user's report means issue currently exists - verify first
+2. ❌ **NEVER improvise** solutions when documented procedures exist
+3. ❌ **NEVER claim** files/keys/tools are missing without checking
+4. ✅ **ALWAYS verify** current state before attempting any fix
+5. ✅ **ALWAYS follow** documented procedures exactly as written
+6. ✅ **ALWAYS check** if issue already resolved in previous session
+
+**If verification shows issue is already fixed**: Report findings, do NOT redo the work.
+
+---
+
 ## Project Overview
 
 **Jake's Tech Insights** is an AI-powered multilingual blog system that generates content automatically using Claude API. The system handles everything from keyword curation to content generation, quality validation, and deployment.
