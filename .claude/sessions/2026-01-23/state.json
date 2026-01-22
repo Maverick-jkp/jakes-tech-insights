@@ -1,0 +1,25 @@
+{
+  "session_date": "2026-01-23",
+  "session_id": "refactor-week1-2-4",
+  "started_at": "2026-01-23T21:30:00+09:00",
+  "completed_at": "2026-01-23T22:00:00+09:00",
+  "duration_hours": 0.5,
+  "status": "completed",
+  "focus": "Progressive disclosure refactor (Week 1, 2, 4)",
+  "documentation_version": "6.0",
+  "last_commit": "2ed68bd",
+  "tasks_completed": [
+    "Week 1: CLAUDE.md refactor (957 → 209 lines)",
+    "Week 1: Extract 7 docs (.claude/docs/)",
+    "Week 2: Extract 4 Anthropic skills (.claude/skills/)",
+    "Week 4: Per-session state structure"
+  ],
+  "next_session": {
+    "priority": "test",
+    "suggested_tasks": [
+      "Test progressive disclosure loading",
+      "Test skill triggers",
+      "Verify Claude follows on-demand pattern"
+    ]
+  }
+}
