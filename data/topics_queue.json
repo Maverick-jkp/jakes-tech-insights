@@ -1284,7 +1284,7 @@
       "category": "society",
       "lang": "ko",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182004",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1303,7 +1303,9 @@
           "source": "www.seoul.co.kr"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:08:11.492498+00:00"
     },
     {
       "id": "171-ko-entertainment-이금희",
@@ -1311,7 +1313,7 @@
       "category": "entertainment",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182040",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1330,7 +1332,9 @@
           "source": "tvreport.co.kr"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:17:18.402622+00:00"
     },
     {
       "id": "172-ko-finance-캐시워크-정답",
@@ -1338,7 +1342,7 @@
       "category": "finance",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182046",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1352,7 +1356,9 @@
           "source": "www.bntnews.co.kr"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:12:15.637528+00:00"
     },
     {
       "id": "173-ko-sports-브리온",
@@ -1360,7 +1366,7 @@
       "category": "sports",
       "lang": "ko",
       "priority": 6,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182051",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1379,7 +1385,9 @@
           "source": "www.kukinews.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:21:01.231285+00:00"
     },
     {
       "id": "174-ko-tech-iphone-18",
@@ -1387,7 +1395,7 @@
       "category": "tech",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182055",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1406,7 +1414,9 @@
           "source": "www.cnet.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:13:40.323212+00:00"
     },
     {
       "id": "175-en-sports-sri-lanka-vs-england",
@@ -1414,7 +1424,7 @@
       "category": "sports",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182059",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1433,7 +1443,9 @@
           "source": "www.skysports.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:18:18.064615+00:00"
     },
     {
       "id": "176-en-lifestyle-school-closings-and-",
@@ -1441,7 +1453,7 @@
       "category": "lifestyle",
       "lang": "en",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182064",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1460,7 +1472,9 @@
           "source": "delays.wfin.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:09:18.685822+00:00"
     },
     {
       "id": "177-en-society-weather-boston",
@@ -1468,7 +1482,7 @@
       "category": "society",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182068",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1487,7 +1501,9 @@
           "source": "www.boston.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:14:53.277316+00:00"
     },
     {
       "id": "178-en-business-wmur-weather",
@@ -1495,7 +1511,7 @@
       "category": "business",
       "lang": "en",
       "priority": 6,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182072",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1514,7 +1530,9 @@
           "source": "www.boston.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:22:00.545796+00:00"
     },
     {
       "id": "179-en-education-school-closings-toda",
@@ -1522,7 +1540,7 @@
       "category": "education",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182077",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1541,7 +1559,9 @@
           "source": "delays.wfin.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:15:59.057111+00:00"
     },
     {
       "id": "180-ja-society-赤坂-事故",
@@ -1549,7 +1569,7 @@
       "category": "society",
       "lang": "ja",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182082",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1568,7 +1588,9 @@
           "source": "bunshun.jp"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:10:51.618601+00:00"
     },
     {
       "id": "181-ja-entertainment-フォートナイト",
@@ -1576,7 +1598,7 @@
       "category": "entertainment",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182086",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1595,7 +1617,9 @@
           "source": "fnjpnews.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:19:34.963326+00:00"
     },
     {
       "id": "182-ja-education-東京科学大学",
@@ -1603,7 +1627,7 @@
       "category": "education",
       "lang": "ja",
       "priority": 6,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182091",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1622,7 +1646,9 @@
           "source": "news.yahoo.co.jp"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:23:35.072324+00:00"
     },
     {
       "id": "183-ja-business-又吉直樹",
@@ -1630,7 +1656,7 @@
       "category": "business",
       "lang": "ja",
       "priority": 5,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182096",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1649,7 +1675,9 @@
           "source": "ja.wikipedia.org"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:24:51.515396+00:00"
     },
     {
       "id": "184-ja-tech-wsaz",
@@ -1657,7 +1685,7 @@
       "category": "tech",
       "lang": "ja",
       "priority": 4,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182101",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1671,7 +1699,9 @@
           "source": "www.wsaz.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T11:06:30.701586+00:00",
+      "completed_at": "2026-01-22T11:26:17.766760+00:00"
     }
   ]
 }
