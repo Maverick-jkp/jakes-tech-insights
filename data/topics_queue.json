@@ -121,7 +121,7 @@
       "category": "lifestyle",
       "lang": "en",
       "priority": 5,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T01:48:08.506633",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -140,7 +140,9 @@
           "source": "eu.usatoday.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:40:20.704189+00:00"
     },
     {
       "id": "124-ko-business-진에어",
@@ -664,7 +666,7 @@
       "category": "sports",
       "lang": "ja",
       "priority": 5,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T02:52:12.916348",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -683,7 +685,9 @@
           "source": "www.tsn.ca"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:41:34.675532+00:00"
     },
     {
       "id": "143-ja-entertainment-qarabağ---frankfurt",
@@ -720,7 +724,7 @@
       "category": "lifestyle",
       "lang": "en",
       "priority": 5,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T02:52:12.916364",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -739,7 +743,9 @@
           "source": "gourmet.watch.impress.co.jp"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:42:46.981741+00:00"
     },
     {
       "id": "145-ko-lifestyle-진에어",
@@ -830,7 +836,7 @@
       "category": "education",
       "lang": "ko",
       "priority": 6,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T02:52:12.916395",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -849,7 +855,9 @@
           "source": "www.gearnews.de"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:38:10.757942+00:00"
     },
     {
       "id": "149-ko-sports-qarabağ---frankfurt",
@@ -944,7 +952,7 @@
       "category": "education",
       "lang": "en",
       "priority": 6,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-22T02:52:12.916426",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -963,7 +971,9 @@
           "source": "www.at-s.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:39:12.431247+00:00"
     },
     {
       "id": "153-ja-education-しゃぶ葉",
