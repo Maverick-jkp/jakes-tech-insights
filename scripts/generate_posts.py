@@ -1236,6 +1236,16 @@ image: "{image_path}"
         }
         ref_header = ref_headers.get(lang, '## References')
 
+        # First, normalize any non-standard reference formats to standard format
+        # Remove bold "**References:**" format if exists (common Claude output)
+        bold_ref_patterns = [
+            (r'\*\*References?:\*\*\n', ''),  # **References:**
+            (r'\*\*参考(?:文献|資料):\*\*\n', ''),  # **参考文献:** or **参考資料:**
+            (r'\*\*참고자료:\*\*\n', ''),  # **참고자료:**
+        ]
+        for pattern, replacement in bold_ref_patterns:
+            content = re.sub(pattern, replacement, content)
+
         # Extract References section if exists
         has_references = ref_header in content or '## Reference' in content or '## 참고' in content or '## 参考' in content
 

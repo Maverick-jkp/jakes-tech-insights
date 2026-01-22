@@ -1,31 +1,66 @@
 {
   "summary": {
-    "total_files": 1,
+    "total_files": 3,
     "total_failures": 0,
-    "total_warnings": 3
+    "total_warnings": 4
   },
   "results": [
     {
-      "file": "content/ja/business/2026-01-17-\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u8cc7\u91d1\u8abf\u9054\u6226\u75652025.md",
-      "language": "ja",
+      "file": "content/en/finance/2026-01-22-current-interest-rates.md",
+      "language": "en",
       "critical_failures": [],
       "warnings": [
-        "Character count on the lower end: 2720 chars (target: 2800-4200)",
-        "AI phrases detected: \u91cd\u8981\u3067\u3059",
-        "Description length not optimal: 98 chars (ideal: 120-160)"
+        "Word count high: 1254 words (target: 700-1200, Editor should compress)"
       ],
       "info": {
-        "char_count": 2720,
-        "word_count": "2720 chars",
+        "word_count": 1254,
+        "ai_phrases_found": [],
+        "description_length": 152,
+        "link_count": 5,
+        "avg_sentence_length": 11.6,
+        "has_image": "/images/20260122-current-interest-rates.jpg",
+        "heading_count": 7,
+        "title": "Current Interest Rates 2024: What You Need to Know Now"
+      }
+    },
+    {
+      "file": "content/ko/finance/2026-01-22-\uad6d\ubbfc\uc5f0\uae08.md",
+      "language": "ko",
+      "critical_failures": [],
+      "warnings": [
+        "AI phrases detected: \ubb3c\ub860",
+        "Description length not optimal: 95 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "char_count": 2206,
+        "word_count": "2206 chars",
         "ai_phrases_found": [
-          "\u91cd\u8981\u3067\u3059"
+          "\ubb3c\ub860"
         ],
-        "description_length": 98,
-        "link_count": 2,
-        "avg_sentence_length": 13.3,
-        "has_image": "/images/20260117-\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u8cc7\u91d1\u8abf\u9054\u6226\u75652025.jpg",
-        "heading_count": 4,
-        "title": "\u30102025\u5e74\u6700\u65b0\u3011\u30b9\u30bf\u30fc\u30c8\u30a2\u30c3\u30d7\u304c\u6210\u529f\u3059\u308b\u8cc7\u91d1\u8abf\u9054\u6226\u7565\uff5c\u6295\u8cc7\u5bb6\u304c\u6ce8\u76ee\u3059\u308b\u30dd\u30a4\u30f3\u30c8\u3068\u5b9f\u8df5\u65b9\u6cd5"
+        "description_length": 95,
+        "link_count": 4,
+        "avg_sentence_length": 7.6,
+        "has_image": "/images/20260122-\uad6d\ubbfc\uc5f0\uae08.jpg",
+        "heading_count": 6,
+        "title": "\uad6d\ubbfc\uc5f0\uae08 \uc644\ubcbd \uac00\uc774\ub4dc: \uc218\ub839\uc561 \uacc4\uc0b0\ubd80\ud130 \uc608\uc0c1 \uc5f0\uae08\uc561\uae4c\uc9c0 \ud55c \ubc88\uc5d0 \uc815\ub9ac"
+      }
+    },
+    {
+      "file": "content/en/entertainment/2026-01-22-sydney-sweeney.md",
+      "language": "en",
+      "critical_failures": [],
+      "warnings": [
+        "Description length not optimal: 165 chars (ideal: 120-160)"
+      ],
+      "info": {
+        "word_count": 1091,
+        "ai_phrases_found": [],
+        "description_length": 165,
+        "link_count": 5,
+        "avg_sentence_length": 14.2,
+        "has_image": "/images/20260122-sydney-sweeney.jpg",
+        "heading_count": 6,
+        "title": "Sydney Sweeney: From Euphoria Star to Hollywood's Rising Icon"
       }
     }
   ]

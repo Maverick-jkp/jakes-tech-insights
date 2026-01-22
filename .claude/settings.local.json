@@ -62,7 +62,26 @@
       "Bash(git log:*)",
       "Bash(gh api:*)",
       "Bash(cat:*)",
-      "Bash(__NEW_LINE_365f9baa955f20eb__ echo \"Deleted incorrect posts and images\")"
+      "Bash(__NEW_LINE_365f9baa955f20eb__ echo \"Deleted incorrect posts and images\")",
+      "Bash(TZ=Asia/Seoul date:*)",
+      "Bash(python scripts/generate_posts.py:*)",
+      "Bash(python scripts/quality_gate.py:*)",
+      "Bash(python scripts/validate_content_quality.py:*)",
+      "Bash(export PATH=\"/opt/homebrew/bin:$PATH\")",
+      "Bash(echo:*)",
+      "Bash(if ! grep -q \"/opt/homebrew/bin\" ~/.zshrc)",
+      "Bash(then)",
+      "Bash(~/.zshrc)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(/opt/homebrew/bin/hugo:*)",
+      "Bash(gh pr:*)",
+      "Bash(crontab -l:*)",
+      "Bash(launchctl list:*)",
+      "Bash(/opt/homebrew/bin/gh pr list --json number,title,url,state)",
+      "Bash(/opt/homebrew/bin/gh pr view 4)",
+      "Bash(/opt/homebrew/bin/gh pr merge 4 --squash --delete-branch)",
+      "Bash(/opt/homebrew/bin/gh pr checkout 4)"
     ]
   }
 }
