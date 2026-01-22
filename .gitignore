@@ -10,7 +10,10 @@ resources/_gen/
 Thumbs.db
 
 # Editor files
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
 .idea/
 *.swp
 *.swo
@@ -30,3 +33,18 @@ resume_project/
 # Downloaded images (tracked in git)
 # static/images/
 .env
+
+# Work log (personal notes, not for git)
+docs/WORK_LOG.md
+
+# Testing
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover

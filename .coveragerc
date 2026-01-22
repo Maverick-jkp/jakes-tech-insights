@@ -1,0 +1,30 @@
+[run]
+source = scripts
+omit =
+    scripts/test_queue.py
+    scripts/chatgpt-review.py
+    scripts/ai_reviewer.py
+    scripts/generate_posts.py
+    scripts/keyword_curator.py
+    scripts/cleanup_expired.py
+    scripts/fetch_images_for_posts.py
+    scripts/fix_*.py
+    scripts/replace_*.py
+    scripts/upload_workflows.py
+    scripts/convert_to_page_bundles.py
+    scripts/copy_images_to_bundles.py
+    scripts/update_image_paths.py
+    scripts/measure_image_performance.py
+    scripts/quality_gate.py
+    scripts/validate_content_quality.py
+    scripts/redownload_optimized_images.py
+    scripts/utils/security.py
+    scripts/utils/validate_queue.py
+
+[report]
+precision = 2
+show_missing = True
+skip_covered = False
+
+[html]
+directory = htmlcov

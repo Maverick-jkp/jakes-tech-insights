@@ -1,0 +1,5 @@
+{{- if .Params.author }}
+{{- .Params.author }}
+{{- else if site.Params.author }}
+{{- site.Params.author }}
+{{- end }}

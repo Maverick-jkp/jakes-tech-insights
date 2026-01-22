@@ -1,3 +1,1421 @@
 {
-  "topics": []
+  "topics": [
+    {
+      "id": "114-ko-society-대리모",
+      "keyword": "대리모",
+      "category": "society",
+      "lang": "ko",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2026-01-22T01:48:08.506572",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "대리모 출산을 둘러싼 진실을 알지 못하면 잘못된 인식을 갖게 될 수 있다",
+      "angle": "유명인의 대리모 출산 연출과 사회적 메시지 왜곡",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "옷 벗고 머리 산발…대리모 출산인데 '눈물 인증샷' 올린 팝스타 - 머니투데이",
+          "url": "https://www.mt.co.kr/entertainment/2026/01/21/2026012116565122243",
+          "source": "www.mt.co.kr"
+        },
+        {
+          "title": "대리모로 딸 가진 女가수…‘상의 탈의’ 눈물 인증샷에 “작위적” 논란 : zum 뉴스",
+          "url": "https://news.zum.com/articles/103548246/%EB%8C%80%EB%A6%AC%EB%AA%A8%EB%A1%9C-%EB%94%B8-%EA%B0%80%EC%A7%84-%EA%B0%80%EC%88%98-%EC%83%81%EC%9D%98-%ED%83%88%EC%9D%98-%EB%88%88%EB%AC%BC-%EC%9D%B8%EC%A6%9D%EC%83%B7%EC%97%90-%EC%9E%91%EC%9C%84%EC%A0%81-%EB%85%BC%EB%9E%80?cm=news_home_rank_article",
+          "source": "news.zum.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T16:48:57.668000+00:00",
+      "completed_at": "2026-01-21T17:26:51.754830+00:00"
+    },
+    {
+      "id": "115-ko-entertainment-전민기",
+      "keyword": "전민기",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2026-01-22T01:48:08.506579",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "연예인의 부적절한 발언을 방치하면 사회적 가치관이 왜곡될 수 있다",
+      "angle": "예능 프로그램의 자극적 콘텐츠와 사회적 책임 문제",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "전남편과 잠자리하는 여자 [낯박살고민센터 EP.15 사연별 다시보기] #전민기 #이지선 #조은나래 # 강민경 #김기혁 - YouTube",
+          "url": "https://www.youtube.com/watch?v=oKbsk7dvFcc",
+          "source": "www.youtube.com"
+        },
+        {
+          "title": "전유성 - 위키백과, 우리 모두의 백과사전",
+          "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%9C%A0%EC%84%B1",
+          "source": "ko.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T16:48:57.668000+00:00",
+      "completed_at": "2026-01-21T17:28:09.588482+00:00"
+    },
+    {
+      "id": "119-ja-lifestyle-しゃぶ葉",
+      "keyword": "しゃぶ葉",
+      "category": "lifestyle",
+      "lang": "ja",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2026-01-22T01:48:08.506606",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "企業マーケティングの問題点を把握しないと消費者として間違った選択をする",
+      "angle": "企業コラボレーションの商業主義的側面と消費者軽視問題",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "アッキー：しゃぶ葉",
+          "url": "https://ameblo.jp/umibouzu51/entry-12953209482.html",
+          "source": "ameblo.jp"
+        },
+        {
+          "title": "しゃぶ葉、リュウジさん＆安元洋貴さんとコラボ「背徳 至高のグルメフェア」を実施",
+          "url": "https://gourmet.watch.impress.co.jp/docs/news/2079600.html",
+          "source": "gourmet.watch.impress.co.jp"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T16:48:57.668000+00:00",
+      "completed_at": "2026-01-21T17:29:23.457368+00:00"
+    },
+    {
+      "id": "120-ja-entertainment-SixTONES",
+      "keyword": "SixTONES",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 4,
+      "status": "completed",
+      "created_at": "2026-01-22T01:48:08.506613",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "推しグループの方向性を把握しないとファン活動での失望や損失につながる",
+      "angle": "アイドル産業の商業化とファンとの感情的距離の拡大",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Single Collection - Album by SixTONES | Spotify",
+          "url": "https://open.spotify.com/album/6sNdI5cR8tN2HJYYriaM1i",
+          "source": "open.spotify.com"
+        },
+        {
+          "title": "SixTONES – ベストアルバム「MILESixTONES -Best Tracks-」初回盤A・B Bonus Track digeST - YouTube",
+          "url": "https://www.youtube.com/watch?v=Tgsd4Vn3ZUE",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3,
+      "completed_at": "2026-01-22T03:04:20+09:00"
+    },
+    {
+      "id": "123-en-lifestyle-james-beard-semifina",
+      "keyword": "james beard semifinalists 2026",
+      "category": "lifestyle",
+      "lang": "en",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2026-01-22T01:48:08.506633",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Understanding award bias helps identify truly exceptional dining experiences before they're discovered",
+      "angle": "Disconnect between award recognition and actual culinary excellence",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "The James Beard 2026 restaurant and chef award semifinalists list is out. Here are the region’s nomi",
+          "url": "https://www.bostonglobe.com/2026/01/21/lifestyle/2026-new-england-james-beard-award-semifinalists-new-england/",
+          "source": "www.bostonglobe.com"
+        },
+        {
+          "title": "Meet the James Beard Foundation chef, restaurant semifinalists in 2026",
+          "url": "https://eu.usatoday.com/story/entertainment/dining/2026/01/21/nominations-james-beard-awards-chef-restaurant-list/88270105007/",
+          "source": "eu.usatoday.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:40:20.704189+00:00"
+    },
+    {
+      "id": "124-ko-business-진에어",
+      "keyword": "진에어",
+      "category": "business",
+      "lang": "ko",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:46:18.383830",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "진에어 적자 소식으로 인한 항공료 인상이나 노선 변경 가능성을 확인하지 않으면 예약한 항공편이 취소되거나 추가 비용을 부담할 수 있음",
+      "angle": "진에어의 재정 악화가 소비자에게 미치는 직접적 영향과 대안 항공사 비교",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "진에어, 3년 만에 적자 전환…고환율·운임 하락에 수익성 악화 | 서울경제",
+          "url": "https://www.sedaily.com/NewsView/2K7D4TP7PF",
+          "source": "www.sedaily.com"
+        },
+        {
+          "title": "진에어, 지난해 영업손실 163억원…3년 만에 적자 전환 - 뉴스1",
+          "url": "https://www.news1.kr/industry/general-industry/6043789",
+          "source": "www.news1.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T17:58:43.275445+00:00"
+    },
+    {
+      "id": "125-ko-business-진에어",
+      "keyword": "진에어",
+      "category": "business",
+      "lang": "ko",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916148",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "항공업계 투자나 여행 계획을 세우기 전에 위험 신호를 놓치지 않으려고",
+      "angle": "항공업계 전반의 구조적 위기와 소비자 영향",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "진에어, 3년 만에 적자 전환…고환율·운임 하락에 수익성 악화 | 서울경제",
+          "url": "https://www.sedaily.com/NewsView/2K7D4TP7PF",
+          "source": "www.sedaily.com"
+        },
+        {
+          "title": "진에어, 지난해 영업손실 163억원…3년 만에 적자 전환 - 뉴스1",
+          "url": "https://www.news1.kr/industry/general-industry/6043789",
+          "source": "www.news1.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T18:00:05.867515+00:00"
+    },
+    {
+      "id": "126-ko-tech-붉은사막",
+      "keyword": "붉은사막",
+      "category": "tech",
+      "lang": "ko",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916216",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "게임업계 투자나 관련 주식 움직임을 놓치지 않으려고",
+      "angle": "한국 게임업계의 글로벌 패러다임 전환점",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "[더구루] 펄어비스 '붉은사막' 바람몰이 시작?…미국 홍보 총괄 유튜브 출동",
+          "url": "https://www.theguru.co.kr/news/article.html?no=96978",
+          "source": "www.theguru.co.kr"
+        },
+        {
+          "title": "붉은사막, CES 2026 최고 게임 대이변 ― 예상 밖 K-기술력 외 | 게임 헤드라인 - YouTube",
+          "url": "https://www.youtube.com/watch?v=DSQWPx1Kr18",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T21:21:52.678557+00:00",
+      "completed_at": "2026-01-21T21:23:34.294947+00:00"
+    },
+    {
+      "id": "127-ko-entertainment-전민기",
+      "keyword": "전민기",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T02:52:12.916228",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "방송계 윤리 논란이 자신이 좋아하는 프로그램에도 영향을 줄지 걱정돼서",
+      "angle": "방송계 윤리 기준과 시청자 보호",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "전남편과 잠자리하는 여자 [낯박살고민센터 EP.15 사연별 다시보기] #전민기 #이지선 #조은나래 # 강민경 #김기혁 - YouTube",
+          "url": "https://www.youtube.com/watch?v=oKbsk7dvFcc",
+          "source": "www.youtube.com"
+        },
+        {
+          "title": "전우원 - 위키백과, 우리 모두의 백과사전",
+          "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%9A%B0%EC%9B%90",
+          "source": "ko.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "128-ko-finance-msft",
+      "keyword": "msft",
+      "category": "finance",
+      "lang": "ko",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916238",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "테크주 투자 포트폴리오를 재검토해야 할지 판단하려고",
+      "angle": "빅테크 성장 한계와 투자자 리스크",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Microsoft: The Ride Couldn't Last Forever (NASDAQ:MSFT) | Seeking Alpha",
+          "url": "https://seekingalpha.com/article/4860328-microsoft-the-ride-couldnt-last-forever",
+          "source": "seekingalpha.com"
+        },
+        {
+          "title": "Microsoft (MSFT) Traded Lower as Its Reported Azure Cloud Growth and Forward Guidance Fell Short of ",
+          "url": "https://finance.yahoo.com/news/microsoft-msft-traded-lower-reported-141528792.html",
+          "source": "finance.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T18:01:34.573214+00:00"
+    },
+    {
+      "id": "129-ko-society-sixtones",
+      "keyword": "sixtones",
+      "category": "society",
+      "lang": "ko",
+      "priority": 5,
+      "status": "pending",
+      "created_at": "2026-01-22T02:52:12.916246",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "음악 시장의 변화 트렌드를 놓치지 않고 따라가려고",
+      "angle": "J-POP과 K-POP 간 시장 경쟁 구도",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Single Collection - Album by SixTONES | Spotify",
+          "url": "https://open.spotify.com/album/6sNdI5cR8tN2HJYYriaM1i",
+          "source": "open.spotify.com"
+        },
+        {
+          "title": "SixTONES – ベストアルバム「MILESixTONES -Best Tracks-」初回盤A・B Bonus Track digeST - YouTube",
+          "url": "https://www.youtube.com/watch?v=Tgsd4Vn3ZUE",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "130-en-sports-jackson-lacombe",
+      "keyword": "jackson lacombe",
+      "category": "sports",
+      "lang": "en",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916255",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Hockey fans want to stay ahead of emerging talent before mainstream media covers them",
+      "angle": "Rising hockey stars and Olympic team dynamics",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Jackson LaCombe Named To U.S. Olympic Men’s Ice Hockey Team",
+          "url": "https://teamusa.usahockey.com/news_article/show/1353873",
+          "source": "teamusa.usahockey.com"
+        },
+        {
+          "title": "Anaheim Ducks’ Jackson LaCombe replaces injured Florida Panthers D Seth Jones on Team USA",
+          "url": "https://www.tsn.ca/nhl/article/ducks-lacombe-replaces-injured-panthers-d-jones-on-team-usa/",
+          "source": "www.tsn.ca"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:07:47.234940+00:00",
+      "completed_at": "2026-01-22T04:08:52.649074+00:00"
+    },
+    {
+      "id": "131-en-tech-quad-cortex-mini",
+      "keyword": "quad cortex mini",
+      "category": "tech",
+      "lang": "en",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916263",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Musicians fear their expensive traditional gear will lose value as digital alternatives improve",
+      "angle": "Digital disruption in music equipment industry",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Quad Cortex Mini: Neural DSP unveils downsized version of its flagship amp modeller",
+          "url": "https://guitar.com/news/gear-news/neural-dsp-quad-cortex-mini/",
+          "source": "guitar.com"
+        },
+        {
+          "title": "Neural DSP Quad Core Mini - gearnews.de",
+          "url": "https://www.gearnews.de/neural-dsp-quad-core-mini-guitar/",
+          "source": "www.gearnews.de"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T21:21:52.678557+00:00",
+      "completed_at": "2026-01-21T21:24:34.496947+00:00"
+    },
+    {
+      "id": "132-en-entertainment-qarabağ---frankfurt",
+      "keyword": "qarabağ - frankfurt",
+      "category": "entertainment",
+      "lang": "en",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916272",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Football fans want to catch potential upsets before they become legendary moments",
+      "angle": "Underdog potential in high-stakes European football",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Wer überträgt Qarabag Agdam gegen Eintracht Frankfurt heute live im TV & Stream? - Gastspiel in Aser",
+          "url": "https://www.kicker.de/wer-uebertraegt-qarabag-agdam-gegen-eintracht-frankfurt-heute-live-im-tv-stream-1185697/artikel",
+          "source": "www.kicker.de"
+        },
+        {
+          "title": "Confirmed lineups: Qarabağ FK vs. Eintracht Frankfurt - Yahoo Sports",
+          "url": "https://sports.yahoo.com/articles/confirmed-lineups-qaraba-fk-vs-164000667.html",
+          "source": "sports.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T18:02:38.737281+00:00"
+    },
+    {
+      "id": "133-en-finance-msft",
+      "keyword": "msft",
+      "category": "finance",
+      "lang": "en",
+      "priority": 9,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916280",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Investors need to reassess their tech portfolio before further market corrections",
+      "angle": "Big Tech vulnerability and market correction risks",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Microsoft: The Ride Couldn't Last Forever (NASDAQ:MSFT) | Seeking Alpha",
+          "url": "https://seekingalpha.com/article/4860328-microsoft-the-ride-couldnt-last-forever",
+          "source": "seekingalpha.com"
+        },
+        {
+          "title": "Microsoft (MSFT) Traded Lower as Its Reported Azure Cloud Growth and Forward Guidance Fell Short of ",
+          "url": "https://finance.yahoo.com/news/microsoft-msft-traded-lower-reported-141528792.html",
+          "source": "finance.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T17:54:24.340249+00:00"
+    },
+    {
+      "id": "134-en-business-붉은사막",
+      "keyword": "붉은사막",
+      "category": "business",
+      "lang": "en",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916288",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Gaming industry professionals worry about shifting global development leadership",
+      "angle": "Global gaming industry power shift from West to East",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "[더구루] 펄어비스 '붉은사막' 바람몰이 시작?…미국 홍보 총괄 유튜브 출동",
+          "url": "https://www.theguru.co.kr/news/article.html?no=96978",
+          "source": "www.theguru.co.kr"
+        },
+        {
+          "title": "붉은사막, CES 2026 최고 게임 대이변 ― 예상 밖 K-기술력 외 | 게임 헤드라인 - YouTube",
+          "url": "https://www.youtube.com/watch?v=DSQWPx1Kr18",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T21:21:52.678557+00:00",
+      "completed_at": "2026-01-21T21:25:36.773111+00:00"
+    },
+    {
+      "id": "135-ja-lifestyle-しゃぶ葉",
+      "keyword": "しゃぶ葉",
+      "category": "lifestyle",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T02:52:12.916296",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "外食の安全性と価格競争の影響を知りたくて検索する",
+      "angle": "外食業界の競争激化と消費者への影響",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "アッキー：しゃぶ葉",
+          "url": "https://ameblo.jp/umibouzu51/entry-12953209482.html",
+          "source": "ameblo.jp"
+        },
+        {
+          "title": "しゃぶ葉、リュウジさん＆安元洋貴さんとコラボ「背徳 至高のグルメフェア」を実施",
+          "url": "https://gourmet.watch.impress.co.jp/docs/news/2079600.html",
+          "source": "gourmet.watch.impress.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "136-ja-entertainment-爆弾-映画",
+      "keyword": "爆弾 映画",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916303",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "社会現象となった映画について行けず取り残される不安から",
+      "angle": "社会現象映画と文化的取り残し不安",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "爆弾 (小説) - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E7%88%86%E5%BC%BE_(%E5%B0%8F%E8%AA%AC)",
+          "source": "ja.wikipedia.org"
+        },
+        {
+          "title": "映画『爆弾』興収30億突破！山田裕貴ら豪華陣の極限ミステリー",
+          "url": "https://www.at-s.com/media/articles/movie/movie-bakudan-box-office-yamada-yuki",
+          "source": "www.at-s.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T03:36:01.309355+00:00",
+      "completed_at": "2026-01-22T03:37:13.568686+00:00"
+    },
+    {
+      "id": "137-ja-society-sixtones",
+      "keyword": "sixtones",
+      "category": "society",
+      "lang": "ja",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916311",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "音楽の流行から取り残される不安で現在のトレンドを確認したい",
+      "angle": "J-POPとK-POPの競争と文化的アイデンティティ",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Single Collection - Album by SixTONES | Spotify",
+          "url": "https://open.spotify.com/album/6sNdI5cR8tN2HJYYriaM1i",
+          "source": "open.spotify.com"
+        },
+        {
+          "title": "SixTONES – ベストアルバム「MILESixTONES -Best Tracks-」初回盤A・B Bonus Track digeST - YouTube",
+          "url": "https://www.youtube.com/watch?v=Tgsd4Vn3ZUE",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T18:04:20.874381+00:00"
+    },
+    {
+      "id": "138-ja-tech-quad-cortex-mini",
+      "keyword": "quad cortex mini",
+      "category": "tech",
+      "lang": "ja",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916319",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "楽器への投資や機材選択で間違いを犯したくない不安から",
+      "angle": "デジタル音楽技術と従来楽器の価値変化",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Quad Cortex Mini: Neural DSP unveils downsized version of its flagship amp modeller",
+          "url": "https://guitar.com/news/gear-news/neural-dsp-quad-cortex-mini/",
+          "source": "guitar.com"
+        },
+        {
+          "title": "Neural DSP Quad Core Mini - gearnews.de",
+          "url": "https://www.gearnews.de/neural-dsp-quad-core-mini-guitar/",
+          "source": "www.gearnews.de"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:07:47.234940+00:00",
+      "completed_at": "2026-01-22T04:10:17.695833+00:00"
+    },
+    {
+      "id": "139-ja-finance-msft",
+      "keyword": "msft",
+      "category": "finance",
+      "lang": "ja",
+      "priority": 9,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916326",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "株式投資のタイミングを間違えて損失を出したくない",
+      "angle": "ハイテク株調整と投資戦略の見直し必要性",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Microsoft: The Ride Couldn't Last Forever (NASDAQ:MSFT) | Seeking Alpha",
+          "url": "https://seekingalpha.com/article/4860328-microsoft-the-ride-couldnt-last-forever",
+          "source": "seekingalpha.com"
+        },
+        {
+          "title": "Microsoft (MSFT) Traded Lower as Its Reported Azure Cloud Growth and Forward Guidance Fell Short of ",
+          "url": "https://finance.yahoo.com/news/microsoft-msft-traded-lower-reported-141528792.html",
+          "source": "finance.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T17:55:47.486523+00:00"
+    },
+    {
+      "id": "140-en-business-진에어",
+      "keyword": "진에어",
+      "category": "business",
+      "lang": "en",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916334",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Aviation investors and travelers want to assess industry stability before making commitments",
+      "angle": "Asian aviation market volatility and consumer impact",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "진에어, 3년 만에 적자 전환…고환율·운임 하락에 수익성 악화 | 서울경제",
+          "url": "https://www.sedaily.com/NewsView/2K7D4TP7PF",
+          "source": "www.sedaily.com"
+        },
+        {
+          "title": "진에어, 지난해 영업손실 163억원…3년 만에 적자 전환 - 뉴스1",
+          "url": "https://www.news1.kr/industry/general-industry/6043789",
+          "source": "www.news1.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T03:36:01.309355+00:00",
+      "completed_at": "2026-01-22T03:38:11.226294+00:00"
+    },
+    {
+      "id": "141-en-society-전민기",
+      "keyword": "전민기",
+      "category": "society",
+      "lang": "en",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916341",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Entertainment consumers worry about industry integrity affecting content quality",
+      "angle": "Global entertainment industry ethics and consumer trust",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "전남편과 잠자리하는 여자 [낯박살고민센터 EP.15 사연별 다시보기] #전민기 #이지선 #조은나래 # 강민경 #김기혁 - YouTube",
+          "url": "https://www.youtube.com/watch?v=oKbsk7dvFcc",
+          "source": "www.youtube.com"
+        },
+        {
+          "title": "전우원 - 위키백과, 우리 모두의 백과사전",
+          "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%9A%B0%EC%9B%90",
+          "source": "ko.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:07:47.234940+00:00",
+      "completed_at": "2026-01-22T04:11:26.458766+00:00"
+    },
+    {
+      "id": "142-ja-sports-jackson-lacombe",
+      "keyword": "jackson lacombe",
+      "category": "sports",
+      "lang": "ja",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916348",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "スポーツの新しいスターを早めにチェックして話題についていきたい",
+      "angle": "五輪スポーツの新星と国際競争",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Jackson LaCombe Named To U.S. Olympic Men’s Ice Hockey Team",
+          "url": "https://teamusa.usahockey.com/news_article/show/1353873",
+          "source": "teamusa.usahockey.com"
+        },
+        {
+          "title": "Anaheim Ducks’ Jackson LaCombe replaces injured Florida Panthers D Seth Jones on Team USA",
+          "url": "https://www.tsn.ca/nhl/article/ducks-lacombe-replaces-injured-panthers-d-jones-on-team-usa/",
+          "source": "www.tsn.ca"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:41:34.675532+00:00"
+    },
+    {
+      "id": "143-ja-entertainment-qarabağ---frankfurt",
+      "keyword": "qarabağ - frankfurt",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916357",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "サッカーの名勝負を見逃したくない気持ちから試合情報を検索",
+      "angle": "欧州サッカーの番狂わせと歴史的瞬間",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Wer überträgt Qarabag Agdam gegen Eintracht Frankfurt heute live im TV & Stream? - Gastspiel in Aser",
+          "url": "https://www.kicker.de/wer-uebertraegt-qarabag-agdam-gegen-eintracht-frankfurt-heute-live-im-tv-stream-1185697/artikel",
+          "source": "www.kicker.de"
+        },
+        {
+          "title": "Confirmed lineups: Qarabağ FK vs. Eintracht Frankfurt - Yahoo Sports",
+          "url": "https://sports.yahoo.com/articles/confirmed-lineups-qaraba-fk-vs-164000667.html",
+          "source": "sports.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T18:05:51.970029+00:00"
+    },
+    {
+      "id": "144-en-lifestyle-しゃぶ葉",
+      "keyword": "しゃぶ葉",
+      "category": "lifestyle",
+      "lang": "en",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916364",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Food culture enthusiasts worry about homogenization of dining experiences",
+      "angle": "Chain restaurant expansion vs local food culture preservation",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "アッキー：しゃぶ葉",
+          "url": "https://ameblo.jp/umibouzu51/entry-12953209482.html",
+          "source": "ameblo.jp"
+        },
+        {
+          "title": "しゃぶ葉、リュウジさん＆安元洋貴さんとコラボ「背徳 至高のグルメフェア」を実施",
+          "url": "https://gourmet.watch.impress.co.jp/docs/news/2079600.html",
+          "source": "gourmet.watch.impress.co.jp"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:42:46.981741+00:00"
+    },
+    {
+      "id": "145-ko-lifestyle-진에어",
+      "keyword": "진에어",
+      "category": "lifestyle",
+      "lang": "ko",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916372",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "여행 계획을 세우기 전에 항공료 인상 가능성을 미리 파악하려고",
+      "angle": "항공업계 적자와 소비자 여행비용 부담",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "진에어, 3년 만에 적자 전환…고환율·운임 하락에 수익성 악화 | 서울경제",
+          "url": "https://www.sedaily.com/NewsView/2K7D4TP7PF",
+          "source": "www.sedaily.com"
+        },
+        {
+          "title": "진에어, 지난해 영업손실 163억원…3년 만에 적자 전환 - 뉴스1",
+          "url": "https://www.news1.kr/industry/general-industry/6043789",
+          "source": "www.news1.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T18:07:18.228799+00:00"
+    },
+    {
+      "id": "146-ko-education-붉은사막",
+      "keyword": "붉은사막",
+      "category": "education",
+      "lang": "ko",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T02:52:12.916380",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "게임업계 투자 트렌드를 배워서 수익 기회를 잡으려고",
+      "angle": "게임업계 투자 교육과 시장 기회 분석",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "[더구루] 펄어비스 '붉은사막' 바람몰이 시작?…미국 홍보 총괄 유튜브 출동",
+          "url": "https://www.theguru.co.kr/news/article.html?no=96978",
+          "source": "www.theguru.co.kr"
+        },
+        {
+          "title": "붉은사막, CES 2026 최고 게임 대이변 ― 예상 밖 K-기술력 외 | 게임 헤드라인 - YouTube",
+          "url": "https://www.youtube.com/watch?v=DSQWPx1Kr18",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "147-ko-society-전민기",
+      "keyword": "전민기",
+      "category": "society",
+      "lang": "ko",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T02:52:12.916387",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "방송계 변화가 시청 습관에 미칠 영향을 미리 알아보려고",
+      "angle": "방송업계 규제 강화와 콘텐츠 다양성 위축",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "전남편과 잠자리하는 여자 [낯박살고민센터 EP.15 사연별 다시보기] #전민기 #이지선 #조은나래 # 강민경 #김기혁 - YouTube",
+          "url": "https://www.youtube.com/watch?v=oKbsk7dvFcc",
+          "source": "www.youtube.com"
+        },
+        {
+          "title": "전우원 - 위키백과, 우리 모두의 백과사전",
+          "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%9A%B0%EC%9B%90",
+          "source": "ko.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "148-ko-education-quad-cortex-mini",
+      "keyword": "quad cortex mini",
+      "category": "education",
+      "lang": "ko",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916395",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "음악교육 트렌드 변화에 뒤처지지 않으려고 정보를 찾아보는 것",
+      "angle": "디지털 음악 기술과 전통 음악교육의 융합",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Quad Cortex Mini: Neural DSP unveils downsized version of its flagship amp modeller",
+          "url": "https://guitar.com/news/gear-news/neural-dsp-quad-cortex-mini/",
+          "source": "guitar.com"
+        },
+        {
+          "title": "Neural DSP Quad Core Mini - gearnews.de",
+          "url": "https://www.gearnews.de/neural-dsp-quad-core-mini-guitar/",
+          "source": "www.gearnews.de"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:38:10.757942+00:00"
+    },
+    {
+      "id": "149-ko-sports-qarabağ---frankfurt",
+      "keyword": "qarabağ - frankfurt",
+      "category": "sports",
+      "lang": "ko",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916403",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "스포츠 베팅이나 예측에서 실패하지 않으려고 경기 정보를 찾아보는 것",
+      "angle": "유럽축구 경기 결과 예측과 리스크 관리",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Wer überträgt Qarabag Agdam gegen Eintracht Frankfurt heute live im TV & Stream? - Gastspiel in Aser",
+          "url": "https://www.kicker.de/wer-uebertraegt-qarabag-agdam-gegen-eintracht-frankfurt-heute-live-im-tv-stream-1185697/artikel",
+          "source": "www.kicker.de"
+        },
+        {
+          "title": "Confirmed lineups: Qarabağ FK vs. Eintracht Frankfurt - Yahoo Sports",
+          "url": "https://sports.yahoo.com/articles/confirmed-lineups-qaraba-fk-vs-164000667.html",
+          "source": "sports.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T03:36:01.309355+00:00",
+      "completed_at": "2026-01-22T03:39:21.401770+00:00"
+    },
+    {
+      "id": "150-ko-entertainment-sixtones",
+      "keyword": "sixtones",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916411",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "좋아하는 아이돌의 콘서트 기회를 놓치지 않으려고 정보를 확인하는 것",
+      "angle": "아이돌 콘서트 티켓팅 경쟁과 팬 문화",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Single Collection - Album by SixTONES | Spotify",
+          "url": "https://open.spotify.com/album/6sNdI5cR8tN2HJYYriaM1i",
+          "source": "open.spotify.com"
+        },
+        {
+          "title": "SixTONES – ベストアルバム「MILESixTONES -Best Tracks-」初回盤A・B Bonus Track digeST - YouTube",
+          "url": "https://www.youtube.com/watch?v=Tgsd4Vn3ZUE",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T18:08:42.619844+00:00"
+    },
+    {
+      "id": "151-ko-business-msft",
+      "keyword": "msft",
+      "category": "business",
+      "lang": "ko",
+      "priority": 9,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916418",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "IT업계 취업이나 이직을 준비하면서 시장 상황을 파악하려고",
+      "angle": "빅테크 실적과 IT업계 고용시장 연관성",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Microsoft: The Ride Couldn't Last Forever (NASDAQ:MSFT) | Seeking Alpha",
+          "url": "https://seekingalpha.com/article/4860328-microsoft-the-ride-couldnt-last-forever",
+          "source": "seekingalpha.com"
+        },
+        {
+          "title": "Microsoft (MSFT) Traded Lower as Its Reported Azure Cloud Growth and Forward Guidance Fell Short of ",
+          "url": "https://finance.yahoo.com/news/microsoft-msft-traded-lower-reported-141528792.html",
+          "source": "finance.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T17:53:24.420723+00:00",
+      "completed_at": "2026-01-21T17:56:59.019667+00:00"
+    },
+    {
+      "id": "152-en-education-爆弾-映画",
+      "keyword": "爆弾 映画",
+      "category": "education",
+      "lang": "en",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-22T02:52:12.916426",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Film students and critics need to understand changing industry standards and audience preferences",
+      "angle": "Controversial cinema success and industry standard evolution",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "爆弾 (小説) - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E7%88%86%E5%BC%BE_(%E5%B0%8F%E8%AA%AC)",
+          "source": "ja.wikipedia.org"
+        },
+        {
+          "title": "映画『爆弾』興収30億突破！山田裕貴ら豪華陣の極限ミステリー",
+          "url": "https://www.at-s.com/media/articles/movie/movie-bakudan-box-office-yamada-yuki",
+          "source": "www.at-s.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T04:36:37.251597+00:00",
+      "completed_at": "2026-01-22T04:39:12.431247+00:00"
+    },
+    {
+      "id": "153-ja-education-しゃぶ葉",
+      "keyword": "しゃぶ葉",
+      "category": "education",
+      "lang": "ja",
+      "priority": 5,
+      "status": "pending",
+      "created_at": "2026-01-22T02:52:12.916434",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "教育業界の変化トレンドを把握して競争力を維持したい",
+      "angle": "外食業界の教育分野進出と既存教育業界への影響",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "アッキー：しゃぶ葉",
+          "url": "https://ameblo.jp/umibouzu51/entry-12953209482.html",
+          "source": "ameblo.jp"
+        },
+        {
+          "title": "しゃぶ葉、リュウジさん＆安元洋貴さんとコラボ「背徳 至高のグルメフェア」を実施",
+          "url": "https://gourmet.watch.impress.co.jp/docs/news/2079600.html",
+          "source": "gourmet.watch.impress.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "154-ko-society-장동혁",
+      "keyword": "장동혁",
+      "category": "society",
+      "lang": "ko",
+      "priority": 9,
+      "status": "completed",
+      "created_at": "2026-01-22T03:41:48.041141",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "당대표의 위험한 단식 상황을 확인하지 않으면 정치적 혼란과 책임 공방을 놓칠 수 있음",
+      "angle": "정치적 극단주의와 건강 위험성의 관점에서 접근",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "장동혁 (정치인) - 위키백과, 우리 모두의 백과사전",
+          "url": "https://ko.wikipedia.org/wiki/%EC%9E%A5%EB%8F%99%ED%98%81_(%EC%A0%95%EC%B9%98%EC%9D%B8)",
+          "source": "ko.wikipedia.org"
+        },
+        {
+          "title": "장동혁 단식 7일째 … 의총서 중단 권고 뜻 모았지만 끝내 거부 | Save Internet 뉴데일리",
+          "url": "https://www.newdaily.co.kr/site/data/html/2026/01/21/2026012100351.html",
+          "source": "www.newdaily.co.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-21T19:40:22.305452+00:00",
+      "completed_at": "2026-01-21T19:41:46.763735+00:00"
+    },
+    {
+      "id": "155-en-entertainment-sydney-sweeney",
+      "keyword": "sydney sweeney",
+      "category": "entertainment",
+      "lang": "en",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-22T17:56:05.405219",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Fear of missing out on celebrity scandals and hidden career details",
+      "angle": "Uncovering hidden celebrity past that challenges public image",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Fans shocked to discover Sydney Sweeney's raunchiest role ever in little-known erotic thriller The V",
+          "url": "https://www.dailymail.co.uk/tvshowbiz/article-15478067/sydney-sweeney-voyeurs-erotic-thriller.html",
+          "source": "www.dailymail.co.uk"
+        },
+        {
+          "title": "Sydney Sweeney Is Not Even 30, But Her Net Worth Is Already Incredible",
+          "url": "https://www.yahoo.com/entertainment/celebrity/articles/sydney-sweeney-not-even-30-230600515.html",
+          "source": "www.yahoo.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T08:56:11.767147+00:00",
+      "completed_at": "2026-01-22T08:59:40.319012+00:00"
+    },
+    {
+      "id": "156-en-finance-current-interest-rat",
+      "keyword": "current interest rates",
+      "category": "finance",
+      "lang": "en",
+      "priority": 9,
+      "status": "completed",
+      "created_at": "2026-01-22T17:56:05.405269",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Panic about missing mortgage opportunities before rates get worse",
+      "angle": "Urgent financial decision-making under rate pressure",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "What are today's mortgage interest rates: January 20, 2026? - CBS News",
+          "url": "https://www.cbsnews.com/news/todays-mortgage-interest-rates-january-20-2026/",
+          "source": "www.cbsnews.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T08:56:11.767147+00:00",
+      "completed_at": "2026-01-22T08:57:17.949971+00:00"
+    },
+    {
+      "id": "157-en-sports-jannik-sinner",
+      "keyword": "jannik sinner",
+      "category": "sports",
+      "lang": "en",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405283",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Concern about sport competitiveness and entertainment value decline",
+      "angle": "Analyzing dominance impact on sport's future appeal",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Jannik Sinner - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Jannik_Sinner",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Jannik Sinner powers into Australian Open second round while Monfils says goodbye | Australian Open ",
+          "url": "https://www.theguardian.com/sport/2026/jan/20/jannik-sinner-australian-open-2026-gael-monfils-goodbye-tennis",
+          "source": "www.theguardian.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "158-en-lifestyle-casper-ruud",
+      "keyword": "casper ruud",
+      "category": "lifestyle",
+      "lang": "en",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405295",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Anxiety about work-life balance and missing important family moments",
+      "angle": "Professional sacrifice versus personal priorities conflict",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Casper Ruud - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Casper_Ruud",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Australian Open 2026: Casper Ruud will leave early to be with pregnant wife Maria - BBC Sport",
+          "url": "https://www.bbc.com/sport/tennis/articles/c79rxznj1ljo",
+          "source": "www.bbc.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "159-en-sports-sl-vs-eng",
+      "keyword": "sl vs eng",
+      "category": "sports",
+      "lang": "en",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405305",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Concern about national team performance and international reputation",
+      "angle": "Traditional cricket power dynamics being challenged",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Sri Lanka vs England Live Streaming: When, where to watch SL vs ENG 1st ODI match today in India?",
+          "url": "https://indianexpress.com/article/sports/cricket/sri-lanka-vs-england-live-streaming-sl-vs-eng-1st-odi-10487139/",
+          "source": "indianexpress.com"
+        },
+        {
+          "title": "SL vs ENG: Sri Lanka Squad for ODI Series Against England Announced; Charith Asalanka To Lead | Late",
+          "url": "https://www.lokmattimes.com/cricket/news/sl-vs-eng-sri-lanka-squad-for-odi-series-against-england-announced-charith-asalanka-to-lead-a507/",
+          "source": "www.lokmattimes.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "160-ko-sports-김진성",
+      "keyword": "김진성",
+      "category": "sports",
+      "lang": "ko",
+      "priority": 8,
+      "status": "in_progress",
+      "created_at": "2026-01-22T17:56:05.405327",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "나이로 인한 직장 내 차별과 은퇴 압박에 대한 불안",
+      "angle": "중년 직장인의 생존과 연령 차별 문제",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "마흔 넘긴 '투혼좌' 김진성, LG 최초 다년 계약...2+1년 최대 16억",
+          "url": "https://www.edaily.co.kr/News/Read?newsId=04011446645320344&mediaCodeNo=257",
+          "source": "www.edaily.co.kr"
+        },
+        {
+          "title": "김진성, LG와 다년 계약 체결",
+          "url": "https://alphabiz.co.kr/news/view/1065595391062632",
+          "source": "alphabiz.co.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T09:31:11.873912+00:00"
+    },
+    {
+      "id": "161-ko-finance-국민연금",
+      "keyword": "국민연금",
+      "category": "finance",
+      "lang": "ko",
+      "priority": 9,
+      "status": "completed",
+      "created_at": "2026-01-22T17:56:05.405337",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "노후 보장 불안과 연금 투자 리스크에 대한 공포",
+      "angle": "개인 노후 안정성에 대한 직접적 위협",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "[사설]국민연금, ‘증시 부양-환율 방어’ 선 넘지 말아야",
+          "url": "https://www.donga.com/news/Opinion/article/all/20260119/133188961/2",
+          "source": "www.donga.com"
+        },
+        {
+          "title": "국민연금 1월 기금위 이례적 소집…국내주식 비중 조절 검토 - 이투데이",
+          "url": "https://www.etoday.co.kr/news/view/2547882",
+          "source": "www.etoday.co.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-22T08:56:11.767147+00:00",
+      "completed_at": "2026-01-22T08:58:43.401846+00:00"
+    },
+    {
+      "id": "162-ko-education-전남대",
+      "keyword": "전남대",
+      "category": "education",
+      "lang": "ko",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405347",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "지방대학 학위의 취업 경쟁력과 미래 전망에 대한 불안",
+      "angle": "지방대학의 현실과 취업시장에서의 불리함",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "전남대, 전공 지식으로 사회 문제 해결하다 - 내외일보",
+          "url": "https://www.naewoeilbo.com/news/articleView.html?idxno=2295765",
+          "source": "www.naewoeilbo.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "163-ko-finance-우리은행",
+      "keyword": "우리은행",
+      "category": "finance",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405356",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "예금 안전성과 은행 투자 리스크에 대한 우려",
+      "angle": "개인 자산 보호와 은행 신뢰성 문제",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "우리은행, 6억 달러 외화 선순위채권 발행 | FORTUNE Korea",
+          "url": "https://view.nate.com/economy/view/350811/",
+          "source": "view.nate.com"
+        },
+        {
+          "title": "우리은행",
+          "url": "https://archive.ph/MAdOO",
+          "source": "archive.ph"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "164-ko-society-대상撲-관전-유명인",
+      "keyword": "대상撲 관전 유명인",
+      "category": "society",
+      "lang": "ko",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405366",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "사회적 불평등과 유명인 특혜에 대한 분노",
+      "angle": "사회 계층간 차별과 특권 문제",
+      "competition_level": "low",
+      "references": [],
+      "expiry_days": 3
+    },
+    {
+      "id": "165-ja-sports-熱海富士",
+      "keyword": "熱海富士",
+      "category": "sports",
+      "lang": "ja",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405375",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "伝統スポーツの変化と既存システムの不安定化への懸念",
+      "angle": "伝統システムの変化による不確実性",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "熱海富士朔太郎 - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E7%86%B1%E6%B5%B7%E5%AF%8C%E5%A3%AB%E6%9C%94%E5%A4%AA%E9%83%8E",
+          "source": "ja.wikipedia.org"
+        },
+        {
+          "title": "大相撲 横綱 豊昇龍ー熱海富士＜令和８年一月場所・９日目＞SUMO - YouTube",
+          "url": "https://www.youtube.com/watch?v=5rujAaQ6hjY",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "166-ja-entertainment-若隆景",
+      "keyword": "若隆景",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405384",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "伝統文化の質的低下と継承問題への不安",
+      "angle": "文化的価値の劣化と継承の危機",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "若隆景渥 - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E9%9A%86%E6%99%AF%E6%B8%A5",
+          "source": "ja.wikipedia.org"
+        },
+        {
+          "title": "大相撲 若隆景ー横綱 大の里＜令和８年一月場所・６日目＞SUMO - YouTube",
+          "url": "https://www.youtube.com/watch?v=wI2Vpk7gtMI",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "167-ja-lifestyle-sorana-cîrstea",
+      "keyword": "sorana cîrstea",
+      "category": "lifestyle",
+      "lang": "ja",
+      "priority": 5,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405394",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "キャリア終盤の不安と将来設計の不確実性",
+      "angle": "職業寿命の短さと将来への備えの問題",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Sorana Cîrstea - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Sorana_C%C3%AErstea",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Video: Australian Open Highlights: Sorana Cirstea vs Eva Lys",
+          "url": "https://www.smh.com.au/sport/tennis/australian-open-highlights-sorana-cirstea-vs-eva-lys-20260121-p5nvmx.html",
+          "source": "www.smh.com.au"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "168-ja-sports-sl-vs-eng",
+      "keyword": "sl vs eng",
+      "category": "sports",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405403",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "国際競技での立場変化と威信低下への懸念",
+      "angle": "国際的な競技力バランスの変化",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Sri Lanka vs England Live Streaming: When, where to watch SL vs ENG 1st ODI match today in India?",
+          "url": "https://indianexpress.com/article/sports/cricket/sri-lanka-vs-england-live-streaming-sl-vs-eng-1st-odi-10487139/",
+          "source": "indianexpress.com"
+        },
+        {
+          "title": "SL vs ENG: Sri Lanka Squad for ODI Series Against England Announced; Charith Asalanka To Lead | Late",
+          "url": "https://www.lokmattimes.com/cricket/news/sl-vs-eng-sri-lanka-squad-for-odi-series-against-england-announced-charith-asalanka-to-lead-a507/",
+          "source": "www.lokmattimes.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "169-ja-finance-current-interest-rat",
+      "keyword": "current interest rates",
+      "category": "finance",
+      "lang": "ja",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-22T17:56:05.405413",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "金利変動による個人財政への直接的影響への不安",
+      "angle": "経済政策変化が個人生活に与える脅威",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "What are today's mortgage interest rates: January 20, 2026? - CBS News",
+          "url": "https://www.cbsnews.com/news/todays-mortgage-interest-rates-january-20-2026/",
+          "source": "www.cbsnews.com"
+        }
+      ],
+      "expiry_days": 3
+    }
+  ]
 }

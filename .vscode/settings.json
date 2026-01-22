@@ -1,0 +1,26 @@
+{
+  "files.exclude": {
+    "**/.git": false,
+    "**/.DS_Store": true,
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    ".pytest_cache": true,
+    "htmlcov": true,
+    ".coverage": true,
+    "public": false
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/public": true,
+    "**/htmlcov": true,
+    "**/.pytest_cache": true
+  },
+  "files.watcherExclude": {
+    "**/public/**": true,
+    "**/resources/**": true,
+    "**/.git/objects/**": true,
+    "**/node_modules/**": true
+  }
+}

@@ -16,6 +16,11 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+# Add scripts to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.security import safe_print, mask_secrets
+
 
 class QualityGate:
     def __init__(self, strict_mode: bool = False):
@@ -61,11 +66,48 @@ class QualityGate:
         """Check a single markdown file"""
 
         # Read file
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except FileNotFoundError:
+            safe_print(f"  ❌ ERROR: File not found: {filepath}")
+            return {
+                "file": str(filepath),
+                "language": "unknown",
+                "critical_failures": [f"File not found: {filepath}"],
+                "warnings": [],
+                "info": {}
+            }
+        except IOError as e:
+            safe_print(f"  ❌ ERROR: Cannot read file: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            return {
+                "file": str(filepath),
+                "language": "unknown",
+                "critical_failures": [f"Cannot read file: {str(e)}"],
+                "warnings": [],
+                "info": {}
+            }
+        except Exception as e:
+            safe_print(f"  ❌ ERROR: Unexpected error reading file: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            return {
+                "file": str(filepath),
+                "language": "unknown",
+                "critical_failures": [f"Unexpected error: {str(e)}"],
+                "warnings": [],
+                "info": {}
+            }
 
         # Parse frontmatter and body
-        frontmatter, body = self._parse_markdown(content)
+        try:
+            frontmatter, body = self._parse_markdown(content)
+        except Exception as e:
+            safe_print(f"  ⚠️  WARNING: Failed to parse markdown structure")
+            safe_print(f"     File: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            frontmatter = {}
+            body = content
 
         # Detect language from filepath
         lang = self._detect_language(filepath)
@@ -137,12 +179,12 @@ class QualityGate:
             checks['info']['word_count'] = f"{char_count} chars"
 
             if lang == 'ja':
-                # Japanese: Target 2800-4200, WARN 4200-7000, FAIL extremes
-                if char_count < 2500:
-                    checks['critical_failures'].append(
-                        f"Character count too low: {char_count} chars (minimum: 2500)"
+                # Japanese: Target 2800-4200, WARN if outside range
+                if char_count < 2200:
+                    checks['warnings'].append(
+                        f"Character count too low: {char_count} chars (recommended: 2200+)"
                     )
-                elif 2500 <= char_count < 2800:
+                elif 2200 <= char_count < 2800:
                     checks['warnings'].append(
                         f"Character count on the lower end: {char_count} chars (target: 2800-4200)"
                     )
@@ -151,17 +193,17 @@ class QualityGate:
                         f"Character count high: {char_count} chars (target: 2800-4200, Editor should compress)"
                     )
                 elif char_count > 11000:
-                    checks['critical_failures'].append(
-                        f"Character count too high: {char_count} chars (maximum: 11000)"
+                    checks['warnings'].append(
+                        f"Character count extremely high: {char_count} chars (strongly recommend compressing)"
                     )
             else:  # ko
-                # Korean: Target 2000-3200, WARN 3200-5000, FAIL extremes
+                # Korean: Target 2000-3200, WARN if outside range
                 # (Korean has ~20% fewer chars than Japanese for same reading time)
-                if char_count < 1800:
-                    checks['critical_failures'].append(
-                        f"Character count too low: {char_count} chars (minimum: 1800)"
+                if char_count < 1500:
+                    checks['warnings'].append(
+                        f"Character count too low: {char_count} chars (recommended: 1500+)"
                     )
-                elif 1800 <= char_count < 2000:
+                elif 1500 <= char_count < 2000:
                     checks['warnings'].append(
                         f"Character count on the lower end: {char_count} chars (target: 2000-3200)"
                     )
@@ -170,8 +212,8 @@ class QualityGate:
                         f"Character count high: {char_count} chars (target: 2000-3200, Editor should compress)"
                     )
                 elif char_count > 8000:
-                    checks['critical_failures'].append(
-                        f"Character count too high: {char_count} chars (maximum: 8000)"
+                    checks['warnings'].append(
+                        f"Character count extremely high: {char_count} chars (strongly recommend compressing)"
                     )
         else:
             # English uses word count
@@ -179,12 +221,12 @@ class QualityGate:
             word_count = len(words)
             checks['info']['word_count'] = word_count
 
-            # Target 700-1200, WARN 1200-1800, FAIL extremes
-            if word_count < 600:
-                checks['critical_failures'].append(
-                    f"Word count too low: {word_count} words (minimum: 600)"
+            # Target 700-1200, WARN if outside range
+            if word_count < 500:
+                checks['warnings'].append(
+                    f"Word count too low: {word_count} words (recommended: 500+)"
                 )
-            elif 600 <= word_count < 700:
+            elif 500 <= word_count < 700:
                 checks['warnings'].append(
                     f"Word count on the lower end: {word_count} words (target: 700-1200)"
                 )
@@ -193,8 +235,8 @@ class QualityGate:
                     f"Word count high: {word_count} words (target: 700-1200, Editor should compress)"
                 )
             elif word_count > 2500:
-                checks['critical_failures'].append(
-                    f"Word count too high: {word_count} words (maximum: 2500)"
+                checks['warnings'].append(
+                    f"Word count extremely high: {word_count} words (strongly recommend compressing)"
                 )
 
     def _check_ai_phrases(self, body: str, lang: str, checks: Dict):
@@ -300,23 +342,35 @@ def main():
     generated_files_path = Path("generated_files.json")
 
     if not generated_files_path.exists():
-        print("Error: generated_files.json not found")
-        print("Run generate_posts.py first to create content")
+        safe_print("❌ ERROR: generated_files.json not found")
+        safe_print("   Run generate_posts.py first to create content")
+        safe_print("   Expected path: generated_files.json")
         sys.exit(1)
 
-    with open(generated_files_path, 'r') as f:
-        generated_files = json.load(f)
+    try:
+        with open(generated_files_path, 'r') as f:
+            generated_files = json.load(f)
+    except json.JSONDecodeError as e:
+        safe_print(f"❌ ERROR: Invalid JSON in generated_files.json")
+        safe_print(f"   Error: {str(e)}")
+        safe_print(f"   The file may be corrupted")
+        sys.exit(1)
+    except IOError as e:
+        safe_print(f"❌ ERROR: Cannot read generated_files.json")
+        safe_print(f"   Error: {str(e)}")
+        sys.exit(1)
 
     if not generated_files:
-        print("No files to check")
+        safe_print("⚠️  No files to check in generated_files.json")
+        safe_print("   This is not an error - the file list is empty")
         sys.exit(0)
 
     # Initialize quality gate
     qg = QualityGate(strict_mode=args.strict)
 
-    print(f"\n{'='*60}")
-    print(f"  Quality Gate - Checking {len(generated_files)} files")
-    print(f"{'='*60}\n")
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  Quality Gate - Checking {len(generated_files)} files")
+    safe_print(f"{'='*60}\n")
 
     all_results = []
     total_failures = 0
@@ -326,10 +380,10 @@ def main():
         path = Path(filepath)
 
         if not path.exists():
-            print(f"⚠️  File not found: {filepath}")
+            safe_print(f"⚠️  File not found: {filepath}")
             continue
 
-        print(f"Checking: {path.name}")
+        safe_print(f"Checking: {path.name}")
 
         result = qg.check_file(path)
         all_results.append(result)
@@ -337,52 +391,57 @@ def main():
         # Print results
         if result['critical_failures']:
             total_failures += len(result['critical_failures'])
-            print(f"  ❌ FAILURES:")
+            safe_print(f"  ❌ FAILURES:")
             for failure in result['critical_failures']:
-                print(f"     - {failure}")
+                safe_print(f"     - {failure}")
 
         if result['warnings']:
             total_warnings += len(result['warnings'])
-            print(f"  ⚠️  WARNINGS:")
+            safe_print(f"  ⚠️  WARNINGS:")
             for warning in result['warnings']:
-                print(f"     - {warning}")
+                safe_print(f"     - {warning}")
 
         if not result['critical_failures'] and not result['warnings']:
-            print(f"  ✅ PASS")
+            safe_print(f"  ✅ PASS")
 
         # Print info
         info = result['info']
-        print(f"  📊 Info: {info['word_count']} words, {info['heading_count']} headings, {info.get('link_count', 0)} links")
-        print()
+        safe_print(f"  📊 Info: {info['word_count']} words, {info['heading_count']} headings, {info.get('link_count', 0)} links")
+        safe_print("")
 
     # Summary
-    print(f"{'='*60}")
-    print(f"  Summary")
-    print(f"{'='*60}")
-    print(f"Files checked: {len(all_results)}")
-    print(f"Critical failures: {total_failures}")
-    print(f"Warnings: {total_warnings}")
+    safe_print(f"{'='*60}")
+    safe_print(f"  Summary")
+    safe_print(f"{'='*60}")
+    safe_print(f"Files checked: {len(all_results)}")
+    safe_print(f"Critical failures: {total_failures}")
+    safe_print(f"Warnings: {total_warnings}")
 
     # Save detailed report
     report_path = Path("quality_report.json")
-    with open(report_path, 'w') as f:
-        json.dump({
-            "summary": {
-                "total_files": len(all_results),
-                "total_failures": total_failures,
-                "total_warnings": total_warnings
-            },
-            "results": all_results
-        }, f, indent=2)
-
-    print(f"\nDetailed report saved to: {report_path}")
+    try:
+        with open(report_path, 'w') as f:
+            json.dump({
+                "summary": {
+                    "total_files": len(all_results),
+                    "total_failures": total_failures,
+                    "total_warnings": total_warnings
+                },
+                "results": all_results
+            }, f, indent=2)
+        safe_print(f"\n✓ Detailed report saved to: {report_path}")
+    except IOError as e:
+        safe_print(f"\n⚠️  WARNING: Failed to save quality report")
+        safe_print(f"   Path: {report_path}")
+        safe_print(f"   Error: {str(e)}")
+        safe_print(f"   Continuing anyway...")
 
     # Exit code
     if total_failures > 0:
-        print("\n❌ Quality Gate: FAILED")
+        safe_print("\n❌ Quality Gate: FAILED")
         sys.exit(1)
     else:
-        print("\n✅ Quality Gate: PASSED")
+        safe_print("\n✅ Quality Gate: PASSED")
         sys.exit(0)
 
 

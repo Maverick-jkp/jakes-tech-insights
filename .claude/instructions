@@ -1,0 +1,105 @@
+# Jake's Tech Insights - Project Instructions
+
+> 이 파일은 Claude가 작업 시작 시 자동으로 읽습니다
+
+---
+
+## 🚨 작업 시작 전 필수 읽기
+
+매 세션 시작 시 반드시 다음 파일들을 읽어야 합니다:
+
+1. **[docs/WORK_LOG.md](docs/WORK_LOG.md)** - 어제까지 작업한 내용, 다음 할 일
+2. **[docs/CLAUDE_GUIDELINES.md](docs/CLAUDE_GUIDELINES.md)** - 반드시 지켜야 할 작업 철칙
+
+---
+
+## ⚡ 핵심 원칙 (CRITICAL)
+
+### 1. 속도보다 정확성
+- **절대 추측하지 않기**
+- **파일을 직접 읽고 확인하기**
+- 빠르게 틀리는 것보다 느려도 정확한 게 낫다
+
+### 2. 확인 후 답변
+- "~일 것 같습니다", "아마도" 금지
+- 불확실하면 파일을 읽고 검증
+
+### 3. API/쿼리 계산
+- 반드시 코드에서 API 호출 위치 확인
+- 추측으로 계산하지 말 것
+
+### 4. 시간대 변환
+- cron 표현식은 UTC 기준
+- 반드시 KST로 변환 (UTC + 9)
+- `'0 9 * * *'` = 9:00 UTC = **18:00 KST**
+
+---
+
+## 📂 주요 파일 위치
+
+### 자동화 워크플로우
+- [.github/workflows/daily-keywords.yml](.github/workflows/daily-keywords.yml) - 17:05 KST 키워드 생성
+- [.github/workflows/daily-content.yml](.github/workflows/daily-content.yml) - 18:00, 06:00, 12:00 KST 콘텐츠 생성
+
+### Python 스크립트
+- [scripts/keyword_curator.py](scripts/keyword_curator.py) - RSS → 키워드 큐레이션
+- [scripts/generate_posts.py](scripts/generate_posts.py) - 콘텐츠 생성 (Claude API만 사용)
+- [scripts/cleanup_expired.py](scripts/cleanup_expired.py) - 만료된 키워드 정리
+
+### 데이터 파일
+- [data/topics_queue.json](data/topics_queue.json) - 키워드 큐
+- [data/used_images.json](data/used_images.json) - Unsplash 이미지 추적
+
+### 문서
+- [docs/AUTOMATION_CONTEXT.md](docs/AUTOMATION_CONTEXT.md) - 자동화 시스템 전체 문서
+- [docs/WORK_LOG.md](docs/WORK_LOG.md) - 작업 일지 (Git에 커밋 안 됨)
+- [docs/CLAUDE_GUIDELINES.md](docs/CLAUDE_GUIDELINES.md) - Claude 작업 가이드라인
+
+---
+
+## 🔍 API 사용량 (중요!)
+
+### Google Custom Search API
+- **일일 한도**: 100 쿼리
+- **현재 사용량**: 30 쿼리/일
+  - 키워드 생성 시: 30개 키워드 × 1 쿼리 = 30 쿼리
+  - 콘텐츠 생성 시: **0 쿼리** (Claude API만 사용)
+- **RSS 가져오기**: 0 쿼리 (무료 공개 피드)
+
+### 기타 API
+- **Claude API**: 콘텐츠 생성 (Anthropic 계정)
+- **Unsplash API**: 이미지 가져오기 (50 requests/hour)
+
+---
+
+## ⏰ 자동화 스케줄 (KST 기준)
+
+| 시각 | 작업 | 워크플로우 |
+|------|------|-----------|
+| 17:05 | 키워드 30개 생성 | daily-keywords.yml |
+| 18:00 | 콘텐츠 3개 생성 | daily-content.yml |
+| 06:00 | 콘텐츠 3개 생성 | daily-content.yml |
+| 12:00 | 콘텐츠 3개 생성 | daily-content.yml |
+
+**총**: 30 키워드/일, 9 포스트/일 (EN/KO/JA 각 3개)
+
+---
+
+## ✅ 작업 전 체크리스트
+
+새로운 세션을 시작할 때:
+- [ ] WORK_LOG.md 읽었는가?
+- [ ] CLAUDE_GUIDELINES.md 읽었는가?
+- [ ] 어제까지 한 작업을 이해했는가?
+- [ ] 다음 할 일이 무엇인지 확인했는가?
+
+답변하기 전에:
+- [ ] 관련 파일을 읽었는가?
+- [ ] 추측하지 않고 확인했는가?
+- [ ] 계산이 정확한가?
+- [ ] 시간대 변환이 맞는가? (UTC → KST)
+
+---
+
+**마지막 업데이트**: 2026-01-19
+**중요**: 이 instructions 파일을 무시하면 사용자의 시간과 노력을 낭비하게 됩니다.

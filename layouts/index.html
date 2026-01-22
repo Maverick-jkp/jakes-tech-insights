@@ -3,7 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
+    <title>{{ .Site.Title }} - {{ .Site.Params.description }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <meta name="keywords" content="{{ delimit .Site.Params.keywords ", " }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Resource Hints -->
+    {{ partial "resource-hints.html" . }}
+
+    <!-- Canonical URL -->
+    {{ partial "canonical.html" . }}
+
+    <!-- Hreflang for multilingual SEO -->
+    {{ partial "hreflang.html" . }}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}/favicon.svg">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ .Permalink }}">
+    <meta name="twitter:title" content="{{ .Site.Title }}">
+    <meta name="twitter:description" content="{{ .Site.Params.description }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}/favicon.svg">
+
+    <!-- Schema.org JSON-LD for Organization/WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "{{ .Site.Title }}",
+          "url": "{{ .Site.BaseURL }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ .Site.BaseURL }}/favicon.svg",
+            "width": 600,
+            "height": 60
+          }
+        },
+        {
+          "@type": "WebSite",
+          "name": "{{ .Site.Title }}",
+          "url": "{{ .Site.BaseURL }}",
+          "description": "{{ .Site.Params.description }}",
+          "publisher": {
+            "@type": "Organization",
+            "name": "{{ .Site.Title }}"
+          },
+          "inLanguage": ["en", "ko", "ja"]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2478912111812328"
+         crossorigin="anonymous"></script>
+
     {{ with site.Config.Services.GoogleAnalytics.ID }}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
@@ -18,11 +84,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap');
 
         :root {
-            --bg: #1a1a1a;
-            --surface: #242424;
-            --border: #333333;
-            --text: #f5f5f5;
-            --text-dim: #b0b0b0;
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --border: #2d2d2d;
+            --text: #f0f0f0;
+            --text-dim: #9a9a9a;
             --accent: #00ff88;
         }
 
@@ -123,61 +189,66 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 2rem;
         }
 
         /* Bento Grid Layout */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
-        /* Featured Post - 6 columns */
+        /* Hero Featured Post - 12 columns, horizontal layout (Desktop ≥1025px) */
         .featured-post {
-            grid-column: span 6;
+            grid-column: span 12;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 1rem;
-            padding: 1.25rem;
+            padding: 0;
             transition: all 0.3s;
             text-decoration: none;
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            flex-direction: row;
             position: relative;
             overflow: hidden;
-            min-height: 420px;
-            max-height: 420px;
+            min-height: 250px;
+            max-height: 280px;
+            align-items: stretch;
         }
 
         .featured-thumbnail {
-            width: 100%;
-            height: 180px;
+            width: 40%;
+            height: 100%;
+            min-height: 250px;
+            aspect-ratio: 16 / 9;
             background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: var(--text-dim);
             font-family: 'Space Mono', monospace;
             font-size: 0.875rem;
             overflow: hidden;
+            position: relative;
         }
 
         .featured-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .featured-content {
-            flex: 1;
+            width: 60%;
+            padding: 2rem 3rem;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            overflow: hidden;
+            gap: 1rem;
+            justify-content: center;
         }
 
         .featured-post::before {
@@ -213,18 +284,22 @@
 
         .featured-title {
             font-family: 'Space Mono', monospace;
-            font-size: 1.25rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--text);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .featured-excerpt {
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: var(--text-dim) !important;
-            line-height: 1.5;
-            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -260,20 +335,100 @@
             margin-left: 0.5rem;
         }
 
-        /* Latest Posts Widget - 3 columns */
-        .latest-widget {
+        /* Post Card - 3 columns */
+        .post-card {
             grid-column: span 3;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 1rem;
-            padding: 1.5rem;
-            min-height: 420px;
-            max-height: 420px;
-            overflow: hidden;
+            padding: 0;
+            transition: all 0.3s;
+            text-decoration: none;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            min-height: 360px;
         }
 
+        .post-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
+        }
+
+        .post-card-thumbnail {
+            width: 100%;
+            height: 200px;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            overflow: hidden;
+            position: relative;
+        }
+
+        .post-card-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .post-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .post-card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-card-excerpt {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            margin-top: auto;
+        }
+
+        .post-card-date {
+            color: var(--accent);
+        }
+
+        .post-card-category {
+            padding: 0.25rem 0.5rem;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 0.25rem;
+            font-size: 0.65rem;
+            text-transform: lowercase;
+        }
+
+        /* Widget Title for Sections */
         .widget-title {
             font-family: 'Space Mono', monospace;
             font-size: 1rem;
@@ -282,177 +437,6 @@
             margin-bottom: 0.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--border);
-            flex-shrink: 0;
-        }
-
-        .latest-items-container {
-            flex: 1;
-            overflow: visible;
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .latest-item {
-            padding: 0.4rem 0;
-            text-decoration: none;
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .latest-item:last-child {
-            border-bottom: none;
-        }
-
-        .latest-item:hover {
-            padding-left: 0.5rem;
-        }
-
-        .latest-thumbnail {
-            width: 60px;
-            height: 60px;
-            min-width: 60px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            overflow: hidden;
-        }
-
-        .latest-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 0.5rem;
-        }
-
-        .latest-item-content {
-            flex: 1;
-        }
-
-        .latest-item-title {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .latest-item-date {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--accent);
-        }
-
-        .see-all-btn {
-            display: block;
-            margin-top: 0.25rem;
-            padding: 0.4rem 1rem;
-            text-align: center;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--accent);
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--accent);
-            border-radius: 0.5rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            flex-shrink: 0;
-        }
-
-        .see-all-btn:hover {
-            background: var(--accent);
-            color: var(--bg);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
-        }
-
-        /* AdSense Widget - 3 columns */
-        .adsense-widget {
-            grid-column: span 3;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 2rem;
-            min-height: 420px;
-            max-height: 420px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .adsense-placeholder {
-            text-align: center;
-            color: var(--text-dim);
-            font-family: 'Space Mono', monospace;
-            font-size: 0.875rem;
-        }
-
-        /* Small Cards - each 3 columns */
-        .small-card {
-            grid-column: span 3;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.75rem;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: block;
-            min-height: 420px;
-            max-height: 420px;
-        }
-
-        .small-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
-        }
-
-        .small-card-date {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .small-card-category {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            border-radius: 0.25rem;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            text-transform: lowercase;
-            margin-left: 0.5rem;
-        }
-
-        .small-card-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .small-card-excerpt {
-            font-size: 0.875rem;
-            color: var(--text-dim) !important;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .small-card-excerpt * {
-            color: var(--text-dim) !important;
         }
 
         /* Trending Section - 8 columns */
@@ -562,6 +546,113 @@
             font-weight: 600;
         }
 
+        /* Latest Updates Section - 12 columns */
+        .latest-updates-section {
+            grid-column: span 12;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .latest-updates-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .latest-updates-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .latest-updates-item:hover {
+            border-color: var(--accent);
+            background: rgba(0, 255, 136, 0.08);
+            transform: translateX(4px);
+        }
+
+        .latest-updates-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .latest-updates-text {
+            flex: 1;
+        }
+
+        .latest-updates-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.4;
+            margin-bottom: 0.25rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .latest-updates-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        .view-all-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            border: 2px solid var(--accent);
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            min-width: 200px;
+        }
+
+        .view-all-cta:hover {
+            background: rgba(0, 255, 136, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .view-all-icon {
+            font-size: 2.5rem;
+        }
+
+        .view-all-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .view-all-arrow {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
         /* Floating Menu Button */
         .floating-menu {
             position: fixed;
@@ -636,23 +727,83 @@
             color: var(--accent);
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem;
+        }
+
+        .category-grid a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.65rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+        }
+
+        .category-grid .cat-icon {
+            flex-shrink: 0;
+            display: inline-block;
+            width: 1.1em;
+            text-align: center;
+        }
+
+        .category-grid .cat-text {
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .category-grid a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+        }
+
+
+        /* Responsive - Tablet (768px - 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
             .bento-grid {
                 grid-template-columns: repeat(6, 1fr);
             }
 
             .featured-post {
                 grid-column: span 6;
+                flex-direction: column;
+                max-height: 400px;
+                min-height: auto;
             }
 
-            .latest-widget,
-            .adsense-widget {
-                grid-column: span 3;
+            .featured-thumbnail {
+                width: 100%;
+                height: 250px;
             }
 
-            .small-card {
+            .featured-content {
+                width: 100%;
+                padding: 2rem;
+            }
+
+            .post-card {
                 grid-column: span 3;
+                min-height: 300px;
+            }
+
+            .latest-updates-section {
+                grid-column: span 6;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .latest-updates-content {
+                grid-template-columns: 1fr;
+            }
+
+            .view-all-cta {
+                width: 100%;
             }
 
             .trending-section {
@@ -664,7 +815,8 @@
             }
         }
 
-        @media (max-width: 768px) {
+        /* Responsive - Mobile (<768px) */
+        @media (max-width: 767px) {
             body {
                 padding-top: 70px;
             }
@@ -687,40 +839,53 @@
             }
 
             .featured-post,
-            .latest-widget,
-            .adsense-widget,
-            .small-card,
+            .post-card,
+            .latest-updates-section,
             .trending-section,
             .tags-section {
                 grid-column: span 1;
             }
 
-            .trending-grid {
+            .latest-updates-section {
                 grid-template-columns: 1fr;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+
+            .latest-updates-content {
+                grid-template-columns: 1fr;
+            }
+
+            .view-all-cta {
+                width: 100%;
             }
 
             .featured-post {
                 flex-direction: column;
-                padding: 0;
+                max-height: none;
                 min-height: auto;
             }
 
             .featured-thumbnail {
                 width: 100%;
-                height: 150px;
-                border-radius: 0;
+                height: 200px;
             }
 
             .featured-content {
+                width: 100%;
                 padding: 1.5rem;
             }
 
             .featured-title {
-                font-size: 1.125rem;
+                font-size: 1.5rem;
             }
 
-            .small-card {
+            .post-card {
                 min-height: auto;
+            }
+
+            .trending-grid {
+                grid-template-columns: 1fr;
             }
 
             .floating-menu {
@@ -733,21 +898,21 @@
                 height: 50px;
             }
         }
-        /* Language-specific card heights */
-        body[lang="ko"] .featured-post,
-        body[lang="ko"] .latest-widget,
-        body[lang="ko"] .adsense-widget,
-        body[lang="ko"] .small-card {
-            min-height: 480px;
-            max-height: 480px;
+        /* Language-specific card heights and typography */
+        body[lang="ko"] .post-card,
+        body[lang="ja"] .post-card {
+            min-height: 400px;
         }
 
-        body[lang="ja"] .featured-post,
-        body[lang="ja"] .latest-widget,
-        body[lang="ja"] .adsense-widget,
-        body[lang="ja"] .small-card {
-            min-height: 480px;
-            max-height: 480px;
+        /* Korean/Japanese: Increase title line-clamp for better readability */
+        body[lang="ko"] .post-card-title,
+        body[lang="ja"] .post-card-title {
+            -webkit-line-clamp: 3;
+        }
+
+        body[lang="ko"] .featured-title,
+        body[lang="ja"] .featured-title {
+            -webkit-line-clamp: 3;
         }
     </style>
 </head>
@@ -759,32 +924,73 @@
                 JAKE<span class="apostrophe">'</span>S INSIGHTS
             </a>
             <div class="lang-switch">
-                <a href="/en/" class="{{ if eq .Site.Language.Lang "en" }}active{{ end }}">EN</a>
-                <a href="/ko/" class="{{ if eq .Site.Language.Lang "ko" }}active{{ end }}">KO</a>
-                <a href="/ja/" class="{{ if eq .Site.Language.Lang "ja" }}active{{ end }}">JA</a>
+                {{- /* Dynamic language switcher using Hugo's translation links */ -}}
+                {{- if .IsTranslated -}}
+                    {{- range .AllTranslations -}}
+                        <a href="{{ .Permalink }}"
+                           lang="{{ .Language.Lang }}"
+                           class="{{ if eq $.Language.Lang .Language.Lang }}active{{ end }}">
+                            {{ upper .Language.Lang }}
+                        </a>
+                    {{- end -}}
+                {{- else -}}
+                    {{- /* Fallback to homepage links if no translations */ -}}
+                    <a href="/en/" class="{{ if eq .Site.Language.Lang "en" }}active{{ end }}">EN</a>
+                    <a href="/ko/" class="{{ if eq .Site.Language.Lang "ko" }}active{{ end }}">KO</a>
+                    <a href="/ja/" class="{{ if eq .Site.Language.Lang "ja" }}active{{ end }}">JA</a>
+                {{- end -}}
             </div>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="container">
+        <!-- Site H1 (SEO requirement: one H1 per page) -->
+        <h1 class="site-main-heading" style="position: absolute; left: -9999px; top: -9999px;">{{ .Site.Title }} - {{ .Site.Params.description }}</h1>
+
         <div class="bento-grid">
-            <!-- Featured Post (6 columns) -->
-            {{ $currentLangPages := where .Site.RegularPages "Language.Lang" .Site.Language.Lang }}
+            {{ $allPages := where .Site.RegularPages "Language.Lang" .Site.Language.Lang }}
+            {{ $currentLangPages := where $allPages "Type" "!=" "page" }}
+
+            <!-- Hero Featured Post (12 columns, full width) -->
             {{ $featured := index $currentLangPages 0 }}
             {{ with $featured }}
             <a href="{{ .Permalink }}" class="featured-post">
                 <div class="featured-thumbnail">
-                    {{ if .Params.image }}
-                    <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                    {{ with .Resources.GetMatch "cover.*" }}
+                      {{ $hero := .Fill "1400x350 webp q85" }}
+                      {{ $hero2x := .Fill "2800x700 webp q85" }}
+                      {{ $fallback := .Fill "1400x350 jpg q85" }}
+
+                      <picture>
+                        <source
+                          srcset="{{ $hero.RelPermalink }} 1x,
+                                  {{ $hero2x.RelPermalink }} 2x"
+                          type="image/webp"
+                        >
+                        <img
+                          src="{{ $fallback.RelPermalink }}"
+                          alt="{{ $.Title }}"
+                          loading="eager"
+                        >
+                      </picture>
                     {{ else }}
-                    📰 Featured
+                      {{ with .Params.image }}
+                        <img
+                          src="{{ . }}"
+                          alt="{{ $.Title }}"
+                          loading="eager"
+                          style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                        >
+                      {{ else }}
+                        📰 Featured
+                      {{ end }}
                     {{ end }}
                 </div>
                 <div class="featured-content">
                     <span class="featured-badge">Featured</span>
-                    <h1 class="featured-title">{{ .Title }}</h1>
-                    <p class="featured-excerpt">{{ .Summary | plainify | truncate 150 }}</p>
+                    <h2 class="featured-title">{{ .Title }}</h2>
+                    <p class="featured-excerpt">{{ .Summary | plainify | truncate 200 }}</p>
                     <div class="featured-meta">
                         <span class="featured-date">
                             {{ if eq .Site.Language.Lang "ko" }}
@@ -803,80 +1009,104 @@
             </a>
             {{ end }}
 
-            <!-- Latest Posts (3 columns) -->
-            <div class="latest-widget">
-                <h3 class="widget-title">Latest</h3>
-                <div class="latest-items-container">
-                    {{ range after 1 (first 4 $currentLangPages) }}
-                    <a href="{{ .Permalink }}" class="latest-item">
-                        <div class="latest-thumbnail">
-                            {{ if .Params.image }}
-                            <img src="{{ .Params.image }}" alt="{{ .Title }}">
+            <!-- Post Cards Grid (6 cards, 3x2 grid, skip Featured post) -->
+            {{ range after 1 $currentLangPages | first 6 }}
+            <a href="{{ .Permalink }}" class="post-card">
+                <div class="post-card-thumbnail">
+                    {{ with .Resources.GetMatch "cover.*" }}
+                      {{ $card := .Fill "400x180 webp q85" }}
+                      {{ $card2x := .Fill "800x360 webp q85" }}
+                      {{ $fallback := .Fill "400x180 jpg q85" }}
+
+                      <picture>
+                        <source
+                          srcset="{{ $card.RelPermalink }} 1x,
+                                  {{ $card2x.RelPermalink }} 2x"
+                          type="image/webp"
+                        >
+                        <img
+                          src="{{ $fallback.RelPermalink }}"
+                          alt="{{ $.Title }}"
+                          loading="lazy"
+                        >
+                      </picture>
+                    {{ else }}
+                      {{ with .Params.image }}
+                        <img
+                          src="{{ . }}"
+                          alt="{{ $.Title }}"
+                          loading="lazy"
+                          style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                        >
+                      {{ else }}
+                        📄
+                      {{ end }}
+                    {{ end }}
+                </div>
+                <div class="post-card-content">
+                    <h3 class="post-card-title">{{ .Title }}</h3>
+                    <p class="post-card-excerpt">{{ .Summary | plainify | truncate 120 }}</p>
+                    <div class="post-card-meta">
+                        <span class="post-card-date">
+                            {{ if eq $.Site.Language.Lang "ko" }}
+                                {{ .Date.Format "2006.01.02" }}
+                            {{ else if eq $.Site.Language.Lang "ja" }}
+                                {{ .Date.Format "2006.01.02" }}
                             {{ else }}
-                            📄
+                                {{ .Date.Format "Jan 02, 2006" }}
                             {{ end }}
-                        </div>
-                        <div class="latest-item-content">
-                            <div class="latest-item-title">{{ .Title }}</div>
-                            <div class="latest-item-date">
+                        </span>
+                        {{ with .Params.categories }}
+                            {{ range first 1 . }}
+                            <span class="post-card-category">{{ . }}</span>
+                            {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+            </a>
+            {{ end }}
+
+            <!-- Latest Updates Section (12 columns, full width) -->
+            <div class="latest-updates-section">
+                <div class="latest-updates-content">
+                    {{ range $index, $page := after 7 (first 15 $currentLangPages) }}
+                    <a href="{{ $page.Permalink }}" class="latest-updates-item">
+                        <div class="latest-updates-number">{{ printf "%02d" (add $index 8) }}</div>
+                        <div class="latest-updates-text">
+                            <div class="latest-updates-title">{{ $page.Title }}</div>
+                            <div class="latest-updates-date">
                                 {{ if eq $.Site.Language.Lang "ko" }}
-                                    {{ .Date.Format "2006.01.02" }}
+                                    {{ $page.Date.Format "2006.01.02" }}
                                 {{ else if eq $.Site.Language.Lang "ja" }}
-                                    {{ .Date.Format "2006.01.02" }}
+                                    {{ $page.Date.Format "2006.01.02" }}
                                 {{ else }}
-                                    {{ .Date.Format "Jan 02, 2006" }}
+                                    {{ $page.Date.Format "Jan 02, 2006" }}
                                 {{ end }}
                             </div>
                         </div>
                     </a>
                     {{ end }}
                 </div>
-                <a href="{{ "all-posts" | relLangURL }}" class="see-all-btn">{{ i18n "see_all" }} →</a>
-            </div>
-
-            <!-- AdSense Widget (3 columns) -->
-            <div class="adsense-widget">
-                <div class="adsense-placeholder">
-                    <!-- AdSense Code Here -->
-                    <p>Advertisement</p>
-                </div>
-            </div>
-
-            <!-- Small Cards (3 cards, each 3 columns) -->
-            {{ range after 1 (first 4 $currentLangPages) }}
-            <a href="{{ .Permalink }}" class="small-card">
-                <div class="small-card-date">
-                    {{ if eq $.Site.Language.Lang "ko" }}
-                        {{ .Date.Format "2006.01.02" }}
-                    {{ else if eq $.Site.Language.Lang "ja" }}
-                        {{ .Date.Format "2006.01.02" }}
-                    {{ else }}
-                        {{ .Date.Format "Jan 02, 2006" }}
-                    {{ end }}
-                    {{ with .Params.categories }}
-                        {{ range first 1 . }}
-                        <span class="small-card-category">{{ . }}</span>
+                <a href="{{ "all-posts" | relLangURL }}" class="view-all-cta">
+                    <div class="view-all-icon">📚</div>
+                    <div class="view-all-text">
+                        {{ if eq .Site.Language.Lang "ko" }}
+                        전체<br>글 보기
+                        {{ else if eq .Site.Language.Lang "ja" }}
+                        すべての<br>記事
+                        {{ else }}
+                        View All<br>Articles
                         {{ end }}
-                    {{ end }}
-                </div>
-                <h3 class="small-card-title">{{ .Title }}</h3>
-                <p class="small-card-excerpt">{{ .Summary | plainify | truncate 100 }}</p>
-            </a>
-            {{ end }}
-
-            <!-- AdSense Widget 2 (3 columns) -->
-            <div class="adsense-widget">
-                <div class="adsense-placeholder">
-                    <!-- AdSense Code Here -->
-                    <p>Advertisement</p>
-                </div>
+                    </div>
+                    <div class="view-all-arrow">→</div>
+                </a>
             </div>
 
             <!-- Trending Section (8 columns) -->
             <div class="trending-section">
                 <h3 class="widget-title">Trending</h3>
                 <div class="trending-grid">
-                    {{ range $index, $page := first 4 $currentLangPages }}
+                    {{ range $index, $page := after 9 (first 13 $currentLangPages) }}
                     <a href="{{ $page.Permalink }}" class="trending-item">
                         <div class="trending-number">{{ printf "%02d" (add $index 1) }}</div>
                         <div class="trending-content">
@@ -918,22 +1148,43 @@
             <a href="{{ "all-posts" | relLangURL }}" style="color: var(--accent); font-weight: 600;">📋 {{ i18n "see_all" }}</a>
             <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
                 <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
+                <div class="category-grid">
                 {{ if eq .Site.Language.Lang "en" }}
-                <a href="/categories/tech/">💻 Tech</a>
-                <a href="/categories/business/">💼 Business</a>
-                <a href="/categories/society/">🌍 Society</a>
-                <a href="/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/categories/lifestyle/">🌟 Lifestyle</a>
+                <a href="/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
                 {{ else }}
-                <a href="/{{ .Site.Language.Lang }}/categories/tech/">💻 Tech</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/business/">💼 Business</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/society/">🌍 Society</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/">🌟 Lifestyle</a>
+                <a href="/{{ .Site.Language.Lang }}/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
                 {{ end }}
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer style="border-top: 1px solid var(--border); padding: 2rem; text-align: center; margin-top: 4rem; font-size: 0.875rem; color: var(--text-dim);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}" style="color: var(--text); text-decoration: none;">{{ .Site.Title }}</a></span>
+            <span style="margin: 0 0.5rem;">·</span>
+            <a href="{{ "/about/" | absLangURL }}" style="color: var(--text-dim); text-decoration: none; transition: color 0.3s;">{{ i18n "about" | default "About" }}</a>
+            <span style="margin: 0 0.5rem;">·</span>
+            <a href="{{ "/privacy/" | absLangURL }}" style="color: var(--text-dim); text-decoration: none; transition: color 0.3s;">{{ i18n "privacy" | default "Privacy" }}</a>
+            <span style="margin: 0 0.5rem;">·</span>
+            <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank" style="color: var(--text-dim); text-decoration: none;">Hugo</a> & <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank" style="color: var(--text-dim); text-decoration: none;">PaperMod</a></span>
+        </div>
+    </footer>
 
     <script>
         function toggleMenu() {

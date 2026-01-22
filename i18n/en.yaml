@@ -40,3 +40,9 @@
 
 - id: posts_count
   translation: "{{ .Count }} posts"
+
+- id: about
+  translation: "About"
+
+- id: privacy
+  translation: "Privacy"

@@ -1,0 +1,234 @@
+{
+  "session_date": "2026-01-22",
+  "active_agent": "master",
+  "workflow_step": "complete",
+  "last_task": "Manual content generation (15 keywords + 3 posts) + language mismatch bug fix",
+  "pending_reports": [],
+  "last_commit": "413c19a",
+  "rules_version": "4.0",
+  "next_session_notes": "Monitor tomorrow 17:05 KST keyword automation to verify python-dotenv fix works. Monitor 18:00 KST (6 PM) automation: (1) Track scheduler delay vs noon slot, (2) Verify timezone fix in automated run. Floating widget issue confirmed as browser/CDN cache. Hugo path: /opt/homebrew/bin/hugo. Google Search Console sitemap status check in 24-48 hours. Related posts thumbnails working correctly. Language mismatch issue fixed (Korean titles in EN section).",
+  "system_changes": [
+    "✅ Created CLAUDE.md (450 lines) - single source of truth",
+    "✅ Created .claude/session-state.json for continuity",
+    "✅ Reduced total documentation from ~1500 to ~450 lines",
+    "✅ Established sequential workflow pattern",
+    "✅ Defined explicit context passing protocol",
+    "✅ Added git pre-commit hook",
+    "✅ Archived old docs to .claude/archive/agents-v3/",
+    "✅ Updated mistakes-log.md with system overhaul entry",
+    "✅ All changes committed (d18c941)"
+  ],
+  "completed_system_enforcement": [
+    "✅ Git pre-commit hook installed and tested"
+  ],
+  "pending_system_enforcement": [
+    "Automated session checklist verification (Phase 2)",
+    "Claude Memory Tool integration (if available)",
+    "Pre-commit API key pattern validation (recommended)",
+    "GitHub Actions monitoring/alerting for scheduled workflows"
+  ],
+  "security_incidents": [
+    {
+      "date": "2026-01-22",
+      "type": "API_KEY_EXPOSURE",
+      "severity": "low",
+      "key_type": "BRAVE_API_KEY",
+      "exposure_location": "git_history",
+      "status": "resolved",
+      "report": ".claude/reports/active/security-brave-api-key-rotation-2026-01-22.md",
+      "commit": "092e70b"
+    }
+  ],
+  "seo_improvements": {
+    "date": "2026-01-22",
+    "commit": "6f2336c",
+    "score_before": "6.5/10",
+    "score_after_projected": "8.5/10",
+    "agents_involved": ["QA", "CTO", "Designer"],
+    "files_created": 3,
+    "files_modified": 8,
+    "reports_created": 4,
+    "workflow_compliance": "100%",
+    "critical_fixes": [
+      "Hreflang tags for multilingual SEO",
+      "Homepage meta descriptions and OG tags",
+      "H1 hierarchy on homepage",
+      "Social share buttons",
+      "Canonical URLs on all pages",
+      "Schema.org fixes"
+    ],
+    "monitoring_required": [
+      "Google Search Console hreflang validation (7 days)",
+      "Organic traffic changes (30 days)",
+      "Rich results appearance (14 days)",
+      "Core Web Vitals improvements"
+    ]
+  },
+  "timezone_fix": {
+    "date": "2026-01-22",
+    "session_time": "12:25-12:45 KST",
+    "issue_type": "datetime_timezone_awareness",
+    "severity": "high",
+    "root_cause": "GitHub Actions UTC environment + timezone-naive datetime.now()",
+    "impact": "Posts dated 1 day earlier, incorrect homepage sorting",
+    "files_modified": ["scripts/generate_posts.py"],
+    "changes_location": [
+      "Line ~1185: Frontmatter date with timezone offset",
+      "Line ~1173: Post filename with KST date",
+      "Line ~1097: Image filename with KST date"
+    ],
+    "testing_status": "✅ Passed local test",
+    "commit_status": "Pending user consolidation",
+    "report": ".claude/reports/active/master-timezone-fix-session-2026-01-22.md",
+    "verification_required": [
+      "Monitor 18:00 KST automation run",
+      "Verify post dates show correctly",
+      "Check homepage post ordering"
+    ]
+  },
+  "automation_issues": {
+    "12pm_cron_delay": {
+      "date": "2026-01-22",
+      "investigation_time": "13:15-13:45 KST",
+      "scheduled_time": "12:00 PM KST (03:00 UTC)",
+      "actual_start_time": "12:57 PM KST (estimated from GitHub Actions UI)",
+      "actual_end_time": "13:01 PM KST",
+      "status": "✅ Executed successfully (Run #38)",
+      "scheduler_delay": "57 minutes",
+      "execution_time": "4 minutes (normal)",
+      "posts_generated": 3,
+      "commit": "6498a2e",
+      "root_cause": "GitHub Actions scheduler delay (platform limitation)",
+      "workflow_config": "✅ Correct: cron '0 3 * * *'",
+      "workflow_optimization": "✅ Already optimized (4min is normal for 3 Claude API calls)",
+      "delay_pattern": {
+        "6am_slot": "25 minutes delay",
+        "12pm_slot": "57 minutes delay (2x worse)",
+        "insight": "Noon time slot (03:00-04:00 UTC) has higher GitHub Actions load"
+      },
+      "report": ".claude/reports/active/master-noon-automation-investigation-2026-01-22.md",
+      "recommendation": "Accept current delays (content not time-sensitive). If 60+ min delays persist, consider rescheduling to 6 AM/6 PM slots or external scheduler."
+    },
+    "5pm_keyword_automation_failure": {
+      "date": "2026-01-22",
+      "session_time": "15:05-15:15 KST",
+      "issue_type": "missing_dependency_in_github_actions",
+      "severity": "medium",
+      "scheduled_time": "17:05 KST (08:05 UTC)",
+      "error": "ModuleNotFoundError: No module named 'dotenv'",
+      "root_cause": "daily-keywords.yml only installed anthropic and requests, missing python-dotenv",
+      "impact": "Keyword curation automation failing, no new keywords being added to queue",
+      "files_modified": [".github/workflows/daily-keywords.yml"],
+      "fix": "Added python-dotenv to pip install command (line 32)",
+      "testing_status": "⏳ Awaiting tomorrow's 17:05 KST run",
+      "commit": "6c0f394",
+      "report": ".claude/reports/active/master-keyword-automation-fix-2026-01-22.md",
+      "verification_required": [
+        "Monitor tomorrow 17:05 KST keyword automation run",
+        "Verify topics_queue.json is updated",
+        "Confirm no ModuleNotFoundError in logs"
+      ],
+      "lesson_learned": "Always sync workflow dependencies with requirements.txt, or use requirements.txt directly"
+    }
+  },
+  "sitemap_fix": {
+    "date": "2026-01-22",
+    "session_time": "12:33-13:30 KST",
+    "issue_type": "google_search_console_sitemap_error",
+    "severity": "high",
+    "root_cause_1": "Incorrect [outputs] configuration with 'sitemap' preventing Hugo default generation",
+    "root_cause_2": "Custom sitemap template using .Data.Pages (section-only) instead of site-wide collection",
+    "impact": "Only 7 URLs in sitemap, 63+ blog posts not discoverable by Google",
+    "files_modified": ["hugo.toml"],
+    "files_deleted": ["layouts/_default/sitemap.xml"],
+    "commits": ["5e7b9f3", "062201a"],
+    "sitemap_structure": {
+      "root": "sitemap.xml (sitemap index, 3 languages)",
+      "english": "en/sitemap.xml (44 URLs)",
+      "korean": "ko/sitemap.xml (25 URLs)",
+      "japanese": "ja/sitemap.xml (~20 URLs)",
+      "total_urls": "70+"
+    },
+    "google_search_console_status": "4 sitemaps submitted, awaiting crawl",
+    "report": ".claude/reports/active/master-sitemap-fix-session-2026-01-22.md",
+    "verification_required": [
+      "Monitor GSC sitemap status (24-48 hours)",
+      "Verify 70+ discovered URLs",
+      "Check 'Success' status for all 4 sitemaps",
+      "Monitor organic traffic increase (30 days)"
+    ]
+  },
+  "testing_required": [
+    "✅ Sequential multi-agent pattern tested (QA→CTO→Designer workflow)",
+    "✅ Git hook prevents violations (tested during commit)",
+    "✅ Timezone fix tested locally (generates correct KST dates)",
+    "✅ Sitemap XML validation passed",
+    "✅ Live URL test in Google Search Console passed",
+    "✅ Related posts thumbnails display correctly (tested locally)",
+    "✅ Keyword automation fix deployed (python-dotenv added)",
+    "⏳ Monitor 30-day SEO success metrics",
+    "⏳ Verify 18:00 KST automation run (timezone fix validation)",
+    "⏳ Verify tomorrow 17:05 KST keyword automation (python-dotenv fix)",
+    "⏳ Google Search Console sitemap crawl (24-48 hours)"
+  ],
+  "related_posts_fix": {
+    "date": "2026-01-22",
+    "session_time": "14:15-14:50 KST",
+    "issue_1": "Related posts appearing inconsistently",
+    "issue_2": "Thumbnails showing placeholder emoji instead of actual images",
+    "root_cause_1": "Hugo similarity threshold (80) requires sufficient matching content",
+    "root_cause_2": "Template looking for Page Resources (cover.*) instead of frontmatter images",
+    "impact": "Poor user experience, missing visual content in related posts section",
+    "files_modified": ["layouts/_default/single.html"],
+    "changes_made": [
+      "Changed .Resources.GetMatch to .Params.image (line 626)",
+      "Fixed template variable scoping with $relatedPost",
+      "Added border-radius to thumbnail images for consistency"
+    ],
+    "testing_status": "✅ Passed local and production build",
+    "commit": "32eabed",
+    "report": ".claude/reports/active/master-related-posts-investigation-2026-01-22.md",
+    "future_considerations": [
+      "Consider lowering similarity threshold to 60 for sites with <50 posts per category",
+      "Migrate to Page Bundles for Hugo image processing (long-term)",
+      "Monitor related posts appearance as content grows"
+    ]
+  },
+  "manual_content_generation": {
+    "date": "2026-01-22",
+    "session_time": "15:30-16:10 KST",
+    "keywords_generated": 15,
+    "posts_generated": 3,
+    "keywords_source": "Google Trends RSS (KR, US, JP)",
+    "queue_status": "51 topics (21 pending, 0 in progress, 30 completed)",
+    "posts_created": [
+      "EN/Finance: Current Interest Rates (1,254 words)",
+      "KO/Finance: 국민연금 (2,206 chars)",
+      "EN/Entertainment: Sydney Sweeney (1,091 words)"
+    ],
+    "quality_gate": "✅ PASSED (4 non-critical warnings)",
+    "commits": ["730cc15"],
+    "all_posts_have_references": true,
+    "all_posts_have_real_images": true
+  },
+  "language_mismatch_fix": {
+    "date": "2026-01-22",
+    "session_time": "16:15-16:30 KST",
+    "issue": "Korean titles in English content section",
+    "affected_files": [
+      "content/en/business/2026-01-22-진에어.md",
+      "content/en/business/2026-01-21-붉은사막.md"
+    ],
+    "root_cause": "Content generation used Korean keywords for English posts",
+    "fixes_applied": [
+      "진에어 → Jin Air: Korea's Budget Airline Faces Financial Turbulence",
+      "붉은사막 → Red Desert: Ultimate Guide to Korea's Desert Adventure Game",
+      "Updated tags to English keywords",
+      "Fixed image alt text",
+      "Updated first mentions to include both languages"
+    ],
+    "testing_status": "✅ Hugo build passed (151ms)",
+    "commit": "413c19a",
+    "prevention_needed": "Add language validation to content generation process"
+  }
+}

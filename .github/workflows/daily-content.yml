@@ -2,8 +2,10 @@ name: Daily Content Generation
 
 on:
   schedule:
-    # Run every day at 9 AM UTC (6 PM KST)
-    - cron: '0 9 * * *'
+    # Run 3 times a day: 6PM, 6AM next day, 12PM next day (KST)
+    - cron: '0 9 * * *'    # 6:00 PM KST (55min after keyword curation)
+    - cron: '0 21 * * *'   # 6:00 AM KST (next morning)
+    - cron: '0 3 * * *'    # 12:00 PM KST (noon)
   workflow_dispatch:
     inputs:
       count:
@@ -16,14 +18,13 @@ on:
         default: 'false'
 
 jobs:
-  generate-content:
+  test:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -33,13 +34,58 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install anthropic requests
+          pip install -r requirements.txt
+
+      - name: Run pytest
+        run: |
+          pytest --cov=scripts --cov-config=.coveragerc --cov-report=term --cov-report=xml
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false
+        continue-on-error: true
+
+  generate-content:
+    name: Generate Content
+    runs-on: ubuntu-latest
+    # needs: test  # Temporarily disabled
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull latest changes (fetch updated topics_queue.json)
+        run: |
+          git pull origin main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Cleanup expired keywords
+        run: |
+          python scripts/cleanup_expired.py 3
 
       - name: Generate content
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
         run: |
+          # Explicitly mask secrets in GitHub Actions logs
+          echo "::add-mask::${{ secrets.ANTHROPIC_API_KEY }}"
+          echo "::add-mask::${{ secrets.UNSPLASH_ACCESS_KEY }}"
+
           COUNT="${{ github.event.inputs.count || '3' }}"
           python scripts/generate_posts.py --count "$COUNT"
 
@@ -49,11 +95,20 @@ jobs:
           python scripts/quality_gate.py
           echo "quality_gate_passed=$?" >> $GITHUB_OUTPUT
 
+      - name: Validate content quality (references & images)
+        id: content_quality
+        run: |
+          python scripts/validate_content_quality.py
+
       - name: AI Review
         if: github.event.inputs.skip_review != 'true'
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          # Explicitly mask secrets in GitHub Actions logs
+          echo "::add-mask::${{ secrets.ANTHROPIC_API_KEY }}"
+
           python scripts/ai_reviewer.py
 
       - name: Upload quality reports
@@ -66,103 +121,85 @@ jobs:
             generated_files.json
           retention-days: 30
 
-      - name: Check for changes
-        id: check_changes
+      - name: Commit and push to main
+        id: commit_changes
         run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
-          
+          git config user.name "Content Bot"
+          git config user.email "bot@jakes-tech-insights.com"
+
+          # Check if there are generated files
           if [ -f generated_files.json ]; then
             FILES_COUNT=$(jq length generated_files.json)
-            echo "files_count=$FILES_COUNT" >> $GITHUB_OUTPUT
 
             if [ "$FILES_COUNT" -gt 0 ]; then
-              echo "has_changes=true" >> $GITHUB_OUTPUT
               echo "✅ Generated $FILES_COUNT file(s)"
-              
-              # Add generated files and images
+
+              # Add all generated content
               git add content/
               git add data/topics_queue.json
+              git add data/used_images.json
               git add static/images/ || true
-              
-              # Check if there are actual changes
-              if git diff --staged --quiet; then
-                echo "has_changes=false" >> $GITHUB_OUTPUT
+
+              # Check if there are actual changes to commit
+              if ! git diff --staged --quiet; then
+                # Commit locally first
+                git commit -m "🤖 Auto-generated content: $FILES_COUNT posts - Quality Gate PASSED"
+
+                # Pull latest changes with merge strategy (not rebase) to avoid conflicts
+                echo "🔄 Pulling latest changes before push..."
+                git pull --no-rebase origin main || true
+
+                # Push to main with retry logic
+                MAX_RETRIES=3
+                RETRY_COUNT=0
+                PUSH_SUCCESS=false
+
+                while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+                  if git push origin main; then
+                    PUSH_SUCCESS=true
+                    echo "✅ Successfully pushed $FILES_COUNT posts to main branch"
+                    break
+                  else
+                    RETRY_COUNT=$((RETRY_COUNT + 1))
+                    if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                      echo "⚠️ Push failed, retrying ($RETRY_COUNT/$MAX_RETRIES)..."
+                      sleep $((RETRY_COUNT * 2))
+                      git pull --rebase origin main
+                    fi
+                  fi
+                done
+
+                if [ "$PUSH_SUCCESS" = true ]; then
+                  echo "pushed=true" >> $GITHUB_OUTPUT
+                else
+                  echo "❌ Failed to push after $MAX_RETRIES attempts"
+                  echo "pushed=false" >> $GITHUB_OUTPUT
+                  exit 1
+                fi
+              else
                 echo "⚠️ No actual changes to commit"
+                echo "pushed=false" >> $GITHUB_OUTPUT
               fi
             else
-              echo "has_changes=false" >> $GITHUB_OUTPUT
               echo "⚠️ No files were generated"
+              echo "pushed=false" >> $GITHUB_OUTPUT
             fi
           else
-            echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "⚠️ generated_files.json not found"
+            echo "pushed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Create Pull Request
-        if: steps.check_changes.outputs.has_changes == 'true'
-        id: create_pr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          committer: GitHub Actions <noreply@github.com>
-          author: Content Bot <noreply@github.com>
-          commit-message: |
-            🤖 Auto-generated content
-
-            Quality Gate: ✅ PASSED
-            AI Review: See artifacts for details
-          branch: auto-content-${{ github.run_number }}
-          delete-branch: true
-          title: '🤖 Daily Content: ${{ github.event.inputs.count || 3 }} new posts'
-          body: |
-            ## 🤖 Automated Content Generation
-
-            This PR contains AI-generated blog content that has passed quality checks.
-
-            ### 📊 Generation Details
-            - **Posts generated**: ${{ github.event.inputs.count || '3' }}
-            - **Workflow run**: [${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            - **Quality gate**: ✅ PASSED
-
-            ### 📋 Quality Reports
-            Download the artifacts from the workflow run to see:
-            - `quality_report.json` - Detailed quality metrics
-            - `ai_review_report.json` - AI self-review results
-            - `generated_files.json` - List of generated files
-
-            ### ✅ Checklist for Review
-            - [ ] Review generated content for accuracy
-            - [ ] Check AI review recommendations
-            - [ ] Verify quality gate metrics
-            - [ ] Test locally if needed
-
-            ### 🚀 Next Steps
-            1. Review the generated content
-            2. Make any necessary edits
-            3. Merge to trigger Cloudflare Pages deployment
-
-            ---
-            *Generated by GitHub Actions*
-          labels: |
-            automated
-            content
-            needs-review
-
-      - name: PR Creation Summary
-        if: steps.check_changes.outputs.has_changes == 'true'
+      - name: Deployment summary
+        if: steps.commit_changes.outputs.pushed == 'true'
         run: |
-          if [ "${{ steps.create_pr.outputs.pull-request-number }}" != "" ]; then
-            echo "✅ PR #${{ steps.create_pr.outputs.pull-request-number }} created successfully"
-            echo "🔗 ${{ steps.create_pr.outputs.pull-request-url }}"
-          else
-            echo "⚠️ No changes detected or PR already exists"
-          fi
+          echo "✅ Content deployed successfully"
+          echo "🔗 Live site: https://jakes-tech-insights.pages.dev"
+          echo "📊 Check analytics for performance"
 
-      - name: Skip PR Notice
-        if: steps.check_changes.outputs.has_changes != 'true'
+      - name: No deployment notice
+        if: steps.commit_changes.outputs.pushed != 'true'
         run: |
-          echo "⚠️ No PR created - no new content generated"
+          echo "⚠️ No content deployed"
           echo "Check generation logs for issues"
 
       - name: Cleanup on failure

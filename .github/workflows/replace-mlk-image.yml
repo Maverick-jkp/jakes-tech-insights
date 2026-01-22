@@ -1,0 +1,39 @@
+name: Replace MLK Day Duplicate Image
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  replace-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Replace MLK Day image
+        env:
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        run: |
+          python scripts/replace_image_via_api.py \
+            content/en/finance/2026-01-19-mlk-day-market-closure-effects.md \
+            "stock market trading finance chart"
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/images/20260119-mlk-day-market-closure-effects.jpg
+          git add content/en/finance/2026-01-19-mlk-day-market-closure-effects.md
+          git add data/used_images.json
+          git commit -m "🖼️  Replace duplicate MLK Day image with unique photo via Unsplash API"
+          git push

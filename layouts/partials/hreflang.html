@@ -1,0 +1,20 @@
+{{- /* Hreflang tags for multilingual SEO */ -}}
+{{- if .IsTranslated -}}
+  {{- /* Add hreflang for all translations including current page */ -}}
+  {{- range .AllTranslations -}}
+    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  {{- end -}}
+  {{- /* Add x-default pointing to English version */ -}}
+  {{- range .AllTranslations -}}
+    {{- if eq .Language.Lang "en" -}}
+      <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- /* If page has no translations, still add hreflang for current language */ -}}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  {{- /* Add x-default if current page is English */ -}}
+  {{- if eq .Language.Lang "en" -}}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+  {{- end -}}
+{{- end -}}

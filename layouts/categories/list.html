@@ -4,6 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta name="description" content="Browse all posts in {{ .Title }} category at {{ .Site.Title }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Resource Hints -->
+    {{ partial "resource-hints.html" . }}
+
+    <!-- Canonical URL -->
+    {{ partial "canonical.html" . }}
+
+    <!-- Hreflang for multilingual SEO -->
+    {{ partial "hreflang.html" . }}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+    <meta property="og:description" content="Browse all posts in {{ .Title }} category">
+    <meta property="og:image" content="{{ .Site.BaseURL }}/favicon.svg">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="{{ .Permalink }}">
+    <meta name="twitter:title" content="{{ .Title }} - {{ .Site.Title }}">
+    <meta name="twitter:description" content="Browse all posts in {{ .Title }} category">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}/favicon.svg">
+
     {{ with site.Config.Services.GoogleAnalytics.ID }}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
     <script>
@@ -238,6 +268,42 @@
             color: var(--accent);
         }
 
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem;
+        }
+
+        .category-grid a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.65rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+        }
+
+        .category-grid .cat-icon {
+            flex-shrink: 0;
+            display: inline-block;
+            width: 1.1em;
+            text-align: center;
+        }
+
+        .category-grid .cat-text {
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .category-grid a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin-top: 5rem;
@@ -315,10 +381,28 @@
             {{ range .Pages }}
             <a href="{{ .Permalink }}" class="post-card">
                 <div class="post-thumbnail">
-                    {{ if .Params.image }}
-                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy" onerror="this.onerror=null; this.parentElement.innerHTML='📰';">
+                    {{ with .Resources.GetMatch "cover.*" }}
+                      {{ $card := .Fill "400x180 webp q85" }}
+                      {{ $card2x := .Fill "800x360 webp q85" }}
+                      {{ $fallback := .Fill "400x180 jpg q85" }}
+
+                      <picture>
+                        <source
+                          srcset="{{ $card.RelPermalink }} 1x,
+                                  {{ $card2x.RelPermalink }} 2x"
+                          type="image/webp"
+                        >
+                        <img
+                          src="{{ $fallback.RelPermalink }}"
+                          alt="{{ $.Title }}"
+                          loading="lazy"
+                          width="400"
+                          height="180"
+                          style="width: 100%; height: 100%; object-fit: cover;"
+                        >
+                      </picture>
                     {{ else }}
-                    📰
+                      📰
                     {{ end }}
                 </div>
                 <div class="card-content">
@@ -347,19 +431,27 @@
             <a href="{{ "all-posts" | relLangURL }}" style="color: var(--accent); font-weight: 600;">📋 All Posts</a>
             <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
                 <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
+                <div class="category-grid">
                 {{ if eq .Site.Language.Lang "en" }}
-                <a href="/categories/tech/">💻 Tech</a>
-                <a href="/categories/business/">💼 Business</a>
-                <a href="/categories/society/">🌍 Society</a>
-                <a href="/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/categories/lifestyle/">🌟 Lifestyle</a>
+                <a href="/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
                 {{ else }}
-                <a href="/{{ .Site.Language.Lang }}/categories/tech/">💻 Tech</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/business/">💼 Business</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/society/">🌍 Society</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/">🌟 Lifestyle</a>
+                <a href="/{{ .Site.Language.Lang }}/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                <a href="/{{ .Site.Language.Lang }}/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
                 {{ end }}
+                </div>
             </div>
         </div>
     </div>

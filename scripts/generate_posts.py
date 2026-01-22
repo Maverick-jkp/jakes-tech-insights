@@ -15,28 +15,41 @@ import os
 import sys
 import json
 import argparse
+import re
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional
+
+# Load environment variables from .env file
+from dotenv import load_dotenv
+load_dotenv()
 
 # Add scripts to path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from topic_queue import reserve_topics, mark_completed, mark_failed
+from utils.security import safe_print, mask_secrets
 
 try:
     from anthropic import Anthropic
 except ImportError:
-    print("Error: anthropic package not installed")
-    print("Install with: pip install anthropic")
+    safe_print("Error: anthropic package not installed")
+    safe_print("Install with: pip install anthropic")
     sys.exit(1)
 
 try:
     import requests
 except ImportError:
-    print("Error: requests package not installed")
-    print("Install with: pip install requests")
+    safe_print("Error: requests package not installed")
+    safe_print("Install with: pip install requests")
     sys.exit(1)
+
+try:
+    import certifi
+except ImportError:
+    safe_print("Warning: certifi not installed - SSL verification may fail on Windows")
+    safe_print("Install with: pip install certifi")
+    certifi = None
 
 
 # System prompts for different languages
@@ -270,56 +283,78 @@ class ContentGenerator:
         """Initialize content generator with Claude API and Unsplash API"""
         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
         if not self.api_key:
+            safe_print("❌ ERROR: ANTHROPIC_API_KEY not found")
+            safe_print("   Please set it as environment variable or pass to constructor")
+            safe_print("   Example: export ANTHROPIC_API_KEY='your-key-here'")
             raise ValueError(
                 "ANTHROPIC_API_KEY not found. Set it as environment variable or pass to constructor."
             )
 
         # Initialize with Prompt Caching beta header
-        self.client = Anthropic(
-            api_key=self.api_key,
-            default_headers={
-                "anthropic-beta": "prompt-caching-2024-07-31"
-            }
-        )
-        self.model = "claude-sonnet-4-20250514"
+        try:
+            self.client = Anthropic(
+                api_key=self.api_key,
+                default_headers={
+                    "anthropic-beta": "prompt-caching-2024-07-31"
+                }
+            )
+            self.model = "claude-sonnet-4-20250514"
+            safe_print("  ✓ Anthropic API client initialized successfully")
+        except Exception as e:
+            safe_print(f"❌ ERROR: Failed to initialize Anthropic client: {mask_secrets(str(e))}")
+            raise
 
         # Unsplash API (optional)
         self.unsplash_key = unsplash_key or os.environ.get("UNSPLASH_ACCESS_KEY")
         if self.unsplash_key:
-            print("  🖼️  Unsplash API enabled")
+            safe_print("  🖼️  Unsplash API enabled")
         else:
-            print("  ⚠️  Unsplash API key not found (images will be skipped)")
-            print("     Set UNSPLASH_ACCESS_KEY environment variable to enable")
+            safe_print("  ⚠️  Unsplash API key not found (images will be skipped)")
+            safe_print("     Set UNSPLASH_ACCESS_KEY environment variable to enable")
 
     def generate_draft(self, topic: Dict) -> str:
         """Generate initial draft using Draft Agent with Prompt Caching"""
         keyword = topic['keyword']
         lang = topic['lang']
         category = topic['category']
+        references = topic.get('references', [])  # Get references from topic
 
         system_prompt = SYSTEM_PROMPTS[lang].format(keyword=keyword)
 
-        # User prompt
-        user_prompt = self._get_draft_prompt(keyword, category, lang)
+        # User prompt with references
+        user_prompt = self._get_draft_prompt(keyword, category, lang, references)
 
-        print(f"  📝 Generating draft for: {keyword}")
+        safe_print(f"  📝 Generating draft for: {keyword}")
 
         # Use Prompt Caching: cache the system prompt
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=12000,
-            system=[
-                {
-                    "type": "text",
-                    "text": system_prompt,
-                    "cache_control": {"type": "ephemeral"}
-                }
-            ],
-            messages=[{
-                "role": "user",
-                "content": user_prompt
-            }]
-        )
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=12000,
+                system=[
+                    {
+                        "type": "text",
+                        "text": system_prompt,
+                        "cache_control": {"type": "ephemeral"}
+                    }
+                ],
+                messages=[{
+                    "role": "user",
+                    "content": user_prompt
+                }]
+            )
+        except Exception as e:
+            error_msg = mask_secrets(str(e))
+            safe_print(f"  ❌ ERROR: API call failed during draft generation")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {error_msg}")
+            raise
+
+        if not response or not response.content:
+            safe_print(f"  ❌ ERROR: Empty response from API")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            raise ValueError("Empty response from Claude API")
 
         draft = response.content[0].text
 
@@ -330,44 +365,62 @@ class ContentGenerator:
 
         # Always show cache status
         if cache_read > 0:
-            print(f"  💾 Cache HIT: {cache_read} tokens saved!")
+            safe_print(f"  💾 Cache HIT: {cache_read} tokens saved!")
         elif cache_create > 0:
-            print(f"  💾 Cache created: {cache_create} tokens")
+            safe_print(f"  💾 Cache created: {cache_create} tokens")
         else:
-            print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
+            safe_print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
 
-        print(f"  ✓ Draft generated ({len(draft)} chars)")
+        safe_print(f"  ✓ Draft generated ({len(draft)} chars)")
         return draft
 
     def edit_draft(self, draft: str, topic: Dict) -> str:
         """Refine draft using Editor Agent with Prompt Caching"""
         lang = topic['lang']
 
-        print(f"  ✏️  Editing draft...")
+        safe_print(f"  ✏️  Editing draft...")
+
+        if not draft or len(draft.strip()) == 0:
+            safe_print(f"  ⚠️  WARNING: Empty draft provided for editing")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            raise ValueError("Cannot edit empty draft")
 
         editor_prompt = self._get_editor_prompt(lang)
 
         # Use Prompt Caching: cache the editor instructions
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=12000,
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": editor_prompt,
-                            "cache_control": {"type": "ephemeral"}
-                        },
-                        {
-                            "type": "text",
-                            "text": f"\n\n---\n\n{draft}"
-                        }
-                    ]
-                }
-            ]
-        )
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=12000,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": editor_prompt,
+                                "cache_control": {"type": "ephemeral"}
+                            },
+                            {
+                                "type": "text",
+                                "text": f"\n\n---\n\n{draft}"
+                            }
+                        ]
+                    }
+                ]
+            )
+        except Exception as e:
+            error_msg = mask_secrets(str(e))
+            safe_print(f"  ❌ ERROR: API call failed during draft editing")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            safe_print(f"     Draft length: {len(draft)} chars")
+            safe_print(f"     Error: {error_msg}")
+            raise
+
+        if not response or not response.content:
+            safe_print(f"  ❌ ERROR: Empty response from editing API")
+            safe_print(f"     Topic: {topic.get('id', 'unknown')}")
+            raise ValueError("Empty response from Claude API during editing")
 
         edited = response.content[0].text
 
@@ -378,19 +431,39 @@ class ContentGenerator:
 
         # Always show cache status
         if cache_read > 0:
-            print(f"  💾 Cache HIT: {cache_read} tokens saved!")
+            safe_print(f"  💾 Cache HIT: {cache_read} tokens saved!")
         elif cache_create > 0:
-            print(f"  💾 Cache created: {cache_create} tokens")
+            safe_print(f"  💾 Cache created: {cache_create} tokens")
         else:
-            print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
+            safe_print(f"  ℹ️  No caching (usage: input={usage.input_tokens}, output={usage.output_tokens})")
 
-        print(f"  ✓ Draft edited ({len(edited)} chars)")
+        safe_print(f"  ✓ Draft edited ({len(edited)} chars)")
         return edited
 
-    def _get_draft_prompt(self, keyword: str, category: str, lang: str) -> str:
+    def _get_draft_prompt(self, keyword: str, category: str, lang: str, references: List[Dict] = None) -> str:
         """Get draft generation prompt based on language"""
+        # Get current date in KST
+        from datetime import datetime, timezone, timedelta
+        kst = timezone(timedelta(hours=9))
+        today = datetime.now(kst)
+        current_date = today.strftime("%Y년 %m월 %d일")  # Korean format
+        current_date_en = today.strftime("%B %d, %Y")  # English format
+        current_year = today.year
+
+        # Format references for prompt
+        refs_section = ""
+        if references and len(references) > 0:
+            refs_list = "\n".join([
+                f"- [{ref.get('title', 'Source')}]({ref.get('url', '')}) - {ref.get('source', '')}"
+                for ref in references[:3]
+            ])
+            refs_section = f"\n\n📚 USE THESE REFERENCES:\n{refs_list}\n"
+
         prompts = {
-            "en": f"""Write a comprehensive blog post about: {keyword}
+            "en": f"""📅 TODAY'S DATE: {current_date_en}
+⚠️ IMPORTANT: You are writing this article as of TODAY ({current_date_en}). All information must be current as of {current_year}. Do NOT use outdated information from 2024 or earlier years.
+
+Write a comprehensive blog post about: {keyword}{refs_section}
 
 Category: {category}
 
@@ -430,18 +503,24 @@ Content Guidelines:
 - Mention current trends (2025-2026)
 - Be concise and impactful - avoid unnecessary explanations
 
-📚 REFERENCES SECTION (Required!):
-At the end of your post, add a "## References" section with 2-3 credible sources:
+📚 REFERENCES SECTION:
+- If references were provided above in the prompt, you MUST add a "## References" section at the end
+- Use those EXACT URLs - do not modify or create new ones
 - Format: `- [Source Title](URL) - Organization/Publisher`
-- Use real-looking references (tech blogs, research reports, industry publications)
-- Example format:
+- Example:
   ## References
   - [The State of AI in 2025](https://example.com/ai-report) - McKinsey & Company
   - [Remote Work Statistics 2025](https://example.com/remote) - Buffer
+- **IMPORTANT**: If NO references were provided above, DO NOT add a References section at all
+
+**This section is REQUIRED for all posts - even Entertainment/Society topics!**
 
 Write the complete blog post now (body only, no title or metadata):""",
 
-            "ko": f"""다음 주제로 포괄적인 블로그 글을 작성하세요: {keyword}
+            "ko": f"""📅 오늘 날짜: {current_date}
+⚠️ 중요: 이 글은 오늘({current_date}) 기준으로 작성합니다. 모든 정보는 {current_year}년 현재를 기준으로 해야 합니다. 2024년 이하의 오래된 정보를 사용하지 마세요.
+
+다음 주제로 포괄적인 블로그 글을 작성하세요: {keyword}{refs_section}
 
 카테고리: {category}
 
@@ -481,18 +560,22 @@ Write the complete blog post now (body only, no title or metadata):""",
 - 현재 트렌드 언급 (2025-2026년)
 - 간결하고 임팩트 있게 - 불필요한 설명 제거
 
-📚 참고자료 섹션 (필수!):
-글 마지막에 "## 참고자료" 섹션을 추가하고 2-3개의 신뢰할 수 있는 출처 표기:
+📚 참고자료 섹션:
+- 위 프롬프트에 참고자료가 제공된 경우, 반드시 글 마지막에 "## 참고자료" 섹션 추가
+- 제공된 URL을 정확히 사용 - 수정하거나 새로 만들지 말 것
 - 형식: `- [출처 제목](URL) - 조직/출판사`
-- 실제같은 참고자료 사용 (테크 블로그, 리서치 리포트, 산업 출판물)
-- 예시 형식:
+- 예시:
   ## 참고자료
   - [2025 AI 현황 보고서](https://example.com/ai-report) - 맥킨지앤컴퍼니
   - [원격 근무 통계 2025](https://example.com/remote) - Buffer
+- **중요**: 위에 참고자료가 제공되지 않았다면, 참고자료 섹션을 절대 추가하지 마세요
 
 지금 바로 완전한 블로그 글을 작성하세요 (본문만, 제목이나 메타데이터 제외):""",
 
-            "ja": f"""次のトピックについて包括的なブログ記事を書いてください: {keyword}
+            "ja": f"""📅 本日の日付: {current_date}
+⚠️ 重要: この記事は本日({current_date})の時点で書かれています。すべての情報は{current_year}年現在を基準にする必要があります。2024年以前の古い情報を使用しないでください。
+
+次のトピックについて包括的なブログ記事を書いてください: {keyword}{refs_section}
 
 カテゴリ: {category}
 
@@ -532,14 +615,15 @@ Write the complete blog post now (body only, no title or metadata):""",
 - 現在のトレンドに言及 (2025-2026年)
 - 簡潔でインパクトのある内容 - 不要な説明を削除
 
-📚 参考資料セクション (必須!):
-記事の最後に"## 参考資料"セクションを追加し、信頼できる情報源を2-3個記載:
+📚 参考資料セクション:
+- 上記プロンプトで参考資料が提供された場合、記事の最後に必ず"## 参考資料"セクションを追加
+- 提供されたURLを正確に使用 - 修正したり新規作成したりしないこと
 - 形式: `- [情報源タイトル](URL) - 組織/出版社`
-- 本物らしい参考資料を使用 (テックブログ、調査レポート、業界出版物)
-- 例示形式:
+- 例示:
   ## 参考資料
   - [2025年AI動向レポート](https://example.com/ai-report) - マッキンゼー・アンド・カンパニー
   - [リモートワーク統計2025](https://example.com/remote) - Buffer
+- **重要**: 上記で参考資料が提供されていない場合、参考資料セクションは絶対に追加しないでください
 
 今すぐ完全なブログ記事を書いてください（本文のみ、タイトルやメタデータなし）:"""
         }
@@ -778,22 +862,113 @@ Return improved version (body only, no title):""",
             clean_keyword = re.sub(r'\[.*?\]', '', clean_keyword)  # Remove [brackets]
             clean_keyword = clean_keyword.strip()
 
-            # For better generic images, use category + core keywords
-            # Extract meaningful words (remove "guide", "strategy", "complete" etc)
-            noise_words = ['guide', 'ガイド', '가이드', 'strategy', '戦略', '전략',
-                          'complete', '完全', '완전', 'comprehensive', 'ultimate',
-                          'startup', 'スタートアップ', '스타트업', 'tips', 'ヒント', '팁',
-                          'reasons', '이유', '理由', 'methods', '방법']
-            words = clean_keyword.split()  # Don't use lower() for non-English
-            filtered_words = [w for w in words if not any(noise.lower() in w.lower() for noise in noise_words)]
+            # Translation dictionary for meaningful keywords
+            keyword_translations = {
+                # Korean - AI/Jobs/Employment
+                'AI': 'artificial intelligence',
+                '인공지능': 'artificial intelligence',
+                '대체': 'replacement automation',
+                '일자리': 'job employment work',
+                '실업': 'unemployment jobless',
+                '직업': 'occupation career profession',
+                '취업': 'employment hiring recruitment',
+                '자동화': 'automation robot',
+                '기술': 'technology tech',
+                '디지털': 'digital technology',
+                '로봇': 'robot automation',
+                '미래': 'future',
+                '변화': 'change transformation',
+                '위험': 'risk danger',
+                # Korean - Finance/Business
+                '나라사랑카드': 'patriot card credit card',
+                '카드': 'card credit',
+                '연령': 'age limit',
+                '제한': 'restriction limit',
+                '전세': 'housing lease deposit',
+                '보증금': 'deposit guarantee',
+                '배달': 'delivery food',
+                '수수료': 'fee commission',
+                '자영업': 'small business owner',
+                '폐업': 'business closure bankruptcy',
+                '지원금': 'subsidy support fund',
+                '정부': 'government policy',
+                '신청': 'application registration',
+                '혜택': 'benefit advantage',
+                # Korean - Entertainment/Society
+                '사과문': 'apology statement',
+                '팬': 'fan supporter',
+                '등돌림': 'backlash criticism',
+                '스마트폰': 'smartphone mobile',
+                '건강': 'health wellness',
+                # Japanese - AI/Jobs/Employment
+                '人工知能': 'artificial intelligence',
+                '失業': 'unemployment jobless',
+                'リスク': 'risk danger threat',
+                '職業': 'occupation job',
+                '代替': 'replacement substitute',
+                '雇用': 'employment hiring',
+                '自動化': 'automation robot',
+                'デジタル': 'digital technology',
+                'ロボット': 'robot automation',
+                '未来': 'future',
+                '変化': 'change transformation',
+                # Japanese - Finance/Business
+                '奨学金': 'scholarship student loan',
+                '返済': 'repayment debt',
+                '免除': 'exemption forgiveness',
+                '投資': 'investment financial',
+                '詐欺': 'fraud scam',
+                'アカデミー賞': 'academy award',
+                '受賞': 'award winner',
+                '住宅ローン': 'home mortgage loan',
+                '審査': 'screening examination',
+                '承認': 'approval authorization',
+            }
 
-            # Translate to English for better Unsplash results
-            if filtered_words:
-                english_query = self.translate_to_english(' '.join(filtered_words[:2]))
-                query = f"{category} {english_query}".strip()
+            # Extract meaningful keywords from title
+            title_words = clean_keyword.split()
+            translated_keywords = []
+
+            # Try to find and translate key phrases
+            for ko_word, en_translation in keyword_translations.items():
+                if ko_word in clean_keyword:
+                    translated_keywords.append(en_translation)
+
+            # If no translation found, extract meaningful words (skip common noise and non-ASCII)
+            if not translated_keywords:
+                noise_words = ['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for']
+                for word in title_words[:3]:  # Take first 3 words
+                    # Filter out non-ASCII words to prevent non-English queries
+                    try:
+                        word.encode('ascii')
+                        is_ascii = True
+                    except UnicodeEncodeError:
+                        is_ascii = False
+
+                    if is_ascii and len(word) > 2 and word.lower() not in noise_words:
+                        translated_keywords.append(word)
+
+            # Add category context
+            category_context = {
+                'tech': 'technology digital',
+                'business': 'business professional',
+                'finance': 'finance money',
+                'society': 'society community',
+                'entertainment': 'entertainment culture',
+                'lifestyle': 'lifestyle daily',
+                'sports': 'sports athletic',
+                'education': 'education learning'
+            }
+
+            # Build flexible, contextual query
+            if translated_keywords:
+                base_keywords = ' '.join(translated_keywords[:2])
             else:
-                # Fallback: just use category for generic business/tech images
-                query = category
+                # Fallback to pure category context if no English keywords found
+                base_keywords = category_context.get(category, 'technology')
+
+            context = category_context.get(category, category)
+            query = f"{base_keywords} {context}".strip()
 
             # Unsplash API endpoint
             url = "https://api.unsplash.com/search/photos"
@@ -806,40 +981,107 @@ Return improved version (body only, no title):""",
                 "orientation": "landscape"
             }
 
-            print(f"  🔍 Searching Unsplash for: {query}")
+            safe_print(f"  🔍 Searching Unsplash for: {query}")
 
-            response = requests.get(url, headers=headers, params=params, timeout=10)
+            # Use certifi for SSL verification (Windows compatibility)
+            verify_ssl = certifi.where() if certifi else True
+            response = requests.get(url, headers=headers, params=params, timeout=10, verify=verify_ssl)
             response.raise_for_status()
 
             data = response.json()
 
             if not data.get('results'):
-                print(f"  ⚠️  No images found for '{query}'")
+                safe_print(f"  ⚠️  No images found for '{query}'")
                 return None
 
-            # Get first result
-            photo = data['results'][0]
+            # Load used images tracking file
+            used_images_file = Path(__file__).parent.parent / "data" / "used_images.json"
+            used_images = set()
+            if used_images_file.exists():
+                try:
+                    with open(used_images_file, 'r') as f:
+                        used_images = set(json.load(f))
+                except:
+                    pass
+
+            # Find first unused image from results
+            photo = None
+            for result in data['results']:
+                image_id = result['id']
+                if image_id not in used_images:
+                    photo = result
+                    used_images.add(image_id)
+                    break
+
+            # If all images are used, try with generic category query
+            if photo is None:
+                safe_print(f"  ⚠️  All images for '{query}' already used, trying generic category search...")
+                generic_query = category_context.get(category, 'technology')
+                params['query'] = generic_query
+
+                response = requests.get(url, headers=headers, params=params, timeout=10, verify=verify_ssl)
+                response.raise_for_status()
+                data = response.json()
+
+                if data.get('results'):
+                    for result in data['results']:
+                        image_id = result['id']
+                        if image_id not in used_images:
+                            photo = result
+                            used_images.add(image_id)
+                            safe_print(f"  ✓ Found unused image with generic search: {generic_query}")
+                            break
+
+                # If still no unused image found, return None (use placeholder)
+                if photo is None:
+                    safe_print(f"  ❌ No unused images available for category '{category}'")
+                    return None
+
+            # Save used images
+            used_images_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(used_images_file, 'w') as f:
+                json.dump(list(used_images), f)
 
             image_info = {
                 'url': photo['urls']['regular'],
                 'download_url': photo['links']['download_location'],
                 'photographer': photo['user']['name'],
                 'photographer_url': photo['user']['links']['html'],
-                'unsplash_url': photo['links']['html']
+                'unsplash_url': photo['links']['html'],
+                'image_id': photo['id']
             }
 
-            print(f"  ✓ Found image by {image_info['photographer']}")
+            safe_print(f"  ✓ Found image by {image_info['photographer']}")
             return image_info
 
+        except requests.exceptions.Timeout as e:
+            safe_print(f"  ⚠️  Unsplash API timeout: Request took too long")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
+            return None
+        except requests.exceptions.HTTPError as e:
+            safe_print(f"  ⚠️  Unsplash API HTTP error: {e.response.status_code if e.response else 'unknown'}")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
+            return None
         except requests.exceptions.RequestException as e:
-            print(f"  ⚠️  Unsplash API error: {e}")
+            safe_print(f"  ⚠️  Unsplash API network error")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
+            return None
+        except json.JSONDecodeError as e:
+            safe_print(f"  ⚠️  Unsplash API response parsing failed")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: Invalid JSON response")
             return None
         except Exception as e:
-            print(f"  ⚠️  Image fetch failed: {e}")
+            safe_print(f"  ⚠️  Image fetch failed with unexpected error")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
             return None
 
     def download_image(self, image_info: Dict, keyword: str) -> Optional[str]:
-        """Download image to static/images/ directory"""
+        """Download optimized image to static/images/ directory"""
         if not image_info:
             return None
 
@@ -852,34 +1094,66 @@ Return improved version (body only, no title):""",
             slug = keyword.lower()
             slug = ''.join(c if c.isalnum() or c.isspace() else '' for c in slug)
             slug = slug.replace(' ', '-')[:30]
-            date_str = datetime.now().strftime("%Y%m%d")
+            # Use KST for image filename
+            from datetime import timezone, timedelta
+            kst = timezone(timedelta(hours=9))
+            date_str = datetime.now(kst).strftime("%Y%m%d")
             filename = f"{date_str}-{slug}.jpg"
             filepath = images_dir / filename
 
-            # Download image
-            print(f"  📥 Downloading image...")
-            response = requests.get(image_info['url'], timeout=15)
+            # Trigger Unsplash download tracking (required by API terms)
+            if image_info.get('download_url'):
+                verify_ssl = certifi.where() if certifi else True
+                requests.get(
+                    image_info['download_url'],
+                    headers={"Authorization": f"Client-ID {self.unsplash_key}"},
+                    timeout=5,
+                    verify=verify_ssl
+                )
+
+            # Download optimized image (1200px width, quality 85)
+            # Use Unsplash's regular URL which already includes optimization
+            download_url = image_info.get('url', '')
+            # Add additional optimization parameters
+            if '?' in download_url:
+                optimized_url = f"{download_url}&w=1200&q=85&fm=jpg"
+            else:
+                optimized_url = f"{download_url}?w=1200&q=85&fm=jpg"
+
+            safe_print(f"  📥 Downloading optimized image (1200px, q85)...")
+            # Use certifi for SSL verification (Windows compatibility)
+            verify_ssl = certifi.where() if certifi else True
+            response = requests.get(optimized_url, timeout=15, verify=verify_ssl)
             response.raise_for_status()
 
             # Save image
             with open(filepath, 'wb') as f:
                 f.write(response.content)
 
-            print(f"  ✓ Image saved: {filepath}")
-
-            # Trigger Unsplash download tracking (required by API terms)
-            if image_info.get('download_url'):
-                requests.get(
-                    image_info['download_url'],
-                    headers={"Authorization": f"Client-ID {self.unsplash_key}"},
-                    timeout=5
-                )
+            size_kb = len(response.content) / 1024
+            safe_print(f"  ✓ Image saved: {filepath} ({size_kb:.1f} KB)")
 
             # Return relative path for Hugo
             return f"/images/{filename}"
 
+        except requests.exceptions.Timeout as e:
+            safe_print(f"  ⚠️  Image download timeout")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     URL: {optimized_url[:80]}...")
+            return None
+        except requests.exceptions.HTTPError as e:
+            safe_print(f"  ⚠️  Image download HTTP error: {e.response.status_code if e.response else 'unknown'}")
+            safe_print(f"     Keyword: {keyword}")
+            return None
+        except IOError as e:
+            safe_print(f"  ⚠️  File system error during image save")
+            safe_print(f"     Path: {filepath}")
+            safe_print(f"     Error: {str(e)}")
+            return None
         except Exception as e:
-            print(f"  ⚠️  Image download failed: {e}")
+            safe_print(f"  ⚠️  Image download failed with unexpected error")
+            safe_print(f"     Keyword: {keyword}")
+            safe_print(f"     Error: {mask_secrets(str(e))}")
             return None
 
     def save_post(self, topic: Dict, title: str, description: str, content: str, image_path: Optional[str] = None, image_credit: Optional[Dict] = None) -> Path:
@@ -898,8 +1172,10 @@ Return improved version (body only, no title):""",
         content_dir = Path(f"content/{lang}/{category}")
         content_dir.mkdir(parents=True, exist_ok=True)
 
-        # Generate filename with date
-        date_str = datetime.now().strftime("%Y-%m-%d")
+        # Generate filename with date in KST
+        from datetime import timezone, timedelta
+        kst = timezone(timedelta(hours=9))
+        date_str = datetime.now(kst).strftime("%Y-%m-%d")
         filename = f"{date_str}-{slug}.md"
         filepath = content_dir / filename
 
@@ -909,9 +1185,14 @@ Return improved version (body only, no title):""",
             # Use category-based placeholder
             image_path = f"/images/placeholder-{category}.jpg"
 
+        # Use KST timezone for date
+        from datetime import timezone, timedelta
+        kst = timezone(timedelta(hours=9))
+        now_kst = datetime.now(kst)
+
         frontmatter = f"""---
 title: "{title}"
-date: {datetime.now().strftime("%Y-%m-%dT%H:%M:%S")}
+date: {now_kst.strftime("%Y-%m-%dT%H:%M:%S%z")}
 draft: false
 categories: ["{category}"]
 tags: {json.dumps(keyword.split()[:3])}
@@ -931,6 +1212,81 @@ image: "{image_path}"
         if image_credit:
             credit_line = f"\n\n---\n\n*Photo by [{image_credit['photographer']}]({image_credit['photographer_url']}) on [Unsplash]({image_credit['unsplash_url']})*\n"
 
+        # Validate References section and remove if it contains fake URLs
+        def has_fake_reference_url(url: str) -> bool:
+            """Check if URL is a fake reference"""
+            fake_patterns = [
+                r'example\.com',
+                r'example\.org',
+                r'\.gov/[a-z-]+-202[0-9]',
+                r'\.org/[a-z-]+-survey',
+                r'\.gov/[a-z-]+-compliance',
+                r'\.gov/[a-z-]+-report',
+            ]
+            for pattern in fake_patterns:
+                if re.search(pattern, url, re.IGNORECASE):
+                    return True
+            return False
+
+        # Check if References section exists - if not, just skip it (don't add fake references)
+        ref_headers = {
+            'en': '## References',
+            'ko': '## 참고자료',
+            'ja': '## 参考文献'
+        }
+        ref_header = ref_headers.get(lang, '## References')
+
+        # First, normalize any non-standard reference formats to standard format
+        # Remove bold "**References:**" format if exists (common Claude output)
+        bold_ref_patterns = [
+            (r'\*\*References?:\*\*\n', ''),  # **References:**
+            (r'\*\*参考(?:文献|資料):\*\*\n', ''),  # **参考文献:** or **参考資料:**
+            (r'\*\*참고자료:\*\*\n', ''),  # **참고자료:**
+        ]
+        for pattern, replacement in bold_ref_patterns:
+            content = re.sub(pattern, replacement, content)
+
+        # Extract References section if exists
+        has_references = ref_header in content or '## Reference' in content or '## 참고' in content or '## 参考' in content
+
+        if has_references:
+            # Extract URLs from References section using regex
+            # Pattern: [text](url) or bare URLs
+            url_pattern = r'https?://[^\s\)\]<>"]+'  
+            urls_in_content = re.findall(url_pattern, content)
+
+            # Check if any URLs are fake
+            fake_urls = [url for url in urls_in_content if has_fake_reference_url(url)]
+
+            if fake_urls:
+                safe_print(f"  ⚠️  Fake reference URLs detected: {len(fake_urls)} found")
+                safe_print(f"      Examples: {fake_urls[:3]}")
+
+                # Remove References section entirely
+                # Match from any References header to the next ## header or end of content
+                ref_pattern = r'\n## (?:References?|参考(?:文献|資料)|참고자료)\n.*?(?=\n## |\Z)'
+                content = re.sub(ref_pattern, '', content, flags=re.DOTALL)
+                safe_print(f"  🗑️  Removed References section with fake URLs")
+                has_references = False  # Mark as no valid references
+            else:
+                safe_print(f"  ✅ References section validated ({len(urls_in_content)} URLs)")
+
+        # If no valid References section exists, add from queue
+        if not has_references and topic.get('references'):
+            references = topic['references']
+            safe_print(f"  ℹ️  No References section in content, adding from queue ({len(references)} refs)")
+
+            # Build References section
+            ref_section = f"\n\n{ref_header}\n\n"
+            for i, ref in enumerate(references, 1):
+                ref_section += f"{i}. [{ref['title']}]({ref['url']})\n"
+
+            # Append to content
+            content = content.rstrip() + ref_section
+            safe_print(f"  ✅ Added {len(references)} references from queue")
+        elif not has_references:
+            safe_print(f"  ℹ️  No references available (neither in content nor queue)")
+
         # Write file with hero image at top
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(frontmatter)
@@ -938,7 +1294,7 @@ image: "{image_path}"
             f.write(content)
             f.write(credit_line)
 
-        print(f"  💾 Saved to: {filepath}")
+        safe_print(f"  💾 Saved to: {filepath}")
         return filepath
 
 
@@ -948,13 +1304,34 @@ def main():
     parser.add_argument("--topic-id", type=str, help="Specific topic ID to generate")
     args = parser.parse_args()
 
+    # Pre-flight checks
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  🔍 Pre-flight Environment Checks")
+    safe_print(f"{'='*60}\n")
+
+    anthropic_key = os.environ.get("ANTHROPIC_API_KEY")
+    unsplash_key = os.environ.get("UNSPLASH_ACCESS_KEY")
+
+    if anthropic_key:
+        safe_print("  ✓ ANTHROPIC_API_KEY: Configured")
+    else:
+        safe_print("  ❌ ANTHROPIC_API_KEY: NOT FOUND")
+
+    if unsplash_key:
+        safe_print("  ✓ UNSPLASH_ACCESS_KEY: Configured")
+    else:
+        safe_print("  ⚠️  UNSPLASH_ACCESS_KEY: NOT FOUND")
+        safe_print("     Posts will use placeholder images!")
+
+    safe_print("")
+
     # Initialize generator
     try:
         generator = ContentGenerator()
     except ValueError as e:
-        print(f"Error: {e}")
-        print("\nSet ANTHROPIC_API_KEY environment variable:")
-        print("  export ANTHROPIC_API_KEY='your-api-key'")
+        safe_print(f"Error: {str(e)}")
+        safe_print("\nSet ANTHROPIC_API_KEY environment variable:")
+        safe_print("  export ANTHROPIC_API_KEY='your-api-key'")
         sys.exit(1)
 
     # Get topics
@@ -965,71 +1342,157 @@ def main():
         data = queue._load_queue()
         topics = [t for t in data['topics'] if t['id'] == args.topic_id]
         if not topics:
-            print(f"Error: Topic {args.topic_id} not found")
+            safe_print(f"Error: Topic {args.topic_id} not found")
             sys.exit(1)
     else:
         # Reserve topics from queue
         topics = reserve_topics(count=args.count)
 
     if not topics:
-        print("No topics available in queue")
+        safe_print("No topics available in queue")
         sys.exit(0)
 
-    print(f"\n{'='*60}")
-    print(f"  Generating {len(topics)} posts")
-    print(f"{'='*60}\n")
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  Generating {len(topics)} posts")
+    safe_print(f"{'='*60}\n")
 
     generated_files = []
 
     for i, topic in enumerate(topics, 1):
-        print(f"[{i}/{len(topics)}] {topic['id']}")
-        print(f"  Keyword: {topic['keyword']}")
-        print(f"  Category: {topic['category']}")
-        print(f"  Language: {topic['lang']}")
+        safe_print(f"[{i}/{len(topics)}] {topic['id']}")
+        safe_print(f"  Keyword: {topic['keyword']}")
+        safe_print(f"  Category: {topic['category']}")
+        safe_print(f"  Language: {topic['lang']}")
 
         try:
             # Generate content
+            safe_print(f"  → Step 1/5: Generating draft...")
             draft = generator.generate_draft(topic)
+
+            safe_print(f"  → Step 2/5: Editing draft...")
             final_content = generator.edit_draft(draft, topic)
 
             # Generate metadata
-            print(f"  📋 Generating metadata...")
-            title = generator.generate_title(final_content, topic['keyword'], topic['lang'])
-            description = generator.generate_description(final_content, topic['keyword'], topic['lang'])
+            safe_print(f"  → Step 3/5: Generating metadata...")
+            try:
+                title = generator.generate_title(final_content, topic['keyword'], topic['lang'])
+                description = generator.generate_description(final_content, topic['keyword'], topic['lang'])
+            except Exception as e:
+                safe_print(f"  ⚠️  WARNING: Metadata generation failed, using defaults")
+                safe_print(f"     Error: {mask_secrets(str(e))}")
+                title = topic['keyword']
+                description = f"Article about {topic['keyword']}"
 
             # Fetch featured image
+            safe_print(f"  → Step 4/5: Fetching image...")
             image_path = None
             image_credit = None
-            image_info = generator.fetch_featured_image(topic['keyword'], topic['category'])
-            if image_info:
-                image_path = generator.download_image(image_info, topic['keyword'])
-                if image_path:
-                    image_credit = image_info
+            try:
+                image_info = generator.fetch_featured_image(topic['keyword'], topic['category'])
+                if image_info:
+                    image_path = generator.download_image(image_info, topic['keyword'])
+                    if image_path:
+                        image_credit = image_info
+            except Exception as e:
+                safe_print(f"  ⚠️  WARNING: Image fetch failed, will use placeholder")
+                safe_print(f"     Error: {mask_secrets(str(e))}")
 
             # Save post with image
-            filepath = generator.save_post(topic, title, description, final_content, image_path, image_credit)
+            safe_print(f"  → Step 5/5: Saving post...")
+            try:
+                filepath = generator.save_post(topic, title, description, final_content, image_path, image_credit)
+            except IOError as e:
+                safe_print(f"  ❌ ERROR: Failed to save post to filesystem")
+                safe_print(f"     Error: {str(e)}")
+                raise
+            except Exception as e:
+                safe_print(f"  ❌ ERROR: Unexpected error during save")
+                safe_print(f"     Error: {mask_secrets(str(e))}")
+                raise
 
             # Mark as completed
             if not args.topic_id:
-                mark_completed(topic['id'])
+                try:
+                    mark_completed(topic['id'])
+                except Exception as e:
+                    safe_print(f"  ⚠️  WARNING: Failed to mark topic as completed in queue")
+                    safe_print(f"     Topic ID: {topic['id']}")
+                    safe_print(f"     Error: {str(e)}")
+                    # Don't fail the whole process if queue update fails
 
             generated_files.append(str(filepath))
-            print(f"  ✅ Completed!\n")
+            safe_print(f"  ✅ Completed!\n")
 
-        except Exception as e:
-            print(f"  ❌ Failed: {e}\n")
+        except KeyError as e:
+            safe_print(f"  ❌ FAILED: Missing required field in topic data")
+            safe_print(f"     Topic ID: {topic.get('id', 'unknown')}")
+            safe_print(f"     Missing field: {str(e)}\n")
             if not args.topic_id:
-                mark_failed(topic['id'], str(e))
+                mark_failed(topic['id'], f"Missing field: {str(e)}")
+        except ValueError as e:
+            safe_print(f"  ❌ FAILED: Invalid data or API response")
+            safe_print(f"     Topic ID: {topic.get('id', 'unknown')}")
+            safe_print(f"     Error: {mask_secrets(str(e))}\n")
+            if not args.topic_id:
+                mark_failed(topic['id'], mask_secrets(str(e)))
+        except Exception as e:
+            safe_print(f"  ❌ FAILED: Unexpected error")
+            safe_print(f"     Topic ID: {topic.get('id', 'unknown')}")
+            safe_print(f"     Error type: {type(e).__name__}")
+            safe_print(f"     Error: {mask_secrets(str(e))}\n")
+            if not args.topic_id:
+                mark_failed(topic['id'], mask_secrets(str(e)))
 
     # Save generated files list for quality gate
     output_file = Path("generated_files.json")
     with open(output_file, 'w') as f:
         json.dump(generated_files, f, indent=2)
 
-    print(f"{'='*60}")
-    print(f"  ✓ Generated {len(generated_files)} posts")
-    print(f"  File list saved to: {output_file}")
-    print(f"{'='*60}\n")
+    # Post-generation quality check
+    safe_print(f"\n{'='*60}")
+    safe_print(f"  📊 Post-Generation Quality Check")
+    safe_print(f"{'='*60}\n")
+
+    posts_without_references = 0
+    posts_with_placeholders = 0
+
+    for filepath in generated_files:
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+                # Check for references section
+                has_references = '## References' in content or '## 参考' in content or '## 참고자료' in content
+                if not has_references:
+                    posts_without_references += 1
+                    safe_print(f"  ⚠️  No references: {Path(filepath).name}")
+
+                # Check for placeholder images
+                if 'placeholder-' in content:
+                    posts_with_placeholders += 1
+                    safe_print(f"  ⚠️  Placeholder image: {Path(filepath).name}")
+        except Exception as e:
+            safe_print(f"  ⚠️  Could not check: {Path(filepath).name}")
+
+    safe_print("")
+
+    if posts_without_references > 0:
+        safe_print(f"🚨 WARNING: {posts_without_references}/{len(generated_files)} posts have NO references!")
+        safe_print(f"   This reduces content credibility and SEO value.")
+        safe_print(f"   FIX: Ensure Google Custom Search API is configured in keyword curation\n")
+
+    if posts_with_placeholders > 0:
+        safe_print(f"🚨 WARNING: {posts_with_placeholders}/{len(generated_files)} posts use PLACEHOLDER images!")
+        safe_print(f"   This hurts user experience and engagement.")
+        safe_print(f"   FIX: Ensure UNSPLASH_ACCESS_KEY is set in environment variables\n")
+
+    if posts_without_references == 0 and posts_with_placeholders == 0:
+        safe_print(f"✅ Quality Check PASSED: All posts have references and real images!\n")
+
+    safe_print(f"{'='*60}")
+    safe_print(f"  ✓ Generated {len(generated_files)} posts")
+    safe_print(f"  File list saved to: {output_file}")
+    safe_print(f"{'='*60}\n")
 
 
 if __name__ == "__main__":

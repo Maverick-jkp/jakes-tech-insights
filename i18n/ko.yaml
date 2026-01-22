@@ -40,3 +40,9 @@
 
 - id: posts_count
   translation: "{{ .Count }}개의 게시물"
+
+- id: about
+  translation: "소개"
+
+- id: privacy
+  translation: "개인정보처리방침"

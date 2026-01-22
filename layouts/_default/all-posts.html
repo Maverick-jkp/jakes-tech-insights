@@ -394,16 +394,20 @@
         <!-- Filter Buttons -->
         <div class="filter-bar">
             <button class="filter-btn active" data-filter="all">{{ i18n "all_posts" }}</button>
-            <button class="filter-btn" data-filter="tech">Tech</button>
-            <button class="filter-btn" data-filter="business">Business</button>
-            <button class="filter-btn" data-filter="society">Society</button>
-            <button class="filter-btn" data-filter="entertainment">Entertainment</button>
+            <button class="filter-btn" data-filter="tech">💻 Tech</button>
+            <button class="filter-btn" data-filter="business">💼 Business</button>
+            <button class="filter-btn" data-filter="society">🌍 Society</button>
+            <button class="filter-btn" data-filter="entertainment">🎬 Entertainment</button>
+            <button class="filter-btn" data-filter="lifestyle">🌱 Lifestyle</button>
+            <button class="filter-btn" data-filter="sports">⚽ Sports</button>
+            <button class="filter-btn" data-filter="finance">💰 Finance</button>
+            <button class="filter-btn" data-filter="education">📖 Education</button>
         </div>
 
         <!-- Posts Grid -->
         <div class="posts-grid" id="postsGrid">
             {{ $currentLangPages := where .Site.RegularPages "Language.Lang" .Site.Language.Lang }}
-            {{ $posts := where $currentLangPages "Type" "in" (slice "tech" "business" "society" "entertainment" "lifestyle") }}
+            {{ $posts := where $currentLangPages "Type" "in" (slice "tech" "business" "society" "entertainment" "lifestyle" "sports" "finance" "education") }}
             {{ range $posts }}
             <a href="{{ .Permalink }}" class="post-card" data-category="{{ index .Params.categories 0 }}">
                 {{ if .Params.image }}

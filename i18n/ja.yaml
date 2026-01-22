@@ -40,3 +40,9 @@
 
 - id: posts_count
   translation: "{{ .Count }}件の投稿"
+
+- id: about
+  translation: "概要"
+
+- id: privacy
+  translation: "プライバシー"

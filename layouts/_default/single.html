@@ -6,15 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} - {{ .Site.Title }}</title>
     <meta name="description" content="{{ .Summary }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Resource Hints -->
+    {{ partial "resource-hints.html" . }}
+
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Jake Park">
+    {{ with .Params.tags }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+
+    <!-- Canonical URL -->
+    {{ partial "canonical.html" . }}
+
+    <!-- Hreflang for multilingual SEO -->
+    {{ partial "hreflang.html" . }}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:description" content="{{ .Summary }}">
+    {{ with .Params.image }}<meta property="og:image" content="{{ $.Site.BaseURL }}{{ . }}">{{ else }}<meta property="og:image" content="{{ $.Site.BaseURL }}/favicon.svg">{{ end }}
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+    <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+    <meta property="article:author" content="Jake Park">
+    {{ range .Params.categories }}<meta property="article:section" content="{{ . }}">{{ end }}
+    {{ range .Params.tags }}<meta property="article:tag" content="{{ . }}">{{ end }}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ .Permalink }}">
+    <meta name="twitter:title" content="{{ .Title }}">
+    <meta name="twitter:description" content="{{ .Summary }}">
+    {{ with .Params.image }}<meta name="twitter:image" content="{{ $.Site.BaseURL }}{{ . }}">{{ else }}<meta name="twitter:image" content="{{ $.Site.BaseURL }}/favicon.svg">{{ end }}
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ .Title }}",
+      "image": {{ with .Params.image }}"{{ $.Site.BaseURL }}{{ . }}"{{ else }}"{{ $.Site.BaseURL }}/favicon.svg"{{ end }},
+      "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+      "author": {
+        "@type": "Person",
+        "name": "Jake Park"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ .Site.Title }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ .Site.BaseURL }}/favicon.svg",
+          "width": 600,
+          "height": 60
+        }
+      },
+      "description": "{{ .Summary | plainify }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+      }
+    }
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap');
         
         :root {
-            --bg: #0a0a0a;
-            --surface: #151515;
-            --border: #2a2a2a;
-            --text: #e8e8e8;
-            --text-dim: #888;
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --border: #2d2d2d;
+            --text: #f0f0f0;
+            --text-dim: #9a9a9a;
             --accent: #00ff88;
         }
         
@@ -56,9 +124,9 @@
         }
         
         article {
-            max-width: 800px;
+            max-width: 900px;
             margin: 4rem auto;
-            padding: 0 2rem;
+            padding: 0 3rem;
         }
         
         .article-header {
@@ -84,22 +152,23 @@
         
         .content {
             font-size: 1.125rem;
-            line-height: 1.8;
+            line-height: 1.75;
+            margin-bottom: 4rem;
         }
-        
+
         .content h2 {
             font-size: 2rem;
-            margin: 3rem 0 1rem;
-            color: var(--accent);
+            margin: 4rem 0 1.5rem;
+            color: #00cc6a;
         }
         
         .content h3 {
             font-size: 1.5rem;
-            margin: 2rem 0 1rem;
+            margin: 3rem 0 1rem;
         }
         
         .content p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .content ul, .content ol {
@@ -154,6 +223,104 @@
         .back-link:hover {
             border-color: var(--accent);
             transform: translateX(-4px);
+        }
+
+
+        /* Related Posts Container */
+        .related-posts {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--border);
+        }
+
+        .related-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Related Card */
+        .related-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .related-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.15);
+        }
+
+        .related-thumbnail {
+            width: 100%;
+            height: 120px;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .related-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 0.5rem;
+        }
+
+        .related-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .related-card p {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            article {
+                max-width: 100%;
+                padding: 0 1.5rem;
+            }
+
+            .ad-container {
+                min-height: 250px;
+                margin: 2rem 0;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Floating Menu */
@@ -229,6 +396,148 @@
             background: rgba(0, 255, 136, 0.1);
             color: var(--accent);
         }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem;
+        }
+
+        .category-grid a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+        }
+
+        .category-grid a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+        }
+
+        .category-grid .cat-icon {
+            flex-shrink: 0;
+            width: 1.1em;
+            text-align: center;
+        }
+
+        .category-grid .cat-text {
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 3rem 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-dim);
+        }
+
+        .breadcrumbs a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.5rem;
+            color: var(--border);
+        }
+
+        .breadcrumb-current {
+            color: var(--text);
+        }
+
+        /* Social Share Buttons */
+        .social-share {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+        }
+
+        .social-share-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            min-height: 44px;
+            min-width: 44px;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        button.share-btn {
+            cursor: pointer;
+        }
+
+        .share-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+        }
+
+        .share-btn .icon {
+            font-size: 1.125rem;
+        }
+
+        @media (max-width: 768px) {
+            .breadcrumbs {
+                padding: 1rem 1.5rem 0;
+                font-size: 0.75rem;
+            }
+
+            .social-share {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .share-buttons {
+                gap: 0.5rem;
+            }
+
+            .share-btn {
+                padding: 0.625rem 1rem;
+                font-size: 0.8125rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -237,8 +546,13 @@
             <a href="/{{ .Site.Language.Lang }}/" class="logo">JAKE<span>'</span>S <span>INSIGHTS</span></a>
         </div>
     </header>
-    
+
+    <!-- Breadcrumbs -->
+    {{ partial "breadcrumbs.html" . }}
+
     <article>
+        {{/* Hero Image removed - image appears in article content already */}}
+
         <div class="article-header">
             <h1>{{ .Title }}</h1>
             <div class="meta">
@@ -246,11 +560,84 @@
                 <span>{{ .ReadingTime }} min read</span>
             </div>
         </div>
-        
+
         <div class="content">
             {{ .Content }}
         </div>
-        
+
+        <!-- Social Share Buttons -->
+        {{ if .Site.Params.ShowShareButtons }}
+        <div class="social-share">
+            <h3 class="social-share-title">Share this article</h3>
+            <div class="share-buttons">
+                {{- $url := .Permalink -}}
+                {{- $title := .Title -}}
+
+                <!-- Twitter/X -->
+                <a href="https://twitter.com/intent/tweet?url={{ $url }}&text={{ $title }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="share-btn"
+                   aria-label="Share on Twitter">
+                    <span class="icon">𝕏</span>
+                    <span>Twitter</span>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ $url }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="share-btn"
+                   aria-label="Share on Facebook">
+                    <span class="icon">f</span>
+                    <span>Facebook</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="share-btn"
+                   aria-label="Share on LinkedIn">
+                    <span class="icon">in</span>
+                    <span>LinkedIn</span>
+                </a>
+
+                <!-- Copy Link -->
+                <button onclick="navigator.clipboard.writeText('{{ $url }}').then(() => { this.innerHTML = '<span class=icon>✓</span><span>Copied!</span>'; setTimeout(() => { this.innerHTML = '<span class=icon>🔗</span><span>Copy Link</span>'; }, 2000); })"
+                        class="share-btn"
+                        aria-label="Copy link to clipboard">
+                    <span class="icon">🔗</span>
+                    <span>Copy Link</span>
+                </button>
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Related Posts Section -->
+        {{ $related := .Site.RegularPages.Related . | first 4 }}
+        {{ with $related }}
+        <div class="related-posts">
+            <h3 class="related-title">You Might Also Like</h3>
+            <div class="related-grid">
+                {{ range . }}
+                <a href="{{ .Permalink }}" class="related-card">
+                    <div class="related-thumbnail">
+                        {{ $relatedPost := . }}
+                        {{ with $relatedPost.Params.image }}
+                            <img src="{{ . }}" alt="{{ $relatedPost.Title }}" loading="lazy">
+                        {{ else }}
+                            📄
+                        {{ end }}
+                    </div>
+                    <h4>{{ .Title }}</h4>
+                    <p>{{ .Summary | plainify | truncate 80 }}</p>
+                </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
         <a href="/{{ .Site.Language.Lang }}/" class="back-link">← Back to Home</a>
     </article>
 
@@ -263,19 +650,27 @@
             <a href="{{ "all-posts" | relLangURL }}" style="color: var(--accent); font-weight: 600;">📋 All Posts</a>
             <div style="border-top: 1px solid var(--border); margin: 0.5rem 0; padding-top: 0.5rem;">
                 <div style="font-size: 0.75rem; color: var(--accent); padding: 0 1rem 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Categories</div>
-                {{ if eq .Site.Language.Lang "en" }}
-                <a href="/categories/tech/">💻 Tech</a>
-                <a href="/categories/business/">💼 Business</a>
-                <a href="/categories/society/">🌍 Society</a>
-                <a href="/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/categories/lifestyle/">🌟 Lifestyle</a>
-                {{ else }}
-                <a href="/{{ .Site.Language.Lang }}/categories/tech/">💻 Tech</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/business/">💼 Business</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/society/">🌍 Society</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/entertainment/">🎬 Entertainment</a>
-                <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/">🌟 Lifestyle</a>
-                {{ end }}
+                <div class="category-grid">
+                    {{ if eq .Site.Language.Lang "en" }}
+                    <a href="/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                    <a href="/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                    <a href="/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                    <a href="/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                    <a href="/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                    <a href="/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                    <a href="/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                    <a href="/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
+                    {{ else }}
+                    <a href="/{{ .Site.Language.Lang }}/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+                    <a href="/{{ .Site.Language.Lang }}/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+                    <a href="/{{ .Site.Language.Lang }}/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+                    <a href="/{{ .Site.Language.Lang }}/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+                    <a href="/{{ .Site.Language.Lang }}/categories/lifestyle/"><span class="cat-icon">🌱</span><span class="cat-text">Lifestyle</span></a>
+                    <a href="/{{ .Site.Language.Lang }}/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+                    <a href="/{{ .Site.Language.Lang }}/categories/finance/"><span class="cat-icon">💰</span><span class="cat-text">Finance</span></a>
+                    <a href="/{{ .Site.Language.Lang }}/categories/education/"><span class="cat-icon">📖</span><span class="cat-text">Education</span></a>
+                    {{ end }}
+                </div>
             </div>
         </div>
     </div>

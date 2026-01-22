@@ -1,0 +1,17 @@
+{{- if not .IsHome }}
+<nav id="breadcrumbs" class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/{{ .Site.Language.Lang }}/">Home</a>
+  {{- $currentPage := . }}
+  {{- /* Add category breadcrumb if available */ -}}
+  {{- with .Params.categories }}
+    {{- $category := index . 0 }}
+    <span class="breadcrumb-separator">›</span>
+    <a href="/{{ $.Site.Language.Lang }}/categories/{{ $category | urlize }}/">{{ $category }}</a>
+  {{- end }}
+  {{- /* Current page */ -}}
+  {{- if $currentPage.Title }}
+    <span class="breadcrumb-separator">›</span>
+    <span class="breadcrumb-current">{{ $currentPage.Title | truncate 50 }}</span>
+  {{- end }}
+</nav>
+{{- end }}

@@ -204,6 +204,28 @@ hugo
 # View at http://localhost:1313
 ```
 
+### Pre-commit Hook (Automatic Validation)
+
+A Git pre-commit hook automatically validates `topics_queue.json` before each commit:
+
+```bash
+# The hook runs automatically when you commit
+git commit -m "Update topics"
+
+# If validation fails, commit is blocked:
+🔍 Running pre-commit validation...
+📋 Validating topics_queue.json...
+❌ Topic 'invalid-topic' has errors:
+   - Invalid keyword: Keyword contains invalid characters
+❌ Error: topics_queue.json validation failed
+
+# Fix issues and try again
+```
+
+**Hook location**: `.git/hooks/pre-commit` (already installed)
+
+**To bypass** (emergency only): `git commit --no-verify`
+
 ## 📊 Quality Standards
 
 ### Content Requirements
@@ -291,6 +313,7 @@ hugo
 - **[SETUP_WORKFLOWS.md](SETUP_WORKFLOWS.md)**: GitHub Actions 설정 가이드
 - **[KEYWORD_STRATEGY.md](docs/KEYWORD_STRATEGY.md)**: 키워드 선택 전략 (Decision-stage focus)
 - **[KEYWORD_CURATION_GUIDE.md](docs/KEYWORD_CURATION_GUIDE.md)**: 주간 키워드 큐레이션 가이드
+- **[WINDOWS_SETUP.md](docs/WINDOWS_SETUP.md)**: 윈도우 환경 설정 가이드 (Git, GitHub CLI, PATH)
 - **[.claude/PROJECT_CONTEXT.md](.claude/PROJECT_CONTEXT.md)**: 버그 수정 이력, 자동화 전략
 
 ## 🔐 Required Secrets

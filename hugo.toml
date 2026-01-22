@@ -1,6 +1,6 @@
 baseURL = 'https://jakes-tech-insights.pages.dev'
 defaultContentLanguage = 'en'
-title = "Jake's Tech Insights"
+title = "Jake's Insights"
 theme = 'PaperMod'
 timeZone = 'Asia/Seoul'
 googleAnalytics = 'G-3ML8CHS112'
@@ -14,7 +14,7 @@ pagerSize = 50
     languageCode = "en-us"
     weight = 1
     contentDir = "content/en"
-    title = "Jake's Tech Insights"
+    title = "Jake's Insights"
 
     [[languages.en.menu.main]]
       name = "🏠 Home"
@@ -51,12 +51,27 @@ pagerSize = 50
       url = "/categories/lifestyle/"
       weight = 7
 
+    [[languages.en.menu.main]]
+      name = "⚽ Sports"
+      url = "/categories/sports/"
+      weight = 8
+
+    [[languages.en.menu.main]]
+      name = "💰 Finance"
+      url = "/categories/finance/"
+      weight = 9
+
+    [[languages.en.menu.main]]
+      name = "📖 Education"
+      url = "/categories/education/"
+      weight = 10
+
   [languages.ko]
     languageName = "한국어"
     languageCode = "ko-kr"
     weight = 2
     contentDir = "content/ko"
-    title = "Jake's Tech Insights"
+    title = "Jake's Insights"
 
     [[languages.ko.menu.main]]
       name = "🏠 홈"
@@ -93,12 +108,27 @@ pagerSize = 50
       url = "/ko/categories/lifestyle/"
       weight = 7
 
+    [[languages.ko.menu.main]]
+      name = "⚽ 스포츠"
+      url = "/ko/categories/sports/"
+      weight = 8
+
+    [[languages.ko.menu.main]]
+      name = "💰 금융"
+      url = "/ko/categories/finance/"
+      weight = 9
+
+    [[languages.ko.menu.main]]
+      name = "📖 교육"
+      url = "/ko/categories/education/"
+      weight = 10
+
   [languages.ja]
     languageName = "日本語"
     languageCode = "ja-jp"
     weight = 3
     contentDir = "content/ja"
-    title = "Jake's Tech Insights"
+    title = "Jake's Insights"
 
     [[languages.ja.menu.main]]
       name = "🏠 ホーム"
@@ -134,6 +164,21 @@ pagerSize = 50
       name = "🌱 ライフ"
       url = "/ja/categories/lifestyle/"
       weight = 7
+
+    [[languages.ja.menu.main]]
+      name = "⚽ スポーツ"
+      url = "/ja/categories/sports/"
+      weight = 8
+
+    [[languages.ja.menu.main]]
+      name = "💰 金融"
+      url = "/ja/categories/finance/"
+      weight = 9
+
+    [[languages.ja.menu.main]]
+      name = "📖 教育"
+      url = "/ja/categories/education/"
+      weight = 10
 
 [params]
   env = "production"
@@ -177,6 +222,18 @@ pagerSize = 50
   name = "🌱 Lifestyle"
   url = "/categories/lifestyle"
 
+[[params.profileMode.buttons]]
+  name = "⚽ Sports"
+  url = "/categories/sports"
+
+[[params.profileMode.buttons]]
+  name = "💰 Finance"
+  url = "/categories/finance"
+
+[[params.profileMode.buttons]]
+  name = "📖 Education"
+  url = "/categories/education"
+
 [taxonomies]
   category = "categories"
   tag = "tags"
@@ -197,3 +254,31 @@ pagerSize = 50
   [[related.indices]]
     name = "date"
     weight = 10
+
+[imaging]
+  # Image processing quality
+  quality = 85
+
+  # Resampling filter (Lanczos is best quality)
+  resampleFilter = "Lanczos"
+
+  # Anchor point for cropping (Smart = auto-detect focus point)
+  anchor = "Smart"
+
+  # Background color for transparent images
+  bgColor = "#ffffff"
+
+  # Hint for image processing
+  hint = "photo"
+
+[imaging.exif]
+  # Keep date info but remove GPS data
+  disableDate = false
+  disableLatLong = true
+  includeFields = ""
+  excludeFields = ""
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5

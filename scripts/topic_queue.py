@@ -22,9 +22,21 @@ Usage:
 
 import json
 import os
-from datetime import datetime, timedelta
+import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Dict, Optional
+
+# Add utils to path
+sys.path.insert(0, str(Path(__file__).parent))
+from utils.validation import (
+    validate_keyword,
+    validate_category,
+    validate_language,
+    validate_priority,
+    validate_status,
+    validate_topic_data
+)
 
 
 class TopicQueue:
@@ -61,6 +73,13 @@ class TopicQueue:
         """
         data = self._load_queue()
 
+        # Get completed keywords to prevent duplicates
+        completed_keywords = {
+            (t['keyword'].lower(), t.get('lang', t.get('language', 'en'))): t['id']
+            for t in data['topics']
+            if t['status'] == 'completed'
+        }
+
         # Find pending topics sorted by priority (high to low) and created_at
         pending = [
             t for t in data['topics']
@@ -70,13 +89,31 @@ class TopicQueue:
 
         # Reserve top N topics
         reserved = []
-        now = datetime.utcnow().isoformat()
+        now = datetime.now(timezone.utc).isoformat()
 
-        for topic in pending[:count]:
+        for topic in pending[:count * 2]:  # Check more topics to account for duplicates
+            # Skip if already completed for same keyword+lang
+            topic_lang = topic.get('lang', topic.get('language', 'en'))
+            topic_key = (topic['keyword'].lower(), topic_lang)
+            if topic_key in completed_keywords:
+                print(f"⚠️  Skipping duplicate: {topic['keyword']} ({topic_lang}) - already completed as {completed_keywords[topic_key]}")
+                continue
+
+            # Validate topic data before reserving
+            errors = validate_topic_data(topic)
+            if errors:
+                # Skip invalid topics
+                print(f"⚠️  Skipping invalid topic {topic.get('id', 'unknown')}: {errors}")
+                continue
+
             topic['status'] = 'in_progress'
             topic['reserved_at'] = now
             topic['retry_count'] = topic.get('retry_count', 0)
             reserved.append(topic)
+
+            # Stop when we have enough topics
+            if len(reserved) >= count:
+                break
 
         self._save_queue(data)
         return reserved
@@ -88,7 +125,7 @@ class TopicQueue:
         for topic in data['topics']:
             if topic['id'] == topic_id:
                 topic['status'] = 'completed'
-                topic['completed_at'] = datetime.utcnow().isoformat()
+                topic['completed_at'] = datetime.now(timezone.utc).isoformat()
                 break
 
         self._save_queue(data)
@@ -108,7 +145,7 @@ class TopicQueue:
                 topic['status'] = 'pending'  # Rollback to pending
                 topic['retry_count'] = topic.get('retry_count', 0) + 1
                 topic['last_error'] = error_message
-                topic['last_failed_at'] = datetime.utcnow().isoformat()
+                topic['last_failed_at'] = datetime.now(timezone.utc).isoformat()
 
                 # Remove reservation timestamp
                 topic.pop('reserved_at', None)
@@ -124,7 +161,7 @@ class TopicQueue:
             hours: Number of hours before considering a topic stuck
         """
         data = self._load_queue()
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         threshold = now - timedelta(hours=hours)
 
         for topic in data['topics']:
@@ -147,11 +184,31 @@ class TopicQueue:
 
         Args:
             keyword: Topic keyword/title
-            category: Category (tech/business/lifestyle)
+            category: Category (tech/business/lifestyle/society/entertainment/sports/finance/education)
             lang: Language code (en/ko/ja)
             priority: Priority 1-10 (higher = more important)
             metadata: Additional metadata dict
+
+        Raises:
+            ValueError: If validation fails
         """
+        # Validate inputs
+        error = validate_keyword(keyword)
+        if error:
+            raise ValueError(f"Invalid keyword: {error}")
+
+        error = validate_category(category)
+        if error:
+            raise ValueError(error)
+
+        error = validate_language(lang)
+        if error:
+            raise ValueError(error)
+
+        error = validate_priority(priority)
+        if error:
+            raise ValueError(error)
+
         data = self._load_queue()
 
         # Generate ID
@@ -164,12 +221,17 @@ class TopicQueue:
             "lang": lang,
             "priority": priority,
             "status": "pending",
-            "created_at": datetime.utcnow().isoformat(),
+            "created_at": datetime.now(timezone.utc).isoformat(),
             "retry_count": 0
         }
 
         if metadata:
             topic.update(metadata)
+
+        # Final validation of complete topic
+        errors = validate_topic_data(topic)
+        if errors:
+            raise ValueError(f"Topic validation failed: {', '.join(errors)}")
 
         data['topics'].append(topic)
         self._save_queue(data)
@@ -183,7 +245,7 @@ class TopicQueue:
             "pending": 0,
             "in_progress": 0,
             "completed": 0,
-            "by_category": {"tech": 0, "business": 0, "lifestyle": 0},
+            "by_category": {"tech": 0, "business": 0, "lifestyle": 0, "society": 0, "entertainment": 0, "sports": 0, "finance": 0, "education": 0},
             "by_language": {"en": 0, "ko": 0, "ja": 0}
         }
 
