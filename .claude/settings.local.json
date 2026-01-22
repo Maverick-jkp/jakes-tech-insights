@@ -81,7 +81,9 @@
       "Bash(/opt/homebrew/bin/gh pr list --json number,title,url,state)",
       "Bash(/opt/homebrew/bin/gh pr view 4)",
       "Bash(/opt/homebrew/bin/gh pr merge 4 --squash --delete-branch)",
-      "Bash(/opt/homebrew/bin/gh pr checkout 4)"
+      "Bash(/opt/homebrew/bin/gh pr checkout 4)",
+      "Bash(python:*)",
+      "Bash(/opt/homebrew/bin/gh run watch)"
     ]
   }
 }

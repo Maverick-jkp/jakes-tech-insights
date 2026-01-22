@@ -256,13 +256,14 @@ def get_affiliate_disclosure(lang: str, programs: List[str]) -> str:
 
 
 # Configuration: Which categories should include affiliate links
+# DISABLED: Focusing on Google AdSense first for better ROI
 AFFILIATE_ENABLED_CATEGORIES = {
-    "tech": True,
-    "finance": False,  # Disable for now to avoid appearing too commercial
-    "entertainment": True,
+    "tech": False,  # Disabled: AdSense priority
+    "finance": False,
+    "entertainment": False,  # Disabled: AdSense priority
     "business": False,
     "science": False,
-    "travel": True
+    "travel": False
 }
 
 
