@@ -196,7 +196,7 @@ pagerSize = 50
   homeInfoParams.Content = "Tech insights and trends"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "sitemap"]
 
 [[params.profileMode.buttons]]
   name = "📚 All Posts"

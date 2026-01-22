@@ -3,10 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
+    <title>{{ .Site.Title }} - {{ .Site.Params.description }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <meta name="keywords" content="{{ delimit .Site.Params.keywords ", " }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Resource Hints -->
+    {{ partial "resource-hints.html" . }}
+
+    <!-- Canonical URL -->
+    {{ partial "canonical.html" . }}
+
+    <!-- Hreflang for multilingual SEO -->
+    {{ partial "hreflang.html" . }}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}/favicon.svg">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ .Permalink }}">
+    <meta name="twitter:title" content="{{ .Site.Title }}">
+    <meta name="twitter:description" content="{{ .Site.Params.description }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}/favicon.svg">
+
+    <!-- Schema.org JSON-LD for Organization/WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "{{ .Site.Title }}",
+          "url": "{{ .Site.BaseURL }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ .Site.BaseURL }}/favicon.svg",
+            "width": 600,
+            "height": 60
+          }
+        },
+        {
+          "@type": "WebSite",
+          "name": "{{ .Site.Title }}",
+          "url": "{{ .Site.BaseURL }}",
+          "description": "{{ .Site.Params.description }}",
+          "publisher": {
+            "@type": "Organization",
+            "name": "{{ .Site.Title }}"
+          },
+          "inLanguage": ["en", "ko", "ja"]
+        }
+      ]
+    }
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2478912111812328"
@@ -866,15 +924,30 @@
                 JAKE<span class="apostrophe">'</span>S INSIGHTS
             </a>
             <div class="lang-switch">
-                <a href="/en/" class="{{ if eq .Site.Language.Lang "en" }}active{{ end }}">EN</a>
-                <a href="/ko/" class="{{ if eq .Site.Language.Lang "ko" }}active{{ end }}">KO</a>
-                <a href="/ja/" class="{{ if eq .Site.Language.Lang "ja" }}active{{ end }}">JA</a>
+                {{- /* Dynamic language switcher using Hugo's translation links */ -}}
+                {{- if .IsTranslated -}}
+                    {{- range .AllTranslations -}}
+                        <a href="{{ .Permalink }}"
+                           lang="{{ .Language.Lang }}"
+                           class="{{ if eq $.Language.Lang .Language.Lang }}active{{ end }}">
+                            {{ upper .Language.Lang }}
+                        </a>
+                    {{- end -}}
+                {{- else -}}
+                    {{- /* Fallback to homepage links if no translations */ -}}
+                    <a href="/en/" class="{{ if eq .Site.Language.Lang "en" }}active{{ end }}">EN</a>
+                    <a href="/ko/" class="{{ if eq .Site.Language.Lang "ko" }}active{{ end }}">KO</a>
+                    <a href="/ja/" class="{{ if eq .Site.Language.Lang "ja" }}active{{ end }}">JA</a>
+                {{- end -}}
             </div>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="container">
+        <!-- Site H1 (SEO requirement: one H1 per page) -->
+        <h1 class="site-main-heading" style="position: absolute; left: -9999px; top: -9999px;">{{ .Site.Title }} - {{ .Site.Params.description }}</h1>
+
         <div class="bento-grid">
             {{ $allPages := where .Site.RegularPages "Language.Lang" .Site.Language.Lang }}
             {{ $currentLangPages := where $allPages "Type" "!=" "page" }}
@@ -916,7 +989,7 @@
                 </div>
                 <div class="featured-content">
                     <span class="featured-badge">Featured</span>
-                    <h1 class="featured-title">{{ .Title }}</h1>
+                    <h2 class="featured-title">{{ .Title }}</h2>
                     <p class="featured-excerpt">{{ .Summary | plainify | truncate 200 }}</p>
                     <div class="featured-meta">
                         <span class="featured-date">

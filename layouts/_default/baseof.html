@@ -4,7 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Resource Hints -->
+    {{ partial "resource-hints.html" . }}
+
+    <!-- Canonical URL -->
+    {{ partial "canonical.html" . }}
+
+    <!-- Hreflang for multilingual SEO -->
+    {{ partial "hreflang.html" . }}
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2478912111812328"
