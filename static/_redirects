@@ -1,0 +1,2 @@
+# Redirect from .pages.dev to custom domain
+https://jakes-tech-insights.pages.dev/* https://jakeinsight.com/:splat 301!
