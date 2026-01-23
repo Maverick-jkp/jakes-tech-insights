@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://jakes-tech-insights.pages.dev/sitemap.xml
+Sitemap: https://jakeinsight.com/sitemap.xml
 
 # Search engines
 User-agent: Googlebot
