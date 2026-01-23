@@ -1738,7 +1738,7 @@
       "category": "business",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661138",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1765,7 +1765,7 @@
       "category": "lifestyle",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661159",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1792,7 +1792,7 @@
       "category": "society",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661174",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1814,7 +1814,7 @@
       "category": "tech",
       "lang": "en",
       "priority": 6,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661187",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1836,7 +1836,7 @@
       "category": "sports",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661204",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1892,7 +1892,7 @@
       "category": "business",
       "lang": "ko",
       "priority": 6,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661248",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1919,7 +1919,7 @@
       "category": "lifestyle",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661259",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1946,7 +1946,7 @@
       "category": "entertainment",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661268",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1973,7 +1973,7 @@
       "category": "society",
       "lang": "ja",
       "priority": 6,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661278",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2000,7 +2000,7 @@
       "category": "lifestyle",
       "lang": "ja",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661290",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2027,7 +2027,7 @@
       "category": "business",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661390",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2054,7 +2054,7 @@
       "category": "tech",
       "lang": "ja",
       "priority": 6,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T20:34:51.661403",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2081,7 +2081,7 @@
       "category": "finance",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174222",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2108,7 +2108,7 @@
       "category": "society",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174268",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2135,7 +2135,7 @@
       "category": "sports",
       "lang": "en",
       "priority": 6,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174282",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2162,7 +2162,7 @@
       "category": "entertainment",
       "lang": "en",
       "priority": 5,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174292",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2189,7 +2189,7 @@
       "category": "tech",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174301",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2216,7 +2216,7 @@
       "category": "tech",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174309",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2243,7 +2243,7 @@
       "category": "entertainment",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174317",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2270,7 +2270,7 @@
       "category": "lifestyle",
       "lang": "ko",
       "priority": 6,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174325",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2326,7 +2326,7 @@
       "category": "society",
       "lang": "ko",
       "priority": 5,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174338",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2342,7 +2342,7 @@
       "category": "finance",
       "lang": "ja",
       "priority": 9,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174345",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2364,7 +2364,7 @@
       "category": "society",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174352",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2391,7 +2391,7 @@
       "category": "lifestyle",
       "lang": "ja",
       "priority": 6,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174359",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2418,7 +2418,7 @@
       "category": "entertainment",
       "lang": "ja",
       "priority": 5,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174365",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2434,7 +2434,7 @@
       "category": "tech",
       "lang": "ja",
       "priority": 8,
-      "status": "pending",
+      "status": "available",
       "created_at": "2026-01-22T22:18:22.174371",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2442,6 +2442,806 @@
       "angle": "極限環境での特別宿泊体験と技術的な建築手法",
       "competition_level": "medium",
       "references": [],
+      "expiry_days": 3
+    },
+    {
+      "id": "214-en-entertainment-snooki",
+      "keyword": "snooki",
+      "category": "entertainment",
+      "lang": "en",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187163",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "People need to know if they're at similar health risk and what warning signs they might be missing",
+      "angle": "Health scare among celebrities revealing universal fears",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Nicole \"Snooki\" Polizzi Shares Doctors Found Cancerous Cells in Her Cervix",
+          "url": "https://www.eonline.com/news/1427669/nicole-snooki-polizzi-on-cancerous-cells-found-in-cervix?cmpid=rss-syndicate-genericrss-us-top_stories",
+          "source": "www.eonline.com"
+        },
+        {
+          "title": "Nicole ‘Snooki’ Polizzi Teases Spooky New Series ‘Paranormal Rookie’ With BTS Photos",
+          "url": "https://www.yahoo.com/entertainment/tv/articles/nicole-snooki-polizzi-teases-spooky-194156521.html",
+          "source": "www.yahoo.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "215-en-tech-mercy-(2026-film)",
+      "keyword": "mercy (2026 film)",
+      "category": "tech",
+      "lang": "en",
+      "priority": 7,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187219",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Viewers want to understand how close we are to AI-controlled justice systems in reality",
+      "angle": "Dystopian future becoming present reality",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Mercy (2026 film) - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Mercy_(2026_film)",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Mercy (2026) | Action, Crime, Drama",
+          "url": "https://www.imdb.com/title/tt31050594/",
+          "source": "www.imdb.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "216-en-business-hyundai-recalls",
+      "keyword": "hyundai recalls",
+      "category": "business",
+      "lang": "en",
+      "priority": 9,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187234",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Car owners need to check if their vehicle is affected before a potential accident occurs",
+      "angle": "Consumer safety crisis requiring immediate action",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Hyundai Motor to recall nearly 84,000 US vehicles over instrument panel display failure, NHTSA says ",
+          "url": "https://www.reuters.com/business/autos-transportation/hyundai-motor-recall-nearly-84000-us-vehicles-over-instrument-panel-display-2026-01-23/",
+          "source": "www.reuters.com"
+        },
+        {
+          "title": "Hyundai Recalls Tucson Over Fire Risk - Kelley Blue Book",
+          "url": "https://www.kbb.com/car-news/hyundai-recalls-tucson-over-fire-risk/",
+          "source": "www.kbb.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "217-en-sports-ufc-schedule",
+      "keyword": "ufc schedule",
+      "category": "sports",
+      "lang": "en",
+      "priority": 6,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187245",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "MMA fans need to secure tickets and plan viewing schedules before prices skyrocket",
+      "angle": "Unprecedented sports entertainment opportunity",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "What do you need to know about new era of UFC? Jon Anik dishes on Paramount, 2026 storylines - The A",
+          "url": "https://www.nytimes.com/athletic/6991824/2026/01/23/ufc-paramount-how-to-watch-changes/",
+          "source": "www.nytimes.com"
+        },
+        {
+          "title": "UFC 324 - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/UFC_324",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "218-en-society-adam22-and-jason-fig",
+      "keyword": "adam22 and jason fight",
+      "category": "society",
+      "lang": "en",
+      "priority": 5,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187257",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "People want to understand the consequences of digital conflicts becoming physical",
+      "angle": "Social media drama crossing dangerous boundaries",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Adam22 Says Jason Luv Went 'Too Far' in Latest Promo for Upcoming Fight",
+          "url": "https://www.complex.com/music/a/treyalston/adam22-jason-luv-foo-far-fight",
+          "source": "www.complex.com"
+        },
+        {
+          "title": "Adam22 on Arguing with Jason Luv Online After He Did a Scene with His Wife Lena (Flashback) - YouTub",
+          "url": "https://www.youtube.com/watch?v=R8o9UZ23gvM",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "219-ko-tech-그록",
+      "keyword": "그록",
+      "category": "tech",
+      "lang": "ko",
+      "priority": 9,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187267",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "AI 사용자들이 법적 위험성과 윤리적 문제를 파악해야 함",
+      "angle": "AI 기술의 어두운 면이 드러나는 현실",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "[AI는 지금] '19금' 대화 꺼내든 AI 챗봇…그록 사태에 제동? - ZDNet korea",
+          "url": "https://zdnet.co.kr/view/?no=20260118101910",
+          "source": "zdnet.co.kr"
+        },
+        {
+          "title": "‘나체 이미지’ 논란 머스크號 AI ‘그록’...글로벌 규제에 사면초가",
+          "url": "https://www.chosun.com/economy/tech_it/2026/01/19/7QBZ4NWB5BANNJZSGEROZBUI3Q/",
+          "source": "www.chosun.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "220-ko-sports-psg",
+      "keyword": "psg",
+      "category": "sports",
+      "lang": "ko",
+      "priority": 6,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187275",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "축구 팬들이 팀의 급변하는 상황을 파악하고 대응책을 찾아야 함",
+      "angle": "스포츠 베팅과 팬심리의 위험성",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Paris Saint-Germain FC - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Paris Saint-Germain Football Club - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Paris_Saint-Germain_Football_Club",
+          "source": "es.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "221-ko-entertainment-ufc",
+      "keyword": "ufc",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 7,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187283",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "격투기 팬들이 변화하는 시청 환경에 적응하고 비용을 절약해야 함",
+      "angle": "스포츠 미디어 플랫폼 전쟁의 소비자 피해",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "What do you need to know about new era of UFC? Jon Anik dishes on Paramount, 2026 storylines - The A",
+          "url": "https://www.nytimes.com/athletic/6991824/2026/01/23/ufc-paramount-how-to-watch-changes/",
+          "source": "www.nytimes.com"
+        },
+        {
+          "title": "UFC 324 - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/UFC_324",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "222-ko-society-u23",
+      "keyword": "u23",
+      "category": "society",
+      "lang": "ko",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187293",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "축구 팬들이 한국 축구의 위기 상황과 대책을 알아야 함",
+      "angle": "국가대표 축구의 위상 추락 위험",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Video bóng đá U23 Việt Nam - U23 Hàn Quốc: Từ trượt chân phút 90+7 tới vỡ òa loạt luân lưu (U23 châu",
+          "url": "https://www.24h.com.vn/bong-da/video-bong-da-u23-viet-nam-u23-han-quoc-khoanh-khac-vang-cua-quoc-viet-dinh-bac-u23-chau-a-c48a1732067.html",
+          "source": "www.24h.com.vn"
+        },
+        {
+          "title": "2026 AFC U-23 Asian Cup - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/2026_AFC_U-23_Asian_Cup",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "223-ko-business-afc-u-23-축구-선수권-대회",
+      "keyword": "afc u-23 축구 선수권 대회",
+      "category": "business",
+      "lang": "ko",
+      "priority": 7,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187304",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "축구 관계자들이 한국 축구 시스템의 문제점과 해결책을 찾아야 함",
+      "angle": "스포츠 산업 경쟁력 위기",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "축구: AFC U-23 아시안컵 경기 일정 및 결과",
+          "url": "https://www.olympics.com/ko/news/football-fixtures-results-afc-u23-asian-cup-2026",
+          "source": "www.olympics.com"
+        },
+        {
+          "title": "'한국·일본 격차 더 벌어지나' 3월 유럽 원정 평가전 확정된 日 U21 | 스타뉴스",
+          "url": "https://www.starnewskorea.com/sports/2026/01/24/2026012323113718817",
+          "source": "www.starnewskorea.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "224-ja-society-地震速報",
+      "keyword": "地震速報",
+      "category": "society",
+      "lang": "ja",
+      "priority": 9,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187312",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "住民が地震の危険性を把握し適切な備えを整える必要がある",
+      "angle": "災害予測と緊急対応の重要性",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "過去の地震情報 (日付の新しい順) - 日本気象協会 tenki.jp",
+          "url": "https://earthquake.tenki.jp/bousai/earthquake/entries/",
+          "source": "earthquake.tenki.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "225-ja-sports-auxerre-vs-psg",
+      "keyword": "auxerre vs psg",
+      "category": "sports",
+      "lang": "ja",
+      "priority": 6,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187320",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "サッカーファンが試合結果と賭けの影響を把握する必要",
+      "angle": "スポーツ賭博における予測困難性",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Paris Saint-Germain FC - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Paris Saint-Germain Football Club - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Paris_Saint-Germain_Football_Club",
+          "source": "es.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "226-ja-business-衆議院-選挙区",
+      "keyword": "衆議院 選挙区",
+      "category": "business",
+      "lang": "ja",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187328",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "有権者が選挙区変更の影響を理解し投票権を確保する必要",
+      "angle": "民主的権利の確保における情報格差",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "総務省｜衆議院小選挙区の区割りの改定等について",
+          "url": "https://www.soumu.go.jp/senkyo/senkyo_s/news/senkyo/shu_kuwari/shu_kuwari_4.html",
+          "source": "www.soumu.go.jp"
+        },
+        {
+          "title": "選挙区割りの見直し",
+          "url": "https://www.stat.go.jp/naruhodo/15_episode/toukeigaku/senkyoku.html",
+          "source": "www.stat.go.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "227-ja-entertainment-セリエa",
+      "keyword": "セリエa",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 5,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187336",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "サッカーファンがリーグ情勢変化に対応し戦略を練り直す必要",
+      "angle": "スポーツ予測市場における急激な変化",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "【トリノ×ローマ｜ハイライト】セリエA第21節｜2025-26シーズン - YouTube",
+          "url": "https://www.youtube.com/watch?v=HF7yxg8SOdE",
+          "source": "www.youtube.com"
+        },
+        {
+          "title": "セリエA前半戦総括「伸びしろを残す」好調の４位ユベントス、「５大リーグ全体で最少失点」の５位ローマはFW２人獲得【現地発コラム】（THE DIGEST） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/98c5d2de5491ea4e2cd53463d0cd0103a2daed23",
+          "source": "news.yahoo.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "228-ja-tech-山本建",
+      "keyword": "山本建",
+      "category": "tech",
+      "lang": "ja",
+      "priority": 7,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187343",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "有権者が世襲問題の実態と対抗策を理解する必要",
+      "angle": "民主主義制度における世襲問題の深刻化",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "衆議院選挙:義母は高市首相・山本建氏を福井2区の公認候補として上申決定…山本拓氏の長男、41歳の現職県議 : 読売新聞",
+          "url": "https://www.yomiuri.co.jp/local/kansai/news/20260119-GYO1T00057/",
+          "source": "www.yomiuri.co.jp"
+        },
+        {
+          "title": "「世襲批判は認識している」義理の母が高市総理、父は元国会議員 次期衆院選に出馬表明の山本建氏「何としても自民党の議席を取り戻す」｜FNNプライムオンライン",
+          "url": "https://www.fnn.jp/articles/-/987535",
+          "source": "www.fnn.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "229-en-lifestyle-snooki",
+      "keyword": "snooki",
+      "category": "lifestyle",
+      "lang": "en",
+      "priority": 6,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187352",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Fans want to understand if supporting her new show is appropriate during her health battle",
+      "angle": "Work-life balance ethics in celebrity culture",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Nicole \"Snooki\" Polizzi Shares Doctors Found Cancerous Cells in Her Cervix",
+          "url": "https://www.eonline.com/news/1427669/nicole-snooki-polizzi-on-cancerous-cells-found-in-cervix?cmpid=rss-syndicate-genericrss-us-top_stories",
+          "source": "www.eonline.com"
+        },
+        {
+          "title": "Nicole ‘Snooki’ Polizzi Teases Spooky New Series ‘Paranormal Rookie’ With BTS Photos",
+          "url": "https://www.yahoo.com/entertainment/tv/articles/nicole-snooki-polizzi-teases-spooky-194156521.html",
+          "source": "www.yahoo.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "230-en-finance-hyundai-recalls",
+      "keyword": "hyundai recalls",
+      "category": "finance",
+      "lang": "en",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187361",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Recent car buyers need to protect their investment and safety before fire damage occurs",
+      "angle": "New vehicle safety failures threatening consumer trust",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Hyundai Motor to recall nearly 84,000 US vehicles over instrument panel display failure, NHTSA says ",
+          "url": "https://www.reuters.com/business/autos-transportation/hyundai-motor-recall-nearly-84000-us-vehicles-over-instrument-panel-display-2026-01-23/",
+          "source": "www.reuters.com"
+        },
+        {
+          "title": "Hyundai Recalls Tucson Over Fire Risk - Kelley Blue Book",
+          "url": "https://www.kbb.com/car-news/hyundai-recalls-tucson-over-fire-risk/",
+          "source": "www.kbb.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "231-en-education-mercy-(2026-film)",
+      "keyword": "mercy (2026 film)",
+      "category": "education",
+      "lang": "en",
+      "priority": 7,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187371",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Viewers need to understand the implications of AI in justice systems before it becomes reality",
+      "angle": "Science fiction becoming dangerous reality",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Mercy (2026 film) - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Mercy_(2026_film)",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Mercy (2026) | Action, Crime, Drama",
+          "url": "https://www.imdb.com/title/tt31050594/",
+          "source": "www.imdb.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "232-en-society-adam22-and-jason-fig",
+      "keyword": "adam22 and jason fight",
+      "category": "society",
+      "lang": "en",
+      "priority": 5,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187381",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Social media users want to understand the legal and ethical boundaries of online conflicts",
+      "angle": "Influencer culture promoting dangerous behavior",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Adam22 Says Jason Luv Went 'Too Far' in Latest Promo for Upcoming Fight",
+          "url": "https://www.complex.com/music/a/treyalston/adam22-jason-luv-foo-far-fight",
+          "source": "www.complex.com"
+        },
+        {
+          "title": "Adam22 on Arguing with Jason Luv Online After He Did a Scene with His Wife Lena (Flashback) - YouTub",
+          "url": "https://www.youtube.com/watch?v=R8o9UZ23gvM",
+          "source": "www.youtube.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "233-en-entertainment-ufc-schedule",
+      "keyword": "ufc schedule",
+      "category": "entertainment",
+      "lang": "en",
+      "priority": 6,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187391",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "MMA fans need strategies to prioritize which events are worth their time and money",
+      "angle": "Sports entertainment oversaturation affecting fan experience",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "What do you need to know about new era of UFC? Jon Anik dishes on Paramount, 2026 storylines - The A",
+          "url": "https://www.nytimes.com/athletic/6991824/2026/01/23/ufc-paramount-how-to-watch-changes/",
+          "source": "www.nytimes.com"
+        },
+        {
+          "title": "UFC 324 - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/UFC_324",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "234-ko-finance-그록",
+      "keyword": "그록",
+      "category": "finance",
+      "lang": "ko",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187399",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "AI 서비스 사용자들이 법적 책임과 손해 배상 위험을 파악해야 함",
+      "angle": "AI 사용자의 예상치 못한 법적 책임",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "[AI는 지금] '19금' 대화 꺼내든 AI 챗봇…그록 사태에 제동? - ZDNet korea",
+          "url": "https://zdnet.co.kr/view/?no=20260118101910",
+          "source": "zdnet.co.kr"
+        },
+        {
+          "title": "‘나체 이미지’ 논란 머스크號 AI ‘그록’...글로벌 규제에 사면초가",
+          "url": "https://www.chosun.com/economy/tech_it/2026/01/19/7QBZ4NWB5BANNJZSGEROZBUI3Q/",
+          "source": "www.chosun.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "235-ko-lifestyle-psg",
+      "keyword": "psg",
+      "category": "lifestyle",
+      "lang": "ko",
+      "priority": 5,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187406",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "축구 팬들이 구단의 진정성과 팬 서비스 품질을 재평가해야 함",
+      "angle": "스포츠 팬덤과 상업주의의 갈등",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Paris Saint-Germain FC - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Paris Saint-Germain Football Club - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Paris_Saint-Germain_Football_Club",
+          "source": "es.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "236-ko-education-ufc",
+      "keyword": "ufc",
+      "category": "education",
+      "lang": "ko",
+      "priority": 6,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187414",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "격투기 팬들이 글로벌 일정에 맞는 시청 계획을 세워야 함",
+      "angle": "글로벌 스포츠 이벤트의 시간대 불평등",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "What do you need to know about new era of UFC? Jon Anik dishes on Paramount, 2026 storylines - The A",
+          "url": "https://www.nytimes.com/athletic/6991824/2026/01/23/ufc-paramount-how-to-watch-changes/",
+          "source": "www.nytimes.com"
+        },
+        {
+          "title": "UFC 324 - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/UFC_324",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "237-ko-society-u23",
+      "keyword": "u23",
+      "category": "society",
+      "lang": "ko",
+      "priority": 7,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187421",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "축구 관계자들이 청소년 축구 시스템의 근본적 문제를 파악해야 함",
+      "angle": "한국 스포츠 육성 시스템의 구조적 문제",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Video bóng đá U23 Việt Nam - U23 Hàn Quốc: Từ trượt chân phút 90+7 tới vỡ òa loạt luân lưu (U23 châu",
+          "url": "https://www.24h.com.vn/bong-da/video-bong-da-u23-viet-nam-u23-han-quoc-khoanh-khac-vang-cua-quoc-viet-dinh-bac-u23-chau-a-c48a1732067.html",
+          "source": "www.24h.com.vn"
+        },
+        {
+          "title": "2026 AFC U-23 Asian Cup - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/2026_AFC_U-23_Asian_Cup",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "238-ko-business-afc-u-23-축구-선수권-대회",
+      "keyword": "afc u-23 축구 선수권 대회",
+      "category": "business",
+      "lang": "ko",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187432",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "축구 산업 관계자들이 한국 축구의 국제 경쟁력 하락 대책을 세워야 함",
+      "angle": "스포츠 산업 경쟁력 위기의 경제적 파급효과",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "축구: AFC U-23 아시안컵 경기 일정 및 결과",
+          "url": "https://www.olympics.com/ko/news/football-fixtures-results-afc-u23-asian-cup-2026",
+          "source": "www.olympics.com"
+        },
+        {
+          "title": "'한국·일본 격차 더 벌어지나' 3월 유럽 원정 평가전 확정된 日 U21 | 스타뉴스",
+          "url": "https://www.starnewskorea.com/sports/2026/01/24/2026012323113718817",
+          "source": "www.starnewskorea.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "239-ja-lifestyle-地震速報",
+      "keyword": "地震速報",
+      "category": "lifestyle",
+      "lang": "ja",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187439",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "住民が地震対策の不備を点検し緊急時対応能力を向上させる必要",
+      "angle": "個人レベルでの災害準備不足の危険性",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "過去の地震情報 (日付の新しい順) - 日本気象協会 tenki.jp",
+          "url": "https://earthquake.tenki.jp/bousai/earthquake/entries/",
+          "source": "earthquake.tenki.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "240-ja-finance-auxerre-vs-psg",
+      "keyword": "auxerre vs psg",
+      "category": "finance",
+      "lang": "ja",
+      "priority": 7,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187447",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "サッカー投資家が市場予測の見直しとリスク管理を行う必要",
+      "angle": "スポーツ投資における予測困難性の増大",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Paris Saint-Germain FC - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Paris_Saint-Germain_FC",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "Paris Saint-Germain Football Club - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Paris_Saint-Germain_Football_Club",
+          "source": "es.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "241-ja-education-衆議院-選挙区",
+      "keyword": "衆議院 選挙区",
+      "category": "education",
+      "lang": "ja",
+      "priority": 9,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187455",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "有権者が新しい投票システムを理解し参政権を確保する必要",
+      "angle": "制度変更による有権者の政治参加阻害",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "総務省｜衆議院小選挙区の区割りの改定等について",
+          "url": "https://www.soumu.go.jp/senkyo/senkyo_s/news/senkyo/shu_kuwari/shu_kuwari_4.html",
+          "source": "www.soumu.go.jp"
+        },
+        {
+          "title": "選挙区割りの見直し",
+          "url": "https://www.stat.go.jp/naruhodo/15_episode/toukeigaku/senkyoku.html",
+          "source": "www.stat.go.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "242-ja-entertainment-セリエa",
+      "keyword": "セリエa",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 6,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187462",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "サッカーファンがリーグ戦況変化に対応し観戦戦略を練り直す必要",
+      "angle": "スポーツ観戦における期待値管理の重要性",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "【トリノ×ローマ｜ハイライト】セリエA第21節｜2025-26シーズン - YouTube",
+          "url": "https://www.youtube.com/watch?v=HF7yxg8SOdE",
+          "source": "www.youtube.com"
+        },
+        {
+          "title": "セリエA前半戦総括「伸びしろを残す」好調の４位ユベントス、「５大リーグ全体で最少失点」の５位ローマはFW２人獲得【現地発コラム】（THE DIGEST） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/98c5d2de5491ea4e2cd53463d0cd0103a2daed23",
+          "source": "news.yahoo.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "243-ja-tech-山本建",
+      "keyword": "山本建",
+      "category": "tech",
+      "lang": "ja",
+      "priority": 8,
+      "status": "available",
+      "created_at": "2026-01-24T06:35:37.187469",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "有権者が世襲問題の実態と地域政治への影響を理解する必要",
+      "angle": "地方政治における世襲制度の固定化危険",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "衆議院選挙:義母は高市首相・山本建氏を福井2区の公認候補として上申決定…山本拓氏の長男、41歳の現職県議 : 読売新聞",
+          "url": "https://www.yomiuri.co.jp/local/kansai/news/20260119-GYO1T00057/",
+          "source": "www.yomiuri.co.jp"
+        },
+        {
+          "title": "「世襲批判は認識している」義理の母が高市総理、父は元国会議員 次期衆院選に出馬表明の山本建氏「何としても自民党の議席を取り戻す」｜FNNプライムオンライン",
+          "url": "https://www.fnn.jp/articles/-/987535",
+          "source": "www.fnn.jp"
+        }
+      ],
       "expiry_days": 3
     }
   ]
