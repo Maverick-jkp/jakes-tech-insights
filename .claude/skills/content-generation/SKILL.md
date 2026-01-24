@@ -1,21 +1,48 @@
 ---
 name: content-generation
-description: AI-powered multilingual blog content generation with Claude API
-triggers:
-  - "generate posts"
-  - "create content"
-  - "write article"
-  - "content generation"
-  - "generate blog"
-examples:
-  - "Generate 3 blog posts"
-  - "Create content for keyword X"
-  - "Write an article about tech trends"
+description: Generates high-quality multilingual blog posts (EN/KO/JA) using Claude API with Draft + Editor agents. Use when generating content from trending keywords, creating articles (800-2000 words), or adding posts to the blog. Includes automatic quality validation and SEO optimization.
 ---
 
 # Content Generation Skill
 
 Generate high-quality multilingual blog posts (EN/KO/JA) using Claude API with Draft + Editor agents.
+
+---
+
+## When to Use This Skill
+
+**Activate this skill when:**
+- User requests "generate posts", "create content", or "write article"
+- Task involves creating blog content from keywords
+- Need to produce 800-2000 word articles in EN/KO/JA
+- Working with topic queue for content automation
+
+**Do NOT use this skill for:**
+- Quality checking existing content → Use `quality-validation` skill
+- Hugo build or preview operations → Use `hugo-operations` skill
+- Adding new keywords to queue → Use `keyword-curation` skill
+
+**Examples:**
+- "Generate 3 blog posts"
+- "Create content for keyword X"
+- "Write an article about tech trends"
+
+---
+
+## Skill Boundaries
+
+**This skill handles:**
+- ✅ Content generation (Draft + Editor agents)
+- ✅ Topic queue reservation and completion
+- ✅ Frontmatter creation (title, date, categories, tags, description, image)
+- ✅ File saving to content directories
+- ✅ Multilingual post creation (EN/KO/JA)
+
+**Defer to other skills:**
+- ❌ Quality validation → Use `quality-validation` skill
+- ❌ Hugo build/preview → Use `hugo-operations` skill
+- ❌ Adding new keywords → Use `keyword-curation` skill
+- ❌ Git operations → Master agent responsibility
 
 ---
 

@@ -1,22 +1,51 @@
 ---
 name: keyword-curation
-description: Keyword research and topic queue management
-triggers:
-  - "keywords"
-  - "topic queue"
-  - "curate keywords"
-  - "add topic"
-  - "queue management"
-examples:
-  - "Curate new keywords"
-  - "Add topic to queue"
-  - "Check queue status"
-  - "Fix stuck topics"
+description: Google Trends-based keyword research and topic queue state management (pending → in_progress → completed). Use when curating new keywords from Google Trends (KR/US/JP), adding topics to queue, checking queue status, or fixing stuck topics. Includes duplicate prevention and priority management (1-10 scale).
 ---
 
 # Keyword Curation Skill
 
 Google Trends-based keyword research and topic queue state management for content generation.
+
+---
+
+## When to Use This Skill
+
+**Activate this skill when:**
+- User requests "keywords", "topic queue", "curate keywords", or "add topic"
+- Need to fetch trending keywords from Google Trends
+- Managing topic queue (check status, add/remove topics)
+- Fixing stuck topics (in_progress for 24+ hours)
+- Checking queue health (pending count, priority distribution)
+
+**Do NOT use this skill for:**
+- Generating content from keywords → Use `content-generation` skill
+- Validating content quality → Use `quality-validation` skill
+- Hugo operations → Use `hugo-operations` skill
+
+**Examples:**
+- "Curate new keywords"
+- "Add topic to queue"
+- "Check queue status"
+- "Fix stuck topics"
+
+---
+
+## Skill Boundaries
+
+**This skill handles:**
+- ✅ Google Trends keyword fetching (KR/US/JP)
+- ✅ Topic queue state management (pending/in_progress/completed)
+- ✅ Manual topic addition with priority
+- ✅ Stuck topic cleanup (24+ hours)
+- ✅ Queue health monitoring
+- ✅ Duplicate prevention
+
+**Defer to other skills:**
+- ❌ Content generation → Use `content-generation` skill
+- ❌ Quality validation → Use `quality-validation` skill
+- ❌ Hugo operations → Use `hugo-operations` skill
+- ❌ Automated curation → GitHub Actions workflow
 
 ---
 

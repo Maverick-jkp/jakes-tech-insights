@@ -26,18 +26,32 @@
 
 ## 🔴 CRITICAL WORKFLOW RULES (READ FIRST)
 
-### Sequential Workflow Pattern
+### Workflow Pattern (Sequential or Parallel)
 
 ```
 User Request
     ↓
-Master Agent (Orchestrates)
+Master Agent (Orchestrates & Plans)
     ↓
-    ├→ Designer Agent → Creates Report → Returns to Master
-    ├→ CTO Agent → Creates Report → Returns to Master
-    └→ QA Agent → Creates Report → Returns to Master
-         ↓
-Master Reviews Reports
+    ┌─ Analyzes task complexity
+    └─ Determines execution strategy
+
+Strategy 1: Sequential (for dependent tasks)
+    ↓
+    Designer → Report → Master
+    ↓ (uses Designer's output)
+    CTO → Report → Master
+    ↓ (uses CTO's output)
+    QA → Report → Master
+
+Strategy 2: Parallel (for independent tasks)
+    ↓
+    ├→ Designer → Report ┐
+    ├→ CTO → Report     ├→ Master (waits for all)
+    └→ QA → Report      ┘
+
+    ↓
+Master Reviews All Reports
     ↓
 Master Commits & Pushes
     ↓
@@ -47,10 +61,11 @@ Complete
 ### Absolute Rules (NEVER Override)
 
 1. **Master orchestrates everything** - All work flows through Master
-2. **Sequential, not parallel** - One agent at a time
+2. **Parallel when possible, sequential when necessary** - Independent tasks run simultaneously
 3. **Report first, commit never** - Specialized agents ONLY create reports
 4. **Master commits only** - Only Master has commit authority
 5. **Explicit context passing** - Master passes context to subagents
+6. **Task independence check** - Master verifies if tasks can run in parallel
 
 ---
 
@@ -62,14 +77,30 @@ Complete
 [ ] 3. Read .claude/session-state.json (current state)
 [ ] 4. Understand user request
 [ ] 5. Decide which agent(s) needed
-[ ] 6. Pass explicit context to subagent
-[ ] 7. Receive report from subagent
-[ ] 8. Review report quality
-[ ] 9. Integrate changes if approved
-[ ] 10. Commit with proper message
+[ ] 6. Check task independence (can they run in parallel?)
+[ ] 7. Pass explicit context to subagent(s)
+[ ] 8. Execute: parallel (independent) or sequential (dependent)
+[ ] 9. Receive report(s) from subagent(s)
+[ ] 10. Review report quality
+[ ] 11. Integrate changes if approved
+[ ] 12. Commit with proper message
 ```
 
 **If any step is unchecked, STOP and complete it first.**
+
+### Task Independence Guidelines
+
+**Run in PARALLEL when:**
+- ✅ Tasks are completely independent (Designer UI + CTO backend)
+- ✅ No shared files being modified
+- ✅ No dependency on each other's output
+- ✅ Can be reviewed and integrated separately
+
+**Run SEQUENTIALLY when:**
+- ❌ Task B needs Task A's output (CTO architecture → Designer implementation)
+- ❌ Working on same files (potential conflicts)
+- ❌ Logical dependency (QA needs implementation complete)
+- ❌ User explicitly requests sequential order
 
 ---
 
@@ -103,11 +134,24 @@ Complete
 1. Receives user request
 2. Analyzes scope and complexity
 3. Breaks down into agent-specific tasks
-4. Delegates to ONE agent at a time
-5. Reviews report from agent
-6. Integrates changes
-7. Commits with co-authored message
-8. Creates daily summary report
+4. **Determines execution strategy** (parallel or sequential)
+5. Delegates to agent(s) - parallel when possible
+6. **Waits for all reports** (if parallel execution)
+7. Reviews report(s) from agent(s)
+8. Integrates changes in correct order
+9. Commits with co-authored message
+10. Creates daily summary report
+
+**Parallel Execution Example**:
+```
+# If Designer (UI) and CTO (backend) tasks are independent:
+# Launch both simultaneously using Task tool in single message
+
+Task(subagent_type="designer", prompt="UI improvements") &
+Task(subagent_type="cto", prompt="Backend optimization")
+
+# Wait for both to complete, then review reports
+```
 
 **Report Location**: `.claude/reports/active/master-summary-{YYYY-MM-DD}.md`
 
@@ -448,21 +492,24 @@ All agent reports MUST follow this structure:
 
 ### ❌ Antipatterns
 
-1. **Parallel agent sessions** - Causes incompatible work
+1. **Uncoordinated parallel sessions** - Agents working without Master coordination
 2. **Agents committing directly** - Violates single source of truth
 3. **Skipping report creation** - No documentation of work
 4. **Not reading mistakes-log** - Repeating past errors
 5. **Agents reading documentation on their own** - Unreliable
 6. **Master delegating without context** - Agents lack information
+7. **Forcing parallel when dependent** - Causes errors and rework
 
 ### ✅ Correct Patterns
 
-1. **Sequential workflow** - One agent at a time through Master
+1. **Master-coordinated execution** - Parallel or sequential, always through Master
 2. **Master commits only** - Single source of truth
 3. **Report before return** - Always document work
 4. **Review mistakes-log** - Learn from past errors
 5. **Master passes explicit context** - Don't rely on agents reading
-6. **Clear handoff protocol** - Master → Agent → Master
+6. **Clear handoff protocol** - Master → Agent(s) → Master
+7. **Task independence check** - Verify before parallel execution
+8. **Wait for all agents** - Master reviews all reports before integration
 
 ---
 

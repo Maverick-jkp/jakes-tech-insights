@@ -1,20 +1,50 @@
 ---
 name: quality-validation
-description: Automated content quality checks and validation
-triggers:
-  - "quality check"
-  - "validate content"
-  - "run quality gate"
-  - "check quality"
-examples:
-  - "Run quality checks on recent posts"
-  - "Validate content quality"
-  - "Check if posts pass quality gate"
+description: Automated content quality validation with word count checks (800-2000 words), AI phrase blacklist detection, SEO validation (meta descriptions, images), and frontmatter verification. Use when validating generated content, checking posts before deployment, or ensuring quality standards compliance. Non-blocking warnings for minor issues.
 ---
 
 # Quality Validation Skill
 
 Automated content validation with word count, AI phrase detection, SEO checks, and frontmatter validation.
+
+---
+
+## When to Use This Skill
+
+**Activate this skill when:**
+- User requests "quality check", "validate content", or "run quality gate"
+- Need to verify posts meet quality standards before publishing
+- Checking for AI-generated phrases (blacklist detection)
+- Validating SEO requirements (meta descriptions, images)
+- Verifying frontmatter completeness and correctness
+
+**Do NOT use this skill for:**
+- Generating new content → Use `content-generation` skill
+- Hugo build operations → Use `hugo-operations` skill
+- Topic queue management → Use `keyword-curation` skill
+
+**Examples:**
+- "Run quality checks on recent posts"
+- "Validate content quality"
+- "Check if posts pass quality gate"
+
+---
+
+## Skill Boundaries
+
+**This skill handles:**
+- ✅ Word count validation (800-2000 words for EN/KO, 3000-7500 chars for JA)
+- ✅ AI phrase blacklist detection
+- ✅ SEO validation (meta descriptions, keywords, images)
+- ✅ Frontmatter verification (YAML syntax, required fields)
+- ✅ References section check (2+ external links)
+- ✅ Quality report generation (JSON format)
+
+**Defer to other skills:**
+- ❌ Content generation → Use `content-generation` skill
+- ❌ Fixing content issues → Manual editing or regeneration
+- ❌ Hugo build → Use `hugo-operations` skill
+- ❌ Topic queue → Use `keyword-curation` skill
 
 ---
 

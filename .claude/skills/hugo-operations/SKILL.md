@@ -1,21 +1,50 @@
 ---
 name: hugo-operations
-description: Hugo static site operations - build, preview, and deploy
-triggers:
-  - "hugo"
-  - "build site"
-  - "preview"
-  - "local server"
-  - "deploy"
-examples:
-  - "Start Hugo development server"
-  - "Build site for production"
-  - "Preview latest posts"
+description: Hugo static site operations including development server (with live reload), production builds (with minification), multilingual content preview (EN/KO/JA), and Cloudflare Pages deployment. Use when building the site, previewing content locally, or troubleshooting Hugo configuration issues. Critical - Hugo is installed at /opt/homebrew/bin/hugo (not in PATH).
 ---
 
 # Hugo Operations Skill
 
 Hugo static site generator operations for Jake's Tech Insights multilingual blog.
+
+---
+
+## When to Use This Skill
+
+**Activate this skill when:**
+- User requests "hugo", "build site", "preview", or "local server"
+- Need to start development server for content preview
+- Building site for production deployment
+- Troubleshooting Hugo configuration or template issues
+- Testing multilingual features (EN/KO/JA)
+
+**Do NOT use this skill for:**
+- Content creation → Use `content-generation` skill
+- Quality validation → Use `quality-validation` skill
+- Managing topic queue → Use `keyword-curation` skill
+
+**Examples:**
+- "Start Hugo development server"
+- "Build site for production"
+- "Preview latest posts"
+
+---
+
+## Skill Boundaries
+
+**This skill handles:**
+- ✅ Hugo development server (live reload, draft mode)
+- ✅ Production builds (minification, optimization)
+- ✅ Hugo configuration (hugo.toml)
+- ✅ Template troubleshooting (layouts/)
+- ✅ Multilingual site operations (EN/KO/JA)
+- ✅ Build performance analysis
+
+**Defer to other skills:**
+- ❌ Content creation → Use `content-generation` skill
+- ❌ Quality checks → Use `quality-validation` skill
+- ❌ Topic management → Use `keyword-curation` skill
+- ❌ Git/deployment → Master agent or CI/CD
 
 ---
 
