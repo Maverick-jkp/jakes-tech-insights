@@ -1,0 +1,207 @@
+  ✓ Anthropic API client initialized successfully
+  ✓ Loaded topic queue: 119 topics
+
+============================================================
+  🔍 Generating 15 keyword candidates...
+============================================================
+
+
+============================================================
+  🔥 Fetching REAL-TIME trending topics from Google Trends RSS...
+============================================================
+
+  ✓ Found 5 trends from KR → ko
+  ✓ Found 5 trends from US → en
+  ✓ Found 5 trends from JP → ja
+
+  🎉 Total 15 real-time trending topics from RSS!
+     EN: 5, KO: 5, JA: 5
+
+  ✓ Fetched 2 results for: 번리 대 토트넘
+  ✓ Fetched 2 results for: 원진아
+  ✓ Fetched 2 results for: 바이에른 대 아우크스부르크
+  ✓ Fetched 2 results for: 울산 불
+  ✓ Fetched 2 results for: 최진실
+  ✓ Fetched 2 results for: bundesliga
+  ✓ Fetched 2 results for: u23 asian cup
+  ✓ Fetched 2 results for: nebraska vs minnesota prediction
+  ✓ Fetched 2 results for: can trees explode in cold weather
+  ✓ Fetched 2 results for: pegasus world cup 2026
+  ✓ Fetched 2 results for: cctv5
+  ✓ Fetched 2 results for: bish
+  ✓ Fetched 2 results for: 三笘薫
+  ✓ Fetched 2 results for: ニッポンの社長
+  ✓ Fetched 2 results for: 工藤公康
+
+✅ Total 30 trending topics fetched
+
+✅ Generated 15 candidates
+
+  🟡 Caution flagged: 원진아
+  🟡 Caution flagged: 최진실
+📚 Extracting references for 15 candidates...
+
+  ✓ 1 refs for: bundesliga...
+  ✓ 2 refs for: u23 asian cup...
+  ✓ 2 refs for: nebraska vs minnesota prediction...
+  ✓ 2 refs for: can trees explode in cold weather...
+  ✓ 2 refs for: pegasus world cup 2026...
+  ✓ 2 refs for: 번리 대 토트넘...
+  ✓ 2 refs for: 원진아...
+  ✓ 2 refs for: 바이에른 대 아우크스부르크...
+  ✓ 2 refs for: 울산 불...
+  ✓ 2 refs for: 최진실...
+  ✓ 2 refs for: cctv5...
+  ✓ 1 refs for: bish...
+  ✓ 2 refs for: 三笘薫...
+  ✓ 2 refs for: ニッポンの社長...
+  ✓ 2 refs for: 工藤公康...
+
+✅ All 15 keywords have references!
+
+============================================================
+  📋 Keyword Candidates
+============================================================
+
+
+[English]
+------------------------------------------------------------
+
+1. 🔥 bundesliga
+   Category: sports | Competition: 🟡 medium
+   Intent: Users fear their team might get relegated and want to track current standings before it's too late
+   Angle: Relegation battle and transfer deadline pressure
+   Why: Missing transfer deadline means teams can't strengthen squad for relegation figh...
+
+2. 🔥 u23 asian cup
+   Category: sports | Competition: 🟢 low
+   Intent: Users want to see if promising young players will breakthrough or fade into obscurity
+   Angle: Career-defining tournament for youth prospects
+   Why: Youth tournaments are crucial stepping stones - failure here means limited futur...
+
+3. 🔥 nebraska vs minnesota prediction
+   Category: finance | Competition: 🟡 medium
+   Intent: Users need accurate predictions before placing bets or they'll lose money
+   Angle: High-stakes betting decision with financial consequences
+   Why: Wrong prediction leads to immediate financial loss...
+
+4. 🔥 can trees explode in cold weather
+   Category: lifestyle | Competition: 🟢 low
+   Intent: Users fear potential property damage from exploding trees during extreme cold weather
+   Angle: Unexpected property damage from natural phenomena
+   Why: Extreme weather events can cause sudden, expensive property damage...
+
+5. 🔥 pegasus world cup 2026
+   Category: entertainment | Competition: 🟡 medium
+   Intent: Users want to place winning bets on high-stakes horse racing before odds change
+   Angle: High-stakes gambling opportunity with limited time window
+   Why: Missing the race means losing the year's biggest gambling opportunity...
+
+[Korean]
+------------------------------------------------------------
+
+6. 🔥 번리 대 토트넘
+   Category: sports | Competition: 🔴 high
+   Intent: 강등권 팀의 생존을 걱정하는 팬들이 경기 결과를 확인하려 함
+   Angle: 강등권 팀의 절체절명 생존 경기
+   Why: 이번 경기 결과가 팀의 운명을 좌우할 수 있음...
+
+7. 🔥 원진아
+   Category: entertainment | Competition: 🟡 medium
+   Intent: 드라마 시청자들이 배우의 연기력에 대한 불만을 확인하고 싶어함
+   Angle: 배우의 연기력 논란이 작품에 미치는 영향
+   Why: 좋아하는 드라마가 한 배우 때문에 망칠 수 있다는 불안감...
+
+8. 🔥 바이에른 대 아우크스부르크
+   Category: sports | Competition: 🟡 medium
+   Intent: 한국 선수의 출전 기회를 걱정하는 팬들의 불안감
+   Angle: 한국 선수의 기회 박탈과 미래에 대한 우려
+   Why: 좋아하는 한국 선수가 기회를 잃으면 국대 차출도 어려워짐...
+
+9. 🔥 울산 불
+   Category: society | Competition: 🟢 low
+   Intent: 화재 뉴스를 보고 자신의 거주지역 안전성을 걱정하는 사람들
+   Angle: 예상치 못한 화재 위험성과 지역 안전 문제
+   Why: 화재는 언제든 일어날 수 있어서 미리 대비하지 않으면 큰 피해...
+
+10. 🔥 최진실
+   Category: entertainment | Competition: 🔴 high
+   Intent: 고인의 가족이 겪는 지속적인 갈등 상황을 걱정하며 확인하려 함
+   Angle: 유명인 가족의 지속되는 갈등과 상처
+   Why: 가족 갈등이 해결되지 않으면 더 큰 비극으로 이어질 수 있음...
+
+[Japanese]
+------------------------------------------------------------
+
+11. 🔥 cctv5
+   Category: sports | Competition: 🟡 medium
+   Intent: 중요한 스포츠 경기 중계를 놓칠까봐 걱정하는 시청자들
+   Angle: 독점 중계로 인한 시청 기회 제한
+   Why: 특정 채널에서만 중계하는 경기를 놓치면 다시 볼 기회가 없음...
+
+12. 🔥 bish
+   Category: society | Competition: 🟢 low
+   Intent: 未解決事件に対する不安と正義への渇望
+   Angle: 未解決事件の危険性と社会への影響
+   Why: 未解決のまま放置되면 더 많은 피해자가 생길 수 있음...
+
+13. 🔥 三笘薫
+   Category: sports | Competition: 🔴 high
+   Intent: 日本代表選手の調子を心配するサポーターの不安
+   Angle: エース選手の不調が代表チーム全体に与える影響
+   Why: エース選手の不調は代表戦での敗北につながる可能性...
+
+14. 🔥 ニッポンの社長
+   Category: entertainment | Competition: 🟡 medium
+   Intent: 復活を試みる芸人への期待と不安
+   Angle: 芸能界での復活の困難さと現実
+   Why: 復活のチャンスを逃すと永続的に忘れ去られる可能性...
+
+15. 🔥 工藤公康
+   Category: education | Competition: 🟢 low
+   Intent: 指導方法の時代適応性への疑問と不安
+   Angle: 世代間の指導方法ギャップによる悪影響
+   Why: 間違った指導を受けると選手生命に悪影響を与える可能性...
+
+============================================================
+
+
+🤖 Auto mode: Adding all candidates to queue...
+
+
+============================================================
+  💾 큐에 15개 키워드 추가 중...
+============================================================
+
+  ✓ Added: 🔥 Trend | bundesliga
+  ✓ Added: 🔥 Trend | u23 asian cup
+  ✓ Added: 🔥 Trend | nebraska vs minnesota prediction
+  ✓ Added: 🔥 Trend | can trees explode in cold weather
+  ✓ Added: 🔥 Trend | pegasus world cup 2026
+  ✓ Added: 🔥 Trend | 번리 대 토트넘
+  ✓ Added: 🔥 Trend | 원진아
+  ✓ Added: 🔥 Trend | 바이에른 대 아우크스부르크
+  ✓ Added: 🔥 Trend | 울산 불
+  ✓ Added: 🔥 Trend | 최진실
+  ✓ Added: 🔥 Trend | cctv5
+  ✓ Added: 🔥 Trend | bish
+  ✓ Added: 🔥 Trend | 三笘薫
+  ✓ Added: 🔥 Trend | ニッポンの社長
+  ✓ Added: 🔥 Trend | 工藤公康
+
+✅ 15개 키워드가 큐에 추가되었습니다!
+📊 Total topics in queue: 134
+Traceback (most recent call last):
+  File "/Users/jakepark/projects/jakes-tech-insights/scripts/keyword_curator.py", line 886, in <module>
+    main()
+    ~~~~^^
+  File "/Users/jakepark/projects/jakes-tech-insights/scripts/keyword_curator.py", line 880, in main
+    curator.add_to_queue(selected)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/jakepark/projects/jakes-tech-insights/scripts/keyword_curator.py", line 815, in add_to_queue
+    self._show_queue_stats()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jakepark/projects/jakes-tech-insights/scripts/keyword_curator.py", line 824, in _show_queue_stats
+    by_status[t.get('status', 'pending')] += 1
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'available'

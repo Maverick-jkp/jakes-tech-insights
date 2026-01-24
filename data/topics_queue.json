@@ -466,7 +466,7 @@
       "category": "tech",
       "lang": "ja",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T02:52:12.916319",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -486,7 +486,8 @@
         }
       ],
       "expiry_days": 3,
-      "reserved_at": "2026-01-22T04:07:47.234940+00:00"
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:35:34.464581+00:00"
     },
     {
       "id": "139-ja-finance-msft",
@@ -552,7 +553,7 @@
       "category": "society",
       "lang": "en",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T02:52:12.916341",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -572,7 +573,8 @@
         }
       ],
       "expiry_days": 3,
-      "reserved_at": "2026-01-22T04:07:47.234940+00:00"
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:36:44.358581+00:00"
     },
     {
       "id": "142-ja-sports-jackson-lacombe",
@@ -695,7 +697,7 @@
       "category": "education",
       "lang": "ko",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T02:52:12.916395",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -715,7 +717,8 @@
         }
       ],
       "expiry_days": 3,
-      "reserved_at": "2026-01-22T04:36:37.251597+00:00"
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:38:12.554483+00:00"
     },
     {
       "id": "149-ko-sports-qarabağ---frankfurt",
@@ -1166,7 +1169,7 @@
       "category": "entertainment",
       "lang": "ja",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T17:56:05.405384",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1186,7 +1189,8 @@
         }
       ],
       "expiry_days": 3,
-      "reserved_at": "2026-01-22T10:17:01.805037+00:00"
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:39:56.619190+00:00"
     },
     {
       "id": "167-ja-lifestyle-sorana-cîrstea",
@@ -1222,7 +1226,7 @@
       "category": "sports",
       "lang": "ja",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T17:56:05.405403",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1242,7 +1246,8 @@
         }
       ],
       "expiry_days": 3,
-      "reserved_at": "2026-01-22T10:17:01.805037+00:00"
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:41:40.948416+00:00"
     },
     {
       "id": "169-ja-finance-current-interest-rat",
@@ -1617,7 +1622,7 @@
       "category": "education",
       "lang": "ja",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T19:48:07.182091",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1637,7 +1642,8 @@
         }
       ],
       "expiry_days": 3,
-      "reserved_at": "2026-01-22T11:06:30.701586+00:00"
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:43:12.826353+00:00"
     },
     {
       "id": "183-ja-business-又吉直樹",
@@ -1888,7 +1894,7 @@
       "category": "business",
       "lang": "ko",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T20:34:51.661248",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1907,7 +1913,9 @@
           "source": "www.yeongnam.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:44:36.944074+00:00"
     },
     {
       "id": "193-ko-lifestyle-김연아",
@@ -1973,7 +1981,7 @@
       "category": "society",
       "lang": "ja",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T20:34:51.661278",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1992,7 +2000,9 @@
           "source": "smart-flash.jp"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:45:59.047322+00:00"
     },
     {
       "id": "196-ja-lifestyle-村田充",
@@ -2058,7 +2068,7 @@
       "category": "tech",
       "lang": "ja",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T20:34:51.661403",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2077,7 +2087,9 @@
           "source": "smart-flash.jp"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:47:36.691457+00:00"
     },
     {
       "id": "199-en-finance-todd-burkhalter",
@@ -2143,7 +2155,7 @@
       "category": "sports",
       "lang": "en",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T22:18:22.174282",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2162,7 +2174,9 @@
           "source": "www.basketballnetwork.net"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:48:46.137406+00:00"
     },
     {
       "id": "202-en-entertainment-nick-kyrgios",
@@ -2284,7 +2298,7 @@
       "category": "lifestyle",
       "lang": "ko",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T22:18:22.174325",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2303,7 +2317,9 @@
           "source": "www.news-wa.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:50:10.751097+00:00"
     },
     {
       "id": "207-ko-finance-강타",
@@ -2380,7 +2396,7 @@
       "category": "society",
       "lang": "ja",
       "priority": 7,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T22:18:22.174352",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2400,7 +2416,8 @@
         }
       ],
       "expiry_days": 3,
-      "reserved_at": null
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:34:04.752666+00:00"
     },
     {
       "id": "211-ja-lifestyle-星野リゾートトマム",
@@ -2408,7 +2425,7 @@
       "category": "lifestyle",
       "lang": "ja",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-22T22:18:22.174359",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2427,7 +2444,9 @@
           "source": "www.sankei.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:51:35.168874+00:00"
     },
     {
       "id": "212-ja-entertainment-トマフェス",
@@ -2554,7 +2573,7 @@
       "category": "sports",
       "lang": "en",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-24T06:35:37.187245",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2573,7 +2592,9 @@
           "source": "en.wikipedia.org"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:52:47.329329+00:00"
     },
     {
       "id": "218-en-society-adam22-and-jason-fig",
@@ -2637,7 +2658,7 @@
       "category": "sports",
       "lang": "ko",
       "priority": 6,
-      "status": "available",
+      "status": "completed",
       "created_at": "2026-01-24T06:35:37.187275",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2656,7 +2677,9 @@
           "source": "es.wikipedia.org"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-24T14:32:28.957798+00:00",
+      "completed_at": "2026-01-24T14:54:23.343280+00:00"
     },
     {
       "id": "221-ko-entertainment-ufc",
@@ -3289,6 +3312,401 @@
       "expiry_days": 3,
       "reserved_at": "2026-01-24T14:03:39.115642+00:00",
       "completed_at": "2026-01-24T14:15:21.680459+00:00"
+    },
+    {
+      "id": "244-en-sports-bundesliga",
+      "keyword": "bundesliga",
+      "category": "sports",
+      "lang": "en",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209762",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Users fear their team might get relegated and want to track current standings before it's too late",
+      "angle": "Relegation battle and transfer deadline pressure",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Bundesliga - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Bundesliga",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "245-en-sports-u23-asian-cup",
+      "keyword": "u23 asian cup",
+      "category": "sports",
+      "lang": "en",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209849",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Users want to see if promising young players will breakthrough or fade into obscurity",
+      "angle": "Career-defining tournament for youth prospects",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "AFC U-23 Asian Cup - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/AFC_U-23_Asian_Cup",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "How to watch 2026 Pegasus World Cup: Schedule, post time, location, entries list - NBC Sports",
+          "url": "https://www.nbcsports.com/horse-racing/news/how-to-watch-2026-pegasus-world-cup-schedule-post-time-location-entries-list",
+          "source": "www.nbcsports.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "246-en-finance-nebraska-vs-minnesot",
+      "keyword": "nebraska vs minnesota prediction",
+      "category": "finance",
+      "lang": "en",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209902",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Users need accurate predictions before placing bets or they'll lose money",
+      "angle": "High-stakes betting decision with financial consequences",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Nebraska Cornhuskers at Minnesota Golden Gophers odds, picks and predictions",
+          "url": "https://sportsbookwire.usatoday.com/story/sports/ncaab/2026/01/24/nebraska-at-minnesota-odds-picks-and-predictions/88303313007/",
+          "source": "sportsbookwire.usatoday.com"
+        },
+        {
+          "title": "Nebraska Cornhuskers vs Minnesota Golden Gophers Prediction, 1/24/2026 College Basketball Picks, Bes",
+          "url": "https://www.docsports.com/free-picks/ncaa-college-basketball/2026/nebraska-cornhuskers-vs-minnesota-golden-gophers-prediction-1-24-2026-college-basketball-picks-best-bets-odds.html",
+          "source": "www.docsports.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "247-en-lifestyle-can-trees-explode-in",
+      "keyword": "can trees explode in cold weather",
+      "category": "lifestyle",
+      "lang": "en",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209929",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Users fear potential property damage from exploding trees during extreme cold weather",
+      "angle": "Unexpected property damage from natural phenomena",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Do trees actually explode from 'extreme' cold? | FOX 9 Minneapolis-St. Paul",
+          "url": "https://www.fox9.com/weather/trees-explode-cold",
+          "source": "www.fox9.com"
+        },
+        {
+          "title": "Exploding tree - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Exploding_tree",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "248-en-entertainment-pegasus-world-cup-20",
+      "keyword": "pegasus world cup 2026",
+      "category": "entertainment",
+      "lang": "en",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209943",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Users want to place winning bets on high-stakes horse racing before odds change",
+      "angle": "High-stakes gambling opportunity with limited time window",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "AFC U-23 Asian Cup - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/AFC_U-23_Asian_Cup",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "How to watch 2026 Pegasus World Cup: Schedule, post time, location, entries list - NBC Sports",
+          "url": "https://www.nbcsports.com/horse-racing/news/how-to-watch-2026-pegasus-world-cup-schedule-post-time-location-entries-list",
+          "source": "www.nbcsports.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "249-ko-sports-번리-대-토트넘",
+      "keyword": "번리 대 토트넘",
+      "category": "sports",
+      "lang": "ko",
+      "priority": 9,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209957",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "강등권 팀의 생존을 걱정하는 팬들이 경기 결과를 확인하려 함",
+      "angle": "강등권 팀의 절체절명 생존 경기",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "[승부예측] 1월25일(일) 00:00 PL 23R 번리 vs 토트넘 스코어 예측",
+          "url": "https://www.interfootball.co.kr/news/articleView.html?idxno=678379",
+          "source": "www.interfootball.co.kr"
+        },
+        {
+          "title": "\"도르트문트전이 분수령\" 英 유력지, 프랭크 감독 후임으로 \"라이언 메이슨 & 포체티노\" 언급 | 미주중앙일보",
+          "url": "https://www.koreadaily.com/article/20260119151108566",
+          "source": "www.koreadaily.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "250-ko-entertainment-원진아",
+      "keyword": "원진아",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209968",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "드라마 시청자들이 배우의 연기력에 대한 불만을 확인하고 싶어함",
+      "angle": "배우의 연기력 논란이 작품에 미치는 영향",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "지성의 빅픽처, '전생 인연' 원진아와 공조 시작 \"김법래 잡게 해주겠다\" ('이한영')[종합]",
+          "url": "https://tvreport.co.kr/broadcast/article/991119/",
+          "source": "tvreport.co.kr"
+        },
+        {
+          "title": "‘D.P.’ ‘오겜’ 거쳐 ‘메이드인코리아’까지… 원지안이라는 도화지",
+          "url": "https://www.donga.com/news/Culture/article/all/20260120/133188629/2",
+          "source": "www.donga.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "251-ko-sports-바이에른-대-아우크스부르크",
+      "keyword": "바이에른 대 아우크스부르크",
+      "category": "sports",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209979",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "한국 선수의 출전 기회를 걱정하는 팬들의 불안감",
+      "angle": "한국 선수의 기회 박탈과 미래에 대한 우려",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "[승부예측] 1월25일(일) 00:00 PL 23R 번리 vs 토트넘 스코어 예측",
+          "url": "https://www.interfootball.co.kr/news/articleView.html?idxno=678379",
+          "source": "www.interfootball.co.kr"
+        },
+        {
+          "title": "\"도르트문트전이 분수령\" 英 유력지, 프랭크 감독 후임으로 \"라이언 메이슨 & 포체티노\" 언급 | 미주중앙일보",
+          "url": "https://www.koreadaily.com/article/20260119151108566",
+          "source": "www.koreadaily.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "252-ko-society-울산-불",
+      "keyword": "울산 불",
+      "category": "society",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.209988",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "화재 뉴스를 보고 자신의 거주지역 안전성을 걱정하는 사람들",
+      "angle": "예상치 못한 화재 위험성과 지역 안전 문제",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "울산 태화강 명촌 억새밭 곳곳 불…\"인명피해 없어\"",
+          "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008416799",
+          "source": "news.sbs.co.kr"
+        },
+        {
+          "title": "울산 명촌교 인근 갈대밭 화재…1시간 만에 진화 | 연합뉴스",
+          "url": "https://www.yna.co.kr/view/AKR20260124047300052",
+          "source": "www.yna.co.kr"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "253-ko-entertainment-최진실",
+      "keyword": "최진실",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.210022",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "고인의 가족이 겪는 지속적인 갈등 상황을 걱정하며 확인하려 함",
+      "angle": "유명인 가족의 지속되는 갈등과 상처",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "'故 최진실 딸' 최준희, 외할머니 저격하더니...의미심장 발언 - MHN / 엠에이치앤",
+          "url": "https://www.mhnse.com/news/articleView.html?idxno=501867",
+          "source": "www.mhnse.com"
+        },
+        {
+          "title": "'최진실 딸' 최준희, 또 외조모 불화설…\"사랑 받지 못 해\" 저격 의혹 [Oh!쎈 이슈]",
+          "url": "https://www.chosun.com/entertainments/broadcast/2026/01/20/GYYGENZWGZTDENRUME4GCOJTGM/",
+          "source": "www.chosun.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "254-ja-sports-cctv5",
+      "keyword": "cctv5",
+      "category": "sports",
+      "lang": "ja",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.210040",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "중요한 스포츠 경기 중계를 놓칠까봐 걱정하는 시청자들",
+      "angle": "독점 중계로 인한 시청 기회 제한",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "今日！cctv5直播u23国足冲冠+nba杨瀚森出战，5+转澳网王欣瑜亮相|纽约尼克斯队|多伦多猛龙队|杨翰森|法甲|亚特兰大_手机新浪网",
+          "url": "https://sports.sina.cn/2026-01-24/detail-inhiipvi6115507.d.html?vt=4&cid=76959&node_id=76959",
+          "source": "sports.sina.cn"
+        },
+        {
+          "title": "中国中央电视台体育频道 - 维基百科，自由的百科全书",
+          "url": "https://zh.wikipedia.org/zh-cn/%E4%B8%AD%E5%9B%BD%E4%B8%AD%E5%A4%AE%E7%94%B5%E8%A7%86%E5%8F%B0%E4%BD%93%E8%82%B2%E9%A2%91%E9%81%93",
+          "source": "zh.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "255-ja-society-bish",
+      "keyword": "bish",
+      "category": "society",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.210049",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "未解決事件に対する不安と正義への渇望",
+      "angle": "未解決事件の危険性と社会への影響",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "Killing of Molly Bish - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Killing_of_Molly_Bish",
+          "source": "en.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "256-ja-sports-三笘薫",
+      "keyword": "三笘薫",
+      "category": "sports",
+      "lang": "ja",
+      "priority": 9,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.210058",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "日本代表選手の調子を心配するサポーターの不安",
+      "angle": "エース選手の不調が代表チーム全体に与える影響",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "三笘薫 関連ニュース：時事ドットコム",
+          "url": "https://www.jiji.com/jc/v7?id=mitomakaoru",
+          "source": "www.jiji.com"
+        },
+        {
+          "title": "三笘薫 プレミア通算100試合出場 - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/pickup/6566809",
+          "source": "news.yahoo.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "257-ja-entertainment-ニッポンの社長",
+      "keyword": "ニッポンの社長",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.210067",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "復活を試みる芸人への期待と不安",
+      "angle": "芸能界での復活の困難さと現実",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "ニッポンの社長、『キングオブコント』次大会出場を表明「イチから挑みたい」 昨年は欠場｜Infoseekニュース",
+          "url": "https://news.infoseek.co.jp/article/oricon_2431672/",
+          "source": "news.infoseek.co.jp"
+        },
+        {
+          "title": "ニッポンの社長、『キングオブコント』次大会出場を表明「イチから挑みたい」 昨年は欠場",
+          "url": "https://www.oricon.co.jp/news/2431672/full/",
+          "source": "www.oricon.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "258-ja-education-工藤公康",
+      "keyword": "工藤公康",
+      "category": "education",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-25T00:07:07.210075",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "指導方法の時代適応性への疑問と不安",
+      "angle": "世代間の指導方法ギャップによる悪影響",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "1月27日から聞き書き新シリーズ 工藤公康さん「生きる力を身につける」",
+          "url": "https://www.nishinippon.co.jp/item/1449216/",
+          "source": "www.nishinippon.co.jp"
+        },
+        {
+          "title": "工藤公康さんが野球教室を開催【岩手・宮古市】（IAT岩手朝日テレビ）｜ｄメニューニュース",
+          "url": "https://topics.smt.docomo.ne.jp/article/iat/region/iat-2169198",
+          "source": "topics.smt.docomo.ne.jp"
+        }
+      ],
+      "expiry_days": 3
     }
   ]
 }
