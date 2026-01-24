@@ -791,8 +791,18 @@ Return improved version (body only, no title):""",
         kst = timezone(timedelta(hours=9))
         current_year = datetime.now(kst).year
 
-        # Extract first 800 chars of content for context
-        content_preview = content[:800] if len(content) > 800 else content
+        # Extract strategic samples from content for better context
+        # Take beginning (intro), middle (main content), and end (conclusion)
+        content_length = len(content)
+        if content_length <= 1200:
+            content_preview = content
+        else:
+            # Get first 500, middle 400, last 300 chars
+            beginning = content[:500]
+            middle_start = content_length // 2 - 200
+            middle = content[middle_start:middle_start + 400]
+            ending = content[-300:]
+            content_preview = f"{beginning}\n\n[...middle section...]\n{middle}\n\n[...conclusion...]\n{ending}"
 
         # Format references if available
         refs_context = ""
@@ -804,9 +814,9 @@ Return improved version (body only, no title):""",
             refs_context = f"\n\nREFERENCE TOPICS:\n{refs_list}\n"
 
         prompts = {
-            "en": f"Generate a catchy, SEO-friendly blog title (50-60 chars) for this post about '{keyword}'.\n\nCONTENT PREVIEW:\n{content_preview}{refs_context}\nIMPORTANT:\n- Title MUST accurately reflect the actual content focus (not generic guides)\n- If content discusses recent news/events, title should reflect that\n- Include the keyword '{keyword}' naturally\n- Current year is {current_year}, use it if mentioning years\n- Return ONLY the title, nothing else",
-            "ko": f"'{keyword}'에 대한 이 블로그 글의 매력적이고 SEO 친화적인 제목을 생성하세요 (50-60자).\n\n본문 미리보기:\n{content_preview}{refs_context}\n중요:\n- 제목은 실제 본문 내용을 정확히 반영해야 합니다 (일반적인 가이드 제목 X)\n- 본문이 최신 뉴스/이슈를 다룬다면 제목에도 반영하세요\n- '{keyword}' 키워드를 자연스럽게 포함하세요\n- 현재 연도는 {current_year}년입니다\n- 제목만 반환하세요",
-            "ja": f"'{keyword}'に関するこのブログ記事の魅力的でSEOフレンドリーなタイトルを生成してください（50-60文字）。\n\n本文プレビュー:\n{content_preview}{refs_context}\n重要:\n- タイトルは実際の本文内容を正確に反映する必要があります（一般的なガイドタイトル不可）\n- 本文が最新ニュース/話題を扱っている場合、タイトルにも反映してください\n- '{keyword}'キーワードを自然に含めてください\n- 現在の年は{current_year}年です\n- タイトルのみを返してください"
+            "en": f"Generate a catchy, SEO-friendly blog title (50-60 chars) for this post about '{keyword}'.\n\nCONTENT SAMPLES (beginning, middle, end):\n{content_preview}{refs_context}\nIMPORTANT:\n- Title MUST accurately reflect the MAIN TOPIC throughout the entire content\n- Read all content samples (beginning, middle, end) to understand the main theme\n- If beginning discusses subscription but main content is about rankings/fighters, focus on rankings/fighters\n- Include the keyword '{keyword}' naturally\n- Current year is {current_year}, use it if mentioning years\n- Return ONLY the title, nothing else",
+            "ko": f"'{keyword}'에 대한 이 블로그 글의 매력적이고 SEO 친화적인 제목을 생성하세요 (50-60자).\n\n본문 샘플 (시작, 중간, 끝):\n{content_preview}{refs_context}\n중요:\n- 제목은 본문 전체의 핵심 주제를 정확히 반영해야 합니다\n- 모든 본문 샘플(시작, 중간, 끝)을 읽고 핵심 주제를 파악하세요\n- 시작부분이 구독에 대해 이야기하지만 본문 대부분이 랭킹/선수에 관한 것이라면 랭킹/선수에 집중하세요\n- '{keyword}' 키워드를 자연스럽게 포함하세요\n- 현재 연도는 {current_year}년입니다\n- 제목만 반환하세요",
+            "ja": f"'{keyword}'に関するこのブログ記事の魅力的でSEOフレンドリーなタイトルを生成してください（50-60文字）。\n\n本文サンプル（冒頭、中盤、終盤）:\n{content_preview}{refs_context}\n重要:\n- タイトルは本文全体の核心テーマを正確に反映する必要があります\n- すべての本文サンプル（冒頭、中盤、終盤）を読んで核心テーマを把握してください\n- 冒頭がサブスクについて話していても、本文の大部分がランキング/選手に関するものなら、ランキング/選手に集中してください\n- '{keyword}'キーワードを自然に含めてください\n- 現在の年は{current_year}年です\n- タイトルのみを返してください"
         }
 
         response = self.client.messages.create(
@@ -818,7 +828,32 @@ Return improved version (body only, no title):""",
             }]
         )
 
-        return response.content[0].text.strip().strip('"').strip("'")
+        generated_title = response.content[0].text.strip().strip('"').strip("'")
+
+        # Validate title-content alignment
+        validation_prompts = {
+            "en": f"Does this title accurately reflect the main content?\n\nTITLE: {generated_title}\n\nCONTENT: {content_preview}\n\nAnswer ONLY 'yes' or 'no'. If no, briefly explain the mismatch (max 20 words).",
+            "ko": f"이 제목이 본문 내용을 정확히 반영합니까?\n\n제목: {generated_title}\n\n본문: {content_preview}\n\n'예' 또는 '아니오'로만 답하세요. 아니오라면 불일치를 간단히 설명하세요 (최대 20단어).",
+            "ja": f"このタイトルは本文内容を正確に反映していますか？\n\nタイトル: {generated_title}\n\n本文: {content_preview}\n\n「はい」または「いいえ」のみで答えてください。いいえの場合、不一致を簡潔に説明してください（最大20語）。"
+        }
+
+        validation_response = self.client.messages.create(
+            model=self.model,
+            max_tokens=50,
+            messages=[{
+                "role": "user",
+                "content": validation_prompts[lang]
+            }]
+        )
+
+        validation_result = validation_response.content[0].text.strip().lower()
+
+        # If validation fails, log warning (but still use the title)
+        if not validation_result.startswith('yes') and not validation_result.startswith('예') and not validation_result.startswith('はい'):
+            safe_print(f"  ⚠️  Title-content mismatch detected: {validation_result}")
+            safe_print(f"     Title: {generated_title}")
+
+        return generated_title
 
     def generate_description(self, content: str, keyword: str, lang: str) -> str:
         """Generate meta description"""
@@ -1018,7 +1053,7 @@ Return improved version (body only, no title):""",
             }
             params = {
                 "query": query,
-                "per_page": 5,
+                "per_page": 30,  # Increased from 5 to 30 for larger image pool
                 "orientation": "landscape"
             }
 
@@ -1033,13 +1068,39 @@ Return improved version (body only, no title):""",
 
             # Load used images tracking file
             used_images_file = Path(__file__).parent.parent / "data" / "used_images.json"
-            used_images = set()
-            if used_images_file.exists():
+            used_images_meta_file = Path(__file__).parent.parent / "data" / "used_images_metadata.json"
+
+            # Load metadata (tracks when each image was used)
+            used_images_meta = {}
+            if used_images_meta_file.exists():
                 try:
-                    with open(used_images_file, 'r') as f:
-                        used_images = set(json.load(f))
+                    with open(used_images_meta_file, 'r') as f:
+                        used_images_meta = json.load(f)
                 except:
                     pass
+
+            # Clean up images older than 30 days
+            from datetime import datetime, timedelta
+            current_time = datetime.now().timestamp()
+            cutoff_time = (datetime.now() - timedelta(days=30)).timestamp()
+
+            cleaned_meta = {}
+            for img_id, timestamp in used_images_meta.items():
+                if timestamp > cutoff_time:
+                    cleaned_meta[img_id] = timestamp
+
+            # Update set of used images (only keep recent ones)
+            used_images = set(cleaned_meta.keys())
+
+            # Save cleaned metadata
+            if cleaned_meta != used_images_meta:
+                used_images_meta_file.parent.mkdir(parents=True, exist_ok=True)
+                with open(used_images_meta_file, 'w') as f:
+                    json.dump(cleaned_meta, f, indent=2)
+                if len(used_images_meta) > len(cleaned_meta):
+                    safe_print(f"  🗑️  Cleaned up {len(used_images_meta) - len(cleaned_meta)} images older than 30 days")
+
+            used_images_meta = cleaned_meta
 
             # Find first unused image from results
             photo = None
@@ -1049,6 +1110,7 @@ Return improved version (body only, no title):""",
                     if image_id not in used_images:
                         photo = result
                         used_images.add(image_id)
+                        used_images_meta[image_id] = current_time
                         break
             else:
                 safe_print(f"  ⚠️  No images found for '{query}'")
@@ -1069,6 +1131,7 @@ Return improved version (body only, no title):""",
                         if image_id not in used_images:
                             photo = result
                             used_images.add(image_id)
+                            used_images_meta[image_id] = current_time
                             safe_print(f"  ✓ Found unused image with generic search: {generic_query}")
                             break
 
@@ -1077,10 +1140,14 @@ Return improved version (body only, no title):""",
                     safe_print(f"  ❌ No unused images available for category '{category}'")
                     return None
 
-            # Save used images
+            # Save used images (legacy file for backward compatibility)
             used_images_file.parent.mkdir(parents=True, exist_ok=True)
             with open(used_images_file, 'w') as f:
                 json.dump(list(used_images), f)
+
+            # Save metadata with timestamps
+            with open(used_images_meta_file, 'w') as f:
+                json.dump(used_images_meta, f, indent=2)
 
             image_info = {
                 'url': photo['urls']['regular'],
