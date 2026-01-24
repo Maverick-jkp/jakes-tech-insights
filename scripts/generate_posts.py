@@ -784,8 +784,8 @@ Return improved version (body only, no title):""",
 
         return prompts[lang]
 
-    def generate_title(self, content: str, keyword: str, lang: str) -> str:
-        """Generate SEO-friendly title based on actual content"""
+    def generate_title(self, content: str, keyword: str, lang: str, references: List[Dict] = None) -> str:
+        """Generate SEO-friendly title based on actual content and references"""
         # Get current year in KST
         from datetime import datetime, timezone, timedelta
         kst = timezone(timedelta(hours=9))
@@ -794,10 +794,19 @@ Return improved version (body only, no title):""",
         # Extract first 800 chars of content for context
         content_preview = content[:800] if len(content) > 800 else content
 
+        # Format references if available
+        refs_context = ""
+        if references and len(references) > 0:
+            refs_list = "\n".join([
+                f"- {ref.get('title', 'Source')}"
+                for ref in references[:3]
+            ])
+            refs_context = f"\n\nREFERENCE TOPICS:\n{refs_list}\n"
+
         prompts = {
-            "en": f"Generate a catchy, SEO-friendly blog title (50-60 chars) for this post about '{keyword}'.\n\nCONTENT PREVIEW:\n{content_preview}\n\nIMPORTANT:\n- Title MUST accurately reflect the actual content focus\n- Include the keyword '{keyword}' naturally\n- Current year is {current_year}, use it if mentioning years\n- Return ONLY the title, nothing else",
-            "ko": f"'{keyword}'에 대한 이 블로그 글의 매력적이고 SEO 친화적인 제목을 생성하세요 (50-60자).\n\n본문 미리보기:\n{content_preview}\n\n중요:\n- 제목은 실제 본문 내용을 정확히 반영해야 합니다\n- '{keyword}' 키워드를 자연스럽게 포함하세요\n- 현재 연도는 {current_year}년입니다\n- 제목만 반환하세요",
-            "ja": f"'{keyword}'に関するこのブログ記事の魅力的でSEOフレンドリーなタイトルを生成してください（50-60文字）。\n\n本文プレビュー:\n{content_preview}\n\n重要:\n- タイトルは実際の本文内容を正確に反映する必要があります\n- '{keyword}'キーワードを自然に含めてください\n- 現在の年は{current_year}年です\n- タイトルのみを返してください"
+            "en": f"Generate a catchy, SEO-friendly blog title (50-60 chars) for this post about '{keyword}'.\n\nCONTENT PREVIEW:\n{content_preview}{refs_context}\nIMPORTANT:\n- Title MUST accurately reflect the actual content focus (not generic guides)\n- If content discusses recent news/events, title should reflect that\n- Include the keyword '{keyword}' naturally\n- Current year is {current_year}, use it if mentioning years\n- Return ONLY the title, nothing else",
+            "ko": f"'{keyword}'에 대한 이 블로그 글의 매력적이고 SEO 친화적인 제목을 생성하세요 (50-60자).\n\n본문 미리보기:\n{content_preview}{refs_context}\n중요:\n- 제목은 실제 본문 내용을 정확히 반영해야 합니다 (일반적인 가이드 제목 X)\n- 본문이 최신 뉴스/이슈를 다룬다면 제목에도 반영하세요\n- '{keyword}' 키워드를 자연스럽게 포함하세요\n- 현재 연도는 {current_year}년입니다\n- 제목만 반환하세요",
+            "ja": f"'{keyword}'に関するこのブログ記事の魅力的でSEOフレンドリーなタイトルを生成してください（50-60文字）。\n\n本文プレビュー:\n{content_preview}{refs_context}\n重要:\n- タイトルは実際の本文内容を正確に反映する必要があります（一般的なガイドタイトル不可）\n- 本文が最新ニュース/話題を扱っている場合、タイトルにも反映してください\n- '{keyword}'キーワードを自然に含めてください\n- 現在の年は{current_year}年です\n- タイトルのみを返してください"
         }
 
         response = self.client.messages.create(
@@ -1447,7 +1456,7 @@ def main():
             # Generate metadata
             safe_print(f"  → Step 3/5: Generating metadata...")
             try:
-                title = generator.generate_title(final_content, topic['keyword'], topic['lang'])
+                title = generator.generate_title(final_content, topic['keyword'], topic['lang'], topic.get('references'))
                 description = generator.generate_description(final_content, topic['keyword'], topic['lang'])
             except Exception as e:
                 safe_print(f"  ⚠️  WARNING: Metadata generation failed, using defaults")
