@@ -18,6 +18,8 @@ omit =
     scripts/quality_gate.py
     scripts/validate_content_quality.py
     scripts/redownload_optimized_images.py
+    scripts/update_hugo_config.py
+    scripts/migrate_categories.sh
     scripts/utils/security.py
     scripts/utils/validate_queue.py
 
