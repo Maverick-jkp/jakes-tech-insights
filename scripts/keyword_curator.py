@@ -83,6 +83,7 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 - 교육/정보성 키워드 ("~하는 방법", "~란 무엇인가")
 - 긍정적이고 평화로운 키워드
 - **Query를 재해석하거나 다시 쓰는 것**
+- **같은 키워드를 다른 카테고리로 중복 제안하는 것** (예: "相葉雅紀"를 tech와 society 모두에 제안하지 말 것. 하나의 키워드는 하나의 카테고리만 가져야 함)
 
 출력 형식:
 반드시 JSON 형식으로만 응답하라.
@@ -606,7 +607,7 @@ class KeywordCurator:
 
         safe_print(f"✅ Generated {len(candidates)} candidates\n")
 
-        # STEP 1: Remove duplicates (keep first occurrence)
+        # STEP 1: Remove duplicates (keep first occurrence, regardless of category)
         seen_keywords = {}
         dedup_candidates = []
         duplicates_removed = 0
@@ -615,13 +616,17 @@ class KeywordCurator:
             keyword_lower = candidate.get('keyword', '').lower()
             if keyword_lower in seen_keywords:
                 duplicates_removed += 1
-                safe_print(f"  🔴 DUPLICATE REMOVED: {candidate.get('keyword')} (category: {candidate.get('category')})")
+                first_category = seen_keywords[keyword_lower]
+                duplicate_category = candidate.get('category')
+                safe_print(f"  🔴 DUPLICATE REMOVED: '{candidate.get('keyword')}' (duplicate category: {duplicate_category}, already exists as: {first_category})")
             else:
-                seen_keywords[keyword_lower] = True
+                # Store the category of the first occurrence
+                seen_keywords[keyword_lower] = candidate.get('category')
                 dedup_candidates.append(candidate)
 
         if duplicates_removed > 0:
-            safe_print(f"\n⚠️  Removed {duplicates_removed} duplicate keywords from Claude's response\n")
+            safe_print(f"\n⚠️  Removed {duplicates_removed} duplicate keywords from Claude's response")
+            safe_print(f"    Policy: One keyword = one category (first occurrence wins)\n")
 
         # STEP 2: Auto-correct sports keywords category
         sports_keywords = ['vs', 'vs.', 'game', 'match', 'league', 'cup', 'tournament', 'championship',
