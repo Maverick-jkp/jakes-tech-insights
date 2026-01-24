@@ -49,6 +49,27 @@ Google Trends-based keyword research and topic queue state management for conten
 
 ---
 
+## Dependencies
+
+**Required Python packages:**
+- `feedparser==6.0.10` - Google Trends RSS feed parsing
+- `pyyaml==6.0` - Topic queue JSON/YAML handling
+- `requests==2.31.0` - HTTP requests (if needed)
+
+**Installation:**
+```bash
+pip install -r requirements.txt
+```
+
+**Verification:**
+```bash
+python -c "import feedparser, yaml; print('✓ All dependencies installed')"
+```
+
+**Note**: This skill does NOT require Claude API (no API costs).
+
+---
+
 ## Quick Start
 
 ```bash
@@ -313,6 +334,6 @@ python scripts/topic_queue.py stats
 
 ---
 
-**Skill Version**: 1.1
+**Skill Version**: 1.2
 **Last Updated**: 2026-01-24
 **Maintained By**: Jake's Tech Insights project

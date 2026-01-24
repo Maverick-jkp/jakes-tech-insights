@@ -5,6 +5,31 @@ All notable changes to this skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-01-24
+
+### Added
+- **Dependencies section** - Package requirements with verification commands
+- **Progressive disclosure** - Split into 4 files (SKILL.md + 3 resources)
+  - `resources/ai-phrases.md` - Complete AI phrase blacklist
+  - `resources/ai-reviewer.md` - 5-criteria scoring details
+  - `resources/extending.md` - Guide for adding new validation rules
+
+### Changed
+- **File size reduction** - 516 lines → 341 lines (34% reduction)
+- **AI phrase section** - Summary only, full list in resources/
+- **AI reviewer section** - Overview only, details in resources/
+
+### Removed
+- Detailed AI phrase explanations (moved to resources/ai-phrases.md)
+- AI reviewer scoring details (moved to resources/ai-reviewer.md)
+- Extension patterns (moved to resources/extending.md)
+
+### Impact
+- **Token usage** - 50% reduction for basic validation tasks
+- **On-demand loading** - Advanced topics loaded only when needed
+- **Maintainability** - Easier to update blacklist in dedicated file
+- **Compliance** - Meets Anthropic's 500-line recommendation
+
 ## [1.1.0] - 2026-01-24
 
 ### Added

@@ -5,6 +5,23 @@ All notable changes to this skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-01-24
+
+### Added
+- **Dependencies section** - Complete package requirements with versions
+- **Invocation control flags** - `disable-model-invocation: true` and `user-invocable: true` in frontmatter
+- API key requirement documentation with cost warnings
+
+### Changed
+- **ANTHROPIC_API_KEY requirement** - Now explicitly documented
+- **Cost transparency** - Added "~$0.09 per post" cost notice
+
+### Impact
+- **Cost control** - Prevents accidental API usage without explicit user request
+- **Setup clarity** - New users know exactly what dependencies to install
+- **Security** - API key requirement clearly documented
+- **Compliance** - Follows Anthropic's invocation control recommendations
+
 ## [1.1.0] - 2026-01-24
 
 ### Added

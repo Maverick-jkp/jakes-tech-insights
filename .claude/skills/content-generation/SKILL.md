@@ -1,6 +1,8 @@
 ---
 name: content-generation
 description: Generates high-quality multilingual blog posts (EN/KO/JA) using Claude API with Draft + Editor agents. Use when generating content from trending keywords, creating articles (800-2000 words), or adding posts to the blog. Includes automatic quality validation and SEO optimization.
+disable-model-invocation: true
+user-invocable: true
 ---
 
 # Content Generation Skill
@@ -43,6 +45,34 @@ Generate high-quality multilingual blog posts (EN/KO/JA) using Claude API with D
 - ❌ Hugo build/preview → Use `hugo-operations` skill
 - ❌ Adding new keywords → Use `keyword-curation` skill
 - ❌ Git operations → Master agent responsibility
+
+---
+
+## Dependencies
+
+**Required Python packages:**
+- `anthropic==0.18.1` - Claude API client
+- `pyyaml==6.0` - YAML frontmatter parsing
+- `feedparser==6.0.10` - Google Trends RSS parsing (for topic queue)
+- `requests==2.31.0` - Unsplash API for featured images
+- `python-dateutil==2.8.2` - Date handling
+
+**Installation:**
+```bash
+pip install -r requirements.txt
+```
+
+**Verification:**
+```bash
+python -c "import anthropic, yaml, feedparser, requests, dateutil; print('✓ All dependencies installed')"
+```
+
+**Critical**: Set `ANTHROPIC_API_KEY` environment variable
+```bash
+export ANTHROPIC_API_KEY='your-api-key-here'
+```
+
+**Cost**: This skill uses Claude API (~$0.09 per post)
 
 ---
 
@@ -447,6 +477,6 @@ JAPANESE_DRAFT_PROMPT = """
 
 ---
 
-**Skill Version**: 1.1
+**Skill Version**: 1.2
 **Last Updated**: 2026-01-24
 **Maintained By**: Jake's Tech Insights project

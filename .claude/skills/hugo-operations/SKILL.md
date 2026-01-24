@@ -48,6 +48,35 @@ Hugo static site generator operations for Jake's Tech Insights multilingual blog
 
 ---
 
+## Dependencies
+
+**Required system packages:**
+- `hugo` (Extended version 0.120.0+) - Static site generator
+  - **Location**: `/opt/homebrew/bin/hugo`
+  - **⚠️ CRITICAL**: Hugo is NOT in PATH, always use full path
+
+**Required Python packages:**
+- `pyyaml==6.0` - YAML frontmatter validation (if running validation scripts)
+
+**Installation:**
+```bash
+# Hugo (macOS with Homebrew)
+brew install hugo
+
+# Python packages
+pip install -r requirements.txt
+```
+
+**Verification:**
+```bash
+/opt/homebrew/bin/hugo version
+# Expected: hugo v0.120.0+ extended
+```
+
+**Note**: This skill does NOT require Claude API (no API costs).
+
+---
+
 ## Quick Start
 
 ```bash
@@ -220,6 +249,6 @@ ls -la public/ja/tech/
 
 ---
 
-**Skill Version**: 1.1
+**Skill Version**: 1.2
 **Last Updated**: 2026-01-24
 **Maintained By**: Jake's Tech Insights project
