@@ -5,7 +5,7 @@ draft: false
 categories: ["society"]
 tags: ["judit", "polgar"]
 description: "Discover the chess genius of Judit Polgar, the strongest female player ever who defeated world champions and shattered gender barriers in competitive chess."
-image: "/images/placeholder-society.jpg"
+image: "/images/2026-01-24-judit-polgar.jpg"
 ---
 
 You've probably heard chess called a man's game, but what happens when a 15-year-old girl beats the world's top male grandmasters? Most people still don't know how Judit Polgar shattered every assumption about gender and chess mastery. Netflix's upcoming documentary "Queen of Chess" is bringing her story back into the spotlight, and the timing couldn't be more relevant as we debate women's representation in competitive fields.
@@ -78,3 +78,6 @@ What barriers in your own field might be more artificial than you've assumed? Th
 
 1. [A Documentary About Jewish Chess Legend Judit Polgár Is Coming to Netflix – Kveller](https://www.kveller.com/a-documentary-about-jewish-chess-legend-judit-polgar-is-coming-to-netflix/)
 2. [Official Trailer for 'Queen of Chess' Documentary About a Chess Prodigy | FirstShowing.net](https://www.firstshowing.net/2026/official-trailer-for-queen-of-chess-documentary-about-a-chess-prodigy/)
+
+
+*Photo by [Maria Budanova (Pristavskaya)](https://unsplash.com/@budanovamrus) on [Unsplash](https://unsplash.com/photos/a-black-and-white-photo-of-people-playing-chess-OBz5ga6Lz7o)*

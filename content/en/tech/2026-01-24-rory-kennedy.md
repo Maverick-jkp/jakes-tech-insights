@@ -5,7 +5,7 @@ draft: false
 categories: ["tech"]
 tags: ["rory", "kennedy"]
 description: "Discover the impactful documentary filmmaking career of Rory Kennedy, youngest daughter of RFK, exploring her award-winning films on social justice issues."
-image: "/images/placeholder-tech.jpg"
+image: "/images/2026-01-24-rory-kennedy.jpg"
 ---
 
 You've probably heard documentary filmmakers get labeled as "activist directors" – but what happens when one of them shifts from political advocacy to exploring pure human genius? That's exactly what's catching attention in early 2026 as Rory Kennedy, daughter of Robert F. Kennedy, releases her latest work focusing on chess prodigy stories.
@@ -74,3 +74,6 @@ Early 2026 box office numbers for "Queen of Chess" will tell us whether Kennedy'
 
 1. [Official Trailer for 'Queen of Chess' Documentary About a Chess Prodigy | FirstShowing.net](https://www.firstshowing.net/2026/official-trailer-for-queen-of-chess-documentary-about-a-chess-prodigy/)
 2. ["Good Morning America" Rory Kennedy & Judit Polgar/Sir Ben Kingsley/Dr. Tara Narula/ (TV Episode 202](https://www.imdb.com/title/tt39366387/)
+
+
+*Photo by [Benjamin Wedemeyer](https://unsplash.com/@benjaminwedemeyer) on [Unsplash](https://unsplash.com/photos/woman-in-black-t-shirt-holding-black-video-camera-FE0behAs3Vo)*
