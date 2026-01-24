@@ -434,7 +434,7 @@
         <!-- Posts Grid -->
         <div class="posts-grid" id="postsGrid">
             {{ $currentLangPages := where .Site.RegularPages "Language.Lang" .Site.Language.Lang }}
-            {{ $posts := where $currentLangPages "Type" "in" (slice "tech" "business" "society" "entertainment" "lifestyle" "sports" "finance" "education") }}
+            {{ $posts := where $currentLangPages "Type" "in" (slice "tech" "business" "society" "entertainment" "sports") }}
             {{ range $posts }}
             <a href="{{ .Permalink }}" class="post-card" data-category="{{ index .Params.categories 0 }}">
                 {{ if .Params.image }}
@@ -476,16 +476,19 @@
             <a href="/categories/business/">Business</a>
             <a href="/categories/society/">Society</a>
             <a href="/categories/entertainment/">Entertainment</a>
+            <a href="/categories/sports/">Sports</a>
             {{ else if eq .Site.Language.Lang "ko" }}
             <a href="/ko/categories/tech/">Tech</a>
             <a href="/ko/categories/business/">Business</a>
             <a href="/ko/categories/society/">Society</a>
             <a href="/ko/categories/entertainment/">Entertainment</a>
+            <a href="/ko/categories/sports/">Sports</a>
             {{ else if eq .Site.Language.Lang "ja" }}
             <a href="/ja/categories/tech/">Tech</a>
             <a href="/ja/categories/business/">Business</a>
             <a href="/ja/categories/society/">Society</a>
             <a href="/ja/categories/entertainment/">Entertainment</a>
+            <a href="/ja/categories/sports/">Sports</a>
             {{ end }}
         </div>
     </div>
