@@ -1,0 +1,430 @@
+
+============================================================
+  🔍 Pre-flight Environment Checks
+============================================================
+
+  ✓ ANTHROPIC_API_KEY: Configured
+  ✓ UNSPLASH_ACCESS_KEY: Configured
+
+  ✓ Anthropic API client initialized successfully
+  🖼️  Unsplash API enabled
+⚠️  Skipping duplicate: 김연아 (ko) - already completed as 191-ko-entertainment-김연아
+
+============================================================
+  Generating 16 posts
+============================================================
+
+[1/16] 209-ja-finance-宝くじ-当選番号-ロト6
+  Keyword: 宝くじ 当選番号 ロト6
+  Category: finance
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 宝くじ 当選番号 ロト6
+  💾 Cache created: 1812 tokens
+  ✓ Draft generated (1826 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2613, output=2407)
+  ✓ Draft edited (2814 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: finance money finance money
+  ✓ Found image by Lukasz Radziejewski
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-宝くじ-当選番号-ロト6.jpg (161.5 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (1 refs)
+  ✅ Added 1 references from queue
+  ℹ️  Affiliate links disabled for category: finance
+  💾 Saved to: content/ja/finance/2026-01-24-宝くじ-当選番号-ロト6.md
+  ✅ Completed!
+
+[2/16] 216-en-business-hyundai-recalls
+  Keyword: hyundai recalls
+  Category: business
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: hyundai recalls
+  ℹ️  No caching (usage: input=1748, output=1098)
+  ✓ Draft generated (5400 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1724, output=1435)
+  ✓ Draft edited (7199 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: hyundai recalls business professional
+  ⚠️  No images found for 'hyundai recalls business professional'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: business
+  💾 Saved to: content/en/business/2026-01-24-hyundai-recalls.md
+  ✅ Completed!
+
+[3/16] 219-ko-tech-그록
+  Keyword: 그록
+  Category: tech
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 그록
+  💾 Cache created: 1779 tokens
+  ✓ Draft generated (2352 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache created: 1071 tokens
+  ✓ Draft edited (2848 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ✓ Found image by Immo Wegmann
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-그록.jpg (139.6 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ko/tech/2026-01-24-그록.md
+  ✅ Completed!
+
+[4/16] 224-ja-society-地震速報
+  Keyword: 地震速報
+  Category: society
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 地震速報
+  💾 Cache created: 1801 tokens
+  ✓ Draft generated (3077 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3678, output=3232)
+  ✓ Draft edited (3701 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: society community society community
+  ✓ Found image by Mihai Neagu
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-地震速報.jpg (103.7 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (1 URLs)
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/ja/society/2026-01-24-地震速報.md
+  ✅ Completed!
+
+[5/16] 241-ja-education-衆議院-選挙区
+  Keyword: 衆議院 選挙区
+  Category: education
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 衆議院 選挙区
+  💾 Cache created: 1806 tokens
+  ✓ Draft generated (2736 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3372, output=2411)
+  ✓ Draft edited (2798 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: education learning education learning
+  ✓ Found image by Anna Louise
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-衆議院-選挙区.jpg (112.0 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: education
+  💾 Saved to: content/ja/education/2026-01-24-衆議院-選挙区.md
+  ✅ Completed!
+
+[6/16] 186-en-business-dow-jones-futures
+  Keyword: dow jones futures
+  Category: business
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: dow jones futures
+  ℹ️  No caching (usage: input=1767, output=1330)
+  ✓ Draft generated (6533 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1956, output=1698)
+  ✓ Draft edited (8502 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: dow jones business professional
+  ⚠️  No images found for 'dow jones business professional'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: business
+  💾 Saved to: content/en/business/2026-01-24-dow-jones-futures.md
+  ✅ Completed!
+
+[7/16] 188-en-society-todays-weather
+  Keyword: todays weather
+  Category: society
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: todays weather
+  ℹ️  No caching (usage: input=1653, output=1227)
+  ✓ Draft generated (6304 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1853, output=1404)
+  ✓ Draft edited (7464 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: todays weather society community
+  ⚠️  No images found for 'todays weather society community'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (1 refs)
+  ✅ Added 1 references from queue
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/en/society/2026-01-24-todays-weather.md
+  ✅ Completed!
+
+[8/16] 190-ko-sports-썬더스-대-대구-한국가스공사
+  Keyword: 썬더스 대 대구 한국가스공사
+  Category: sports
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 썬더스 대 대구 한국가스공사
+  💾 Cache created: 1793 tokens
+  ✓ Draft generated (2361 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache created: 1071 tokens
+  ✓ Draft edited (2555 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: sports athletic sports athletic
+  ✓ Found image by Valdhy Mbemba
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-썬더스-대-대구-한국가스공사.jpg (217.6 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: sports
+  💾 Saved to: content/ko/sports/2026-01-24-썬더스-대-대구-한국가스공사.md
+  ✅ Completed!
+
+[9/16] 196-ja-lifestyle-村田充
+  Keyword: 村田充
+  Category: lifestyle
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 村田充
+  💾 Cache created: 1800 tokens
+  ✓ Draft generated (2125 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2920, output=1796)
+  ✓ Draft edited (1924 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: lifestyle daily lifestyle daily
+  ⚠️  All images for 'lifestyle daily lifestyle daily' already used, trying generic category search...
+  ❌ No unused images available for category 'lifestyle'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: lifestyle
+  💾 Saved to: content/ja/lifestyle/2026-01-24-村田充.md
+  ✅ Completed!
+
+[10/16] 199-en-finance-todd-burkhalter
+  Keyword: todd burkhalter
+  Category: finance
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: todd burkhalter
+  ℹ️  No caching (usage: input=1738, output=1261)
+  ✓ Draft generated (6509 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1887, output=1683)
+  ✓ Draft edited (8590 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: todd burkhalter finance money
+  ⚠️  No images found for 'todd burkhalter finance money'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: finance
+  💾 Saved to: content/en/finance/2026-01-24-todd-burkhalter.md
+  ✅ Completed!
+
+[11/16] 204-ko-tech-티빙
+  Keyword: 티빙
+  Category: tech
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 티빙
+  💾 Cache created: 1780 tokens
+  ✓ Draft generated (1962 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache HIT: 1071 tokens saved!
+  ✓ Draft edited (2561 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ⚠️  All images for 'technology digital technology digital' already used, trying generic category search...
+  ✓ Found unused image with generic search: technology digital
+  ✓ Found image by Mitchell Luo
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-티빙.jpg (49.5 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ko/tech/2026-01-24-티빙.md
+  ✅ Completed!
+
+[12/16] 213-ja-tech-氷のホテル
+  Keyword: 氷のホテル
+  Category: tech
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 氷のホテル
+  💾 Cache created: 1803 tokens
+  ✓ Draft generated (2203 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3051, output=2650)
+  ✓ Draft edited (2874 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ⚠️  All images for 'technology digital technology digital' already used, trying generic category search...
+  ✓ Found unused image with generic search: technology digital
+  ✓ Found image by Bernd 📷 Dittrich
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-氷のホテル.jpg (258.2 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No references available (neither in content nor queue)
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ja/tech/2026-01-24-氷のホテル.md
+  ✅ Completed!
+
+[13/16] 214-en-entertainment-snooki
+  Keyword: snooki
+  Category: entertainment
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: snooki
+  ℹ️  No caching (usage: input=1783, output=1192)
+  ✓ Draft generated (5345 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1818, output=1386)
+  ✓ Draft edited (7012 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: snooki entertainment culture
+  ⚠️  No images found for 'snooki entertainment culture'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/en/entertainment/2026-01-24-snooki.md
+  ✅ Completed!
+
+[14/16] 222-ko-society-u23
+  Keyword: u23
+  Category: society
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: u23
+  💾 Cache created: 1779 tokens
+  ✓ Draft generated (2572 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache HIT: 1071 tokens saved!
+  ✓ Draft edited (3259 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: u23 society community
+  ⚠️  No images found for 'u23 society community'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/ko/society/2026-01-24-u23.md
+  ✅ Completed!
+
+[15/16] 226-ja-business-衆議院-選挙区
+  Keyword: 衆議院 選挙区
+  Category: business
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 衆議院 選挙区
+  💾 Cache created: 1806 tokens
+  ✓ Draft generated (2157 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2870, output=2337)
+  ✓ Draft edited (2703 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: business professional business professional
+  ⚠️  All images for 'business professional business professional' already used, trying generic category search...
+  ✓ Found unused image with generic search: business professional
+  ✓ Found image by charlesdeluvio
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-衆議院-選挙区.jpg (133.3 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: business
+  💾 Saved to: content/ja/business/2026-01-24-衆議院-選挙区.md
+  ✅ Completed!
+
+[16/16] 230-en-finance-hyundai-recalls
+  Keyword: hyundai recalls
+  Category: finance
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: hyundai recalls
+  ℹ️  No caching (usage: input=1748, output=1260)
+  ✓ Draft generated (5729 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1886, output=1636)
+  ✓ Draft edited (7605 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: hyundai recalls finance money
+  ✓ Found image by P. L.
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-hyundai-recalls.jpg (109.4 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: finance
+  💾 Saved to: content/en/finance/2026-01-24-hyundai-recalls.md
+  ✅ Completed!
+
+
+============================================================
+  📊 Post-Generation Quality Check
+============================================================
+
+  ⚠️  Placeholder image: 2026-01-24-hyundai-recalls.md
+  ⚠️  Placeholder image: 2026-01-24-dow-jones-futures.md
+  ⚠️  Placeholder image: 2026-01-24-todays-weather.md
+  ⚠️  Placeholder image: 2026-01-24-村田充.md
+  ⚠️  Placeholder image: 2026-01-24-todd-burkhalter.md
+  ⚠️  No references: 2026-01-24-氷のホテル.md
+  ⚠️  Placeholder image: 2026-01-24-snooki.md
+  ⚠️  Placeholder image: 2026-01-24-u23.md
+
+🚨 WARNING: 1/16 posts have NO references!
+   This reduces content credibility and SEO value.
+   FIX: Ensure Google Custom Search API is configured in keyword curation
+
+🚨 WARNING: 7/16 posts use PLACEHOLDER images!
+   This hurts user experience and engagement.
+   FIX: Ensure UNSPLASH_ACCESS_KEY is set in environment variables
+
+============================================================
+  ✓ Generated 16 posts
+  File list saved to: generated_files.json
+============================================================
+

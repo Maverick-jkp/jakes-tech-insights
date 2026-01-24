@@ -1,0 +1,165 @@
+
+============================================================
+  Quality Gate - Checking 16 files
+============================================================
+
+Checking: 2026-01-24-宝くじ-当選番号-ロト6.md
+  ⚠️  WARNINGS:
+     - Character count on the lower end: 2756 chars (target: 2800-4200)
+     - Description length not optimal: 97 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2756 chars words, 7 headings, 5 links
+
+Checking: 2026-01-24-hyundai-recalls.md
+  ❌ FAILURES:
+     - Duplicate keyword 'hyundai-recalls' found in recent posts (last 7 days): 2026-01-24-hyundai-recalls.md
+  ⚠️  WARNINGS:
+     - Description length not optimal: 163 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 1085 words, 6 headings, 2 links
+
+Checking: 2026-01-24-그록.md
+  ⚠️  WARNINGS:
+     - AI phrases detected: 물론
+     - Description length not optimal: 101 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2300 chars words, 6 headings, 4 links
+
+Checking: 2026-01-24-地震速報.md
+  ❌ FAILURES:
+     - Title-content mismatch: Only 0% of title keywords found in body (expected >30%)
+  ⚠️  WARNINGS:
+     - AI phrases detected: 重要です
+     - Description length not optimal: 100 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 3684 chars words, 5 headings, 4 links
+
+Checking: 2026-01-24-衆議院-選挙区.md
+  ❌ FAILURES:
+     - Duplicate keyword '衆議院-選挙区' found in recent posts (last 7 days): 2026-01-24-衆議院-選挙区.md
+     - Title-content mismatch: Only 0% of title keywords found in body (expected >30%)
+  ⚠️  WARNINGS:
+     - Character count on the lower end: 2779 chars (target: 2800-4200)
+     - Description length not optimal: 94 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2779 chars words, 5 headings, 5 links
+
+Checking: 2026-01-24-dow-jones-futures.md
+  ⚠️  WARNINGS:
+     - Word count high: 1304 words (target: 700-1200, Editor should compress)
+     - AI phrases detected: leverage
+     - Description length not optimal: 166 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 1304 words, 5 headings, 2 links
+
+Checking: 2026-01-24-todays-weather.md
+  ⚠️  WARNINGS:
+     - Low link count: 1 (recommended: 2+)
+  📊 Info: 1052 words, 6 headings, 1 links
+
+Checking: 2026-01-24-썬더스-대-대구-한국가스공사.md
+  ❌ FAILURES:
+     - Duplicate keyword '썬더스-대-대구-한국가스공사' found in recent posts (last 7 days): 2026-01-23-썬더스-대-대구-한국가스공사.md
+  ⚠️  WARNINGS:
+     - Description length not optimal: 92 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2330 chars words, 6 headings, 5 links
+
+Checking: 2026-01-24-村田充.md
+  ❌ FAILURES:
+     - Title-content mismatch: Only 0% of title keywords found in body (expected >30%)
+  ⚠️  WARNINGS:
+     - Character count too low: 2172 chars (recommended: 2200+)
+     - Description length not optimal: 99 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2172 chars words, 6 headings, 2 links
+
+Checking: 2026-01-24-todd-burkhalter.md
+  ⚠️  WARNINGS:
+     - Word count high: 1252 words (target: 700-1200, Editor should compress)
+     - AI phrases detected: leverage
+     - Description length not optimal: 162 chars (ideal: 120-160)
+  📊 Info: 1252 words, 6 headings, 2 links
+
+Checking: 2026-01-24-티빙.md
+  ❌ FAILURES:
+     - Title-content mismatch: Only 20% of title keywords found in body (expected >30%)
+  ⚠️  WARNINGS:
+     - Description length not optimal: 85 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2100 chars words, 6 headings, 5 links
+
+Checking: 2026-01-24-氷のホテル.md
+  ❌ FAILURES:
+     - Title-content mismatch: Only 0% of title keywords found in body (expected >30%)
+  ⚠️  WARNINGS:
+     - Description length not optimal: 88 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2837 chars words, 6 headings, 3 links
+
+Checking: 2026-01-24-snooki.md
+  ⚠️  WARNINGS:
+     - Meta description may not accurately reflect content
+  📊 Info: 1034 words, 5 headings, 2 links
+
+Checking: 2026-01-24-u23.md
+  ⚠️  WARNINGS:
+     - Description length not optimal: 92 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2764 chars words, 7 headings, 2 links
+
+Checking: 2026-01-24-衆議院-選挙区.md
+  ❌ FAILURES:
+     - Duplicate keyword '衆議院-選挙区' found in recent posts (last 7 days): 2026-01-24-衆議院-選挙区.md
+     - Title-content mismatch: Only 0% of title keywords found in body (expected >30%)
+  ⚠️  WARNINGS:
+     - Character count on the lower end: 2596 chars (target: 2800-4200)
+     - Description length not optimal: 90 chars (ideal: 120-160)
+     - Meta description may not accurately reflect content
+  📊 Info: 2596 chars words, 8 headings, 5 links
+
+Checking: 2026-01-24-hyundai-recalls.md
+  ❌ FAILURES:
+     - Duplicate keyword 'hyundai-recalls' found in recent posts (last 7 days): 2026-01-24-hyundai-recalls.md
+  📊 Info: 1130 words, 6 headings, 7 links
+
+
+============================================================
+  ⚠️ Processing Failed Files
+============================================================
+
+  🗑️ Deleting: 2026-01-24-hyundai-recalls.md
+     ✓ Deleted 2026-01-24-hyundai-recalls.md
+  🗑️ Deleting: 2026-01-24-地震速報.md
+     ✓ Deleted 2026-01-24-地震速報.md
+  🗑️ Deleting: 2026-01-24-衆議院-選挙区.md
+     ✓ Deleted 2026-01-24-衆議院-選挙区.md
+  🗑️ Deleting: 2026-01-24-썬더스-대-대구-한국가스공사.md
+     ✓ Deleted 2026-01-24-썬더스-대-대구-한국가스공사.md
+  🗑️ Deleting: 2026-01-24-村田充.md
+     ✓ Deleted 2026-01-24-村田充.md
+  🗑️ Deleting: 2026-01-24-티빙.md
+     ✓ Deleted 2026-01-24-티빙.md
+  🗑️ Deleting: 2026-01-24-氷のホテル.md
+     ✓ Deleted 2026-01-24-氷のホテル.md
+  🗑️ Deleting: 2026-01-24-衆議院-選挙区.md
+     ✓ Deleted 2026-01-24-衆議院-選挙区.md
+  🗑️ Deleting: 2026-01-24-hyundai-recalls.md
+     ✓ Deleted 2026-01-24-hyundai-recalls.md
+
+  🔄 Returning 9 topics to queue...
+     ✓ Topics returned to available status
+
+============================================================
+  Summary
+============================================================
+Files checked: 16
+Passed: 7
+Failed: 9
+Critical failures: 11
+Warnings: 37
+
+✓ Passed files list saved to: passed_files.json
+✓ Detailed report saved to: quality_report.json
+
+✅ Quality Gate: PASSED (7 file(s))

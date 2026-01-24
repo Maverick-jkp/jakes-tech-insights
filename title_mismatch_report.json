@@ -1,0 +1,280 @@
+{
+  "total": 78,
+  "passing": 53,
+  "failing": 25,
+  "failed_posts": [
+    {
+      "file": "content/ja/all-posts.md",
+      "title": "すべての投稿",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "すべての投稿"
+      ]
+    },
+    {
+      "file": "content/ko/all-posts.md",
+      "title": "전체 게시물",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "게시물"
+      ]
+    },
+    {
+      "file": "content/en/all-posts.md",
+      "title": "All Posts",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "posts",
+        "all"
+      ]
+    },
+    {
+      "file": "content/ko/entertainment/2026-01-23-김연아.md",
+      "title": "김연아의 전설적인 피겨스케이팅 여정과 현재 활동까지 완벽 정리",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "김연아의",
+        "활동까지",
+        "전설적인",
+        "피겨스케이팅",
+        "여정과"
+      ]
+    },
+    {
+      "file": "content/ko/society/2026-01-22-장동혁.md",
+      "title": "장동혁의 숨겨진 매력과 성공 스토리: 알려지지 않은 흥미로운 사실들",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "매력과",
+        "흥미로운",
+        "숨겨진",
+        "사실들",
+        "스토리",
+        "알려지지",
+        "장동혁의"
+      ]
+    },
+    {
+      "file": "content/ja/entertainment/2026-01-22-フォートナイト.md",
+      "title": "フォートナイト2026年最新攻略法！初心者から上級者まで勝率アップの秘訣",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "初心者から上級者まで勝率アップの秘訣",
+        "フォートナイト2026年最新攻略法"
+      ]
+    },
+    {
+      "file": "content/ja/entertainment/2026-01-22-若隆景.md",
+      "title": "若隆景の2026年最新情報！成績・取組・プロフィールを徹底解説",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "若隆景の2026年最新情報",
+        "プロフィールを徹底解説"
+      ]
+    },
+    {
+      "file": "content/ja/business/2026-01-22-又吉直樹.md",
+      "title": "又吉直樹の最新作品と文学的魅力を徹底解説！芥川賞作家の創作秘話",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "芥川賞作家の創作秘話",
+        "又吉直樹の最新作品と文学的魅力を徹底解説"
+      ]
+    },
+    {
+      "file": "content/ja/lifestyle/2026-01-22-はま寿司.md",
+      "title": "はま寿司の魅力を徹底解説！人気メニューや料金、お得なクーポン情報まで",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "人気メニューや料金",
+        "はま寿司の魅力を徹底解説",
+        "お得なクーポン情報まで"
+      ]
+    },
+    {
+      "file": "content/ja/lifestyle/2026-01-22-sorana-cîrstea.md",
+      "title": "ソラナ・チルステア：2026年最新動向とテニスキャリアの軌跡を徹底解説",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "2026年最新動向とテニスキャリアの軌跡を徹底解説",
+        "ソラナ",
+        "チルステア"
+      ]
+    },
+    {
+      "file": "content/ja/lifestyle/2026-01-22-しゃぶ葉.md",
+      "title": "しゃぶ葉の食べ放題完全攻略！おすすめメニューと裏技で元を取る方法",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "しゃぶ葉の食べ放題完全攻略",
+        "おすすめメニューと裏技で元を取る方法"
+      ]
+    },
+    {
+      "file": "content/ja/society/2026-01-22-sixtones.md",
+      "title": "SixTONESの最新情報と魅力を徹底解説！メンバーの個性と楽曲の魅力",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "sixtonesの最新情報と魅力を徹底解説",
+        "メンバーの個性と楽曲の魅力"
+      ]
+    },
+    {
+      "file": "content/ja/society/2026-01-22-酒井順子.md",
+      "title": "酒井順子の鋭い女性観察眼が光る！現代女性の本音を描くエッセイの魅力とは",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "酒井順子の鋭い女性観察眼が光る",
+        "現代女性の本音を描くエッセイの魅力とは"
+      ]
+    },
+    {
+      "file": "content/ja/society/2026-01-22-赤坂-事故.md",
+      "title": "【2026年最新】赤坂で発生した交通事故の詳細と安全対策まとめ",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "2026年最新",
+        "赤坂で発生した交通事故の詳細と安全対策まとめ"
+      ]
+    },
+    {
+      "file": "content/ja/sports/2026-01-22-熱海富士.md",
+      "title": "熱海富士の魅力を徹底解説！温泉街の絶景スポットとグルメ情報完全ガイド",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "熱海富士の魅力を徹底解説",
+        "温泉街の絶景スポットとグルメ情報完全ガイド"
+      ]
+    },
+    {
+      "file": "content/ja/sports/2026-01-22-sl-vs-eng.md",
+      "title": "スリランカ対イングランド徹底比較！2026年最新クリケット対戦分析",
+      "passes": false,
+      "match_ratio": 0.0,
+      "missing_keywords": [
+        "スリランカ対イングランド徹底比較",
+        "2026年最新クリケット対戦分析"
+      ]
+    },
+    {
+      "file": "content/en/business/2026-01-22-singapore.md",
+      "title": "Singapore Travel Guide: Top Attractions & Hidden Gems",
+      "passes": false,
+      "match_ratio": 16.666666666666664,
+      "missing_keywords": [
+        "top",
+        "attractions",
+        "hidden",
+        "gems",
+        "travel"
+      ]
+    },
+    {
+      "file": "content/ko/education/2026-01-22-전남대.md",
+      "title": "전남대학교 입학 완벽 가이드 2026년 최신판 | 학과별 입시 정보와 캠퍼스 생활 꿀팁",
+      "passes": false,
+      "match_ratio": 16.666666666666664,
+      "missing_keywords": [
+        "전남대학교",
+        "최신판",
+        "정보와",
+        "2026년",
+        "학과별"
+      ]
+    },
+    {
+      "file": "content/ko/entertainment/2026-01-22-전민기.md",
+      "title": "전민기 배우의 매력과 대표작품 완벽 분석 - 연기력부터 근황까지",
+      "passes": false,
+      "match_ratio": 16.666666666666664,
+      "missing_keywords": [
+        "대표작품",
+        "매력과",
+        "배우의",
+        "연기력부터",
+        "근황까지"
+      ]
+    },
+    {
+      "file": "content/ko/education/2026-01-22-quad-cortex-mini.md",
+      "title": "쿼드 코텍스 미니 완벽 가이드: 컴팩트한 프리미엄 기타 프로세서 리뷰",
+      "passes": false,
+      "match_ratio": 25.0,
+      "missing_keywords": [
+        "프로세서",
+        "프리미엄",
+        "코텍스"
+      ]
+    },
+    {
+      "file": "content/ko/entertainment/2026-01-22-이금희.md",
+      "title": "이금희의 삶과 업적: 한국 여성 정치인의 개척자적 발자취",
+      "passes": false,
+      "match_ratio": 25.0,
+      "missing_keywords": [
+        "개척자적",
+        "정치인의",
+        "발자취"
+      ]
+    },
+    {
+      "file": "content/ko/society/2026-01-22-장재원.md",
+      "title": "장재원 의원의 정치 철학과 주요 정책 - 2026년 최신 동향 분석",
+      "passes": false,
+      "match_ratio": 25.0,
+      "missing_keywords": [
+        "2026년",
+        "의원의",
+        "철학과"
+      ]
+    },
+    {
+      "file": "content/ko/finance/2026-01-22-국민연금.md",
+      "title": "국민연금 완벽 가이드: 수령액 계산부터 예상 연금액까지 한 번에 정리",
+      "passes": false,
+      "match_ratio": 25.0,
+      "missing_keywords": [
+        "연금액까지",
+        "수령액",
+        "계산부터"
+      ]
+    },
+    {
+      "file": "content/ko/tech/2026-01-22-붉은사막.md",
+      "title": "붉은사막 완벽 가이드: 숨겨진 명소부터 최적 여행 시기까지 총정리",
+      "passes": false,
+      "match_ratio": 25.0,
+      "missing_keywords": [
+        "시기까지",
+        "숨겨진",
+        "명소부터"
+      ]
+    },
+    {
+      "file": "content/ja/education/2026-01-22-東京科学大学.md",
+      "title": "東京科学大学2026年最新情報｜偏差値・入試対策・就職実績を徹底解説",
+      "passes": false,
+      "match_ratio": 25.0,
+      "missing_keywords": [
+        "東京科学大学2026年最新情報",
+        "就職実績を徹底解説",
+        "入試対策"
+      ]
+    }
+  ]
+}

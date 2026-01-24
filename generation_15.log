@@ -1,0 +1,419 @@
+
+============================================================
+  🔍 Pre-flight Environment Checks
+============================================================
+
+  ✓ ANTHROPIC_API_KEY: Configured
+  ✓ UNSPLASH_ACCESS_KEY: Configured
+
+  ✓ Anthropic API client initialized successfully
+  🖼️  Unsplash API enabled
+⚠️  Skipping duplicate: 김연아 (ko) - already completed as 191-ko-entertainment-김연아
+⚠️  Skipping duplicate: 그록 (ko) - already completed as 219-ko-tech-그록
+⚠️  Skipping invalid topic 215-en-tech-mercy-(2026-film): ['Invalid keyword: Keyword contains invalid characters']
+⚠️  Skipping duplicate: afc u-23 축구 선수권 대회 (ko) - already completed as 238-ko-business-afc-u-23-축구-선수권-대회
+⚠️  Skipping invalid topic 231-en-education-mercy-(2026-film): ['Invalid keyword: Keyword contains invalid characters']
+⚠️  Skipping duplicate: u23 (ko) - already completed as 222-ko-society-u23
+
+============================================================
+  Generating 15 posts
+============================================================
+
+[1/15] 224-ja-society-地震速報
+  Keyword: 地震速報
+  Category: society
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 地震速報
+  💾 Cache created: 1801 tokens
+  ✓ Draft generated (2345 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3041, output=2056)
+  ✓ Draft edited (2332 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: society community society community
+  ⚠️  All images for 'society community society community' already used, trying generic category search...
+  ❌ No unused images available for category 'society'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (1 refs)
+  ✅ Added 1 references from queue
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/ja/society/2026-01-24-地震速報.md
+  ✅ Completed!
+
+[2/15] 196-ja-lifestyle-村田充
+  Keyword: 村田充
+  Category: lifestyle
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 村田充
+  💾 Cache created: 1800 tokens
+  ✓ Draft generated (2503 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3173, output=2811)
+  ✓ Draft edited (3061 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: lifestyle daily lifestyle daily
+  ⚠️  All images for 'lifestyle daily lifestyle daily' already used, trying generic category search...
+  ❌ No unused images available for category 'lifestyle'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: lifestyle
+  💾 Saved to: content/ja/lifestyle/2026-01-24-村田充.md
+  ✅ Completed!
+
+[3/15] 204-ko-tech-티빙
+  Keyword: 티빙
+  Category: tech
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 티빙
+  💾 Cache created: 1780 tokens
+  ✓ Draft generated (1677 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache created: 1071 tokens
+  ✓ Draft edited (2402 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ⚠️  All images for 'technology digital technology digital' already used, trying generic category search...
+  ❌ No unused images available for category 'tech'
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ko/tech/2026-01-24-티빙.md
+  ✅ Completed!
+
+[4/15] 213-ja-tech-氷のホテル
+  Keyword: 氷のホテル
+  Category: tech
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 氷のホテル
+  💾 Cache created: 1803 tokens
+  ✓ Draft generated (1906 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2712, output=2813)
+  ✓ Draft edited (3188 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ⚠️  All images for 'technology digital technology digital' already used, trying generic category search...
+  ❌ No unused images available for category 'tech'
+  → Step 5/5: Saving post...
+  ℹ️  No references available (neither in content nor queue)
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ja/tech/2026-01-24-氷のホテル.md
+  ✅ Completed!
+
+[5/15] 239-ja-lifestyle-地震速報
+  Keyword: 地震速報
+  Category: lifestyle
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 地震速報
+  💾 Cache created: 1801 tokens
+  ✓ Draft generated (2144 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2893, output=2471)
+  ✓ Draft edited (2787 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: lifestyle daily lifestyle daily
+  ⚠️  All images for 'lifestyle daily lifestyle daily' already used, trying generic category search...
+  ❌ No unused images available for category 'lifestyle'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (1 refs)
+  ✅ Added 1 references from queue
+  ℹ️  Affiliate links disabled for category: lifestyle
+  💾 Saved to: content/ja/lifestyle/2026-01-24-地震速報.md
+  ✅ Completed!
+
+[6/15] 243-ja-tech-山本建
+  Keyword: 山本建
+  Category: tech
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 山本建
+  💾 Cache created: 1800 tokens
+  ✓ Draft generated (1984 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2765, output=2110)
+  ✓ Draft edited (2324 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ⚠️  All images for 'technology digital technology digital' already used, trying generic category search...
+  ❌ No unused images available for category 'tech'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ja/tech/2026-01-24-山本建.md
+  ✅ Completed!
+
+[7/15] 194-ja-entertainment-増田貴久
+  Keyword: 増田貴久
+  Category: entertainment
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 増田貴久
+  💾 Cache created: 1802 tokens
+  ✓ Draft generated (2531 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3215, output=2828)
+  ✓ Draft edited (3247 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: entertainment culture entertainment culture
+  ⚠️  All images for 'entertainment culture entertainment culture' already used, trying generic category search...
+  ✓ Found unused image with generic search: entertainment culture
+  ✓ Found image by Mathias Reding
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-増田貴久.jpg (90.7 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/ja/entertainment/2026-01-24-増田貴久.md
+  ✅ Completed!
+
+[8/15] 197-ja-business-増田貴久
+  Keyword: 増田貴久
+  Category: business
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 増田貴久
+  💾 Cache created: 1802 tokens
+  ✓ Draft generated (2386 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3155, output=2532)
+  ✓ Draft edited (2818 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: business professional business professional
+  ⚠️  All images for 'business professional business professional' already used, trying generic category search...
+  ✓ Found unused image with generic search: business professional
+  ✓ Found image by ThisisEngineering
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-増田貴久.jpg (78.7 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: business
+  💾 Saved to: content/ja/business/2026-01-24-増田貴久.md
+  ✅ Completed!
+
+[9/15] 200-en-society-judit-polgar
+  Keyword: judit polgar
+  Category: society
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: judit polgar
+  ℹ️  No caching (usage: input=1747, output=1378)
+  ✓ Draft generated (6746 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2004, output=1588)
+  ✓ Draft edited (8142 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: judit polgar society community
+  ⚠️  No images found for 'judit polgar society community'
+  ⚠️  All images for 'judit polgar society community' already used, trying generic category search...
+  ❌ No unused images available for category 'society'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/en/society/2026-01-24-judit-polgar.md
+  ✅ Completed!
+
+[10/15] 203-en-tech-rory-kennedy
+  Keyword: rory kennedy
+  Category: tech
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: rory kennedy
+  ℹ️  No caching (usage: input=1741, output=1139)
+  ✓ Draft generated (5959 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1765, output=1319)
+  ✓ Draft edited (7245 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: rory kennedy technology digital
+  ⚠️  No images found for 'rory kennedy technology digital'
+  ⚠️  All images for 'rory kennedy technology digital' already used, trying generic category search...
+  ❌ No unused images available for category 'tech'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/en/tech/2026-01-24-rory-kennedy.md
+  ✅ Completed!
+
+[11/15] 205-ko-entertainment-쇼미더머니-12
+  Keyword: 쇼미더머니 12
+  Category: entertainment
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 쇼미더머니 12
+  💾 Cache created: 1786 tokens
+  ✓ Draft generated (2111 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache created: 1071 tokens
+  ✓ Draft edited (2789 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: entertainment culture entertainment culture
+  ⚠️  All images for 'entertainment culture entertainment culture' already used, trying generic category search...
+  ❌ No unused images available for category 'entertainment'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/ko/entertainment/2026-01-24-쇼미더머니-12.md
+  ✅ Completed!
+
+[12/15] 210-ja-society-たぬかな
+  Keyword: たぬかな
+  Category: society
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: たぬかな
+  💾 Cache created: 1802 tokens
+  ✓ Draft generated (2241 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3049, output=3146)
+  ✓ Draft edited (3423 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: society community society community
+  ⚠️  All images for 'society community society community' already used, trying generic category search...
+  ❌ No unused images available for category 'society'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/ja/society/2026-01-24-たぬかな.md
+  ✅ Completed!
+
+[13/15] 221-ko-entertainment-ufc
+  Keyword: ufc
+  Category: entertainment
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: ufc
+  💾 Cache created: 1779 tokens
+  ✓ Draft generated (2343 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache HIT: 1071 tokens saved!
+  ✓ Draft edited (2958 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: ufc entertainment culture
+  ⚠️  No images found for 'ufc entertainment culture'
+  ⚠️  All images for 'ufc entertainment culture' already used, trying generic category search...
+  ❌ No unused images available for category 'entertainment'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/ko/entertainment/2026-01-24-ufc.md
+  ✅ Completed!
+
+[14/15] 228-ja-tech-山本建
+  Keyword: 山本建
+  Category: tech
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 山本建
+  💾 Cache created: 1800 tokens
+  ✓ Draft generated (2163 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2921, output=3023)
+  ✓ Draft edited (3287 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ⚠️  All images for 'technology digital technology digital' already used, trying generic category search...
+  ❌ No unused images available for category 'tech'
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ja/tech/2026-01-24-山本建.md
+  ✅ Completed!
+
+[15/15] 240-ja-finance-auxerre-vs-psg
+  Keyword: auxerre vs psg
+  Category: finance
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: auxerre vs psg
+  💾 Cache created: 1802 tokens
+  ✓ Draft generated (2988 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3457, output=2367)
+  ✓ Draft edited (2663 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: auxerre psg finance money
+  ✓ Found image by Paolo Boaretto
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-auxerre-vs-psg.jpg (132.3 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: finance
+  💾 Saved to: content/ja/finance/2026-01-24-auxerre-vs-psg.md
+  ✅ Completed!
+
+
+============================================================
+  📊 Post-Generation Quality Check
+============================================================
+
+  ⚠️  Placeholder image: 2026-01-24-地震速報.md
+  ⚠️  Placeholder image: 2026-01-24-村田充.md
+  ⚠️  Placeholder image: 2026-01-24-티빙.md
+  ⚠️  No references: 2026-01-24-氷のホテル.md
+  ⚠️  Placeholder image: 2026-01-24-氷のホテル.md
+  ⚠️  Placeholder image: 2026-01-24-地震速報.md
+  ⚠️  Placeholder image: 2026-01-24-山本建.md
+  ⚠️  Placeholder image: 2026-01-24-judit-polgar.md
+  ⚠️  Placeholder image: 2026-01-24-rory-kennedy.md
+  ⚠️  Placeholder image: 2026-01-24-쇼미더머니-12.md
+  ⚠️  Placeholder image: 2026-01-24-たぬかな.md
+  ⚠️  Placeholder image: 2026-01-24-ufc.md
+  ⚠️  Placeholder image: 2026-01-24-山本建.md
+
+🚨 WARNING: 1/15 posts have NO references!
+   This reduces content credibility and SEO value.
+   FIX: Ensure Google Custom Search API is configured in keyword curation
+
+🚨 WARNING: 12/15 posts use PLACEHOLDER images!
+   This hurts user experience and engagement.
+   FIX: Ensure UNSPLASH_ACCESS_KEY is set in environment variables
+
+============================================================
+  ✓ Generated 15 posts
+  File list saved to: generated_files.json
+============================================================
+

@@ -112,6 +112,21 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 - **keyword 필드는 절대 재작성하지 말고 Query를 정확히 그대로 사용**
 - **중요**: 8개 카테고리(tech, business, lifestyle, society, entertainment, sports, finance, education)를 반드시 고르게 분배할 것
 
+**🔴 카테고리 분류 가이드 (CRITICAL - 반드시 준수):**
+- **sports**: 모든 운동 경기, 선수, 팀 (축구, 야구, 농구, 테니스, 골프, UFC/격투기, e스포츠, U23/청소년 스포츠, 올림픽, 월드컵 등)
+  - 예시: "UFC", "u23", "손흥민", "KBO", "NBA", "wimbledon", "world cup"
+  - **중요**: 격투기(UFC, 복싱), 청소년 스포츠(U23, U21)도 반드시 sports 카테고리
+- **entertainment**: 영화, 드라마, 음악, 예능, 연예인 (단, 스포츠 선수는 제외)
+  - 예시: "넷플릭스", "BTS", "오징어게임", "김연아 예능 출연" (스포츠 선수가 예능에 나온 경우)
+- **society**: 사회 이슈, 정치, 정책, 범죄, 재난 (단, 스포츠 관련 사회 이슈도 sports로 분류)
+  - 예시: "지진속보", "정부 정책", "사회 문제"
+  - **주의**: "U23 대표팀"은 society가 아니라 sports입니다
+- **tech**: 기술, IT, AI, 게임, 앱, 소프트웨어
+- **business**: 경제, 기업, 주식, 부동산, 창업
+- **lifestyle**: 일상, 건강, 여행, 음식, 패션
+- **finance**: 금융, 투자, 세금, 보험, 연금
+- **education**: 교육, 대학, 입시, 자격증, 학습
+
 언어별 톤 차이:
 - 🇺🇸 English: rights, compensation, legal leverage, lawsuits 중심
 - 🇰🇷 Korean: 불공정, 좌절, 소비자 보호, 책임 추궁 중심
@@ -136,14 +151,21 @@ CURATION_PROMPT_WITH_TRENDS = """역할:
 - 같은 signal을 가진 키워드는 언어당 최대 2개까지만
 - 5개 signal을 언어별로 균등하게 분배
 
-**반드시 정확히 {count}개의 키워드를 생성하라:**
-- 영어(en): {per_lang}개
-- 한국어(ko): {per_lang}개
-- 일본어(ja): {per_lang}개
+**🚨 언어별 키워드 생성 규칙 (절대 준수):**
+반드시 정확히 {count}개의 키워드를 생성하라:
+- 영어(en): 정확히 {per_lang}개 (1개라도 부족하거나 초과하면 안 됨)
+- 한국어(ko): 정확히 {per_lang}개 (1개라도 부족하거나 초과하면 안 됨)
+- 일본어(ja): 정확히 {per_lang}개 (1개라도 부족하거나 초과하면 안 됨)
 - 총합: 정확히 {count}개
 
-각 언어 내에서 5개 카테고리(tech, business, lifestyle, society, entertainment)를 최대한 균등하게 분배하되,
-반드시 총 {count}개를 생성하는 것이 최우선이다."""
+**언어별 트렌드 데이터 사용 규칙:**
+- 🇺🇸 English (US) Trends에서 {per_lang}개 키워드 추출 → language: "en"
+- 🇰🇷 Korean (KR) Trends에서 {per_lang}개 키워드 추출 → language: "ko"
+- 🇯🇵 Japanese (JP) Trends에서 {per_lang}개 키워드 추출 → language: "ja"
+- 만약 한 언어의 트렌드가 부족하면, 다른 언어 트렌드를 절대 사용하지 말고 해당 언어로 새로운 키워드를 생성하라
+
+각 언어 내에서 8개 카테고리(tech, business, lifestyle, society, entertainment, sports, finance, education)를 최대한 균등하게 분배하되,
+반드시 각 언어별로 정확히 {per_lang}개씩 생성하는 것이 최우선이다."""
 
 
 class KeywordCurator:

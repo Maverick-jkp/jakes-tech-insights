@@ -1,0 +1,449 @@
+
+============================================================
+  🔍 Pre-flight Environment Checks
+============================================================
+
+  ✓ ANTHROPIC_API_KEY: Configured
+  ✓ UNSPLASH_ACCESS_KEY: Configured
+
+  ✓ Anthropic API client initialized successfully
+  🖼️  Unsplash API enabled
+⚠️  Skipping duplicate: 그록 (ko) - already completed as 219-ko-tech-그록
+
+============================================================
+  Generating 15 posts
+============================================================
+
+[1/15] 191-ko-entertainment-김연아
+  Keyword: 김연아
+  Category: entertainment
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 김연아
+  💾 Cache created: 1780 tokens
+  ✓ Draft generated (2151 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache created: 1071 tokens
+  ✓ Draft edited (2560 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: 아니오. 제목은 "만남"과 "펼치는 이야기"로 이미 일어난 것처럼 표현했지만, 본문은
+     Title: 김연아와 김연경의 만남, 두 스포츠 여왕이 유튜브에서 펼치는 특별한 이야기
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: entertainment culture entertainment culture
+  ✓ Found image by foto DIAL
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-김연아.jpg (196.5 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/ko/entertainment/2026-01-24-김연아.md
+  ✅ Completed!
+
+[2/15] 224-ja-society-地震速報
+  Keyword: 地震速報
+  Category: society
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 地震速報
+  💾 Cache created: 1801 tokens
+  ✓ Draft generated (2419 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3096, output=2531)
+  ✓ Draft edited (2893 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: いいえ
+
+タイトルに「2026年最新」とありますが、現在は2024年であり、2026年の情報は存在しません。
+     Title: 【2026年最新】地震速報が鳴った時の正しい対応法｜進化したシステムと避難のコツ
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: society community society community
+  ✓ Found image by Nel Ranoko
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-地震速報.jpg (161.1 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (1 URLs)
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/ja/society/2026-01-24-地震速報.md
+  ✅ Completed!
+
+[3/15] 137-ja-society-sixtones
+  Keyword: sixtones
+  Category: society
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: sixtones
+  💾 Cache created: 1800 tokens
+  ✓ Draft generated (2665 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3156, output=2438)
+  ✓ Draft edited (2876 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: いいえ
+
+本文は2026年の未来設定で書かれており、架空の情報や統計データが含まれているため、現実のsixtonesの状況
+     Title: SixTONES人気低迷の真相：ファン離れではなく音楽業界変化への適応期だった
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: sixtones society community
+  ✓ Found image by Marija Zaric
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-sixtones.jpg (260.6 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: society
+  💾 Saved to: content/ja/society/2026-01-24-sixtones.md
+  ✅ Completed!
+
+[4/15] 193-ko-lifestyle-김연아
+  Keyword: 김연아
+  Category: lifestyle
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 김연아
+  💾 Cache HIT: 1780 tokens saved!
+  ✓ Draft generated (2208 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache HIT: 1071 tokens saved!
+  ✓ Draft edited (2469 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: 아니오. 제목은 출연이 "확정"되었다고 하지만, 본문은 추측과 기대 위주로 작성되어 확정
+     Title: 김연아, 김연경 유튜브 출연 확정! 두 레전드의 만남이 화제인 이유
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: lifestyle daily lifestyle daily
+  ✓ Found image by Ranjan Prabhat
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-김연아.jpg (170.6 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: lifestyle
+  💾 Saved to: content/ko/lifestyle/2026-01-24-김연아.md
+  ✅ Completed!
+
+[5/15] 196-ja-lifestyle-村田充
+  Keyword: 村田充
+  Category: lifestyle
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 村田充
+  💾 Cache created: 1800 tokens
+  ✓ Draft generated (2261 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2974, output=2036)
+  ✓ Draft edited (2196 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: いいえ
+
+投稿日が2026年となっており、未来の日付で事実と矛盾している。
+     Title: 村田充、神田沙也加さんの愛犬「バチギレ」投稿が話題！離婚後も続く深い愛情に感動
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: lifestyle daily lifestyle daily
+  ✓ Found image by Valeriia Miller
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-村田充.jpg (159.9 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: lifestyle
+  💾 Saved to: content/ja/lifestyle/2026-01-24-村田充.md
+  ✅ Completed!
+
+[6/15] 213-ja-tech-氷のホテル
+  Keyword: 氷のホテル
+  Category: tech
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 氷のホテル
+  💾 Cache created: 1803 tokens
+  ✓ Draft generated (2167 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3021, output=2600)
+  ✓ Draft edited (2832 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: いいえ
+
+2025年調査データの出典が不明で、具体的な調査機関や調査方法が示されていない。
+     Title: 氷のホテル投資は失敗する？2025年調査で判明した稼働率45%の厳しい現実
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ✓ Found image by TRG
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-氷のホテル.jpg (93.5 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No references available (neither in content nor queue)
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ja/tech/2026-01-24-氷のホテル.md
+  ✅ Completed!
+
+[7/15] 239-ja-lifestyle-地震速報
+  Keyword: 地震速報
+  Category: lifestyle
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 地震速報
+  💾 Cache created: 1801 tokens
+  ✓ Draft generated (2269 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2963, output=2211)
+  ✓ Draft edited (2527 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: いいえ
+
+タイトルに「2026」とあるが、本文は2025年以前のデータのみで構成されており、未来の情報が含まれていない。
+     Title: 緊急地震速報が鳴った時の正しい行動法｜10秒で命を守る場所別対応マニュアル2026
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: lifestyle daily lifestyle daily
+  ✓ Found image by Valeriia Miller
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-地震速報.jpg (219.5 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (1 URLs)
+  ℹ️  Affiliate links disabled for category: lifestyle
+  💾 Saved to: content/ja/lifestyle/2026-01-24-地震速報.md
+  ✅ Completed!
+
+[8/15] 243-ja-tech-山本建
+  Keyword: 山本建
+  Category: tech
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 山本建
+  💾 Cache created: 1800 tokens
+  ✓ Draft generated (2067 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2862, output=2970)
+  ✓ Draft edited (3234 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: いいえ
+
+本文中に高市氏が総理大臣であるとの記述があるが、これは事実ではない。
+     Title: 山本建氏出馬で浮上する「拡大世襲」問題｜高市総理の義理の息子が挑む福井2区選挙の意味
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ✓ Found image by Harpreet Singh
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-山本建.jpg (87.7 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ja/tech/2026-01-24-山本建.md
+  ✅ Completed!
+
+[9/15] 126-ko-tech-붉은사막
+  Keyword: 붉은사막
+  Category: tech
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 붉은사막
+  💾 Cache created: 1782 tokens
+  ✓ Draft generated (2187 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache created: 1071 tokens
+  ✓ Draft edited (2587 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: 아니오. 제목은 ces 2026을 미래 사건으로, 본문은 과거 완료형으로 서술하여 시점이 불일
+     Title: 붉은사막 CES 2026 돌풍, 미국 홍보팀 직접 나선 이유는?
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: technology digital technology digital
+  ✓ Found image by Nubelson Fernandes
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-붉은사막.jpg (110.9 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/ko/tech/2026-01-24-붉은사막.md
+  ✅ Completed!
+
+[10/15] 131-en-tech-quad-cortex-mini
+  Keyword: quad cortex mini
+  Category: tech
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: quad cortex mini
+  ℹ️  No caching (usage: input=1709, output=1216)
+  ✓ Draft generated (5782 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1842, output=1556)
+  ✓ Draft edited (7674 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: no. the title promises an $800 alternative but the content discusses a $1,699 product without clearly stating the mini's actual price.
+     Title: Quad Cortex Mini Review: Is Neural DSP's $800 Alternative Worth It?
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: quad cortex technology digital
+  ✓ Found image by Opt Lasers
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-quad-cortex-mini.jpg (127.1 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: tech
+  💾 Saved to: content/en/tech/2026-01-24-quad-cortex-mini.md
+  ✅ Completed!
+
+[11/15] 134-en-business-붉은사막
+  Keyword: 붉은사막
+  Category: business
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 붉은사막
+  ℹ️  No caching (usage: input=1777, output=1218)
+  ✓ Draft generated (5394 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1844, output=1504)
+  ✓ Draft edited (7902 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: no. the title uses korean "붉은사막" but the content is in english about "crimson desert."
+     Title: 붉은사막 CES 2026 Breakthrough: From Skepticism to Hype
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: business professional business professional
+  ✓ Found image by Ben Rosett
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-붉은사막.jpg (109.8 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: business
+  💾 Saved to: content/en/business/2026-01-24-붉은사막.md
+  ✅ Completed!
+
+[12/15] 159-en-sports-sl-vs-eng
+  Keyword: sl vs eng
+  Category: sports
+  Language: en
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: sl vs eng
+  ℹ️  No caching (usage: input=1781, output=1113)
+  ✓ Draft generated (5201 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=1739, output=1425)
+  ✓ Draft edited (6838 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: no. the title promises streaming information but content focuses on streaming problems and frustrations instead.
+     Title: SL vs ENG Live Stream: Where to Watch Sri Lanka vs England
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: eng sports athletic
+  ✓ Found image by Surfing Croyde Bay
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-sl-vs-eng.jpg (232.3 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: sports
+  💾 Saved to: content/en/sports/2026-01-24-sl-vs-eng.md
+  ✅ Completed!
+
+[13/15] 162-ko-education-전남대
+  Keyword: 전남대
+  Category: education
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 전남대
+  💾 Cache created: 1780 tokens
+  ✓ Draft generated (1922 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache HIT: 1071 tokens saved!
+  ✓ Draft edited (2185 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: 아니오
+
+제목은 75.3% 취업률을 강조하지만 본문은 취업률보다 산학협력과 창업 성과에 더
+     Title: 전남대 취업률 75.3% 돌파! 지방대 편견 깨는 숨겨진 경쟁력 공개
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: education learning education learning
+  ✓ Found image by SMKN 1 Gantar
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-전남대.jpg (181.9 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (1 refs)
+  ✅ Added 1 references from queue
+  ℹ️  Affiliate links disabled for category: education
+  💾 Saved to: content/ko/education/2026-01-24-전남대.md
+  ✅ Completed!
+
+[14/15] 165-ja-sports-熱海富士
+  Keyword: 熱海富士
+  Category: sports
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 熱海富士
+  💾 Cache created: 1802 tokens
+  ✓ Draft generated (2064 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2885, output=2092)
+  ✓ Draft edited (2266 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: いいえ
+
+令和8年は2026年。未来の出来事を過去形で記述し、架空の戦績や動画再生数を事実として提示している。
+     Title: 【2026年注目】熱海富士174cm小柄力士が横綱に挑む新時代相撲スタイルの魅力
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: sports athletic sports athletic
+  ✓ Found image by Sincerely Media
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-熱海富士.jpg (138.9 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: sports
+  💾 Saved to: content/ja/sports/2026-01-24-熱海富士.md
+  ✅ Completed!
+
+[15/15] 171-ko-entertainment-이금희
+  Keyword: 이금희
+  Category: entertainment
+  Language: ko
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 이금희
+  💾 Cache created: 1780 tokens
+  ✓ Draft generated (1949 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  💾 Cache HIT: 1071 tokens saved!
+  ✓ Draft edited (2218 chars)
+  → Step 3/5: Generating metadata...
+  ⚠️  Title-content mismatch detected: 아니오
+
+본문에서 이금희가 복귀를 거부하는 "진짜 이유"가 명확히 제시되지 않았습니다.
+     Title: 이금희 2년째 방송계 완전 증발, 아침마당 하차 후 복귀 거부하는 진짜 이유
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: entertainment culture entertainment culture
+  ✓ Found image by Ish Consul
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-이금희.jpg (159.0 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/ko/entertainment/2026-01-24-이금희.md
+  ✅ Completed!
+
+
+============================================================
+  📊 Post-Generation Quality Check
+============================================================
+
+  ⚠️  No references: 2026-01-24-氷のホテル.md
+
+🚨 WARNING: 1/15 posts have NO references!
+   This reduces content credibility and SEO value.
+   FIX: Ensure Google Custom Search API is configured in keyword curation
+
+============================================================
+  ✓ Generated 15 posts
+  File list saved to: generated_files.json
+============================================================
+

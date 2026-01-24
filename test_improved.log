@@ -1,0 +1,102 @@
+
+============================================================
+  🔍 Pre-flight Environment Checks
+============================================================
+
+  ✓ ANTHROPIC_API_KEY: Configured
+  ✓ UNSPLASH_ACCESS_KEY: Configured
+
+  ✓ Anthropic API client initialized successfully
+  🖼️  Unsplash API enabled
+⚠️  Skipping duplicate: 그록 (ko) - already completed as 219-ko-tech-그록
+
+============================================================
+  Generating 3 posts
+============================================================
+
+[1/3] 181-ja-entertainment-フォートナイト
+  Keyword: フォートナイト
+  Category: entertainment
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: フォートナイト
+  💾 Cache created: 1803 tokens
+  ✓ Draft generated (2798 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3374, output=2551)
+  ✓ Draft edited (3006 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: entertainment culture entertainment culture
+  ✓ Found image by Yosuke Ota
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-フォートナイト.jpg (177.2 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/ja/entertainment/2026-01-24-フォートナイト.md
+  ✅ Completed!
+
+[2/3] 194-ja-entertainment-増田貴久
+  Keyword: 増田貴久
+  Category: entertainment
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 増田貴久
+  💾 Cache created: 1802 tokens
+  ✓ Draft generated (2568 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=3269, output=2053)
+  ✓ Draft edited (2252 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: entertainment culture entertainment culture
+  ✓ Found image by foto DIAL
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-増田貴久.jpg (153.4 KB)
+  → Step 5/5: Saving post...
+  ℹ️  No References section in content, adding from queue (2 refs)
+  ✅ Added 2 references from queue
+  ℹ️  Affiliate links disabled for category: entertainment
+  💾 Saved to: content/ja/entertainment/2026-01-24-増田貴久.md
+  ✅ Completed!
+
+[3/3] 197-ja-business-増田貴久
+  Keyword: 増田貴久
+  Category: business
+  Language: ja
+  → Step 1/5: Generating draft...
+  📝 Generating draft for: 増田貴久
+  💾 Cache HIT: 1802 tokens saved!
+  ✓ Draft generated (2283 chars)
+  → Step 2/5: Editing draft...
+  ✏️  Editing draft...
+  ℹ️  No caching (usage: input=2975, output=2399)
+  ✓ Draft edited (2798 chars)
+  → Step 3/5: Generating metadata...
+  → Step 4/5: Fetching image...
+  🔍 Searching Unsplash for: business professional business professional
+  ✓ Found image by Dane Deaner
+  📥 Downloading optimized image (1200px, q85)...
+  ✓ Image saved: static/images/20260124-増田貴久.jpg (172.1 KB)
+  → Step 5/5: Saving post...
+  ✅ References section validated (2 URLs)
+  ℹ️  Affiliate links disabled for category: business
+  💾 Saved to: content/ja/business/2026-01-24-増田貴久.md
+  ✅ Completed!
+
+
+============================================================
+  📊 Post-Generation Quality Check
+============================================================
+
+
+✅ Quality Check PASSED: All posts have references and real images!
+
+============================================================
+  ✓ Generated 3 posts
+  File list saved to: generated_files.json
+============================================================
+
