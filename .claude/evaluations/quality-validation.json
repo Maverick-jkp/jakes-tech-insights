@@ -1,0 +1,123 @@
+{
+  "skill": "quality-validation",
+  "version": "1.2",
+  "test_cases": [
+    {
+      "id": "qv-001",
+      "name": "Validate passing post",
+      "query": "Run quality checks on recent posts",
+      "expected_behavior": [
+        "Scans all markdown files in content/",
+        "Runs 6 validation checks",
+        "Generates quality_report.json",
+        "Returns exit code 0"
+      ],
+      "success_criteria": {
+        "word_count": "PASS",
+        "ai_phrases": "PASS",
+        "seo": "PASS",
+        "references": "PASS",
+        "frontmatter": "PASS",
+        "exit_code": 0
+      }
+    },
+    {
+      "id": "qv-002",
+      "name": "Detect word count failure",
+      "query": "Validate post with 500 words",
+      "expected_behavior": [
+        "Detects word count below 800",
+        "Reports FAIL status",
+        "Provides specific error message",
+        "Returns exit code 1"
+      ],
+      "success_criteria": {
+        "status": "FAIL",
+        "error_type": "word_count",
+        "error_message": "Word count 500 below minimum 800",
+        "exit_code": 1
+      }
+    },
+    {
+      "id": "qv-003",
+      "name": "Detect AI phrases",
+      "query": "Validate post with 'revolutionary'",
+      "expected_behavior": [
+        "Searches content for blacklisted phrases",
+        "Detects 'revolutionary' (case-insensitive)",
+        "Reports phrase and line number",
+        "Returns FAIL status"
+      ],
+      "success_criteria": {
+        "status": "FAIL",
+        "found_phrase": "revolutionary",
+        "line_number": "reported",
+        "exit_code": 1
+      }
+    },
+    {
+      "id": "qv-004",
+      "name": "Multi-file validation",
+      "query": "Run quality gate on all content",
+      "expected_behavior": [
+        "Validates all EN/KO/JA posts",
+        "Generates summary report",
+        "Shows passed/failed/warnings count",
+        "Lists all failing files"
+      ],
+      "success_criteria": {
+        "files_checked": ">0",
+        "summary_includes": ["passed", "failed", "warnings"],
+        "details_array": "populated"
+      }
+    },
+    {
+      "id": "qv-005",
+      "name": "AI Reviewer integration",
+      "query": "Run AI review on post",
+      "expected_behavior": [
+        "Calls Claude API for review",
+        "Returns 5-criteria scores",
+        "Calculates average score",
+        "Provides recommendation (APPROVE/REVISE/REJECT)"
+      ],
+      "success_criteria": {
+        "criteria_count": 5,
+        "score_range": "1-10",
+        "recommendation": "one of [APPROVE, REVISE, REJECT]",
+        "feedback": "array of strings"
+      }
+    }
+  ],
+  "performance_benchmarks": {
+    "validation_time": "1-2 seconds per file",
+    "ai_review_time": "5-10 seconds per file",
+    "ai_review_cost": "$0.02 per file"
+  },
+  "edge_cases": [
+    {
+      "scenario": "Empty content directory",
+      "expected": "Error: No markdown files found"
+    },
+    {
+      "scenario": "Malformed YAML frontmatter",
+      "expected": "FAIL: Invalid YAML syntax"
+    },
+    {
+      "scenario": "Missing required field",
+      "expected": "FAIL: Missing field 'description'"
+    }
+  ],
+  "regression_tests": [
+    {
+      "issue": "Japanese character count vs word count",
+      "fix": "Use character count for JA, word count for EN/KO",
+      "test": "JA posts: 3000-7500 chars, EN/KO: 800-2000 words"
+    },
+    {
+      "issue": "Conclusion phrases false positive",
+      "fix": "Allow 'in conclusion' in conclusion section",
+      "test": "Should PASS if in ## Conclusion section"
+    }
+  ]
+}

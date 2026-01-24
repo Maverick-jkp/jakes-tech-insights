@@ -5,6 +5,18 @@ All notable changes to this skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-01-24
+
+### Added
+- **Hugo Operations Decision Tree** - 6 decision paths for common operations
+- **Troubleshooting guidance** - Step-by-step solutions for YAML errors
+- **Evaluation file** - Test cases in `.claude/evaluations/hugo-operations.json`
+
+### Impact
+- **Faster decisions** - Decision tree reduces trial-and-error
+- **Error resolution** - Clear troubleshooting paths for common issues
+- **Testing** - Evaluation file covers build/server/validation scenarios
+
 ## [1.2.0] - 2026-01-24
 
 ### Added

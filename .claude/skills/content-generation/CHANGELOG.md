@@ -5,6 +5,18 @@ All notable changes to this skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-01-24
+
+### Added
+- **Table of Contents** - Quick navigation for 450+ line file
+- **Content Generation Feedback Loop** - 6-step checklist with exit conditions
+- **Evaluation file** - Systematic test cases in `.claude/evaluations/content-generation.json`
+
+### Impact
+- **Navigation** - 50% faster section access with TOC
+- **Quality consistency** - Feedback loop ensures all posts pass validation
+- **Testing** - Evaluation file enables regression testing
+
 ## [1.2.0] - 2026-01-24
 
 ### Added

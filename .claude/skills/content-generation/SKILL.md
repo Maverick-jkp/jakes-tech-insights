@@ -9,6 +9,24 @@ user-invocable: true
 
 Generate high-quality multilingual blog posts (EN/KO/JA) using Claude API with Draft + Editor agents.
 
+## Contents
+
+- [When to Use This Skill](#when-to-use-this-skill)
+- [Skill Boundaries](#skill-boundaries)
+- [Dependencies](#dependencies)
+- [Quick Start](#quick-start)
+- [System Architecture](#system-architecture)
+- [Content Quality Standards](#content-quality-standards)
+- [Topic Queue Management](#topic-queue-management)
+- [Generation Process](#generation-process)
+- [Quality Validation](#quality-validation)
+- [Common Issues & Solutions](#common-issues--solutions)
+- [Categories](#categories)
+- [Cost Optimization](#cost-optimization)
+- [Testing](#testing)
+- [Advanced Usage](#advanced-usage)
+- [Related Skills](#related-skills)
+
 ---
 
 ## When to Use This Skill
@@ -386,6 +404,53 @@ python scripts/topic_queue.py cleanup 24
 
 ---
 
+## Content Generation Feedback Loop
+
+**Use this checklist for iterative quality improvement:**
+
+- [ ] 1. **Generate draft**
+  - Run: `python scripts/generate_posts.py --count 3`
+  - Verify: Files created in `content/{lang}/{category}/`
+
+- [ ] 2. **Run quality gate (blocking)**
+  - Run: `python scripts/quality_gate.py`
+  - Check: `quality_report.json` for FAIL status
+  - **If PASS**: Proceed to step 4
+  - **If FAIL**: Continue to step 3
+
+- [ ] 3. **Fix quality issues**
+  - Review error details in `quality_report.json`
+  - Common fixes:
+    - Word count low → Edit content or regenerate
+    - AI phrases → Replace with specific terms
+    - Missing references → Add 2+ external links
+    - Meta description → Adjust to 120-160 chars
+  - **Return to step 2** (re-run quality gate)
+
+- [ ] 4. **Optional: Run AI reviewer**
+  - Run: `python scripts/ai_reviewer.py`
+  - Check: `ai_review_report.json` average score
+  - **If ≥8.0**: Proceed to step 5
+  - **If 6.0-7.9**: Review feedback, improve if needed
+  - **If <6.0**: Consider regenerating
+
+- [ ] 5. **Commit changes**
+  - Run: `git add content/`
+  - Run: `git commit -m "feat: Add [topic] articles"`
+  - Run: `git push origin main`
+
+- [ ] 6. **Verify deployment**
+  - GitHub Actions triggers automatically
+  - Wait 5-10 minutes for Cloudflare Pages deploy
+  - Check: https://jakeinsight.com
+
+**Loop exit conditions**:
+- ✅ Quality gate passes (exit code 0)
+- ✅ AI reviewer score ≥8.0 (optional)
+- ✅ All posts deployed successfully
+
+---
+
 ## Testing
 
 ### Local Test
@@ -477,6 +542,6 @@ JAPANESE_DRAFT_PROMPT = """
 
 ---
 
-**Skill Version**: 1.2
+**Skill Version**: 1.3
 **Last Updated**: 2026-01-24
 **Maintained By**: Jake's Tech Insights project

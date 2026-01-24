@@ -1,0 +1,125 @@
+{
+  "skill": "hugo-operations",
+  "version": "1.2",
+  "test_cases": [
+    {
+      "id": "ho-001",
+      "name": "Start development server",
+      "query": "Start Hugo server for local preview",
+      "expected_behavior": [
+        "Runs /opt/homebrew/bin/hugo server -D",
+        "Starts server on port 1313",
+        "Enables live reload",
+        "Shows draft posts"
+      ],
+      "success_criteria": {
+        "server_running": true,
+        "port": 1313,
+        "url": "http://localhost:1313",
+        "live_reload": true,
+        "drafts_visible": true
+      }
+    },
+    {
+      "id": "ho-002",
+      "name": "Production build",
+      "query": "Build site for production",
+      "expected_behavior": [
+        "Runs /opt/homebrew/bin/hugo --minify",
+        "Generates public/ directory",
+        "Minifies HTML/CSS/JS",
+        "Excludes draft posts"
+      ],
+      "success_criteria": {
+        "public_dir_created": true,
+        "files_minified": true,
+        "no_drafts": true,
+        "exit_code": 0
+      }
+    },
+    {
+      "id": "ho-003",
+      "name": "Multilingual site build",
+      "query": "Build site with EN/KO/JA content",
+      "expected_behavior": [
+        "Generates /en/, /ko/, /ja/ directories",
+        "Creates language-specific pages",
+        "Applies correct permalinks",
+        "Builds navigation for each language"
+      ],
+      "success_criteria": {
+        "lang_dirs": ["en", "ko", "ja"],
+        "pages_per_lang": ">0",
+        "navigation_correct": true
+      }
+    },
+    {
+      "id": "ho-004",
+      "name": "YAML frontmatter validation",
+      "query": "Detect invalid frontmatter",
+      "expected_behavior": [
+        "Hugo build fails on invalid YAML",
+        "Reports specific error",
+        "Points to problematic file",
+        "Provides line number"
+      ],
+      "success_criteria": {
+        "build_fails": true,
+        "error_message": "contains file path",
+        "line_number": "reported"
+      }
+    },
+    {
+      "id": "ho-005",
+      "name": "Theme integration",
+      "query": "Verify PaperMod theme working",
+      "expected_behavior": [
+        "Loads theme from themes/PaperMod/",
+        "Applies theme layouts",
+        "Renders custom shortcodes",
+        "Generates theme assets"
+      ],
+      "success_criteria": {
+        "theme_loaded": true,
+        "layouts_applied": true,
+        "assets_generated": true
+      }
+    }
+  ],
+  "performance_benchmarks": {
+    "initial_build_time": "1-3 seconds",
+    "incremental_build_time": "<500ms",
+    "page_count": "~60-70",
+    "avg_build_time_per_page": "~30ms"
+  },
+  "edge_cases": [
+    {
+      "scenario": "Hugo not installed",
+      "expected": "Error: /opt/homebrew/bin/hugo: No such file"
+    },
+    {
+      "scenario": "Wrong Hugo path (using 'hugo' instead of full path)",
+      "expected": "Error: hugo: command not found"
+    },
+    {
+      "scenario": "Port 1313 already in use",
+      "expected": "Error: address already in use"
+    },
+    {
+      "scenario": "Missing theme",
+      "expected": "Error: theme 'PaperMod' not found"
+    }
+  ],
+  "regression_tests": [
+    {
+      "issue": "Hugo not in PATH",
+      "fix": "Always use full path /opt/homebrew/bin/hugo",
+      "test": "All commands must include full path"
+    },
+    {
+      "issue": "Live reload not working",
+      "fix": "Use -D flag for development server",
+      "test": "Changes should reflect without manual refresh"
+    }
+  ]
+}

@@ -7,6 +7,21 @@ description: Automated content quality validation with word count checks (800-20
 
 Automated content validation with word count, AI phrase detection, SEO checks, and frontmatter validation.
 
+## Contents
+
+- [When to Use This Skill](#when-to-use-this-skill)
+- [Skill Boundaries](#skill-boundaries)
+- [Dependencies](#dependencies)
+- [Quick Start](#quick-start)
+- [Quality Gate Checks](#quality-gate-checks)
+- [Quality Report Format](#quality-report-format)
+- [AI Reviewer (Optional)](#ai-reviewer-optional)
+- [Common Failures & Fixes](#common-failures--fixes)
+- [Integration with CI/CD](#integration-with-cicd)
+- [Testing](#testing)
+- [Advanced Topics](#advanced-topics)
+- [Related Skills](#related-skills)
+
 ---
 
 ## When to Use This Skill
@@ -283,6 +298,67 @@ description: "Expand this to 120-160 characters with relevant keywords and compe
 
 ---
 
+## Quality Validation Feedback Loop
+
+**Use this checklist for systematic content validation:**
+
+- [ ] 1. **Run quality gate**
+  - Run: `python scripts/quality_gate.py`
+  - Wait: 1-2 seconds per file
+  - Check: Exit code (0 = pass, 1 = fail)
+
+- [ ] 2. **Review quality report**
+  - Open: `quality_report.json`
+  - Check: `"failed": X` count
+  - **If 0 failures**: Proceed to step 5 (optional AI review)
+  - **If >0 failures**: Continue to step 3
+
+- [ ] 3. **Analyze failures**
+  - Review `details[]` array in report
+  - For each failed file:
+    - Check `checks` object for FAIL status
+    - Note specific error (word_count, ai_phrases, etc.)
+  - Prioritize fixes by impact
+
+- [ ] 4. **Fix issues systematically**
+  - **Word count low**:
+    - Edit file to add content
+    - OR regenerate with higher max_tokens
+  - **AI phrases detected**:
+    - Find phrase in content
+    - Replace with specific term
+  - **Missing references**:
+    - Add `## References` section
+    - Include 2+ external links
+  - **Meta description issues**:
+    - Edit frontmatter `description`
+    - Ensure 120-160 characters
+  - **Return to step 1** (re-run quality gate)
+
+- [ ] 5. **Optional: Run AI reviewer**
+  - Run: `python scripts/ai_reviewer.py`
+  - Wait: 5-10 seconds per file
+  - Check: `ai_review_report.json`
+  - Review scores and feedback
+  - **If avg <8.0**: Consider improvements from suggestions
+
+- [ ] 6. **Proceed with deployment**
+  - All quality checks passed
+  - Content ready for commit
+  - Continue to content-generation feedback loop step 5
+
+**Loop exit conditions**:
+- ✅ Quality gate exit code 0
+- ✅ All files show PASS status
+- ✅ No critical failures remaining
+
+**Common iteration counts**:
+- First-time content: 1-2 iterations
+- Regenerated content: Usually passes first try
+- Manual edits: 2-3 iterations typical
+
+---
+
 ## Testing
 
 ```bash
@@ -335,6 +411,6 @@ For detailed information, see:
 
 ---
 
-**Skill Version**: 1.2
+**Skill Version**: 1.3
 **Last Updated**: 2026-01-24
 **Maintained By**: Jake's Tech Insights project

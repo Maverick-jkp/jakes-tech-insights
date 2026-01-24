@@ -1,0 +1,122 @@
+{
+  "skill": "content-generation",
+  "version": "1.2",
+  "test_cases": [
+    {
+      "id": "cg-001",
+      "name": "Generate single post",
+      "query": "Generate 1 blog post",
+      "expected_behavior": [
+        "Reserves 1 topic from queue",
+        "Runs Draft agent (Claude API)",
+        "Runs Editor agent (Claude API)",
+        "Creates markdown file in content/{lang}/{category}/",
+        "Marks topic as completed in queue"
+      ],
+      "success_criteria": {
+        "word_count": ">=800",
+        "frontmatter_valid": true,
+        "quality_gate_pass": true,
+        "topic_status": "completed",
+        "file_created": true,
+        "api_calls": 2
+      },
+      "failure_modes": [
+        "Queue empty (no pending topics)",
+        "API key missing",
+        "Word count below 800",
+        "AI phrases detected",
+        "Incomplete content (cut off mid-sentence)"
+      ]
+    },
+    {
+      "id": "cg-002",
+      "name": "Generate multiple posts",
+      "query": "Generate 3 blog posts",
+      "expected_behavior": [
+        "Reserves 3 topics from queue",
+        "Processes each sequentially",
+        "Creates 3 markdown files",
+        "Updates queue 3 times"
+      ],
+      "success_criteria": {
+        "files_created": 3,
+        "topics_completed": 3,
+        "all_pass_quality_gate": true,
+        "api_calls": 6,
+        "estimated_cost": "$0.27"
+      },
+      "failure_modes": [
+        "Queue has <3 pending topics",
+        "One post fails, others succeed (partial success)",
+        "API rate limit hit"
+      ]
+    },
+    {
+      "id": "cg-003",
+      "name": "Multilingual generation",
+      "query": "Generate posts in EN, KO, JA",
+      "expected_behavior": [
+        "Selects topics with different languages",
+        "Uses language-specific prompts",
+        "Validates word count per language rules",
+        "Creates files in correct language directories"
+      ],
+      "success_criteria": {
+        "en_word_count": ">=800",
+        "ko_word_count": ">=800",
+        "ja_char_count": ">=3000",
+        "correct_directories": true
+      }
+    },
+    {
+      "id": "cg-004",
+      "name": "Quality gate integration",
+      "query": "Generate post and validate quality",
+      "expected_behavior": [
+        "Generates content",
+        "Automatically runs quality gate",
+        "Fails if quality issues detected",
+        "Reports specific failures"
+      ],
+      "success_criteria": {
+        "no_ai_phrases": true,
+        "meta_description_valid": true,
+        "references_section_exists": true,
+        "frontmatter_complete": true
+      }
+    }
+  ],
+  "performance_benchmarks": {
+    "single_post_time": "30-60 seconds",
+    "three_posts_time": "90-180 seconds",
+    "api_cost_per_post": "$0.09",
+    "token_usage_per_post": "~8000 tokens"
+  },
+  "edge_cases": [
+    {
+      "scenario": "Empty queue",
+      "expected": "Error message: 'No pending topics in queue'"
+    },
+    {
+      "scenario": "Missing API key",
+      "expected": "Error message: 'ANTHROPIC_API_KEY not set'"
+    },
+    {
+      "scenario": "All topics in_progress",
+      "expected": "Error message: 'No available topics (all in progress)'"
+    }
+  ],
+  "regression_tests": [
+    {
+      "issue": "Word count too low",
+      "fix": "Increased max_tokens to 12000",
+      "test": "Verify all generated posts >=800 words"
+    },
+    {
+      "issue": "AI phrases in content",
+      "fix": "Updated system prompts with blacklist",
+      "test": "Quality gate should catch any AI phrases"
+    }
+  ]
+}

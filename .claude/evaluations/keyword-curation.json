@@ -1,0 +1,149 @@
+{
+  "skill": "keyword-curation",
+  "version": "1.2",
+  "test_cases": [
+    {
+      "id": "kc-001",
+      "name": "View queue status",
+      "query": "Check topic queue status",
+      "expected_behavior": [
+        "Reads data/topics_queue.json",
+        "Counts topics by status",
+        "Displays summary statistics",
+        "Shows category distribution"
+      ],
+      "success_criteria": {
+        "total_topics": "shown",
+        "pending_count": "shown",
+        "in_progress_count": "shown",
+        "completed_count": "shown"
+      }
+    },
+    {
+      "id": "kc-002",
+      "name": "Add topic to queue",
+      "query": "Add new topic manually",
+      "expected_behavior": [
+        "Generates unique ID (UUID)",
+        "Validates category (one of 8 valid)",
+        "Validates language (en/ko/ja)",
+        "Checks for duplicates",
+        "Sets status to 'pending'",
+        "Adds timestamp"
+      ],
+      "success_criteria": {
+        "topic_added": true,
+        "status": "pending",
+        "has_uuid": true,
+        "no_duplicate": true
+      }
+    },
+    {
+      "id": "kc-003",
+      "name": "Curate keywords from Google Trends",
+      "query": "Curate 15 new keywords",
+      "expected_behavior": [
+        "Fetches RSS from Google Trends (KR/US/JP)",
+        "Presents keywords for manual review",
+        "Prompts for keep/skip decision",
+        "Adds kept keywords to queue",
+        "Prevents duplicates"
+      ],
+      "success_criteria": {
+        "rss_fetched": true,
+        "manual_filtering": true,
+        "duplicates_prevented": true,
+        "topics_added": "<=15"
+      }
+    },
+    {
+      "id": "kc-004",
+      "name": "Cleanup stuck topics",
+      "query": "Reset topics stuck for 24+ hours",
+      "expected_behavior": [
+        "Finds topics with status 'in_progress'",
+        "Checks timestamp (24+ hours ago)",
+        "Resets status to 'pending'",
+        "Reports count of reset topics"
+      ],
+      "success_criteria": {
+        "finds_stuck_topics": true,
+        "resets_status": true,
+        "count_reported": true
+      }
+    },
+    {
+      "id": "kc-005",
+      "name": "Priority system",
+      "query": "Add high priority topic",
+      "expected_behavior": [
+        "Accepts priority 1-10",
+        "Sorts queue by priority (descending)",
+        "Returns highest priority first",
+        "Default priority is 8"
+      ],
+      "success_criteria": {
+        "priority_accepted": "1-10",
+        "queue_sorted": true,
+        "default_priority": 8
+      }
+    },
+    {
+      "id": "kc-006",
+      "name": "Duplicate prevention",
+      "query": "Add duplicate keyword",
+      "expected_behavior": [
+        "Checks existing topics",
+        "Compares keyword + language",
+        "Rejects duplicate",
+        "Shows error message"
+      ],
+      "success_criteria": {
+        "duplicate_detected": true,
+        "not_added": true,
+        "error_message": "shown"
+      }
+    }
+  ],
+  "performance_benchmarks": {
+    "queue_read_time": "<100ms",
+    "add_topic_time": "<200ms",
+    "rss_fetch_time": "1-3 seconds",
+    "cleanup_time": "<500ms"
+  },
+  "edge_cases": [
+    {
+      "scenario": "Invalid category",
+      "expected": "Error: Category must be one of [tech, business, ...]"
+    },
+    {
+      "scenario": "Invalid language",
+      "expected": "Error: Language must be one of [en, ko, ja]"
+    },
+    {
+      "scenario": "Empty queue",
+      "expected": "Warning: Queue is empty, no pending topics"
+    },
+    {
+      "scenario": "Google Trends RSS unavailable",
+      "expected": "Error: Failed to fetch RSS feed"
+    }
+  ],
+  "regression_tests": [
+    {
+      "issue": "Duplicate topics added",
+      "fix": "Added duplicate check (keyword + language)",
+      "test": "Cannot add same keyword for same language"
+    },
+    {
+      "issue": "Topics stuck in_progress forever",
+      "fix": "Added cleanup command (24+ hours)",
+      "test": "Cleanup should reset stuck topics"
+    },
+    {
+      "issue": "Queue empty causing generation failure",
+      "fix": "Check queue before generation",
+      "test": "Should error gracefully if queue empty"
+    }
+  ]
+}

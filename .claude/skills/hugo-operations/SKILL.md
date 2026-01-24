@@ -94,6 +94,123 @@ pip install -r requirements.txt
 
 ---
 
+## Hugo Operations Decision Tree
+
+**What do you need to do?**
+
+### 1. Preview Content Locally
+
+**Goal**: View posts in browser before deployment
+
+→ **Command**: `/opt/homebrew/bin/hugo server -D`
+→ **Opens**: http://localhost:1313
+→ **Features**: Live reload, shows drafts
+→ **When to use**: Testing new posts, checking layout changes
+
+**Troubleshooting**:
+- Port 1313 in use? → Add `--port 8080`
+- External access needed? → Add `--bind 0.0.0.0`
+- Changes not reflecting? → Try `--disableFastRender`
+
+---
+
+### 2. Build for Production
+
+**Goal**: Generate static files for deployment
+
+→ **Command**: `/opt/homebrew/bin/hugo --minify`
+→ **Output**: `public/` directory
+→ **Features**: Minified HTML/CSS/JS, no drafts
+→ **When to use**: Manual deployment, testing build
+
+**Validation**:
+```bash
+# Check build succeeded
+ls public/index.html
+# Should exist
+
+# Check file count
+find public -type f | wc -l
+# Should be ~100-200 files
+```
+
+---
+
+### 3. Debug YAML Errors
+
+**Goal**: Fix frontmatter syntax issues
+
+**Symptoms**:
+- Build fails with "failed to parse"
+- "Error: invalid character" message
+- "mapping values are not allowed"
+
+→ **Solution path**:
+1. Check error message for file path
+2. Open file in editor
+3. Validate YAML syntax:
+   - Proper indentation (2 spaces)
+   - Quoted strings with colons
+   - Valid date format (ISO 8601)
+4. Re-run build
+
+**Common YAML issues**:
+```yaml
+# Bad
+title: How to: Fix Hugo Errors  # Unquoted colon
+
+# Good
+title: "How to: Fix Hugo Errors"  # Quoted string
+
+# Bad
+date: 2026-01-24  # Missing time
+
+# Good
+date: 2026-01-24T18:00:00+09:00  # ISO 8601
+```
+
+---
+
+### 4. Check Hugo Version
+
+**Goal**: Verify Hugo installation and version
+
+→ **Command**: `/opt/homebrew/bin/hugo version`
+→ **Expected**: `hugo v0.120.0+ extended darwin/arm64`
+→ **When to use**: Troubleshooting, verifying installation
+
+**If version too old**:
+```bash
+brew upgrade hugo
+```
+
+---
+
+### 5. Preview Specific Language
+
+**Goal**: View EN, KO, or JA content only
+
+→ **Not directly supported** by Hugo server
+→ **Workaround**: Navigate to `/en/`, `/ko/`, or `/ja/` in browser
+→ **Example**: http://localhost:1313/ko/
+
+---
+
+### 6. Deploy to Production
+
+**Goal**: Publish site live
+
+→ **Don't use this skill** → Use GitHub Actions workflow
+→ **Why**: Automated deployment via Cloudflare Pages
+→ **How**: Push to `main` branch, wait 5-10 minutes
+
+**If manual deploy needed**:
+1. Build: `/opt/homebrew/bin/hugo --minify`
+2. Upload `public/` to hosting provider
+3. (Not recommended - use CI/CD)
+
+---
+
 ## Development Server
 
 ### Start Server
@@ -249,6 +366,6 @@ ls -la public/ja/tech/
 
 ---
 
-**Skill Version**: 1.2
+**Skill Version**: 1.3
 **Last Updated**: 2026-01-24
 **Maintained By**: Jake's Tech Insights project
