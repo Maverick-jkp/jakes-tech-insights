@@ -348,6 +348,42 @@
             margin-top: 0.5rem;
         }
 
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem;
+        }
+
+        .category-grid a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.65rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+        }
+
+        .category-grid .cat-icon {
+            flex-shrink: 0;
+            display: inline-block;
+            width: 1.1em;
+            text-align: center;
+        }
+
+        .category-grid .cat-text {
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .category-grid a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+        }
+
         /* Footer styles */
         .footer {
             border-top: 1px solid var(--border);
@@ -471,25 +507,21 @@
             <a href="#top">↑ Top</a>
             <a href="{{ "/" | relLangURL }}">{{ i18n "home" }}</a>
             <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">Categories</div>
+            <div class="category-grid">
             {{ if eq .Site.Language.Lang "en" }}
-            <a href="/categories/tech/">Tech</a>
-            <a href="/categories/business/">Business</a>
-            <a href="/categories/society/">Society</a>
-            <a href="/categories/entertainment/">Entertainment</a>
-            <a href="/categories/sports/">Sports</a>
-            {{ else if eq .Site.Language.Lang "ko" }}
-            <a href="/ko/categories/tech/">Tech</a>
-            <a href="/ko/categories/business/">Business</a>
-            <a href="/ko/categories/society/">Society</a>
-            <a href="/ko/categories/entertainment/">Entertainment</a>
-            <a href="/ko/categories/sports/">Sports</a>
-            {{ else if eq .Site.Language.Lang "ja" }}
-            <a href="/ja/categories/tech/">Tech</a>
-            <a href="/ja/categories/business/">Business</a>
-            <a href="/ja/categories/society/">Society</a>
-            <a href="/ja/categories/entertainment/">Entertainment</a>
-            <a href="/ja/categories/sports/">Sports</a>
+            <a href="/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+            <a href="/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+            <a href="/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+            <a href="/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+            <a href="/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
+            {{ else }}
+            <a href="/{{ .Site.Language.Lang }}/categories/tech/"><span class="cat-icon">💻</span><span class="cat-text">Tech</span></a>
+            <a href="/{{ .Site.Language.Lang }}/categories/business/"><span class="cat-icon">💼</span><span class="cat-text">Business</span></a>
+            <a href="/{{ .Site.Language.Lang }}/categories/society/"><span class="cat-icon">🌍</span><span class="cat-text">Society</span></a>
+            <a href="/{{ .Site.Language.Lang }}/categories/entertainment/"><span class="cat-icon">🎬</span><span class="cat-text">Entertainment</span></a>
+            <a href="/{{ .Site.Language.Lang }}/categories/sports/"><span class="cat-icon">⚽</span><span class="cat-text">Sports</span></a>
             {{ end }}
+            </div>
         </div>
     </div>
 
