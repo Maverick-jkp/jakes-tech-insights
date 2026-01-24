@@ -1019,10 +1019,6 @@ Return improved version (body only, no title):""",
 
             data = response.json()
 
-            if not data.get('results'):
-                safe_print(f"  ⚠️  No images found for '{query}'")
-                return None
-
             # Load used images tracking file
             used_images_file = Path(__file__).parent.parent / "data" / "used_images.json"
             used_images = set()
@@ -1035,14 +1031,17 @@ Return improved version (body only, no title):""",
 
             # Find first unused image from results
             photo = None
-            for result in data['results']:
-                image_id = result['id']
-                if image_id not in used_images:
-                    photo = result
-                    used_images.add(image_id)
-                    break
+            if data.get('results'):
+                for result in data['results']:
+                    image_id = result['id']
+                    if image_id not in used_images:
+                        photo = result
+                        used_images.add(image_id)
+                        break
+            else:
+                safe_print(f"  ⚠️  No images found for '{query}'")
 
-            # If all images are used, try with generic category query
+            # If no results or all images are used, try with generic category query
             if photo is None:
                 safe_print(f"  ⚠️  All images for '{query}' already used, trying generic category search...")
                 generic_query = category_context.get(category, 'technology')
