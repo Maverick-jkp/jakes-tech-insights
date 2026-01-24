@@ -5,7 +5,7 @@ draft: false
 categories: ["sports"]
 tags: ["ufc", "schedule"]
 description: "Stay updated with the latest UFC schedule, fight dates, and upcoming matches. Never miss your favorite fighters in action - get all event details here!"
-image: "/images/placeholder-sports.jpg"
+image: "/images/20260124-ufc-schedule.jpg"
 ---
 
 You're trying to catch the next big UFC fight, but navigating the constantly shifting schedule feels like chasing a moving target. Sound familiar? With Paramount's new broadcasting deal and major format changes rolling out in 2026, even die-hard fans are struggling to keep up with when and where fights are happening.
