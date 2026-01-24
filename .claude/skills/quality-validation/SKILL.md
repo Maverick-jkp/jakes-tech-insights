@@ -510,6 +510,6 @@ def check_heading_count(content):
 
 ---
 
-**Skill Version**: 1.0
-**Last Updated**: 2026-01-23
+**Skill Version**: 1.1
+**Last Updated**: 2026-01-24
 **Maintained By**: Jake's Tech Insights project
