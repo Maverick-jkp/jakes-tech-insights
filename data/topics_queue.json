@@ -1117,6 +1117,365 @@
       "expiry_days": 3,
       "reserved_at": "2026-01-25T11:14:55.360495+00:00",
       "completed_at": "2026-01-25T11:23:43.990733+00:00"
+    },
+    {
+      "id": "266-en-society-boston-weather",
+      "keyword": "boston weather",
+      "category": "society",
+      "lang": "en",
+      "priority": 9,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605665",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "People need to prepare NOW before stores close and roads become impassable - waiting means being stranded without essentials",
+      "angle": "Emergency preparedness and survival during extreme weather crisis",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Maps give in-depth look at Boston weather forecast for major snowstorm this weekend - CBS Boston",
+          "url": "https://www.cbsnews.com/boston/news/weather-forecast-maps-boston-snow-weekend/",
+          "source": "www.cbsnews.com"
+        },
+        {
+          "title": "Boston MA weather: Jan. 25-26, 2026",
+          "url": "https://www.boston.com/weather/weather/2026/01/20/boston-ma-major-winter-storm-early-look/",
+          "source": "www.boston.com"
+        },
+        {
+          "title": "Metro Detroit Forecast: Frigid cold today before a snowy Sunday",
+          "url": "https://www.wxyz.com/weather/forecast/todays-forecast/metro-detroit-forecast-cold-weather-advisory-in-effect",
+          "source": "www.wxyz.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:31:11.459190+00:00"
+    },
+    {
+      "id": "267-en-business-opm-status",
+      "keyword": "opm status",
+      "category": "business",
+      "lang": "en",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605707",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Federal employees need to know immediately if they'll be paid or penalized for weather-related absences",
+      "angle": "Employment rights and compensation during emergency closures",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "OPM makes the call early: Fed offices in DC closed on Monday",
+          "url": "https://federalnewsnetwork.com/workforce/2026/01/opm-makes-the-call-early-fed-offices-in-dc-closed-on-monday/",
+          "source": "federalnewsnetwork.com"
+        },
+        {
+          "title": "Winter storm warning: OPM closes government offices Monday; Trump approves FEMA assistance",
+          "url": "https://www.insidenova.com/headlines/winter-storm-warning-opm-closes-government-offices-monday-trump-approves-fema-assistance/article_aece1eb5-f0d6-4891-af89-008a6456efcf.html",
+          "source": "www.insidenova.com"
+        },
+        {
+          "title": "r/washingtondc on Reddit: 1/26: US OPM - DC area Federal Government Operating Status : Office Closur",
+          "url": "https://www.reddit.com/r/washingtondc/comments/1ql9bu7/126_us_opm_dc_area_federal_government_operating/",
+          "source": "www.reddit.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:32:24.461777+00:00"
+    },
+    {
+      "id": "268-en-society-detroit-weather",
+      "keyword": "detroit weather",
+      "category": "society",
+      "lang": "en",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605733",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "People need immediate safety measures to avoid frostbite and hypothermia in record-breaking cold",
+      "angle": "Life-threatening weather conditions requiring immediate protective action",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Maps give in-depth look at Boston weather forecast for major snowstorm this weekend - CBS Boston",
+          "url": "https://www.cbsnews.com/boston/news/weather-forecast-maps-boston-snow-weekend/",
+          "source": "www.cbsnews.com"
+        },
+        {
+          "title": "Boston MA weather: Jan. 25-26, 2026",
+          "url": "https://www.boston.com/weather/weather/2026/01/20/boston-ma-major-winter-storm-early-look/",
+          "source": "www.boston.com"
+        },
+        {
+          "title": "Metro Detroit Forecast: Frigid cold today before a snowy Sunday",
+          "url": "https://www.wxyz.com/weather/forecast/todays-forecast/metro-detroit-forecast-cold-weather-advisory-in-effect",
+          "source": "www.wxyz.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:33:36.687730+00:00"
+    },
+    {
+      "id": "269-ko-sports-황재균",
+      "keyword": "황재균",
+      "category": "sports",
+      "lang": "ko",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605795",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "팬들이 황재균의 은퇴 후 개인적 고충과 감정적 상태를 즉시 확인하고 싶어함",
+      "angle": "스포츠 스타의 은퇴 후 현실적 어려움과 정서적 고백",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "도시락 싸 들고 KT 동료들 찾아간 황재균, 새벽 출국길 배웅…“이제 팬으로 응원할게요”",
+          "url": "https://sports.donga.com/sports/article/all/20260122/133214360/1",
+          "source": "sports.donga.com"
+        },
+        {
+          "title": "황재균, 지연과 이혼→은퇴 후..결국 눈물 \"어차피 혼자잖아\"[전참시] - 스포탈코리아",
+          "url": "https://www.sportalkorea.com/news/articleView.html?idxno=2025052909552922636",
+          "source": "www.sportalkorea.com"
+        },
+        {
+          "title": "은퇴했는데 존재감 실화? 새벽 간식 배달→50억 절친에 등번호 ‘10’ 선물, 황재균 ‘영원한 마법사’ 자청하다",
+          "url": "https://www.chosun.com/sports/baseball/2026/01/22/GVQWCZJQMNRWIZBVGM2GGZBYGU/",
+          "source": "www.chosun.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:35:05.507284+00:00"
+    },
+    {
+      "id": "270-ko-society-김현지",
+      "keyword": "김현지",
+      "category": "society",
+      "lang": "ko",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605816",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "시민들이 청와대 핵심 인사의 비리 의혹과 수사 진행 상황을 즉시 파악하려함",
+      "angle": "정부 고위직 비리 의혹과 수사 당국의 대응",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "김현지 선배, 안녕하십니까 [똑똑! 한국사회]",
+          "url": "https://www.hani.co.kr/arti/opinion/column/1241026.html",
+          "source": "www.hani.co.kr"
+        },
+        {
+          "title": "경찰, '공천헌금 의혹' 김병기·김현지 등 고발한 시민단체 조사 - 뉴스1",
+          "url": "https://www.news1.kr/society/incident-accident/6044821",
+          "source": "www.news1.kr"
+        },
+        {
+          "title": "경찰, '공천헌금 의혹' 김병기·정청래·김현지 등 고발인 조사 :: 공감언론 뉴시스 ::",
+          "url": "https://www.newsis.com/view/NISX20260120_0003483535",
+          "source": "www.newsis.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:38:00.196707+00:00"
+    },
+    {
+      "id": "271-ko-tech-케리아",
+      "keyword": "케리아",
+      "category": "tech",
+      "lang": "ko",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605835",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "게이머들이 프로선수의 전략적 인사이트를 통해 게임 실력 향상 방법을 얻으려함",
+      "angle": "프로게이머의 메타 분석과 전략적 통찰",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "바텀 메타? 언제나 미드가 중요해 / T1 케리아 인터뷰 - YouTube",
+          "url": "https://www.youtube.com/watch?v=e5ajdq1soWI",
+          "source": "www.youtube.com"
+        },
+        {
+          "title": "[인터뷰] T1 케리아 \"1.4만 골드 대역전승에 새로운 자극...페이커 같은 모범적인 선수 될 것\" (2026 LCK 컵) - 이포커스",
+          "url": "https://www.e-focus.co.kr/news/articleView.html?idxno=3001981",
+          "source": "www.e-focus.co.kr"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:40:44.689892+00:00"
+    },
+    {
+      "id": "272-ko-society-프로방스",
+      "keyword": "프로방스",
+      "category": "society",
+      "lang": "ko",
+      "priority": 5,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605854",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "여행객들이 인기 여행지 예약 상황과 최적 여행 시기를 확인하려함",
+      "angle": "인기 여행지의 예약 경쟁과 기회 손실 위험",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "'세계테마기행' 프로방스 아트로드 3부, 마르세유⋅엑상프로방스⋅아비뇽 편 | 위키트리",
+          "url": "https://www.wikitree.co.kr/articles/1111230",
+          "source": "www.wikitree.co.kr"
+        },
+        {
+          "title": "EBS1 ‘세계테마기행’ 프로방스 아트 로드…샤갈·고흐·세잔·르누아르 등의 발자취 따라 떠나다 - 헤럴드경제",
+          "url": "https://biz.heraldcorp.com/article/10658523",
+          "source": "biz.heraldcorp.com"
+        },
+        {
+          "title": "쏠비치 진도, 겨울 시즌 문화 체험 프로그램 선보여 - 퍼블릭뉴스통신(Public news-network for TTL)",
+          "url": "http://www.ttlnews.com/news/articleView.html?idxno=3071639",
+          "source": "www.ttlnews.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:44:53.702386+00:00"
+    },
+    {
+      "id": "273-ja-society-あわら市長選挙",
+      "keyword": "あわら市長選挙",
+      "category": "society",
+      "lang": "ja",
+      "priority": 7,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605874",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "市民が選挙結果と新市長の政策方針を即座に確認したい",
+      "angle": "地方自治体選挙の即時開票状況と政治的影響",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "福井県の選挙2026 投票率の最新状況 1月25日20時｜福井県知事選挙｜あわら市長選挙｜1月25日投開票",
+          "url": "https://www.fukuishimbun.co.jp/articles/-/2509816",
+          "source": "www.fukuishimbun.co.jp"
+        },
+        {
+          "title": "あわら市長選挙2026告示、現職の森之嗣氏と前市長の佐々木康男氏が立候補 1月25日投開票（福井新聞）｜ｄメニューニュース",
+          "url": "https://topics.smt.docomo.ne.jp/article/fukui/region/fukui-20260118172657279",
+          "source": "topics.smt.docomo.ne.jp"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:39:18.010797+00:00"
+    },
+    {
+      "id": "274-ja-entertainment-佐々木美玲",
+      "keyword": "佐々木美玲",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605895",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "ファンがアイドルの最新活動状況と芸能界での立ち位置を確認したい",
+      "angle": "アイドルの成長と芸能界での新しい人脈形成",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "佐々木美玲 - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E3%80%85%E6%9C%A8%E7%BE%8E%E7%8E%B2",
+          "source": "ja.wikipedia.org"
+        },
+        {
+          "title": "佐々木美玲（日向坂46）の徹底解説まとめ - RENOTE [リノート]",
+          "url": "https://renote.net/articles/216104",
+          "source": "renote.net"
+        },
+        {
+          "title": "今夜「Golden SixTONES」に生田斗真率いるドラマ「パンダより恋が苦手な私たち」軍団登場 - 音楽ナタリー",
+          "url": "https://natalie.mu/music/news/657493",
+          "source": "natalie.mu"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:42:07.367243+00:00"
+    },
+    {
+      "id": "275-ja-society-探偵ナイトスクープ-tver",
+      "keyword": "探偵ナイトスクープ tver",
+      "category": "society",
+      "lang": "ja",
+      "priority": 8,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605918",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "視聴者がテレビ番組の炎上理由と社会問題への対応を理解したい",
+      "angle": "エンターテイメント番組と社会問題の境界線",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "探偵!ナイトスクープ - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E6%8E%A2%E5%81%B5!%E3%83%8A%E3%82%A4%E3%83%88%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%97",
+          "source": "ja.wikipedia.org"
+        },
+        {
+          "title": "[B! 育児] 『探偵！ナイトスクープ』12歳の長男が弟ら5人を世話する様子が“ヤングケアラー”ではないかと話題になった件で、元特捜部主任検事が法の視点から見た時のリスクについて解説",
+          "url": "https://archive.is/iU4vL",
+          "source": "archive.is"
+        },
+        {
+          "title": "探偵！ナイトスクープのヤングケアラーの炎上を見て線引きを考える｜みっこ",
+          "url": "https://note.com/micconohtrgt/n/nec34a3265b6e",
+          "source": "note.com"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:36:35.953113+00:00"
+    },
+    {
+      "id": "276-ja-business-北斗市長選挙",
+      "keyword": "北斗市長選挙",
+      "category": "business",
+      "lang": "ja",
+      "priority": 6,
+      "status": "completed",
+      "created_at": "2026-01-25T21:26:42.605938",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "市民が地域経済と市政運営の方向性を決める選挙結果を即座に知りたい",
+      "angle": "地方政治が地域経済に与える直接的影響",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "北斗市長選 25日投開票 新人と現職、最後まで支持訴え熱く：北海道新聞デジタル",
+          "url": "https://www.hokkaido-np.co.jp/article/1266858/",
+          "source": "www.hokkaido-np.co.jp"
+        },
+        {
+          "title": "真冬の選挙戦のリアル“ホワイトアウト”の中の街宣車、氷点下７℃の街頭演説に有権者「厳しい」候補者は電熱ヒーターベスト着用で【北海道北斗市長選挙】 | 北海道のニュース｜HBC北海道放送 (1ページ)",
+          "url": "https://newsdig.tbs.co.jp/articles/hbc/2418886?display=1",
+          "source": "newsdig.tbs.co.jp"
+        }
+      ],
+      "expiry_days": 3,
+      "reserved_at": "2026-01-25T12:30:00.132396+00:00",
+      "completed_at": "2026-01-25T12:43:30.550307+00:00"
     }
   ]
 }
