@@ -891,39 +891,6 @@
       "completed_at": "2026-01-24T16:47:32.422369+00:00"
     },
     {
-      "id": "259-ja-entertainment-東出昌大",
-      "keyword": "東出昌大",
-      "category": "entertainment",
-      "lang": "ja",
-      "priority": 8,
-      "status": "pending",
-      "created_at": "2026-01-25T01:31:42.806988",
-      "retry_count": 0,
-      "keyword_type": "trend",
-      "search_intent": "芸能界の裏話を知らないと、メディアの本当の姿を理解できないまま騙される可能性",
-      "angle": "芸能人と週刊誌記者の信頼関係破綻の実態",
-      "competition_level": "high",
-      "references": [
-        {
-          "title": "東出昌大、週刊誌の記者に裏切られた過去を告白 本人に直接注意「そういう仕事しちゃダメだよ」（スポニチアネックス） - Yahoo!ニュース",
-          "url": "https://news.yahoo.co.jp/articles/20731b34179b887827396047ea3e4cce2a139345",
-          "source": "news.yahoo.co.jp"
-        },
-        {
-          "title": "東出昌大、週刊誌の記者に裏切られた過去を告白 本人に直接注意「そういう仕事しちゃダメだよ」 - スポニチ Sponichi Annex 芸能",
-          "url": "https://www.sponichi.co.jp/entertainment/news/2026/01/18/kiji/20260118s00041000248000c.html",
-          "source": "www.sponichi.co.jp"
-        },
-        {
-          "title": "近畿大学 - Wikipedia",
-          "url": "https://ja.wikipedia.org/wiki/%E8%BF%91%E7%95%BF%E5%A4%A7%E5%AD%A6",
-          "source": "ja.wikipedia.org"
-        }
-      ],
-      "expiry_days": 3,
-      "reserved_at": null
-    },
-    {
       "id": "260-ja-sports-フランクフルト-サッカー",
       "keyword": "フランクフルト サッカー",
       "category": "sports",
@@ -953,156 +920,311 @@
       "completed_at": "2026-01-24T16:50:09.686265+00:00"
     },
     {
-      "id": "261-en-tech-tiktok",
-      "keyword": "tiktok",
-      "category": "tech",
+      "id": "261-en-society-raleigh-weather",
+      "keyword": "raleigh weather",
+      "category": "society",
       "lang": "en",
       "priority": 9,
       "status": "pending",
-      "created_at": "2026-01-25T18:17:38.510646",
+      "created_at": "2026-01-25T11:11:42.637080",
       "retry_count": 0,
       "keyword_type": "trend",
-      "search_intent": "TikTok 완전 차단으로 인한 데이터 손실과 대안 플랫폼 이주 방법을 찾기 위해",
-      "angle": "TikTok 차단으로 인한 사용자 데이터 손실과 대안 플랫폼 전환 위기",
+      "search_intent": "Avoid being trapped without power, heat, or emergency supplies during a severe ice storm",
+      "angle": "Emergency preparedness for life-threatening weather conditions",
       "competition_level": "high",
       "references": [
         {
-          "title": "TikTok - Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/TikTok",
-          "source": "en.wikipedia.org"
+          "title": "Latest Triangle forecast: Timeline for freezing rain, sleet | Raleigh News & Observer",
+          "url": "https://www.newsobserver.com/news/weather-news/article314390170.html",
+          "source": "www.newsobserver.com"
         },
         {
-          "title": "r/CasualConversation on Reddit: Finally deleted tiktok",
-          "url": "https://www.reddit.com/r/CasualConversation/comments/1qkl0gg/finally_deleted_tiktok/",
-          "source": "www.reddit.com"
+          "title": "Raleigh, NC Weather Forecast | Local Weather Updates for North Carolina by FOX Weather",
+          "url": "https://www.foxweather.com/local-weather/north-carolina/raleigh",
+          "source": "www.foxweather.com"
         },
         {
-          "title": "TikTok Strikes Deal to Create New U.S. Entity and Loosen App’s Ties to China - The New York Times",
-          "url": "https://www.nytimes.com/2026/01/22/technology/tiktok-deal-oracle-bytedance-china-us.html",
-          "source": "www.nytimes.com"
+          "title": "First Alert Weather",
+          "url": "https://www.wistv.com/weather/",
+          "source": "www.wistv.com"
         }
       ],
       "expiry_days": 3
     },
     {
-      "id": "262-ko-business-이재용",
-      "keyword": "이재용",
+      "id": "262-en-business-is-walmart-open-toda",
+      "keyword": "is walmart open today",
+      "category": "business",
+      "lang": "en",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-25T11:11:42.637113",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Avoid wasting time and gas on a failed shopping trip during holidays",
+      "angle": "Last-minute shopping logistics during holiday periods",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Walmart Stores Near Me - Locations, Hours & Services | Walmart Canada",
+          "url": "https://www.walmart.com/store-finder",
+          "source": "www.walmart.com"
+        },
+        {
+          "title": "Walmart New Year's Eve and New Year's Day Hours: Find Out When Stores Are Open",
+          "url": "https://www.today.com/life/holidays/walmart-new-years-hours-2026-rcna249885",
+          "source": "www.today.com"
+        },
+        {
+          "title": "Is Walmart open today? Here is what is open, closed, and worth knowing on New Year’s Day - US News |",
+          "url": "https://www.financialexpress.com/world-news/us-news/is-walmart-open-today-here-is-what-is-open-closed-and-worth-knowing-on-new-years-day/4094775/",
+          "source": "www.financialexpress.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "263-en-society-weather-columbia-sc",
+      "keyword": "weather columbia sc",
+      "category": "society",
+      "lang": "en",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T11:11:42.637137",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "Protect family and property from dangerous ice storm conditions",
+      "angle": "Critical weather safety for South Carolina residents",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "Latest Triangle forecast: Timeline for freezing rain, sleet | Raleigh News & Observer",
+          "url": "https://www.newsobserver.com/news/weather-news/article314390170.html",
+          "source": "www.newsobserver.com"
+        },
+        {
+          "title": "Raleigh, NC Weather Forecast | Local Weather Updates for North Carolina by FOX Weather",
+          "url": "https://www.foxweather.com/local-weather/north-carolina/raleigh",
+          "source": "www.foxweather.com"
+        },
+        {
+          "title": "First Alert Weather",
+          "url": "https://www.wistv.com/weather/",
+          "source": "www.wistv.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "264-ko-entertainment-김혜윤",
+      "keyword": "김혜윤",
+      "category": "entertainment",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T11:11:42.637162",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "화제의 드라마와 김혜윤의 변신한 모습을 빠르게 확인하고 싶어함",
+      "angle": "인기 배우의 장르 변신과 드라마 성공 스토리",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "김혜윤, 로몬 구하고 인간됐다(‘오늘부터 인간입니다만’)",
+          "url": "https://www.chosun.com/entertainments/broadcast/2026/01/25/GI4DMNZSGRQTENTCGBRDENJWMI/",
+          "source": "www.chosun.com"
+        },
+        {
+          "title": "김혜윤 안목 또 통했다..'오늘부터 인간입니다만', TV드라마 화제성 1위 | 스타뉴스",
+          "url": "https://www.starnewskorea.com/broadcast-drama/2026/01/20/2026012013543589412",
+          "source": "www.starnewskorea.com"
+        },
+        {
+          "title": "&lsquo;오늘부터 인간입니다만&rsquo; 김혜윤, MZ 구미호 변신",
+          "url": "https://www.bntnews.co.kr/article/view/bnt202601220073",
+          "source": "www.bntnews.co.kr"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "265-ko-business-진에어",
+      "keyword": "진에어",
       "category": "business",
       "lang": "ko",
-      "priority": 8,
-      "status": "pending",
-      "created_at": "2026-01-25T18:17:38.510717",
-      "retry_count": 0,
-      "keyword_type": "trend",
-      "search_intent": "삼성의 위기 상황과 향후 경영 전략 변화가 개인 투자와 취업에 미칠 영향을 파악하기 위해",
-      "angle": "삼성 최고 경영진의 위기감과 경쟁력 회복 마지막 기회론",
-      "competition_level": "medium",
-      "references": [
-        {
-          "title": "이재용 “숫자에 취하지 말라…자만할 때 아냐” - 헤럴드경제",
-          "url": "https://biz.heraldcorp.com/article/10662060",
-          "source": "biz.heraldcorp.com"
-        },
-        {
-          "title": "이재용, 임원들 향해 ”숫자 좀 나아졌다고 자만할 때 아냐 | 한국경제",
-          "url": "https://www.hankyung.com/article/2026012505597",
-          "source": "www.hankyung.com"
-        }
-      ],
-      "expiry_days": 3
-    },
-    {
-      "id": "263-ja-entertainment-宮崎あおい",
-      "keyword": "宮崎あおい",
-      "category": "entertainment",
-      "lang": "ja",
       "priority": 7,
       "status": "pending",
-      "created_at": "2026-01-25T18:17:38.510749",
+      "created_at": "2026-01-25T11:11:42.637186",
       "retry_count": 0,
       "keyword_type": "trend",
-      "search_intent": "대하드라마에서의 파격적인 캐릭터 연기와 시청자 반응을 확인하기 위해",
-      "angle": "전통적 이미지와 다른 공격적 캐릭터 연기로 인한 시청자 논란",
+      "search_intent": "항공사 경영 악화가 개인 여행 계획에 미칠 영향을 파악하고 싶어함",
+      "angle": "LCC 업계 위기와 소비자 영향 분석",
       "competition_level": "medium",
       "references": [
         {
-          "title": "Aoi Miyazaki - Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Aoi_Miyazaki",
-          "source": "en.wikipedia.org"
+          "title": "진에어, 지난해 영업손실 163억원…3년 만에 적자 전환 - 뉴스1",
+          "url": "https://www.news1.kr/industry/general-industry/6043789",
+          "source": "www.news1.kr"
         },
         {
-          "title": "豊臣兄弟！：宮崎あおい“市”は可愛い顔して“豪胆キャラ”？ 「義元と刺し違えて」発言 「アグレッシブ」「これぞ戦国の姫」と話題に - MANTANWEB（まんたんウェブ）",
-          "url": "https://mantan-web.jp/article/20260120dog00m200075000c.html",
-          "source": "mantan-web.jp"
+          "title": "진에어, 지난해 영업손실 163억원…3년만에 적자전환 - 이비엔(EBN)뉴스센터",
+          "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1695835",
+          "source": "www.ebn.co.kr"
         },
         {
-          "title": "岡田准一 - Wikipedia",
-          "url": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E7%94%B0%E5%87%86%E4%B8%80",
-          "source": "ja.wikipedia.org"
+          "title": "창립 18주년 맞은 진에어 \"아시아 최고의 LCC로 도약\"",
+          "url": "https://www.dailian.co.kr/news/view/1601520/",
+          "source": "www.dailian.co.kr"
         }
       ],
       "expiry_days": 3
     },
     {
-      "id": "264-ko-society-다닐-메드베데프",
-      "keyword": "다닐 메드베데프",
-      "category": "society",
+      "id": "266-ko-entertainment-로몬",
+      "keyword": "로몬",
+      "category": "entertainment",
       "lang": "ko",
-      "priority": 8,
+      "priority": 7,
       "status": "pending",
-      "created_at": "2026-01-25T18:17:38.510781",
+      "created_at": "2026-01-25T11:11:42.637208",
       "retry_count": 0,
       "keyword_type": "trend",
-      "search_intent": "러시아 고위 인사의 서방에 대한 예측과 현재 국제 정세 변화를 파악하기 위해",
-      "angle": "러시아 안보회의 부의장의 서방 관련 예측이 현실화되고 있다는 위기론",
+      "search_intent": "드라마 반전 스토리와 로몬의 정체에 대한 궁금증 해소",
+      "angle": "화제 드라마의 미스터리와 반전 포인트 분석",
       "competition_level": "medium",
       "references": [
         {
-          "title": "Daniil Medvedev - Wikipedia",
-          "url": "https://en.wikipedia.org/wiki/Daniil_Medvedev",
-          "source": "en.wikipedia.org"
+          "title": "김혜윤과 로몬, 어느 멋진 날에 | 더블유 코리아 (W Korea)",
+          "url": "https://www.wkorea.com/2026/01/23/%EA%B9%80%ED%98%9C%EC%9C%A4%EA%B3%BC-%EB%A1%9C%EB%AA%AC-%EC%96%B4%EB%8A%90-%EB%A9%8B%EC%A7%84-%EB%82%A0%EC%97%90/",
+          "source": "www.wkorea.com"
         },
         {
-          "title": "러시아 “트럼프, 푸틴처럼 되고 싶어한다”…美 그린란드 넘보듯 우크라 전쟁 정당 - 헤럴드경제",
-          "url": "https://biz.heraldcorp.com/article/10660236",
-          "source": "biz.heraldcorp.com"
+          "title": "오늘부터 인간입니다만 : “이렇게 쉽게?” 로몬×장동주, 김혜윤 도술 한방으로 해결된 소원에 얼떨떨↘ : SBS",
+          "url": "https://programs.sbs.co.kr/drama/humanfromtoday/clip/84581/OC477814880",
+          "source": "programs.sbs.co.kr"
         },
         {
-          "title": "메드베데프: 서방에 대해 과거에 내놓았던 황당한 예측들이 현실로 나타나기 시작하고 있다 - Pravda 한국",
-          "url": "https://korea.news-pravda.com/russia/2026/01/18/55769.html",
-          "source": "korea.news-pravda.com"
+          "title": "김혜윤 품에 안긴 로몬, 목장도 찌른 범인은 로몬? 반전 엔딩 ‘소름’ - 중앙이코노미뉴스",
+          "url": "https://www.joongangenews.com/news/articleView.html?idxno=489446",
+          "source": "www.joongangenews.com"
         }
       ],
       "expiry_days": 3
     },
     {
-      "id": "265-ja-sports-朝青龍",
-      "keyword": "朝青龍",
-      "category": "sports",
+      "id": "267-ja-society-宮崎市長選挙",
+      "keyword": "宮崎市長選挙",
+      "category": "society",
       "lang": "ja",
       "priority": 6,
       "status": "pending",
-      "created_at": "2026-01-25T18:17:38.510806",
+      "created_at": "2026-01-25T11:11:42.637232",
       "retry_count": 0,
       "keyword_type": "trend",
-      "search_intent": "전 요코즈나의 현 대상모 비판과 상모계 위기 상황을 파악하기 위해",
-      "angle": "전설적 요코즈나가 보는 현재 대상모의 문제점과 위기감",
+      "search_intent": "投票日と候補者情報を確認して市政の方向性を決める選挙に参加したい",
+      "angle": "地方選挙の重要性と有権者の選択責任",
       "competition_level": "low",
       "references": [
         {
-          "title": "朝青龍明徳 - Wikipedia",
-          "url": "https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%9D%92%E9%BE%8D%E6%98%8E%E5%BE%B3",
+          "title": "宮崎市長選挙は現職と新人の戦い！1月25日投票 宮崎県",
+          "url": "https://go2senkyo.com/articles/2026/01/23/127660.html",
+          "source": "go2senkyo.com"
+        },
+        {
+          "title": "現職と新人の一騎打ち 宮崎市長選挙 選挙戦を追う | MRTニュース ｜ ＭＲＴ宮崎放送 (1ページ)",
+          "url": "https://newsdig.tbs.co.jp/articles/mrt/2418822?display=1",
+          "source": "newsdig.tbs.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "268-ja-entertainment-やす子",
+      "keyword": "やす子",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-25T11:11:42.637260",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "人気芸人の内面や本音を知りたい好奇心",
+      "angle": "芸人のキャラクターと本当の姿のギャップ",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "やす子 - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E3%82%84%E3%81%99%E5%AD%90",
           "source": "ja.wikipedia.org"
         },
         {
-          "title": "「元気そうだなドルジ」元横綱・朝青龍の“辛口嘆き”に共感の声、繰り返す過激発言のウラ側（週刊女性PRIME）｜ｄメニューニュース",
-          "url": "https://topics.smt.docomo.ne.jp/article/jprime/entertainment/jprime-40086",
+          "title": "やす子 「本当の自分じゃないなとは思います」自身のキャラづくりに本音「悩みどころですね」 - スポニチ Sponichi Annex 芸能",
+          "url": "https://www.sponichi.co.jp/entertainment/news/2026/01/21/kiji/20260121s00041000170000c.html",
+          "source": "www.sponichi.co.jp"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "269-ja-society-喜多方市長選挙",
+      "keyword": "喜多方市長選挙",
+      "category": "society",
+      "lang": "ja",
+      "priority": 5,
+      "status": "pending",
+      "created_at": "2026-01-25T11:11:42.637288",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "地方選挙の候補者と政策を比較して投票先を決めたい",
+      "angle": "地方自治体選挙での政策選択の重要性",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "喜多方市長選告示、現新3人が立候補 25日投開票（みんゆうNET）｜ｄメニューニュース",
+          "url": "https://topics.smt.docomo.ne.jp/article/fminyu/region/fminyu-2026011816410945152?fm=latestnews",
           "source": "topics.smt.docomo.ne.jp"
         },
         {
-          "title": "元横綱・朝青龍が大荒れの大相撲初場所に嘆き 共感の声が続々 (2026年1月20日掲載) - ライブドアニュース",
-          "url": "https://news.livedoor.com/topics/detail/30406944/",
-          "source": "news.livedoor.com"
+          "title": "喜多方市長選挙に現職と新人２人が立候補して選挙戦に突入 １月２５日投開票（福島）（KFB福島放送） - Yahoo!ニュース",
+          "url": "https://news.yahoo.co.jp/articles/07816aa7da29a4e6651c998d308ea3e4c010ae71",
+          "source": "news.yahoo.co.jp"
+        },
+        {
+          "title": "喜多方市長選「期日前投票」始まる ５会場、市の発展を１票に託す:福島ニュース:福島民友新聞社",
+          "url": "https://www.minyu-net.com/news/detail/2026012008594645209",
+          "source": "www.minyu-net.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "270-ja-business-ピエールマルコリーニ",
+      "keyword": "ピエールマルコリーニ",
+      "category": "business",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-25T11:11:42.637314",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "限定商品の発売情報を確認して購入機会を逃したくない",
+      "angle": "高級ブランドとコンビニの異色コラボ商戦",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "”コンビニ初”ピエール マルコリーニ監修スイーツ、全国のファミリーマートに - ファッションプレス",
+          "url": "https://www.fashion-press.net/news/142500",
+          "source": "www.fashion-press.net"
+        },
+        {
+          "title": "ベルギー王室御用達「ピエール マルコリーニ」初監修 ファミリーマートで全7種スイーツが登場【コメント全文】",
+          "url": "https://www.oricon.co.jp/news/2432171/full/",
+          "source": "www.oricon.co.jp"
+        },
+        {
+          "title": "コンビニ初!ピエール マルコリーニとのコラボスイーツ全7品を発売、クレープやシュークリーム、アイスバーまで【ファミマ】 | 食品産業新聞社ニュースWEB",
+          "url": "https://www.ssnp.co.jp/distribution/657483/",
+          "source": "www.ssnp.co.jp"
         }
       ],
       "expiry_days": 3
