@@ -896,7 +896,7 @@
       "category": "entertainment",
       "lang": "ja",
       "priority": 8,
-      "status": "available",
+      "status": "pending",
       "created_at": "2026-01-25T01:31:42.806988",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -951,6 +951,161 @@
       "expiry_days": 3,
       "reserved_at": "2026-01-24T16:39:17.489362+00:00",
       "completed_at": "2026-01-24T16:50:09.686265+00:00"
+    },
+    {
+      "id": "261-en-tech-tiktok",
+      "keyword": "tiktok",
+      "category": "tech",
+      "lang": "en",
+      "priority": 9,
+      "status": "pending",
+      "created_at": "2026-01-25T18:17:38.510646",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "TikTok 완전 차단으로 인한 데이터 손실과 대안 플랫폼 이주 방법을 찾기 위해",
+      "angle": "TikTok 차단으로 인한 사용자 데이터 손실과 대안 플랫폼 전환 위기",
+      "competition_level": "high",
+      "references": [
+        {
+          "title": "TikTok - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/TikTok",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "r/CasualConversation on Reddit: Finally deleted tiktok",
+          "url": "https://www.reddit.com/r/CasualConversation/comments/1qkl0gg/finally_deleted_tiktok/",
+          "source": "www.reddit.com"
+        },
+        {
+          "title": "TikTok Strikes Deal to Create New U.S. Entity and Loosen App’s Ties to China - The New York Times",
+          "url": "https://www.nytimes.com/2026/01/22/technology/tiktok-deal-oracle-bytedance-china-us.html",
+          "source": "www.nytimes.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "262-ko-business-이재용",
+      "keyword": "이재용",
+      "category": "business",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T18:17:38.510717",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "삼성의 위기 상황과 향후 경영 전략 변화가 개인 투자와 취업에 미칠 영향을 파악하기 위해",
+      "angle": "삼성 최고 경영진의 위기감과 경쟁력 회복 마지막 기회론",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "이재용 “숫자에 취하지 말라…자만할 때 아냐” - 헤럴드경제",
+          "url": "https://biz.heraldcorp.com/article/10662060",
+          "source": "biz.heraldcorp.com"
+        },
+        {
+          "title": "이재용, 임원들 향해 ”숫자 좀 나아졌다고 자만할 때 아냐 | 한국경제",
+          "url": "https://www.hankyung.com/article/2026012505597",
+          "source": "www.hankyung.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "263-ja-entertainment-宮崎あおい",
+      "keyword": "宮崎あおい",
+      "category": "entertainment",
+      "lang": "ja",
+      "priority": 7,
+      "status": "pending",
+      "created_at": "2026-01-25T18:17:38.510749",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "대하드라마에서의 파격적인 캐릭터 연기와 시청자 반응을 확인하기 위해",
+      "angle": "전통적 이미지와 다른 공격적 캐릭터 연기로 인한 시청자 논란",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Aoi Miyazaki - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Aoi_Miyazaki",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "豊臣兄弟！：宮崎あおい“市”は可愛い顔して“豪胆キャラ”？ 「義元と刺し違えて」発言 「アグレッシブ」「これぞ戦国の姫」と話題に - MANTANWEB（まんたんウェブ）",
+          "url": "https://mantan-web.jp/article/20260120dog00m200075000c.html",
+          "source": "mantan-web.jp"
+        },
+        {
+          "title": "岡田准一 - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E7%94%B0%E5%87%86%E4%B8%80",
+          "source": "ja.wikipedia.org"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "264-ko-society-다닐-메드베데프",
+      "keyword": "다닐 메드베데프",
+      "category": "society",
+      "lang": "ko",
+      "priority": 8,
+      "status": "pending",
+      "created_at": "2026-01-25T18:17:38.510781",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "러시아 고위 인사의 서방에 대한 예측과 현재 국제 정세 변화를 파악하기 위해",
+      "angle": "러시아 안보회의 부의장의 서방 관련 예측이 현실화되고 있다는 위기론",
+      "competition_level": "medium",
+      "references": [
+        {
+          "title": "Daniil Medvedev - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Daniil_Medvedev",
+          "source": "en.wikipedia.org"
+        },
+        {
+          "title": "러시아 “트럼프, 푸틴처럼 되고 싶어한다”…美 그린란드 넘보듯 우크라 전쟁 정당 - 헤럴드경제",
+          "url": "https://biz.heraldcorp.com/article/10660236",
+          "source": "biz.heraldcorp.com"
+        },
+        {
+          "title": "메드베데프: 서방에 대해 과거에 내놓았던 황당한 예측들이 현실로 나타나기 시작하고 있다 - Pravda 한국",
+          "url": "https://korea.news-pravda.com/russia/2026/01/18/55769.html",
+          "source": "korea.news-pravda.com"
+        }
+      ],
+      "expiry_days": 3
+    },
+    {
+      "id": "265-ja-sports-朝青龍",
+      "keyword": "朝青龍",
+      "category": "sports",
+      "lang": "ja",
+      "priority": 6,
+      "status": "pending",
+      "created_at": "2026-01-25T18:17:38.510806",
+      "retry_count": 0,
+      "keyword_type": "trend",
+      "search_intent": "전 요코즈나의 현 대상모 비판과 상모계 위기 상황을 파악하기 위해",
+      "angle": "전설적 요코즈나가 보는 현재 대상모의 문제점과 위기감",
+      "competition_level": "low",
+      "references": [
+        {
+          "title": "朝青龍明徳 - Wikipedia",
+          "url": "https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%9D%92%E9%BE%8D%E6%98%8E%E5%BE%B3",
+          "source": "ja.wikipedia.org"
+        },
+        {
+          "title": "「元気そうだなドルジ」元横綱・朝青龍の“辛口嘆き”に共感の声、繰り返す過激発言のウラ側（週刊女性PRIME）｜ｄメニューニュース",
+          "url": "https://topics.smt.docomo.ne.jp/article/jprime/entertainment/jprime-40086",
+          "source": "topics.smt.docomo.ne.jp"
+        },
+        {
+          "title": "元横綱・朝青龍が大荒れの大相撲初場所に嘆き 共感の声が続々 (2026年1月20日掲載) - ライブドアニュース",
+          "url": "https://news.livedoor.com/topics/detail/30406944/",
+          "source": "news.livedoor.com"
+        }
+      ],
+      "expiry_days": 3
     }
   ]
 }

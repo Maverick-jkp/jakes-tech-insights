@@ -81,10 +81,10 @@ class TopicQueue:
         }
 
         # Find available topics sorted by priority (high to low) and created_at
-        # Note: Accept both 'pending' and 'available' status
+        # Note: Only 'pending' status is used (unified from 'available' on 2026-01-25)
         available = [
             t for t in data['topics']
-            if t['status'] in ['pending', 'available'] and t.get('priority', 5) >= priority_min
+            if t['status'] == 'pending' and t.get('priority', 5) >= priority_min
         ]
         available.sort(key=lambda x: (-x.get('priority', 5), x.get('created_at', '')))
 

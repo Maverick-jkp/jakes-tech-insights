@@ -657,7 +657,7 @@ def return_failed_topics_to_queue(failed_files: List[str]):
                         topic.get('lang') == lang and
                         topic.get('status') in ['in_progress', 'completed']):
 
-                        topic['status'] = 'available'
+                        topic['status'] = 'pending'  # Changed from 'available' to 'pending'
                         topic['reserved_at'] = None
                         if 'completed_at' in topic:
                             del topic['completed_at']
