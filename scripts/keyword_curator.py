@@ -931,10 +931,11 @@ class KeywordCurator:
         """Show queue statistics"""
         topics = self.queue_data['topics']
 
-        # Count by status
-        by_status = {"pending": 0, "in_progress": 0, "completed": 0}
+        # Count by status (safe for any status value)
+        by_status = {"pending": 0, "in_progress": 0, "completed": 0, "failed": 0}
         for t in topics:
-            by_status[t.get('status', 'pending')] += 1
+            status = t.get('status', 'pending')
+            by_status[status] = by_status.get(status, 0) + 1
 
         # Count by type
         by_type = {"trend": 0, "evergreen": 0, "unknown": 0}
