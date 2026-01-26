@@ -1449,7 +1449,7 @@
       "category": "entertainment",
       "lang": "en",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709654",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1473,7 +1473,9 @@
           "source": "parade.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:36:41.432488+00:00"
     },
     {
       "id": "278-en-sports-iga-swiatek",
@@ -1481,7 +1483,7 @@
       "category": "sports",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709688",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1505,7 +1507,9 @@
           "source": "www.bbc.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:41:54.566344+00:00"
     },
     {
       "id": "279-en-business-jewelry-near-me",
@@ -1513,7 +1517,7 @@
       "category": "business",
       "lang": "en",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709711",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1537,7 +1541,9 @@
           "source": "www.reddit.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:37:44.214897+00:00"
     },
     {
       "id": "280-en-business-irs-refund",
@@ -1545,7 +1551,7 @@
       "category": "business",
       "lang": "en",
       "priority": 10,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709732",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1569,7 +1575,9 @@
           "source": "www.forbes.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:35:27.593860+00:00"
     },
     {
       "id": "281-ko-entertainment-신지",
@@ -1577,7 +1585,7 @@
       "category": "entertainment",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709756",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1601,7 +1609,9 @@
           "source": "www.joongangenews.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:43:28.214948+00:00"
     },
     {
       "id": "282-ko-society-김경",
@@ -1609,7 +1619,7 @@
       "category": "society",
       "lang": "ko",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709778",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1633,7 +1643,9 @@
           "source": "www.joongang.co.kr"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:39:06.633189+00:00"
     },
     {
       "id": "283-ko-sports-엘레나-리바키나",
@@ -1641,7 +1653,7 @@
       "category": "sports",
       "lang": "ko",
       "priority": 6,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709803",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1660,7 +1672,9 @@
           "source": "archive.is"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:44:52.481497+00:00"
     },
     {
       "id": "284-ja-entertainment-馬場亮成",
@@ -1676,7 +1690,8 @@
       "angle": "芸能事務所内恋愛の背景にある業界構造の問題",
       "competition_level": "low",
       "references": [],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": null
     },
     {
       "id": "285-ja-society-中国-習近平",
@@ -1684,7 +1699,7 @@
       "category": "society",
       "lang": "ja",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-26T08:40:07.709891",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1708,7 +1723,9 @@
           "source": "www.asahi.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-26T09:34:18.906136+00:00",
+      "completed_at": "2026-01-26T09:40:41.694536+00:00"
     },
     {
       "id": "286-ja-society-大鶴義丹",
