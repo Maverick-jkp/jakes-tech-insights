@@ -1716,7 +1716,7 @@
       "category": "sports",
       "lang": "en",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715209",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1735,7 +1735,9 @@
           "source": "www.foxnews.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:35:28.139706+00:00"
     },
     {
       "id": "287-en-sports-john-force-racing",
@@ -1770,7 +1772,7 @@
       "category": "entertainment",
       "lang": "en",
       "priority": 9,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715261",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1794,7 +1796,9 @@
           "source": "showsnob.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:34:18.614689+00:00"
     },
     {
       "id": "289-en-tech-resident-evil-requie",
@@ -1802,7 +1806,7 @@
       "category": "tech",
       "lang": "en",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715309",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1826,7 +1830,9 @@
           "source": "www.ign.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:40:40.727326+00:00"
     },
     {
       "id": "290-en-business-austin-prock",
@@ -1850,7 +1856,7 @@
       "category": "society",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715352",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1869,7 +1875,9 @@
           "source": "www.edaily.co.kr"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:36:44.177519+00:00"
     },
     {
       "id": "292-ko-entertainment-시드니-스위니",
@@ -1877,7 +1885,7 @@
       "category": "entertainment",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715375",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1901,7 +1909,9 @@
           "source": "muko.kr"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:42:03.738381+00:00"
     },
     {
       "id": "293-ko-business-국세청장",
@@ -1909,7 +1919,7 @@
       "category": "business",
       "lang": "ko",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715430",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1933,7 +1943,9 @@
           "source": "www.yna.co.kr"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:38:07.325724+00:00"
     },
     {
       "id": "294-ko-sports-권순우",
@@ -1968,7 +1980,7 @@
       "category": "tech",
       "lang": "ko",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715504",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -1976,7 +1988,9 @@
       "angle": "정부 지원책이 오히려 드러낸 업계의 절망적 현실",
       "competition_level": "low",
       "references": [],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:43:27.627500+00:00"
     },
     {
       "id": "296-ja-business-鹿島建設",
@@ -1984,7 +1998,7 @@
       "category": "business",
       "lang": "ja",
       "priority": 8,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715543",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2008,7 +2022,9 @@
           "source": "www.kensetsunews.com"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:39:30.405547+00:00"
     },
     {
       "id": "297-ja-society-クロアチア",
@@ -2048,7 +2064,7 @@
       "category": "entertainment",
       "lang": "ja",
       "priority": 7,
-      "status": "pending",
+      "status": "completed",
       "created_at": "2026-01-27T08:39:51.715605",
       "retry_count": 0,
       "keyword_type": "trend",
@@ -2067,7 +2083,9 @@
           "source": "ja.wikipedia.org"
         }
       ],
-      "expiry_days": 3
+      "expiry_days": 3,
+      "reserved_at": "2026-01-27T09:33:10.060397+00:00",
+      "completed_at": "2026-01-27T09:44:40.142707+00:00"
     },
     {
       "id": "299-ja-tech-共同通信",
