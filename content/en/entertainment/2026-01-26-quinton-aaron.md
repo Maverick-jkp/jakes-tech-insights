@@ -5,7 +5,7 @@ draft: false
 author: "Jake Park"
 categories: ["entertainment"]
 tags: ["quinton", "aaron"]
-description: "Discover the inspiring journey of Quinton Aaron, from his breakthrough role as Michael Oher in "The Blind Side" to his advocacy work and career evolution."
+description: "Discover the inspiring journey of Quinton Aaron, from his breakthrough role as Michael Oher in 'The Blind Side' to his advocacy work and career evolution."
 image: "/images/20260126-quinton-aaron.jpg"
 ---
 

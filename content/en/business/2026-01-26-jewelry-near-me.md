@@ -1,5 +1,5 @@
 ---
-title: "Why "Jewelry Near Me" Searches Are More Confusing in 2026"
+title: "Why 'Jewelry Near Me' Searches Are More Confusing in 2026"
 date: 2026-01-26T18:37:44+0900
 draft: false
 author: "Jake Park"
