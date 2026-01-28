@@ -61,7 +61,7 @@ grep "VARIABLE_NAME" .env
 - **Tech Stack**: Hugo, Python 3.x, Claude API (Sonnet 4.5), GitHub Actions
 - **Languages**: English (EN), Korean (KO), Japanese (JA)
 - **Deployment**: Cloudflare Pages (https://jakes-tech-insights.pages.dev)
-- **Automation**: 3x daily content generation (6 AM, 12 PM, 6 PM KST)
+- **Automation**: Daily content generation (configured via GitHub Actions schedule)
 
 ---
 

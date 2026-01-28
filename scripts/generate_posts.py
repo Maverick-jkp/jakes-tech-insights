@@ -1318,14 +1318,18 @@ Return improved version (body only, no title):""",
         kst = timezone(timedelta(hours=9))
         now_kst = datetime.now(kst)
 
+        # Escape nested quotes in YAML frontmatter
+        safe_title = title.replace('"', "'")
+        safe_description = description.replace('"', "'")
+
         frontmatter = f"""---
-title: "{title}"
+title: "{safe_title}"
 date: {now_kst.strftime("%Y-%m-%dT%H:%M:%S%z")}
 draft: false
 author: "Jake Park"
 categories: ["{category}"]
 tags: {json.dumps(keyword.split()[:3])}
-description: "{description}"
+description: "{safe_description}"
 image: "{image_path}"
 ---
 
